@@ -12,4 +12,5 @@ files.txt
 .\#*
 game/saves/
 tmp/
-
+docs/build/
+node_modules/
