@@ -116,7 +116,7 @@ init -100 python:
     # Python's built-in libraries lack some fairly useful functions.
     # Functions here vary from “this part would be terser if I could
     # write it like this,” to “if we had this, we could reduce the
-    # number of possible bugs\/catch error earlier,” and everything
+    # number of possible bugs/catch error earlier,” and everything
     # in between.
     #
     # We define them here so they may be used everywhere else.
@@ -155,7 +155,7 @@ init -100 python:
     #
     # As far as Cute Demon Crashers!'s code goes, this is used for the
     # `SexChoiceSet` object, so choices in the set (which are exposed as
-    # attributes in the object) are constrained by the possible choices *and*
+    # attributes in the object) are constrained by the possible choices **and**
     # get to have a unique value.
     #
     # @ref("sum types"): http://en.wikipedia.org/wiki/Tagged_union
