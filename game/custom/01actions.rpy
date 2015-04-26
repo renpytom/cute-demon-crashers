@@ -6,7 +6,7 @@
 
 init -100 python:
 
-    ### class: SetPersistent(name, value) < Action, FieldEquality
+    ### class: SetPersistent() < Action, FieldEquality
     # @type: str, a -> SetPersistent
     #
     # Ren'Py lacks an action that changes values from the persistent

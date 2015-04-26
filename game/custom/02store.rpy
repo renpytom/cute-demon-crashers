@@ -28,7 +28,7 @@
 
 init -100 python:
 
-    ### class: StoreBackedObject(slot_name)
+    ### class: StoreBackedObject()
     # @type: str -> StoreBackedObject
     #
     # The `StoreBackedObject` is the core class that encompasses the
@@ -82,7 +82,7 @@ init -100 python:
                 return default
 
     
-    ### class: StoreBackedSet(slot_name) < StoreBackedObject
+    ### class: StoreBackedSet() < StoreBackedObject
     # @type: str -> StoreBackedSet(a)
     #
     # The `StoreBackedSet` is similar to Python's built-in `set` data
@@ -183,7 +183,7 @@ init -100 python:
             return self
 
 
-    ### class: SexChoiceSet(slot_name, options)
+    ### class: SexChoiceSet()
     # @type: str, list(str) -> SexChoiceSet
     #
     # The `SexChoiceSet` keeps track of all the choices possible during

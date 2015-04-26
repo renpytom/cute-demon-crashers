@@ -163,14 +163,18 @@ init -100 python:
         return Enum(**dict(zip(items, range(len(items)))))
     
 
-    #### class: Enum(items)
-    # @type: dict(a, b)... -> Enum
+    #### class: Enum()
     # @private
     #
     # A class in which instances expose the given initialisation dictionary
     # as attributes. Not to be used directly, but rather through the `enum`
     # function, which accepts a list of names.
     class Enum(object):
+
+        #### method: __init__(**kwargs)
+        # @type: dict(a, b)... -> Enum
+        #
+        # Initialises an `Enum` instance.
         def __init__(self, **kwargs):
             for (key, value) in kwargs.items():
                 self.__setattr__(key, value)
