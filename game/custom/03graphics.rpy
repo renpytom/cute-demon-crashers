@@ -278,3 +278,143 @@ init -100 python:
         def visit(self):
             return [self.transition, self.displayable]
     
+
+    ### class: ComposedSprite()
+    # 
+    # Since `StateMachineDisplayable` only deals with a single
+    # displyable at a time, like `ConditionSwitch`, we need a way of
+    # composing several of them to form a single displayable. One could
+    # just use `LiveComposite`, but then they would need to call
+    # `set_state` on each of the parts, one at a time. To solve this,
+    # `ComposedSprite` bundles several displayables into a single thing,
+    # one of which may be a `StateMachineDisplayable`, and allows one to
+    # change the state of several parts with a single command.
+    #
+    #
+    # --- Creating ComposedSprites -------------------------------------
+    #
+    # To construct a `ComposedSprite`, one needs to pass in the size of
+    # the final image, as a `(width, height)` tuple, and a series of
+    # "layers", as a `(layer name, (x offset, y offset), displayable)`
+    # tuple. This is very similar to what `LiveComposite` expects,
+    # except that we accept an additional `layer name` value for
+    # displayables that are `StateMachineDisplayable`.
+    #
+    # The `layer name` may be a string that provides an unique name for
+    # that layer in this `ComposedSprite` displayable, or `None` if the
+    # displayable in that layer isn't a `StateMachineDisplayable`.
+    #
+    # @example("py" caption: "Creating a ComposedSprite"){{{
+    #   glasses_claire = ComposedSprite(
+    #     (360, 504),
+    #     ("base", (0, 0), claire_base),
+    #     ("eyes", (0, 0), claire_eyes),
+    #     ("mouth", (0, 0), claire_mouth),
+    #     (None, (0, 0), "assets/sprites/claire/cl_glasses.png")
+    #   )
+    # }}}
+    #
+    #
+    # --- Showing ComposedSprites & moving between states --------------
+    #
+    # Since `ComposedSprite` isn't a displayable itself, you can't show
+    # it directly on the screen. Instead, it gives you two methods to
+    # create displayables from the initial `ComposedSprite`
+    # description. In both cases the layers are composed in the order
+    # they're given, where the first ones are at the very bottom of the
+    # image, and last ones are at the very top of the image.
+    #
+    # The `displayable` method gives you a live displayable, which
+    # reflects the current state of all `StateMachineDisplayable`s that
+    # constitute the image:
+    #
+    # @example("py" caption: "Using .displayable() to show ComposedSprites"){{{
+    #   image claire glasses = glasses_claire.displayable()
+    #   show claire glasses with dissolve
+    # }}}
+    #
+    # Similar to `StateMachineDisplayable`, you can use a `set_state`
+    # method in the `ComposedSprite` object to change the current state
+    # of the `ComposedSprite`, but here you'll need to pass in a mapping
+    # of which layers you want the state to change. A transition
+    # argument may be likewise provided:
+    #
+    # @example("py" caption: "Moving between states in ComposedSprites"){{{
+    #   show claire glasses with dissolve
+    #   $ glasses_claire.set_state(base="lazy", transition=dissolve)
+    #   "Hello."
+    #   $ glasses_claire.set_state(eyes="happy", mouth="kitty")
+    #   "'Tis nice to see ya."
+    # }}}
+    #
+    # Another way of getting a displayable out of a `ComposedSprite` is
+    # to use the `snapshot` method. This again works in a similar
+    # fashion to `StateMachineDisplayable`'s `snapshot` method, except
+    # that it takes mappings from layers to states, and gives you back a
+    # proper (static) composition of all those layers.
+    #
+    # @example("py" caption: "Snapshots in ComposedSprites"){{{
+    #   image claire kitty = glasses_claire.snapshot(eyes="happy", mouth="kitty")
+    #   show claire glasses at left
+    #   show claire kitty at right
+    #   # This will only affect the `claire glasses` image.
+    #   $ glasses_claire.set_state(mouth="grin")
+    # }}}
+    class ComposedSprite(object):
+
+        #### method: __init__(size, *layers)
+        # @type: (int, int), (str | None, (int, int), Displayable)... -> unit
+        #
+        # Initialises an instance of `ComposedSprite`
+        def __init__(self, size, *layers):
+            # We use `LiveComposite` for composing the sprites, so we
+            # need to know the size of the final image beforehand.
+            self.size = size
+
+            # The layers this `ComposedSprite` has, as a list.
+            self.layers = layers
+
+            # The `layer_map` helps us to easily set the state of
+            # `StateMachineDisplayable` layers, by mapping layer names
+            # directly to those objects.
+            self.layer_map = {}
+            for (name, _, displayable) in layers:
+                if name is not None:
+                    self.layer_map[name] = displayable
+
+
+        #### method: set_state([transition=None, ] **kwargs)
+        # @type: Transition, { str: any } -> unit
+        #
+        # Changes the state of all layers provided by the mappings.
+        def set_state(self, transition=None, **kwargs):
+            for key in kwargs:
+                self.layer_map[key].set_state(kwargs[key], transition)
+
+
+        #### method: snapshot(**kwargs)
+        # @type: { str: any } -> Displayable
+        #
+        # Returns a static composition of the `ComposedSprite`, as a
+        # displayable. *Static* here just means that the resulting image
+        # won't be changed by calling `set_state` in any of the layers.
+        def snapshot(self, **kwargs):
+            return LiveComposite(
+                self.size,
+                *flatten([
+                    [pos, displayable.snapshot(kwargs.get(name))]
+                    for (name, pos, displayable) in self.layers
+                ])
+            )
+
+
+        #### method: displayable()
+        # @type: unit -> Displayable
+        #
+        # Returns a live displayable for this `ComposedSprite`.
+        def displayable(self):
+            return LiveComposite(
+                self.size,
+                *flatten([[pos, displayable] for (_, pos, displayable) in self.layers])
+            )
+
