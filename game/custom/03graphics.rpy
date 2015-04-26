@@ -1,5 +1,10 @@
 #- Custom Displayables & Graphics --------------------------------------
 #
+# @note{{{
+#   You'll need the **00functions.rpy** and **02store.rpy** files in order
+#   to use the classes defined here.
+# }}}
+#
 # Ren'Py ships with a handful of displayable objects, which fits quite a
 # lot of use cases. As for **Cute Demon Crashers!**, we wanted to have
 # the equivalent of the built-in `ConditionSwitch`, but which could use
@@ -417,4 +422,3 @@ init -100 python:
                 self.size,
                 *flatten([[pos, displayable] for (_, pos, displayable) in self.layers])
             )
-

@@ -58,7 +58,7 @@ Class: ``StoreBackedObject``
 
 
 
-.. class:: StoreBackedObject(slot_name)
+.. class:: StoreBackedObject()
    
    
    
@@ -257,7 +257,7 @@ Class: ``StoreBackedSet``
 
 
 
-.. class:: StoreBackedSet(slot_name)
+.. class:: StoreBackedSet()
    
    
    
@@ -633,7 +633,7 @@ Class: ``SexChoiceSet``
 
 
 
-.. class:: SexChoiceSet(slot_name, options)
+.. class:: SexChoiceSet()
    
    
    

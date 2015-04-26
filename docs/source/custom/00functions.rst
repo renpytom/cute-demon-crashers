@@ -596,15 +596,7 @@ Class: ``Enum``
 
 
 
-.. class:: Enum(items)
-   
-   
-   
-   
-   .. code-block:: haskell
-      
-      
-      dict(a, b)... -> Enum
+.. class:: Enum()
    
    
    
@@ -626,11 +618,52 @@ function, which accepts a list of names.
    
    
        class Enum(object):
-           def __init__(self, **kwargs):
-               for (key, value) in kwargs.items():
-                   self.__setattr__(key, value)
    
 
 
+
+
+.. rst-class:: hidden-heading
+
+
+
+
+#__init__()
+-----------
+
+
+
+
+.. method:: __init__(**kwargs)
+   
+   
+   
+   
+   .. code-block:: haskell
+      
+      
+      dict(a, b)... -> Enum
+   
+   
+   
+   
+   
+   
+   
+   
+   Initialises an ``Enum`` instance.
+   
+   
+   .. code-block:: py
+      
+      
+              def __init__(self, **kwargs):
+                  for (key, value) in kwargs.items():
+                      self.__setattr__(key, value)
+      
+   
+   
+   
+   
 
 

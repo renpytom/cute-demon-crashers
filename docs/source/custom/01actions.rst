@@ -30,7 +30,7 @@ Class: ``SetPersistent``
 
 
 
-.. class:: SetPersistent(name, value)
+.. class:: SetPersistent()
    
    
    
