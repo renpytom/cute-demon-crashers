@@ -619,7 +619,300 @@ used to save changes to the Ren'Py store behind the scenes.
                   return self
       
       
+   
+   
+   
+   
+
+
+
+
+Class: ``SexChoiceSet``
+=======================
+
+
+
+
+.. class:: SexChoiceSet(slot_name, options)
+   
+   
+   
+   
+   .. code-block:: haskell
       
+      
+      str, list(str) -> SexChoiceSet
+   
+   
+   
+   
+   
+   
+   
+
+
+
+The ``SexChoiceSet`` keeps track of all the choices possible during
+some character's sex scene, and helps catching typos/avoiding the
+same variable name being used in two different places.
+
+
+**Cute Demon Crashers!** presents the user with a plethora of
+choices in each route, and keeping track of each variable (when
+they may be introduced/accessed in several different places) is
+not an easy thing to do. So, ``SexChoiceSet`` allows one to declare
+all of the possible choices upfront, and not have to worry about
+possible collisions or typos:
+
+
+
+
+.. code-block:: py
+   :caption:
+     Example
+   :linenos:
+   
+   
+   
+     akki_sex_choices = SexChoiceSet('akki', [
+       'kissing',
+       'top_off',
+       ( ... )
+     ])
+     # Makes sure we reset all choices at this point (usually the
+     # start of the game), otherwise choices from a previous
+     # playthrough would still be active.
+     akki_sex_choices.reset()
+   
+     akki_sex_choices.kissing = True # activate kissing
+     if akki_sex_choices.kissing:
+       # Executed if `kissing` was activated.
+   
+
+
+
+
+Basically, this class will intercept all attribute messages
+(reading and modifying), and ensure that all of these attribute
+names are in the choices declared upfront. A ``StoreBackedSet`` is
+used behind the scenes to keep track of the state of each
+attribute.
+
+
+When an attribute is accessed, as in ``akki_sex_choices.kissing``,
+the object will see if the unique value indentifying ``kissing`` is
+in the internal ``StoreBackedSet``. If it is, it'll return ``True``,
+otherwise it'll return ``False``.
+
+
+When an attribute is modified, as in ``akki_sex_choices.kissing = x``, 
+the object will add the unique value identifying ``kissing`` to the
+internal ``StoreBackedSet`` if ``x`` is a truthy value, and remove it
+if it's ``False``.
+
+
+All internal field access in the class is done through the
+internal class dictionary, since it would otherwise trigger the
+``__getattr__`` and ``__setattr__`` methods.
+
+
+.. code-block:: py
+   
+   
+       class SexChoiceSet(object):
+   
+
+
+
+
+.. rst-class:: hidden-heading
+
+
+
+
+#__init__()
+-----------
+
+
+
+
+.. method:: __init__(slot_name, options)
+   
+   
+   
+   
+   .. code-block:: haskell
+      
+      
+      str, list(str) -> unit
+   
+   
+   
+   
+   
+   
+   
+   
+   Initialises a SexChoiceSet instance.
+   
+   
+   .. code-block:: py
+      
+      
+              def __init__(self, slot_name, options):
+                  self.__dict__["storage"] = StoreBackedSet("sexchoice_slot__" + slot_name)
+                  self.__dict__["attributes"] = set(options)
+                  self.__dict__["options"] = enum(*options)
+      
+      
+   
+   
+   
+   
+
+
+.. rst-class:: hidden-heading
+
+
+
+
+#reset()
+--------
+
+
+
+
+.. method:: reset()
+   
+   
+   
+   
+   .. code-block:: haskell
+      
+      
+      unit -> SexChoiceSet
+   
+   
+   
+   
+   
+   
+   
+   
+   Removes all choices from the internal set.
+   
+   
+   .. code-block:: py
+      
+      
+              def reset(self):
+                  self.__dict__["storage"].reset()
+                  return self
+      
+      
+   
+   
+   
+   
+
+
+.. rst-class:: hidden-heading
+
+
+
+
+#__getattr__()
+--------------
+
+
+
+
+.. method:: __getattr__(name)
+   
+   
+   
+   
+   .. code-block:: haskell
+      
+      
+      str -> bool
+   
+   
+   
+   
+   
+   
+   
+   
+   Checks if the unique value for ``name`` is stored in the
+   internal set, and also if ``name`` was declared when creating
+   this instance.
+   
+   
+   Will return ``None`` if the given ``name`` isn't one of the ones
+   we're expecting, which will cause Python to throw an
+   ``AttributeError``.
+   
+   
+   .. code-block:: py
+      
+      
+              def __getattr__(self, name):
+                  attrs = self.__dict__.get("attributes", set())
+                  if name in attrs:
+                      value = self.__dict__["options"].__dict__[name]
+                      return value in self.__dict__["storage"].load()
+      
+      
+   
+   
+   
+   
+
+
+.. rst-class:: hidden-heading
+
+
+
+
+#__setattr__()
+--------------
+
+
+
+
+.. method:: __setattr__(name, data)
+   
+   
+   
+   
+   .. code-block:: haskell
+      
+      
+      str, bool -> unit
+   
+   
+   
+   
+   
+   
+   
+   
+   Modifies the state of ``name``. If given a ``True`` value, will
+   add ``name`` to the internal set, if given a ``False`` value, will
+   remove it from the internal set.
+   
+   
+   .. code-block:: py
+      
+      
+              def __setattr__(self, name, data):
+                  if name in self.__dict__.get("attributes", set()):
+                      value = self.__dict__["options"].__dict__[name]
+                      if data:
+                          self.__dict__["storage"].add(value)
+                      else:
+                          self.__dict__["storage"].remove(value)
       
    
    
