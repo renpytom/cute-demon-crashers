@@ -53,7 +53,7 @@ Copyright (c) 2015 [SugarScript][].
 Released under the [MIT licence](https://github.com/robotlolita/cute-demon-crashers/blob/master/LICENCE).
 
 
-[read online]: http://cute-demon-crashers.readthedocs.org/en/latest/
+[read online]: http://cute-demon-crashers.readthedocs.org/
 [SugarScript]: http://sugarscript.tumblr.com/
 [Sphinx]: http://sphinx-doc.org/
 [Node.js]: http://nodejs.org/
