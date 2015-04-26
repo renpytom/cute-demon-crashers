@@ -9,6 +9,7 @@ Contents:
    custom/00functions
    custom/01actions
    custom/02store
+   custom/03graphics
    
 
 Indices and tables
