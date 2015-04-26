@@ -30,7 +30,7 @@
 # @ref("Finite State Machine"): http://en.wikipedia.org/wiki/Finite-state_machine
 init -100 python:
 
-    ### class: StateMachineDisplayable < renpy.Displayable, StoreBackedObject
+    ### class: StateMachineDisplayable() < renpy.Displayable, StoreBackedObject
     # 
     # The `StateMachineDisplayable` allows one to have a displayable
     # that changes throughout the time. It operates as a

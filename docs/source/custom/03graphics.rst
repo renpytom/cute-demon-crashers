@@ -52,15 +52,17 @@ that by providing the analogous of ``LiveComposite`` for
 
 
 
-Class: ``StateMachineDisplayable < renpy.Displayable, StoreBackedObject``
-=========================================================================
+Class: ``StateMachineDisplayable``
+==================================
 
 
 
 
-.. class:: StateMachineDisplayable < renpy.Displayable, StoreBackedObject
+.. class:: StateMachineDisplayable()
    
    
+   :Parents:
+     renpy.Displayable, StoreBackedObject
    
    
    
