@@ -11,6 +11,7 @@ files.txt
 \#*
 .\#*
 game/saves/
+game/assets/
 tmp/
 docs/build/
 node_modules/
