@@ -422,3 +422,28 @@ init -100 python:
                 self.size,
                 *flatten([[pos, displayable] for (_, pos, displayable) in self.layers])
             )
+
+    ### class: Emotion()
+    # 
+    # `ComposedSprite` instances take a dictionary of states for the
+    # `StateMachineDisplayable`, and this class makes it easier to create such
+    # dictionaries by providing base values for common expressions.
+    #
+    #
+    class Emotion(object):
+        @staticmethod
+        def normal(**kwargs):
+            return merge({ "emotion_base": "default",
+                           "eyebrows": "default",
+                           "eyes": "default",
+                           "mouth": "default",
+                           "emotion": "default"
+                         }, kwargs)
+
+        @staticmethod
+        def shock(**kwargs):
+            return Emotion.normal(**merge({ "eyebrows": "flat",
+                                            "eyes": "shock",
+                                            "mouth": "fun ah",
+                                            "emotion": "shock"
+                                          }, kwargs))

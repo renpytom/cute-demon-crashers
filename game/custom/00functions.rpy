@@ -13,7 +13,7 @@ init -100 python:
     # functions for, or the built-in is awkward to use.
 
 
-    #### function: get_screen_var
+    #### function: get_screen_var(name)
     # @type: str -> None | object
     #
     # Returns the value of a screen variable, or None if called from outside
@@ -39,6 +39,22 @@ init -100 python:
         cs = renpy.current_screen()
         if cs is not None:
             return cs.scope[name]
+
+
+    #### function: make_character(*args, **kwargs)
+    # @type: any... -> Character
+    #
+    # Creates a new character with pre-defined options.
+    #
+    # Usually you'd set up a template character in Ren'Py and then
+    # have your other characters inherit from that one.
+    def make_character(*args, **kwargs):
+        ctc_indicator = LiveComposite((50, 27),
+                                      (10, 0), At("assets/ui/ctc.png", heartbeat))
+
+        return Character(ctc=ctc_indicator,
+                         ctc_timedpause=Null(),
+                         *args, **kwargs)
 
 
     #### function: naked(path[, suffix="_cen"])
