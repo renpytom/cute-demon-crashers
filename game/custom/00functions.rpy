@@ -11,7 +11,7 @@ init -100 python:
     # less repetitive ways of defining some stuff in Ren'Py, as well
     # as giving access for things for which Ren'Py lacks built-in
     # functions for, or the built-in is awkward to use.
-    
+
 
     #### function: get_screen_var
     # @type: str -> None | object
@@ -39,7 +39,7 @@ init -100 python:
         cs = renpy.current_screen()
         if cs is not None:
             return cs.scope[name]
-    
+
 
     #### function: naked(path[, suffix="_cen"])
     # @type: str[, str] -> str
@@ -78,7 +78,7 @@ init -100 python:
             True,                   path.format("")
         )
 
-    
+
     #### function: sprite(name, prefix, image)
     # @type: str, str, str -> str
     #
@@ -89,7 +89,7 @@ init -100 python:
     # hierarchy, and this function just makes building that simpler.
     def sprite(name, prefix, image):
         return "assets/sprites/{0}/{1}{2}.png".format(name, prefix, image)
-    
+
     #### function: sprite_orias(asset)
     def sprite_orias(asset):
         return sprite("orias", "ori_", asset)
@@ -101,7 +101,7 @@ init -100 python:
     #### function: sprite_akki(asset)
     def sprite_akki(asset):
         return sprite("akki", "ak_", asset)
-        
+
     #### function: sprite_mirari(asset)
     def sprite_mirari(asset):
         return sprite("mirari", "mi_", asset)
@@ -161,7 +161,7 @@ init -100 python:
     # @ref("sum types"): http://en.wikipedia.org/wiki/Tagged_union
     def enum(*items):
         return Enum(**dict(zip(items, range(len(items)))))
-    
+
 
     #### class: Enum()
     # @private

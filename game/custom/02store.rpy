@@ -81,7 +81,7 @@ init -100 python:
             except AttributeError:
                 return default
 
-    
+
     ### class: StoreBackedSet() < StoreBackedObject
     # @type: str -> StoreBackedSet(a)
     #
@@ -224,7 +224,7 @@ init -100 python:
     # in the internal `StoreBackedSet`. If it is, it'll return `True`,
     # otherwise it'll return `False`.
     #
-    # When an attribute is modified, as in `akki_sex_choices.kissing = x`, 
+    # When an attribute is modified, as in `akki_sex_choices.kissing = x`,
     # the object will add the unique value identifying `kissing` to the
     # internal `StoreBackedSet` if `x` is a truthy value, and remove it
     # if it's `False`.

@@ -36,13 +36,13 @@
 init -100 python:
 
     ### class: StateMachineDisplayable() < renpy.Displayable, StoreBackedObject
-    # 
+    #
     # The `StateMachineDisplayable` allows one to have a displayable
     # that changes throughout the time. It operates as a
     # @link("Finite State Machine"), in which there are several possible
     # states that it might be, but only one of those can be active at
-    # any given time. 
-    # 
+    # any given time.
+    #
     # Each state has an associated Ren'Py displayable, which will be
     # shown when that this object reaches that state, and transitions
     # may be provided for moving from one state to another.
@@ -74,7 +74,7 @@ init -100 python:
     #   )
     # }}}
     #
-    # 
+    #
     # --- Showing and moving between states ----------------------------
     #
     # You can change the current state of a `StateMachineDisplayable` by
@@ -214,7 +214,7 @@ init -100 python:
             self.current_state = new_state
             self.old_state = self.load()
             self.store(new_state)
-    
+
             old_d = self.states.get(self.old_state) or Null()
             cur_d = renpy.easy.displayable(self.states.get(new_state) or Null())
             self.displayable = cur_d
@@ -282,10 +282,10 @@ init -100 python:
         # Ren'Py uses this list to predict images and stuff.
         def visit(self):
             return [self.transition, self.displayable]
-    
+
 
     ### class: ComposedSprite()
-    # 
+    #
     # Since `StateMachineDisplayable` only deals with a single
     # displyable at a time, like `ConditionSwitch`, we need a way of
     # composing several of them to form a single displayable. One could

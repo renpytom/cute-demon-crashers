@@ -51,4 +51,4 @@ init -100 python:
         # according to the value of the persistent field.
         def get_selected(self):
             return getattr(persistent, self.name) == self.value
-    
+
