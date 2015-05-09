@@ -128,7 +128,7 @@ init -100 python:
     # a list `xss` that looks like `[[1, 2], [3, 4]]`, `flatten(xss)`
     # would give you `[1, 2, 3, 4]`.
     def flatten(xss):
-        return reduce(lambda: r, x: r + x, xss, [])
+        return reduce(lambda r, x: r + x, xss, [])
 
 
     #### function: merge(a, b)
