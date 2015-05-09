@@ -77,6 +77,7 @@ label kael_hangout1:
     ka "I'm simply being me. We all are. We'd like you to feel comfortable around us; there's no point in being dishonest about who we are." 
     hide kael with dissolve
     show chibi_kael01 at chibi_scene with dissolve
+    $ gallery.unlock("chibi_kael01")
     play music music_silly fadein 2
     "He picks up the basket, and it's then I spot some lacy underwear on the pile."
     cla "Ah, I'll wash those!"

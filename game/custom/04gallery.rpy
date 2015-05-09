@@ -1,9 +1,11 @@
 init -100 python:
 
-    class Gallery(StoreBackedObject):
+    if persistent.unlocked_gallery is None:
+        persistent.unlocked_gallery = set()
+    
+    class Gallery(object):
         def __init__(self, *folders):
             self.folders = folders
-            self.slot_name = "gallery_state__unlocked"
 
         def __getitem__(self, key):
             for folder in self.folders:
@@ -12,10 +14,10 @@ init -100 python:
             return []
 
         def unlock(self, id):
-            self.store(self.load(set()).add(id))
+            persistent.unlocked_gallery.add(id)
 
         def _wrap_images(self, bundle):
-            def is_locked(x): return x.id in self.load(set())
+            def is_locked(x): return x.is_locked()
             def negate(f): return lambda a: not f(a)
 
             unlocked = filter(negate(is_locked), bundle)
@@ -47,6 +49,10 @@ init -100 python:
             self.id = id
             self.image = image
 
+        def is_locked(self):
+            return self.id not in persistent.unlocked_gallery
+
+
     class GalleryImage(object):
         pass
 
@@ -55,7 +61,12 @@ init -100 python:
         def __init__(self, cg):
             self.image = cg.image
 
+        def is_locked():
+            return True
 
     class GalleryUnlocked(GalleryImage):
         def __init__(self, cg):
-            self.image = cg.image
+            self.image = im.Grayscale(cg.image)
+
+        def is_locked():
+            return False

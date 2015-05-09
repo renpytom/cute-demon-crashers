@@ -266,6 +266,7 @@ label mirari_hangout3:
     mi "Of course! Take a seat and I'll comb your hair for you."
     hide mirari with dissolve
     show chibi_mira01 at chibi_scene with dissolve
+    $ gallery.unlock("chibi_mira01")
     "Grateful for the tempting offer, I sit down on the grass in front of her lawn chair. She leans in, running her fingers through my hair as she brushes it."
     "I close my eyes and let out a little happy hum. It feels soooo good."
     cla "It's been a while since someone pampered me like this..."

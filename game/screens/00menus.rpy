@@ -215,7 +215,6 @@ screen options_menu():
 # Extras menu
 screen extras_menu():
     default opt_menu = "credits"
-    default folder = "Akki"
     tag menu
 
     window:
@@ -242,32 +241,7 @@ screen extras_menu():
     if opt_menu == 'credits':
         add "assets/ui/credits.png" xpos 97 ypos 138
     else:
-        use gallery(folder)
-
-
-screen gallery(folder):
-    tag menu
-
-    vbox:
-        style_group "gallery"
-
-        hbox:
-            style_group "gallery_folders"
-
-            for name in map(lambda x: x.name, gallery.folders):
-                textbutton _(name) action SetScreenVariable("folder", name)
-
-        hbox:
-            style_group "gallery_images"
-
-            for bundle in gallery[get_screen_var("folder")]:
-                button:
-                    has vbox
-
-                    frame:
-                        add bundle.thumbnail at slot_screenshot
-        
-
+        use gallery()
     
         
 

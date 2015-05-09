@@ -1030,17 +1030,3 @@ init -1:
     define ka = make_character(name='kael_name', dynamic=True)
     define ori = make_character(name='orias_name', dynamic=True)
     define cla = make_character('claire_name', dynamic=True)
-
-
-    # -- Gallery -------------------------------------------------------
-    python:
-        gallery = Gallery(
-            GalleryFolder(
-                "Akki",
-                [CG("akki01", Solid("#000000"))]
-            ),
-            GalleryFolder("Orias"),
-            GalleryFolder("Kael"),
-            GalleryFolder("Mirari"),
-            GalleryFolder("Others")
-        )

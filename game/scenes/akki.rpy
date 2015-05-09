@@ -284,6 +284,8 @@ label akki_hangout3:
 
     hide akki with dissolve
     show chibi_akki01 at chibi_scene with dissolve
+    $ gallery.unlock("chibi_akki01")
+    
 
     "In our triumph, we find ourselves hugging each other, my body pressing against his."
     stop music fadeout 2
@@ -374,6 +376,7 @@ label akki_sex:
     scene bg bedroom_night with dissolve
     ak "Now what?"
     show chibi_akki02 at chibi_scene with dissolve
+    $ gallery.unlock("chibi_akki02")
     "We sit on the bed, none of us moving a muscle. For someone who burst into my bedroom, carrying me effortlessly, he's sure timid now."
     cla "Well, you're the incubus. Don't they have magical sex powers or something to get it started?"
     ak "That's called centuries of experience."

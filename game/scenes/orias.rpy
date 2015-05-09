@@ -64,6 +64,7 @@ label orias_hangout1:
     ori "Thank you. It's probably from all the experience of binding my lovers."
     hide orias at center with dissolve
     show chibi_orias01 at chibi_scene with dissolve
+    $ gallery.unlock("chibi_orias01")
     play music music_silly
     cla "Pffffffffft."
     "I cover my mouth when I realize I showered Orias' face with my tea."
