@@ -415,6 +415,7 @@ label sex_choice:
             play sound "assets/sfx/rev_up.ogg"
             pause(1.0)
             scene nosex01 with dissolve
+            $ gallery.unlock("chibi_nosex01")
             play music music_silly fadein 2
             ak "AW YEA FIRST PLACE! Last lap here I come!"
             cla "Ugh, how did you improve so fast? I'm right behind you, Akki."
@@ -434,6 +435,7 @@ label sex_choice:
             ori "This one."
             mi "Oh!"
             scene nosex02 with dissolve
+            $ gallery.unlock("chibi_nosex02")
             play sound "assets/sfx/ded.ogg"
             ak "NOOOOOOO!"
             cla "First place is mine! Hahaha!"
