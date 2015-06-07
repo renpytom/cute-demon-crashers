@@ -2,16 +2,23 @@ init -100 python:
 
     if persistent.unlocked_gallery is None:
         persistent.unlocked_gallery = set()
-    
+
     class Gallery(object):
         def __init__(self, *folders):
             self.folders = folders
+            self.sprite_map = {}
 
         def __getitem__(self, key):
             for folder in self.folders:
                 if folder.name == key:
                     return map(self._wrap_images, folder)
             return []
+
+        def add_unlockable_sprite(self, sprite, name):
+            self.sprite_map[sprite] = name
+
+        def unlock_sprite(self, sprite):
+            self.unlock((self.sprite_map[sprite], sprite.state()))
 
         def unlock(self, id):
             persistent.unlocked_gallery.add(id)
@@ -26,7 +33,7 @@ init -100 python:
 
     class GalleryBundle(object):
         def __init__(self, bundle, unlocked):
-            def is_locked(x): return x in unlocked
+            def is_locked(x): return x not in unlocked
             def branch(p, f, g): return lambda a: f(a) if p(a) else g(a)
 
             self.total = len(bundle)
@@ -61,12 +68,12 @@ init -100 python:
         def __init__(self, cg):
             self.image = cg.image
 
-        def is_locked():
+        def is_locked(self):
             return True
 
     class GalleryUnlocked(GalleryImage):
         def __init__(self, cg):
-            self.image = im.Grayscale(cg.image)
+            self.image = cg.image
 
-        def is_locked():
+        def is_locked(self):
             return False
