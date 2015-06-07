@@ -222,6 +222,14 @@ init -100 python:
             self.redraw()
 
 
+        #### method: state()
+        # @type: () -> any
+        #
+        # Returns the current state of the displayable.
+        def state(self):
+            return self.load()
+            
+
         #### method: per_interact()
         # @type: unit -> unit
         #
@@ -397,17 +405,35 @@ init -100 python:
                 self.layer_map[key].set_state(kwargs[key], transition)
 
 
+        #### method: state()
+        # @type: () -> (any...)
+        #
+        # Returns a tuple of the states used for the object, ignoring 
+        # states that have no names.
+        def state(self):
+            return tuple([d.state() for (name, _, d) in self.layers if name is not None])
+
+                
         #### method: snapshot(**kwargs)
         # @type: { str: any } -> Displayable
         #
         # Returns a static composition of the `ComposedSprite`, as a
         # displayable. *Static* here just means that the resulting image
         # won't be changed by calling `set_state` in any of the layers.
+        #
+        # This ignores displayables `None` states, and expects that a
+        # `snapshot` method, if present, means SMD's snapshot.        
         def snapshot(self, **kwargs):
+            def get_snapshot(displayable, state):
+                if state is not None and callable(getattr(displayable, "snapshot")):
+                    return displayable.snapshot(state)
+                else:
+                    return displayable
+                    
             return LiveComposite(
                 self.size,
                 *flatten([
-                    [pos, displayable.snapshot(kwargs.get(name))]
+                    [pos, get_snapshot(displayable, kwargs.get(name))]
                     for (name, pos, displayable) in self.layers
                 ])
             )
