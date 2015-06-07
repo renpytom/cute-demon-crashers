@@ -873,63 +873,158 @@ init -1:
     image nosex02 = "assets/chibis/NoOneEnd_02.png"
 
     ##-- Akki
-
-    image akkiforeplay = LiveComposite((1280, 800),
-        (0, 0), "assets/CGs/akki01_bg.jpg",
-        (0, 0), "assets/CGs/akki01_akkibase.png",
-        (0, 0), ConditionSwitch(
-            "ak_bottom == 'on'", "assets/CGs/akki01_akbottomon.png", 
-            "ak_bottom == 'off'", naked("assets/CGs/akki01_akbottomoff{0}.png"), 
-            ),
-        (0, 0), ConditionSwitch(
-            "cl_arm == 'down'", "assets/CGs/akki01_clarm_down.png", 
-            "cl_arm == 'chest'", "assets/CGs/akki01_clarm_chest.png",
-            "cl_arm == 'crotch'", "assets/CGs/akki01_clarm_crotch.png",
-            "cl_arm == 'handjob'", naked("assets/CGs/akki01_clarm_handjob{0}.png"),
-            ),
-        (0, 0), naked("assets/CGs/akki01_clbase{0}.png"),
-        (0, 0), ConditionSwitch(
-            "cl_bottom == 'on'", "assets/CGs/akki01_clbottomon.png", 
-            "cl_bottom == 'off'", Null(width=1),
-            ),
-        (0, 0), ConditionSwitch(
-            "cl_top == 'on'", "assets/CGs/akki01_cltop_shirt.png", 
-            "cl_top == 'bra'", "assets/CGs/akki01_cltop_bra.png",
-            "cl_top == 'off'", naked("assets/CGs/akki01_cltop_boobs{0}.png"),
-            
-            ),
-        (0, 0), ConditionSwitch(
-            "ak_arm == 'down'", "assets/CGs/akki01_akarm_down.png", 
-            "ak_arm == 'breast'", "assets/CGs/akki01_akarm_breast.png",
-            #"ak_arm == 'tummy'", "assets/CGs/akki01_akarm_tummy.png",
-            "ak_arm == 'finger'", "assets/CGs/akki01_akarm_finger.png",
-            
-            ),
-        (0, 0), ConditionSwitch(
-            "ac_heads == 'apart'", "assets/CGs/akki01_heads_apart.png", 
-            "ac_heads == 'kiss'", "assets/CGs/akki01_heads_kiss.png",
-            
-            ),
-        (0, 0), ConditionSwitch(
-            "cl_face == None", Null(width=1), 
-            "cl_face == 'surprised'", "assets/CGs/akki01_clface_surprised.png",
-            "cl_face == 'embarrassed'", "assets/CGs/akki01_clface_embarrased.png", 
-            "cl_face == 'smile'", "assets/CGs/akki01_clface_smile.png",
-            "cl_face == 'happy'", "assets/CGs/akki01_clface_happy.png", 
-            "cl_face == 'pleasure'", "assets/CGs/akki01_clface_pleasure.png",
-            "cl_face == 'O'", "assets/CGs/akki01_clface_O.png",
-            
-            ),
-        (0, 0), ConditionSwitch(
-            "ak_face == None", Null(width=1), 
-            "ak_face == 'happy'", "assets/CGs/akki01_akface_happy.png", 
-            "ak_face == 'nervous'", "assets/CGs/akki01_akface_nervous.png",
-            "ak_face == 'pleasure'", "assets/CGs/akki01_akface_pleasure.png",
-            "ak_face == 'D:'", "assets/CGs/akki01_akface_hesitant.png",
-            
-            ),
-
+    python:
+        akki_foreplay_bottom = StateMachineDisplayable(
+            "akkifp_bottom", "on",
+            {
+                "on": "assets/CGs/akki01_akbottomon.png",
+                "off": naked("assets/CGs/akki01_akbottomoff{0}.png")
+            }
         )
+
+        akki_foreplay_claire_arm = StateMachineDisplayable(
+            "akkifp_clarm", "down",
+            {
+                "down": "assets/CGs/akki01_clarm_down.png",
+                "chest": "assets/CGs/akki01_clarm_chest.png",
+                "crotch": "assets/CGs/akki01_clarm_crotch.png",
+                "handjob": naked("assets/CGs/akki01_clarm_handjob{0}.png")
+            }
+        )
+
+        akki_foreplay_claire_bottom = StateMachineDisplayable(
+            "akkifp_clbottom", "on",
+            {
+                "on": "assets/CGs/akki01_clbottomon.png", 
+                "off": Null(width=1),                
+            }
+        )
+
+        akki_foreplay_claire_top = StateMachineDisplayable(
+            "akkifp_cltop", "on",
+            {
+                "on": "assets/CGs/akki01_cltop_shirt.png", 
+                "bra": "assets/CGs/akki01_cltop_bra.png",
+                "off": naked("assets/CGs/akki01_cltop_boobs{0}.png"),
+            }
+        )
+
+        akki_foreplay_akki_arm = StateMachineDisplayable(
+            "akkifp_akarm", "down",
+            {
+                "down": "assets/CGs/akki01_akarm_down.png", 
+                "breast": "assets/CGs/akki01_akarm_breast.png",
+                #"tummy": "assets/CGs/akki01_akarm_tummy.png",
+                "finger": "assets/CGs/akki01_akarm_finger.png",
+            }
+        )
+
+        akki_foreplay_ac_heads = StateMachineDisplayable(
+            "akkifp_acheads", "kiss",
+            {
+                "apart": "assets/CGs/akki01_heads_apart.png", 
+                "kiss": "assets/CGs/akki01_heads_kiss.png",
+            }
+        )
+
+        akki_foreplay_claire_face = StateMachineDisplayable(
+            "akkifp_clface", "default",
+            {
+                "default": Null(width=1), 
+                "surprised": "assets/CGs/akki01_clface_surprised.png",
+                "embarrassed": "assets/CGs/akki01_clface_embarrased.png", 
+                "smile": "assets/CGs/akki01_clface_smile.png",
+                "happy": "assets/CGs/akki01_clface_happy.png", 
+                "pleasure": "assets/CGs/akki01_clface_pleasure.png",
+                "O": "assets/CGs/akki01_clface_O.png",
+            }
+        )
+
+        akki_foreplay_akki_face = StateMachineDisplayable(
+            "akkifp_akface", "default",
+            {
+                "default": Null(width=1), 
+                "happy": "assets/CGs/akki01_akface_happy.png", 
+                "nervous": "assets/CGs/akki01_akface_nervous.png",
+                "pleasure": "assets/CGs/akki01_akface_pleasure.png",
+                "D:": "assets/CGs/akki01_akface_hesitant.png",
+            }
+        )
+
+        akki_foreplay = ComposedSprite(
+            (1280, 800),
+            (None, (0, 0), "assets/CGs/akki01_bg.jpg"),
+            (None, (0, 0), "assets/CGs/akki01_akkibase.png"),
+            ("akki_bottom", (0, 0), akki_foreplay_bottom),
+            ("claire_arm", (0, 0), akki_foreplay_claire_arm),
+            (None, (0, 0), naked("assets/CGs/akki01_clbase{0}.png")),
+            ("claire_bottom", (0, 0), akki_foreplay_claire_bottom),
+            ("claire_top", (0, 0), akki_foreplay_claire_top),
+            ("akki_arm", (0, 0), akki_foreplay_akki_arm),
+            ("heads", (0, 0), akki_foreplay_ac_heads),
+            ("claire_face", (0, 0), akki_foreplay_claire_face),
+            ("akki_face", (0, 0), akki_foreplay_akki_face)
+        )
+
+    image akkiforeplay = akki_foreplay.displayable()
+
+    
+#    image akkiforeplay = LiveComposite((1280, 800),
+#        (0, 0), "assets/CGs/akki01_bg.jpg",
+#        (0, 0), "assets/CGs/akki01_akkibase.png",
+#        (0, 0), ConditionSwitch(
+#            "ak_bottom == 'on'", "assets/CGs/akki01_akbottomon.png", 
+#            "ak_bottom == 'off'", naked("assets/CGs/akki01_akbottomoff{0}.png"), 
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "cl_arm == 'down'", "assets/CGs/akki01_clarm_down.png", 
+#            "cl_arm == 'chest'", "assets/CGs/akki01_clarm_chest.png",
+#            "cl_arm == 'crotch'", "assets/CGs/akki01_clarm_crotch.png",
+#            "cl_arm == 'handjob'", naked("assets/CGs/akki01_clarm_handjob{0}.png"),
+#            ),
+#        (0, 0), naked("assets/CGs/akki01_clbase{0}.png"),
+#        (0, 0), ConditionSwitch(
+#            "cl_bottom == 'on'", "assets/CGs/akki01_clbottomon.png", 
+#            "cl_bottom == 'off'", Null(width=1),
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "cl_top == 'on'", "assets/CGs/akki01_cltop_shirt.png", 
+#            "cl_top == 'bra'", "assets/CGs/akki01_cltop_bra.png",
+#            "cl_top == 'off'", naked("assets/CGs/akki01_cltop_boobs{0}.png"),
+#            
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "ak_arm == 'down'", "assets/CGs/akki01_akarm_down.png", 
+#            "ak_arm == 'breast'", "assets/CGs/akki01_akarm_breast.png",
+#            #"ak_arm == 'tummy'", "assets/CGs/akki01_akarm_tummy.png",
+#            "ak_arm == 'finger'", "assets/CGs/akki01_akarm_finger.png",
+#            
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "ac_heads == 'apart'", "assets/CGs/akki01_heads_apart.png", 
+#            "ac_heads == 'kiss'", "assets/CGs/akki01_heads_kiss.png",
+#            
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "cl_face == None", Null(width=1), 
+#            "cl_face == 'surprised'", "assets/CGs/akki01_clface_surprised.png",
+#            "cl_face == 'embarrassed'", "assets/CGs/akki01_clface_embarrased.png", 
+#            "cl_face == 'smile'", "assets/CGs/akki01_clface_smile.png",
+#            "cl_face == 'happy'", "assets/CGs/akki01_clface_happy.png", 
+#            "cl_face == 'pleasure'", "assets/CGs/akki01_clface_pleasure.png",
+#            "cl_face == 'O'", "assets/CGs/akki01_clface_O.png",
+#            
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "ak_face == None", Null(width=1), 
+#            "ak_face == 'happy'", "assets/CGs/akki01_akface_happy.png", 
+#            "ak_face == 'nervous'", "assets/CGs/akki01_akface_nervous.png",
+#            "ak_face == 'pleasure'", "assets/CGs/akki01_akface_pleasure.png",
+#            "ak_face == 'D:'", "assets/CGs/akki01_akface_hesitant.png",
+#            
+#            ),
+#
+#        )
     image akkiforeplay start = LiveComposite((1280, 800),
         (0, 0), "assets/CGs/akki01_bg.jpg",
         (0, 0), "assets/CGs/akki01_akkibase.png",
@@ -941,42 +1036,110 @@ init -1:
         (0, 0), "assets/CGs/akki01_akarm_down.png",
         (0, 0), "assets/CGs/akki01_heads_kiss.png",
         )
-    
-    image akki_missionary = LiveComposite((1280, 800),
-        (0, 0), naked("assets/CGs/akki_lay01{0}.jpg"),
-        (0, 0), ConditionSwitch(
-            "lay_cface == '1'", "assets/CGs/akki_lay_cface1.png", 
-            "lay_cface == '2'", "assets/CGs/akki_lay_cface2.png", 
-            "lay_cface == '3'", "assets/CGs/akki_lay_cface3.png", 
-            ),
-        (0, 0), ConditionSwitch(
-            "lay_aface == '1'", "assets/CGs/akki_lay_aface1.png", 
-            "lay_aface == '2'", "assets/CGs/akki_lay_aface2.png", 
-            "lay_aface == '3'", "assets/CGs/akki_lay_aface3.png", 
-            "lay_aface == '4'", "assets/CGs/akki_lay_aface4.png", 
-            "lay_aface == '5'", "assets/CGs/akki_lay_aface5.png", 
-            "lay_aface == '6'", "assets/CGs/akki_lay_aface6.png",
-            ),
 
+    python:
+        akki_missionary_claire = StateMachineDisplayable(
+            "akki_lay_cface", 1,
+            {
+                1: "assets/CGs/akki_lay_cface1.png", 
+                2: "assets/CGs/akki_lay_cface2.png", 
+                3: "assets/CGs/akki_lay_cface3.png"
+            }
         )
-    
-    image akkicuddle = LiveComposite((1280, 800),
-        (0, 0), ConditionSwitch(
-            "akki_sex_choices.missionary == True", "assets/CGs/akki_cuddle_n.jpg", 
-            "True", "assets/CGs/akki_cuddle_cl.jpg",
-            ),
-        (0, 0), ConditionSwitch(
-            "cuddle_cface == '1'", "assets/CGs/akki_cuddle_claire1.png", 
-            "cuddle_cface == '2'", "assets/CGs/akki_cuddle_claire2.png", 
-            "cuddle_cface == '3'", "assets/CGs/akki_cuddle_claire3.png", 
-            ),
-        (0, 0), ConditionSwitch(
-            "cuddle_aface == '1'", "assets/CGs/akki_cuddle_akki1.png", 
-            "cuddle_aface == '2'", "assets/CGs/akki_cuddle_akki2.png", 
-            "cuddle_aface == '3'", "assets/CGs/akki_cuddle_akki3.png", 
-            ),
 
+        akki_missionary_akki = StateMachineDisplayable(
+            "akki_lay_aface", 1,
+            {
+                1: "assets/CGs/akki_lay_aface1.png", 
+                2: "assets/CGs/akki_lay_aface2.png", 
+                3: "assets/CGs/akki_lay_aface3.png", 
+                4: "assets/CGs/akki_lay_aface4.png", 
+                5: "assets/CGs/akki_lay_aface5.png", 
+                6: "assets/CGs/akki_lay_aface6.png"
+            }
         )
+
+        akki_missionary_sprite = ComposedSprite(
+            (1280, 800),
+            (None, (0, 0), naked("assets/CGs/akki_lay01{0}.jpg")),
+            ("claire", (0, 0), akki_missionary_claire),
+            ("akki", (0, 0), akki_missionary_akki)
+        )
+        
+
+    image akki_missionary = akki_missionary_sprite.displayable()
+        
+#    image akki_missionary = LiveComposite((1280, 800),
+#        (0, 0), naked("assets/CGs/akki_lay01{0}.jpg"),
+#        (0, 0), ConditionSwitch(
+#            "lay_cface == '1'", "assets/CGs/akki_lay_cface1.png", 
+#            "lay_cface == '2'", "assets/CGs/akki_lay_cface2.png", 
+#            "lay_cface == '3'", "assets/CGs/akki_lay_cface3.png", 
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "lay_aface == '1'", "assets/CGs/akki_lay_aface1.png", 
+#            "lay_aface == '2'", "assets/CGs/akki_lay_aface2.png", 
+#            "lay_aface == '3'", "assets/CGs/akki_lay_aface3.png", 
+#            "lay_aface == '4'", "assets/CGs/akki_lay_aface4.png", 
+#            "lay_aface == '5'", "assets/CGs/akki_lay_aface5.png", 
+#            "lay_aface == '6'", "assets/CGs/akki_lay_aface6.png",
+#            ),
+#
+#        )
+
+    python:
+        akki_cuddle_base = StateMachineDisplayable(
+            "akki_cuddle_base", "naked",
+            {
+                "naked": "assets/CGs/akki_cuddle_n.jpg",
+                "clothed": "assets/CGs/akki_cuddle_cl.jpg"
+            }
+        )
+
+        akki_cuddle_claire = StateMachineDisplayable(
+            "akki_cuddle_claire", 1,
+            {
+                1: "assets/CGs/akki_cuddle_claire1.png", 
+                2: "assets/CGs/akki_cuddle_claire2.png", 
+                3: "assets/CGs/akki_cuddle_claire3.png"
+            }
+        )
+
+        akki_cuddle_akki = StateMachineDisplayable(
+            "akki_cuddle_akki", 1,
+            {
+                1: "assets/CGs/akki_cuddle_akki1.png", 
+                2: "assets/CGs/akki_cuddle_akki2.png", 
+                3: "assets/CGs/akki_cuddle_akki3.png"
+            }
+        )
+
+        akki_cuddle_sprite = ComposedSprite(
+            (1280, 800),
+            ("base", (0, 0), akki_cuddle_base),
+            ("claire", (0, 0), akki_cuddle_claire),
+            ("akki", (0, 0), akki_cuddle_akki)
+        )
+
+    image akkicuddle = akki_cuddle_sprite.displayable()
+        
+#    image akkicuddle = LiveComposite((1280, 800),
+#        (0, 0), ConditionSwitch(
+#            "akki_sex_choices.missionary == True", "assets/CGs/akki_cuddle_n.jpg", 
+#            "True", "assets/CGs/akki_cuddle_cl.jpg",
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "cuddle_cface == '1'", "assets/CGs/akki_cuddle_claire1.png", 
+#            "cuddle_cface == '2'", "assets/CGs/akki_cuddle_claire2.png", 
+#            "cuddle_cface == '3'", "assets/CGs/akki_cuddle_claire3.png", 
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "cuddle_aface == '1'", "assets/CGs/akki_cuddle_akki1.png", 
+#            "cuddle_aface == '2'", "assets/CGs/akki_cuddle_akki2.png", 
+#            "cuddle_aface == '3'", "assets/CGs/akki_cuddle_akki3.png", 
+#            ),
+#
+#        )
 
     ##-- Mirari
 
