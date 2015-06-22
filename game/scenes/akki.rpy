@@ -433,7 +433,6 @@ label akki_sex:
             ak "I'd like that."
             play music music_lullaby fadein 1
             $ akki_cuddle_sprite.set_state(base="clothed", akki=1, claire=1)
-            $ gallery.unlock_sprite(akki_cuddle_sprite)
             scene akkicuddle with dissolve
             "He crawls over to me, and we both curl up on the bed. Once we're comfortable, he hugs me close, one hand stroking my hair."
             "I can feel his chest rise and fall, and his warm breath on my forehead. Soothed, I allow myself to drift into a restful sleep." 
@@ -459,7 +458,6 @@ label akki_sex:
             claire_face="default",
             akki_face="default"
         )
-        gallery.unlock("akki_foreplay_01")
         
     scene akkiforeplay start with dissolve
     scene akkiforeplay
@@ -467,7 +465,6 @@ label akki_sex:
 
     $ akki_foreplay.set_state(claire_face="smile", akki_face="D:")
     $ akki_foreplay.set_state(with_dissolve, heads="apart")
-    $ gallery.unlock("akki_foreplay_02")
     ak "Is it okay if I touch you there?"
     menu:
         "Sure.":
@@ -475,21 +472,17 @@ label akki_sex:
             show screen sex_stop("akki_stop_now")
             $ breasts = "True"
             $ akki_foreplay.set_state(with_dissolve, heads="kiss", claire_face="default", akki_face="default", akki_arm="breast")
-            $ gallery.unlock("akki_foreplay_03")
             "I nod, and Akki resumes kissing me while his hands lightly travel down my front."
             "He takes his time, leaving an agonizing relish, and the faintest moan escapes me when he finally cups my breast."
             "His hand stays there, unmoving, as if unsure how to proceed, and awkwardly applies pressure like its a button."
             "A slight pain shoots through my chest when his fingers squeeze under my bra, and I cover his hand with mine."
             $ akki_foreplay.set_state(claire_face="smile", akki_face="nervous")
             $ akki_foreplay.set_state(with_dissolve, heads="apart")
-            $ gallery.unlock("akki_foreplay_04")
             cla "Not so hard."
             ak "Sorry... More like this?"
             $ akki_foreplay.set_state(with_dissolve, akki_face="D:")
-            $ gallery.unlock("akki_foreplay_05")
             "He makes circular motions, and I hum in agreement. His thumbs start to swirl gingerly over my bra where my nipples are. It tingles ever so slightly from his touch."
             $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure")
-            $ gallery.unlock("akki_foreplay_06")
             cla "Much better." 
 
         "Only if I can do the same.":
@@ -810,7 +803,6 @@ label akki_sex:
             $akki.set_state(with_dissolve, base="naked")
             pause(0.3)
             $ akki_missionary_sprite.set_state(claire=1, akki=1)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             scene akki_missionary with dissolve  
             show screen sex_stop("akki_stop_now")
             "Gingerly, he lays me down on the bed, his body straddling mine with his elbows propped up beside me. He gently lowers himself until I can feel his heartbeat against my chest, his warm breath tickling my ear."
@@ -819,61 +811,48 @@ label akki_sex:
             ak "I'm not too heavy?"
             cla "No, this is perfect."
             $ akki_missionary_sprite.set_state(with_dissolve, akki=2, claire=2)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             "I embrace him and he kisses me lightly, adjusting his position until his hardness presses against my thigh."
             "Moaning, I break from the kiss and hug him tighter, pushing my hips against him to close the distance. My fingers dig into him as he slides against me with long sensual strokes, causing me to shiver each time."
             "He adjusts his angle, nudging into me, causing me to gasp in surprise. Akki pauses as I get used to him and, slowly, I allow myself to relax."
             $ akki_missionary_sprite.set_state(with_dissolve, akki=1, claire=1)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             ak "Should I keep going?"
             cla "Yes, I'm fine now."
             $ akki_missionary_sprite.set_state(with_dissolve, akki=2, claire=2)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             "I feel like I'm sinking into the pillows as he enters me. When our hips touch, I inhale sharply from the warmth and filling sensation. He notices I'm clenching the sheets and leans in."
             $ akki_missionary_sprite.set_state(with_dissolve, akki=1, claire=1)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             ak "Are you okay?"
             cla "Yeah. Um, it's a little tight so... don't move around too much."
             ak "I understand. I'll..."
             $ akki_missionary_sprite.set_state(with_dissolve, akki=2)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             "He moves his hip back, slides forward again, keeping an unhurried tempo."
             $ akki_missionary_sprite.set_state(with_dissolve, claire=2)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             ak "Ah..."
 
             #remove stop button, it's all done.
             hide screen sex_stop
             $ akki_missionary_sprite.set_state(with_dissolve, akki=3)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             stop music
             play sound "assets/sfx/scratch.ogg"
             $renpy.pause()
             $ akki_missionary_sprite.set_state(with_dissolve, akki=4)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             "Suddenly, he halts in his movements and he hastily averts his gaze from me."
             $ akki_missionary_sprite.set_state(with_dissolve, claire=1)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             cla "You okay?"
             ak "..."
             extend "Er, I finished early..."
             cla "..."
             $ akki_missionary_sprite.set_state(with_dissolve, akki=5)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             ak "I can keep going."
             cla "You sure? We can stop, you know."
             ak "Seriously, I can keep going. Just... uh, give me a minute..."
             $ akki_missionary_sprite.set_state(with_dissolve, claire=3)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             "His abashed expression causes me to burst out laughing against my best intentions."
             play music music_love fadein 1
             cla "I-it's okay! Don't force yourself. I'm really happy with where we are."
             $ akki_missionary_sprite.set_state(with_dissolve, akki=6)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             ak "Really?"
             cla "Yes, honest. This has been a great experience, Akki."
             $ akki_missionary_sprite.set_state(with_dissolve, claire=1)
-            $ gallery.unlock_sprite(akki_missionary_sprite)
             "I hug him close to show that I mean it, and I feel him chuckle lightly and relax."
             ak "...Same here."
             stop music fadeout 2
@@ -888,18 +867,14 @@ label akki_sex:
                     base="naked" if akki_sex_choices.missionary else "clothed",
                     claire=1, akki=3
                 )
-                gallery.unlock_sprite(akki_cuddle_sprite)
             scene akkicuddle with dissolve
 
             "I'm curled up against Akki's chest, feeling fulfilled and happy. He places a protective hand on my head, and strokes my hair. I can tell he's still feeling a little sheepish over the whole incident."
             $ akki_cuddle_sprite.set_state(with_dissolve, claire=2)
-            $ gallery.unlock_sprite(akki_cuddle_sprite)
             cla "No matter the conclusion, nothing beats a good cuddle afterwards, right, Akki?"
             $ akki_cuddle_sprite.set_state(with_dissolve, akki=2)
-            $ gallery.unlock_sprite(akki_cuddle_sprite)
             ak "You can say that again."
             $ akki_cuddle_sprite.set_state(with_dissolve, akki=1)
-            $ gallery.unlock_sprite(akki_cuddle_sprite)
             ak "How are you feeling?"
             cla "Content... Maybe a little sore. I'm really happy my first time was with you."
             ak "Same."
@@ -908,7 +883,6 @@ label akki_sex:
                 ak "And I hope the next time will be even better for you."
                 cla "I know it will."
             $ akki_cuddle_sprite.set_state(with_dissolve, akki=3, claire=3)
-            $ gallery.unlock_sprite(akki_cuddle_sprite)
             "Exhaustion creeps in and I know Akki obtained nourishment from our experience. Satisfied, I allow myself to fall into a deep sleep."
             call credits from _call_credits_6
             jump akki_epilogue
@@ -923,12 +897,9 @@ label akki_early_stop:
     if akki_foreplay_ac_heads.state() == "kiss":
         $ akki_foreplay.set_state(akki_face="happy")
         $ akki_foreplay.set_state(with_dissolve, heads="apart")
-        $ gallery.unlock_sprite(akki_foreplay)
-    $ akki_foreplay.set_state(with_dissolve, claire="embarrassed")
-    $ gallery.unlock_sprite(akki_foreplay)    
+    $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
     cla "Um... I change my mind. I'd like to stop here if that's alright."
     $ akki_foreplay.set_state(with_dissolve, claire_arm="down", akki_arm="down", akki_face="D:")
-    $ gallery.unlock_sprite(akki_foreplay)
     ak "O-of course it's alright. I hope I didn't make you feel uncomfortable."
     cla "It's not that... I just feel this is enough for me."
     scene bg bedroom_night with dissolve
@@ -967,7 +938,6 @@ label akki_early_stop:
             base="naked" if akki_sex_choices.missionary else "clothed",
             claire=1, akki=1
             )
-        gallery.unlock_sprite(akki_cuddle_sprite)
     
     scene akkicuddle with dissolve
     "We both curl up on the bed. Once we're comfortable, he hugs me close, one hand stroking my hair."
@@ -981,11 +951,9 @@ label akki_middle_stop:
     hide screen sex_stop
     $ akki_foreplay.set_state(claire_face="embarrassed", akki_face="happy")
     $ akki_foreplay.set_state(with_dissolve, claire_arm="down", heads="apart")
-    $ gallery.unlock_sprite(akki_foreplay)
     cla "I'd... like to stop if that's alright with you."
     ak "I understand."
     $ akki_foreplay.set_state(with_dissolve, akki_arm="down")
-    $ gallery.unlock_sprite(akki_foreplay)
     "He removes his hands from my thighs."
     scene bg bedroom_night with dissolve
     $claire.set_state(**Emotion.normal())
@@ -1020,17 +988,14 @@ label akki_middle_stop:
             base="naked" if akki_sex_choices.missionary else "clothed",
             claire=1, akki=3
             )
-        gallery.unlock_sprite(akki_cuddle_sprite)
     play music music_lullaby fadein 2
     scene akkicuddle with dissolve
     "We both curl up on the bed. Once we're comfortable, he hugs me close, one hand stroking my hair."
     $ akki_cuddle_sprite.set_state(with_dissolve, akki=1)
-    $ gallery.unlock_sprite(akki_cuddle_sprite)
     ak "I... still got a little energy from your arousal. Thank you..."
     ak "I'm glad I got to experience it with you..."
     cla "Aw, same here... Thanks for making me feel things I never felt before."
     $ akki_cuddle_sprite.set_state(with_dissolve, akki=3, claire=3)
-    $ gallery.unlock_sprite(akki_cuddle_sprite)
     "I can feel his chest rise and fall, and his warm breath on my forehead. Soothed, I allow myself to drift into a restful sleep."      
     call credits from _call_credits_8
     jump akki_epilogue
@@ -1039,7 +1004,6 @@ label akki_late_stop:
     hide screen sex_stop
     $ akki_foreplay.set_state(claire_face="embarrassed", akki_face="happy")
     $ akki_foreplay.set_state(with_dissolve, claire_arm="down", heads="apart")
-    $ gallery.unlock_sprite(akki_foreplay)
     cla "Maybe it's for the best we stop now."
     cla "Um, I'm still sorting out these... feelings..."
     ak "I understand. It felt... nice."
@@ -1067,17 +1031,14 @@ label akki_late_stop:
             base="naked" if akki_sex_choices.missionary else "clothed",
             claire=1, akki=3
             )
-        gallery.unlock_sprite(akki_cuddle_sprite)
     play music music_lullaby fadein 2
     scene akkicuddle with dissolve
     
     "I giggle, mostly from the lightheadedness and exhaustion. We curl up on the bed, and Akki holds me close."
     $ akki_cuddle_sprite.set_state(with_dissolve, akki=2)
-    $ gallery.unlock_sprite(akki_cuddle_sprite)
     ak "I'm so glad you were my first..."
     cla "Me, too, Akki..."
     $ akki_cuddle_sprite.set_state(with_dissolve, akki=3, claire=3)
-    $ gallery.unlock_sprite(akki_cuddle_sprite)
     "His chest rises and falls, and his warm breath tickles my bangs. Soothed, I allow myself to fall asleep..."
     call credits from _call_credits_9
     jump akki_epilogue
@@ -1095,18 +1056,14 @@ label akki_super_late_stop:
             base="naked" if akki_sex_choices.missionary else "clothed",
             claire=1, akki=3
             )
-        gallery.unlock_sprite(akki_cuddle_sprite)
     play music music_lullaby fadein 2
     scene akkicuddle with dissolve
     "We curl up on the bed, and I rest my head on Akki's chest. He gingerly combs through my hair and plants a chaste kiss on my head."
     $ akki_cuddle_sprite.set_state(with_dissolve, akki=1)
-    $ gallery.unlock_sprite(akki_cuddle_sprite)
     ak "Even if we didn't go all the way, I... still got nourished by you."
     $ akki_cuddle_sprite.set_state(with_dissolve, claire=2)
-    $ gallery.unlock_sprite(akki_cuddle_sprite)
     cla "So it's a win-win scenario?"
     $ akki_cuddle_sprite.set_state(with_dissolve, akki=2)
-    $ gallery.unlock_sprite(akki_cuddle_sprite)
     ak "Heh, I think so. Thank you for being my first. I consider it a first, anyway."
     cla "Same here, Akki..."
     "His chest rises and falls, and his warm breath tickles my bangs. Soothed, I allow myself to fall asleep..."
@@ -1118,10 +1075,8 @@ label akki_stop_now:
     hide screen sex_stop 
     if akki_sex_choices.missionary:
         $ akki_missionary_sprite.set_state(with_dissolve, claire=2)
-        $ gallery.unlock_sprite(akki_missionary_sprite)
         cla "I'd like to stop now..."
         $ akki_missionary_sprite.set_state(with_dissolve, akki=2)
-        $ gallery.unlock_sprite(akki_missionary_sprite)
         "Akki freezes, then carefully withdraws as I sit up as well."
         scene bg bedroom_night with dissolve
         $akki.set_state(eyebrows="inwards", mouth="oh",emotion_base="small blush", emotion="default", eyes="default")
