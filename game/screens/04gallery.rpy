@@ -5,260 +5,40 @@ init python:
             "Akki",
             [CG("chibi_akki01", "assets/chibis/akki_hug.png")],
             [CG("chibi_akki02", "assets/chibis/akki_sit.png")],
-            [CG("akki_foreplay_01",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="down",
-                    heads="kiss",
-                    claire_face="default",
-                    akki_face="default"
-                )),
-             CG("akki_foreplay_02",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="D:"
-                ))],
-            [CG("akki_foreplay_03",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="breast",
-                    heads="kiss",
-                    claire_face="default",
-                    akki_face="default"
-                )),
-             CG("akki_foreplay_04",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="breast",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="nervous"
-                )),
-             CG("akki_foreplay_05",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="breast",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="D:"
-                )),
-             CG("akki_foreplay_06",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="breast",
-                    heads="apart",
-                    claire_face="pleasure",
-                    akki_face="D:"
-                ))],
-            [CG("akki_foreplay_07",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="nervous"
-                )),
-             CG("akki_foreplay_08",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="chest",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="nervous"
-                )),
-             CG("akki_foreplay_09",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="chest",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="breast",
-                    heads="kiss",
-                    claire_face="default",
-                    akki_face="default"
-                )),
-             CG("akki_foreplay_10",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="chest",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="breast",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="happy"
-                )),
-             CG("akki_foreplay_11",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="chest",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="breast",
-                    heads="apart",
-                    claire_face="pleasure",
-                    akki_face="happy"
-                ))],
-            [CG("akki_foreplay_12",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="happy",
-                    akki_face="D:"
-                )),
-             CG("akki_foreplay_13",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="on",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="happy",
-                    akki_face="happy"
-                )),
-             CG("akki_foreplay_14",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="bra",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="happy",
-                    akki_face="nervous"
-                )),
-             CG("akki_foreplay_15",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="bra",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="happy",
-                    akki_face="happy"
-                )),
-             CG("akki_foreplay_16",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="bra",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="happy",
-                    akki_face="D:"
-                )),
-             CG("akki_foreplay_17",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="bra",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="D:"
-                )),
-             CG("akki_foreplay_18",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="off",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="nervous"
-                )),
-             CG("akki_foreplay_19",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="off",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="embarrassed",
-                    akki_face="nervous"
-                )),
-             CG("akki_foreplay_20",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="off",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="embarrassed",
-                    akki_face="happy"
-                )),
-             CG("akki_foreplay_21",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="off",
-                    akki_arm="down",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="happy"
-                )),
-             CG("akki_foreplay_22",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="down",
-                    claire_bottom="on",
-                    claire_top="off",
-                    akki_arm="breast",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="happy"
-                )),
-             CG("akki_foreplay_23",
-                akki_foreplay.snapshot(
-                    akki_bottom="on",
-                    claire_arm="chest",
-                    claire_bottom="on",
-                    claire_top="off",
-                    akki_arm="breast",
-                    heads="apart",
-                    claire_face="smile",
-                    akki_face="happy"
-                ))]
-             
+            [SpriteCG("akki_foreplay", akki_foreplay,
+                      {
+                        "akki_bottom": "on",
+                        "claire_arm": "down",
+                        "claire_bottom": "on",
+                        "claire_top": "on",
+                        "akki_arm": "down",
+                        "heads": "kiss",
+                        "claire_face": "default",
+                        "akki_face": "default"
+                        },
+                      {
+                        "akki_face": "D:",
+                        "claire_face": "smile",
+                        "heads": "apart"
+                        },
+                      {
+                        "heads": "kiss",
+                        "claire_face": "default",
+                        "akki_face": "default",
+                        "akki_arm": "breast"
+                        },
+                      {
+                        "claire_face": "smile",
+                        "akki_face": "nervous",
+                        "heads": "apart"
+                        },
+                      {
+                        "akki_face": "D:"
+                        },
+                      {
+                        "claire_face": "pleasure"
+                        }
+                      )]
         ),
         GalleryFolder(
             "Orias",
@@ -318,13 +98,11 @@ screen gallery_view(bundle):
     python:
         def next_image(b, x):
             for index in xrange(x + 1, len(b.images)):
-                print "next>", index, b.images[index], b.images[index].is_locked()
                 if not b.images[index].is_locked():
                     return index
 
         def prev_image(b, x):
             for index in xrange(x - 1, -1, -1):
-                print "prev>", index, b.images[index], b.images[index].is_locked()
                 if not b.images[index].is_locked():
                     return index
 
@@ -348,7 +126,6 @@ screen gallery_view(bundle):
 
         $ next = next_image(bundle, current)
         $ prev = prev_image(bundle, current)
-        $ print ">>>", prev, next
         if next is not None:
             key "dismiss" action go(bundle, current, next)
         else:
