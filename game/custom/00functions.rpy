@@ -147,6 +147,20 @@ init -100 python:
         return reduce(lambda r, x: r + x, xss, [])
 
 
+    #### function: scan(f, initial, xs)
+    # @type: (b, a, -> b), b, list(a) -> list(b)
+    #
+    # Like `reduce`, but accumulates the results, such that
+    # `scan(f, 0, [1, 2, 3]) => [f(0, 1), f(f(0, 1), 2), ...]`
+    def scan(f, initial, xs):
+        def go(r, x):
+            (item, ys) = r
+            y = f(item, x)
+            return (y, ys + [y])
+        
+        return reduce(go, xs, (initial, []))[1]
+    
+
     #### function: merge(a, b)
     # @type: a, b -> { a | b }
     #

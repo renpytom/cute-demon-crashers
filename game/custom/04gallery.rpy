@@ -15,6 +15,14 @@ init -100 python:
             return []
 
         def add_unlockable_sprite(self, sprite, name):
+            def wrap_unlock(f):
+                def apply(*args, **kwargs):
+                    result = f(*args, **kwargs)
+                    self.unlock_sprite(sprite)
+                    return result
+                return apply
+            
+            setattr(sprite, "set_state", wrap_unlock(sprite.set_state))
             self.sprite_map[sprite] = name
 
         def unlock_sprite(self, sprite):
@@ -44,12 +52,24 @@ init -100 python:
 
     class GalleryFolder(object):
         def __init__(self, name, *args):
-            self.images = args
+            def unpack_images(xs):
+                return flatten(map(lambda x: x.to_gallery_items(), xs))
+            
+            self.images = map(unpack_images, args)
             self.name = name
 
         def __iter__(self):
             return self.images.__iter__()
 
+
+    class GalleryItem(object):
+        def __init__(self, id, image):
+            self.id = id
+            self.image = image
+
+        def is_locked(self):
+            return self.id not in persistent.unlocked_gallery
+            
 
     class CG(object):
         def __init__(self, id, image):
@@ -58,6 +78,25 @@ init -100 python:
 
         def is_locked(self):
             return self.id not in persistent.unlocked_gallery
+
+        def to_gallery_items(self):
+            return [GalleryItem(self.id, self.image)]
+
+    class SpriteCG(CG):
+        def __init__(self, id, sprite, initial_state, *states):
+            self.id = id
+            self.sprite = sprite
+            self.initial_state = initial_state
+            self.states = states
+
+        def to_gallery_items(self):
+            def to_item(st):
+                return GalleryItem(
+                    (self.id, self.sprite.dict_to_state_tuple(st)),
+                    self.sprite.snapshot(**st)
+                    )
+                
+            return map(to_item, scan(merge, self.initial_state, self.states))
 
 
     class GalleryImage(object):

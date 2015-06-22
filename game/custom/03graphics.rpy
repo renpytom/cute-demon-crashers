@@ -413,6 +413,14 @@ init -100 python:
         def state(self):
             return tuple([d.state() for (name, _, d) in self.layers if name is not None])
 
+
+        #### method: dict_to_state_tuple(dict)
+        # @type: { string -> any } -> (any...)
+        #
+        # Returns a tuple of states in the correct order from the given dictionary.
+        def dict_to_state_tuple(self, dict):
+            return tuple([dict[name] for (name, _, _) in self.layers if name is not None])
+        
                 
         #### method: snapshot(**kwargs)
         # @type: { str: any } -> Displayable
