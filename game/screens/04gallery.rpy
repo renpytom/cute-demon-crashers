@@ -5,6 +5,30 @@ init python:
             "Akki",
             [CG("chibi_akki01", "assets/chibis/akki_hug.png")],
             [CG("chibi_akki02", "assets/chibis/akki_sit.png")],
+            [SpriteCG("akki_cuddle", akki_cuddle_sprite,
+                      {
+                        "base": "clothed",
+                        "akki": 1,
+                        "claire": 1
+                        },
+                      { "akki": 3, "claire": 1 },
+                      { "akki": 3, "claire": 2 }, # ?
+                      { "akki": 2, "claire": 2 }, # ?
+                      { "akki": 2, "claire": 1 }, # ?
+                      { "akki": 1, "claire": 2 }, # ?
+                      { "akki": 3, "claire": 3 })],
+            [SpriteCG("akki_cuddle", akki_cuddle_sprite,
+                      {
+                        "base": "naked",
+                        "akki": 1,
+                        "claire": 1
+                        },
+                      { "akki": 3, "claire": 1 },
+                      { "akki": 3, "claire": 2 },
+                      { "akki": 2, "claire": 2 },
+                      { "akki": 2, "claire": 1 },
+                      { "akki": 1, "claire": 2 },
+                      { "akki": 3, "claire": 3 })],            
             [SpriteCG("akki_foreplay", akki_foreplay,
                       {
                         "akki_bottom": "on",
