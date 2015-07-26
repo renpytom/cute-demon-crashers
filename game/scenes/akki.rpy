@@ -372,6 +372,14 @@ label akki_sex:
     $akki.set_state(**Emotion.normal())
     $claire.set_state(**Emotion.normal())
 
+    if _in_replay:
+        show screen replay_controls()
+        
+    if not _in_replay:
+        $ persistent.akki_scenes = akki_scenes
+        $ persistent.akki_claire_name = claire_name
+    
+
     scene black with dissolve
     scene bg bedroom_night with dissolve
     ak "Now what?"
@@ -395,50 +403,71 @@ label akki_sex:
     cla "(How should we go about this?)"
     $akki.set_state(emotion_base="small blush", mouth="low", eyebrows="tender")
     show akki at center_alone2 with dissolve
+
+    if _in_replay:
+        jump expression persistent.akki_choice1
+        
     menu:
         "Kiss him first.":
-            $claire.set_state(emotion_base="small blush", eyebrows="inwards", mouth="smile", eyes="tender")
-            cl "Here, we can take it slow."
-            $akki.set_state(with_dissolve, eyes="closed", mouth="neutral")
-            "I lean in, watching him gauge my movements. Gently, I press my lips against his, barely making firm contact."
-            $akki.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="ah", emotion="flowers")
-            "After pulling away, I can see his cheeks redden and he looks at me with wide-eyed astonishment."
-        
+            $ persistent.akki_choice1 = "akki_sex_choice1_1"
+            jump akki_sex_choice1_1
+            
         "Suggest for him to kiss you.":
-            $claire.set_state(emotion_base="small blush", eyebrows="inwards", mouth="smile", eyes="tender")
-            cl "I suppose it starts with a kiss."
-            $akki.set_state(with_dissolve, eyes="tender", mouth="neutral")
-            ak "A kiss..."
-            "His eyes drift to my lips, and he reaches out a hand. After a pause, he sees my affirmation, and he cups my cheek before leaning in." 
-            $akki.set_state(with_dissolve, eyes="closed")
-            "He presses his lips against mine, and I'm surprised by how gentle it is." 
-            $akki.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="ah", emotion="flowers")
-            "After he pulls away, we're both in awe."
-
+            $ persistent.akki_choice1 = "akki_sex_choice1_2"
+            jump akki_sex_choice1_2
+            
         "Let's not do this.":
-            "I hold his hand and give it a comforting squeeze."
-            $claire.set_state(emotion_base="small blush", eyebrows="inwards", mouth="smile")
-            cl "You know... we don't have to go through with this. I can see you're just as nervous as I am."
-            $akki.set_state(eyebrows="inwards", mouth="oh")
-            ak "You sure, [claire_name]?" 
-            $claire.set_state(eyes="closed")
-            cl "Honestly, yes. However, I enjoy being with you, and this closeness makes me happy enough."
-            if akki_scenes >= 3:
-                $claire.set_state(with_dissolve, eyes="tender side", mouth="uh")
-                cl "You did mention you like cuddling, so..."
-            $claire.set_state(with_dissolve, eyes="happy", mouth="smile", eyebrows="default")
-            cl "We can cuddle tonight."
-            $akki.set_state(eyebrows="tender", eyes="happy", mouth="default")
-            stop music fadeout 2
-            ak "I'd like that."
-            play music music_lullaby fadein 1
-            $ akki_cuddle_sprite.set_state(base="clothed", akki=1, claire=1)
-            scene akkicuddle with dissolve
-            "He crawls over to me, and we both curl up on the bed. Once we're comfortable, he hugs me close, one hand stroking my hair."
-            "I can feel his chest rise and fall, and his warm breath on my forehead. Soothed, I allow myself to drift into a restful sleep." 
-            call credits from _call_credits_5
-            jump akki_epilogue
+            $ persistent.akki_choice1 = "akki_sex_choice1_3"
+            jump akki_sex_choice1_3
 
+
+label akki_sex_choice1_1:
+    $claire.set_state(emotion_base="small blush", eyebrows="inwards", mouth="smile", eyes="tender")
+    cl "Here, we can take it slow."
+    $akki.set_state(with_dissolve, eyes="closed", mouth="neutral")
+    "I lean in, watching him gauge my movements. Gently, I press my lips against his, barely making firm contact."
+    $akki.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="ah", emotion="flowers")
+    "After pulling away, I can see his cheeks redden and he looks at me with wide-eyed astonishment."
+    jump akki_sex_choice1_cont
+
+label akki_sex_choice1_2:
+    $claire.set_state(emotion_base="small blush", eyebrows="inwards", mouth="smile", eyes="tender")
+    cl "I suppose it starts with a kiss."
+    $akki.set_state(with_dissolve, eyes="tender", mouth="neutral")
+    ak "A kiss..."
+    "His eyes drift to my lips, and he reaches out a hand. After a pause, he sees my affirmation, and he cups my cheek before leaning in." 
+    $akki.set_state(with_dissolve, eyes="closed")
+    "He presses his lips against mine, and I'm surprised by how gentle it is." 
+    $akki.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="ah", emotion="flowers")
+    "After he pulls away, we're both in awe."
+    jump akki_sex_choice1_cont
+
+label akki_sex_choice1_3:
+    "I hold his hand and give it a comforting squeeze."
+    $claire.set_state(emotion_base="small blush", eyebrows="inwards", mouth="smile")
+    cl "You know... we don't have to go through with this. I can see you're just as nervous as I am."
+    $akki.set_state(eyebrows="inwards", mouth="oh")
+    ak "You sure, [claire_name]?" 
+    $claire.set_state(eyes="closed")
+    cl "Honestly, yes. However, I enjoy being with you, and this closeness makes me happy enough."
+    if akki_scenes >= 3:
+        $claire.set_state(with_dissolve, eyes="tender side", mouth="uh")
+        cl "You did mention you like cuddling, so..."
+    $claire.set_state(with_dissolve, eyes="happy", mouth="smile", eyebrows="default")
+    cl "We can cuddle tonight."
+    $akki.set_state(eyebrows="tender", eyes="happy", mouth="default")
+    stop music fadeout 2
+    ak "I'd like that."
+    play music music_lullaby fadein 1
+    $ akki_cuddle_sprite.set_state(base="clothed", akki=1, claire=1)
+    scene akkicuddle with dissolve
+    "He crawls over to me, and we both curl up on the bed. Once we're comfortable, he hugs me close, one hand stroking my hair."
+    "I can feel his chest rise and fall, and his warm breath on my forehead. Soothed, I allow myself to drift into a restful sleep." 
+    call credits from _call_credits_5
+    jump akki_epilogue
+    
+            
+label akki_sex_choice1_cont:
     $ akki_sex_choices.kissing = True
     $akki.set_state(with_dissolve, emotion="default", eyebrows="inwards", mouth="neutral", eyes="closed")
     "We exchange a smile then kiss again, this time deeper. I close my eyes, and I can feel his hand slide from my shoulder and trail down my arm, leaving goosebumps in its wake."
@@ -466,57 +495,71 @@ label akki_sex:
     $ akki_foreplay.set_state(claire_face="smile", akki_face="D:")
     $ akki_foreplay.set_state(with_dissolve, heads="apart")
     ak "Is it okay if I touch you there?"
+
+    if _in_replay:
+        jump expression persistent.akki_choice2
+    
     menu:
         "Sure.":
-            $ akki_sex_choices.breasts = True
-            show screen sex_stop("akki_stop_now")
-            $ breasts = "True"
-            $ akki_foreplay.set_state(with_dissolve, heads="kiss", claire_face="default", akki_face="default", akki_arm="breast")
-            "I nod, and Akki resumes kissing me while his hands lightly travel down my front."
-            "He takes his time, leaving an agonizing relish, and the faintest moan escapes me when he finally cups my breast."
-            "His hand stays there, unmoving, as if unsure how to proceed, and awkwardly applies pressure like its a button."
-            "A slight pain shoots through my chest when his fingers squeeze under my bra, and I cover his hand with mine."
-            $ akki_foreplay.set_state(claire_face="smile", akki_face="nervous")
-            $ akki_foreplay.set_state(with_dissolve, heads="apart")
-            cla "Not so hard."
-            ak "Sorry... More like this?"
-            $ akki_foreplay.set_state(with_dissolve, akki_face="D:")
-            "He makes circular motions, and I hum in agreement. His thumbs start to swirl gingerly over my bra where my nipples are. It tingles ever so slightly from his touch."
-            $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure")
-            cla "Much better." 
-
+            $ persistent.akki_choice2 = "akki_sex_choice2_1"
+            jump akki_sex_choice2_1
+            
         "Only if I can do the same.":
-            show screen sex_stop("akki_stop_now")
-            $ akki_sex_choices.breasts = True
-            $ akki_sex_choices.kissing = False
-            $ breasts = "True"
-            $ kissing = "False"
-
-            cla "Only if I can touch your chest, too."
-            $ akki_foreplay.set_state(with_dissolve, akki_face="nervous")
-            $ gallery.unlock("akki_foreplay_07")
-            ak "... I wouldn't... mind..."
-            $ akki_sex_choices.pectouch = True
-            $ akki_foreplay.set_state(with_dissolve, akki_arm="down", claire_arm="chest")
-            $ gallery.unlock("akki_foreplay_08")
-            "Comforted I'm not the only one nervous by this, I glide my hand up and down his muscular chest."
-            $ akki_foreplay.set_state(with_dissolve, heads="kiss", claire_face="default", akki_face="default", akki_arm="breast")
-            $ gallery.unlock("akki_foreplay_09")
-            "Between our kisses, my fingers find his nipples and I let my nails graze over them lightly. Akki's movements start to awkwardly mirror mine, as if taking cues that's how I want it too." 
-            "I find the hollow of his chest, and slide a finger down his sternum. He quivers under my movements, then breaks off the kiss."
-            $ akki_foreplay.set_state(claire_face="smile", akki_face="happy")
-            $ akki_foreplay.set_state(with_dissolve, heads="apart")
-            $ gallery.unlock("akki_foreplay_10")
-            ak "That's surprisingly sensual... Is it the same for you?"
-            "He mimics the same gestures. It's pleasant but it doesn't do anything for me."
-            $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure")
-            $ gallery.unlock("akki_foreplay_11")
-            cla "It feels nicer when you trail your fingers over my nipples."
-            "He adjusts his approach, making circular motions over my breasts."
+            $ persistent.akki_choice2 = "akki_sex_choice2_2"
+            jump akki_sex_choice2_2
             
         "I'd like to stop now.":
+            $ persistent.akki_choice2 = "akki_early_stop"
             jump akki_early_stop
 
+
+label akki_sex_choice2_1:
+    $ akki_sex_choices.breasts = True
+    show screen sex_stop("akki_stop_now")
+    $ breasts = "True"
+    $ akki_foreplay.set_state(with_dissolve, heads="kiss", claire_face="default", akki_face="default", akki_arm="breast")
+    "I nod, and Akki resumes kissing me while his hands lightly travel down my front."
+    "He takes his time, leaving an agonizing relish, and the faintest moan escapes me when he finally cups my breast."
+    "His hand stays there, unmoving, as if unsure how to proceed, and awkwardly applies pressure like its a button."
+    "A slight pain shoots through my chest when his fingers squeeze under my bra, and I cover his hand with mine."
+    $ akki_foreplay.set_state(claire_face="smile", akki_face="nervous")
+    $ akki_foreplay.set_state(with_dissolve, heads="apart")
+    cla "Not so hard."
+    ak "Sorry... More like this?"
+    $ akki_foreplay.set_state(with_dissolve, akki_face="D:")
+    "He makes circular motions, and I hum in agreement. His thumbs start to swirl gingerly over my bra where my nipples are. It tingles ever so slightly from his touch."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure")
+    cla "Much better." 
+    jump akki_sex_choice2_cont
+
+
+label akki_sex_choice2_2:
+    show screen sex_stop("akki_stop_now")
+    $ akki_sex_choices.breasts = True
+    $ akki_sex_choices.kissing = False
+    $ breasts = "True"
+    $ kissing = "False"
+    
+    cla "Only if I can touch your chest, too."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="nervous")
+    ak "... I wouldn't... mind..."
+    $ akki_sex_choices.pectouch = True
+    $ akki_foreplay.set_state(with_dissolve, akki_arm="down", claire_arm="chest")
+    "Comforted I'm not the only one nervous by this, I glide my hand up and down his muscular chest."
+    $ akki_foreplay.set_state(with_dissolve, heads="kiss", claire_face="default", akki_face="default", akki_arm="breast")
+    "Between our kisses, my fingers find his nipples and I let my nails graze over them lightly. Akki's movements start to awkwardly mirror mine, as if taking cues that's how I want it too." 
+    "I find the hollow of his chest, and slide a finger down his sternum. He quivers under my movements, then breaks off the kiss."
+    $ akki_foreplay.set_state(claire_face="smile", akki_face="happy")
+    $ akki_foreplay.set_state(with_dissolve, heads="apart")
+    ak "That's surprisingly sensual... Is it the same for you?"
+    "He mimics the same gestures. It's pleasant but it doesn't do anything for me."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure")
+    cla "It feels nicer when you trail your fingers over my nipples."
+    "He adjusts his approach, making circular motions over my breasts."
+    jump akki_sex_choice2_cont
+
+    
+label akki_sex_choice2_cont:
     scene akkiforeplay
     $ akki_foreplay.set_state(claire_face="happy", akki_face="D:")
     $ gallery.unlock("akki_foreplay_12")
@@ -527,61 +570,80 @@ label akki_sex:
     $ akki_foreplay.set_state(akki_face="happy")
     $ gallery.unlock("akki_foreplay_13")
     "He gives me a peck on the lips, his fingers lingering over the fabric of my top."
-    ak "Would you like it more if I took off your shirt, too?"        
+    ak "Would you like it more if I took off your shirt, too?"
+    
+    if _in_replay:
+        jump expression persistent.akki_choice3
+
     menu:
         "Keep shirt on.":
-            $ akki_sex_choices.top_off = False
-            $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
-            cla "I'd like to leave it on. I'm still shy when it comes to my body..."
-            ak "That's alright. I'll do my best to pleasure you like this."
-            "He playfully kneads them then places a kiss between my breasts."
-
+            $ persistent.akki_choice3 = "akki_sex_choice3_1"
+            jump akki_sex_choice3_1
+            
         "Take it off.":
-            $ akki_sex_choices.top_off = True
-            cla "Sure... It'd feel more equal like this."
-            "We exchange a laugh. I lift up my arms and he nimbly pulls my shirt off."
-            $ akki_foreplay.set_state(with_dissolve, claire_top="bra", akki_face="nervous", claire_arm="down", akki_arm="down")
-            $ gallery.unlock("akki_foreplay_14")
-            "He stares at the bra contraption, then reaches around my back."
-            $ claire.set_state(base="bra")
-            cla "It actually unclasps at the front."
-            $ akki_foreplay.set_state(with_dissolve, akki_face="happy")
-            $ gallery.unlock("akki_foreplay_15")
-            ak "Oh, that's convenient. Now I won't fumble because I can't see." 
-            cla "Haha, unhooking different bras will be a useful skill to pick up."
-            if akki_scenes >= 3:
-                ak "Depends on how many styles you own."
-                cla "Huh?"
-                $ akki_foreplay.set_state(with_dissolve, akki_face="D:")
-                $ gallery.unlock("akki_foreplay_16")
-                ak "Um... is it okay if you're my first for longer...?"
-                $ akki_foreplay.set_state(with_dissolve, claire_face="smile")
-                $ gallery.unlock("akki_foreplay_17")
-                cla "Aw, Akki..."
-            $ akki_foreplay.set_state(with_dissolve, claire_top="off", akki_face="nervous")
-            $ gallery.unlock("akki_foreplay_18")
-            $ claire.set_state(base="naked")
-            "He removes the bra, releasing the constrains. For a second he gazes at me intently, then looks away, blushing."
-            $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
-            $ gallery.unlock("akki_foreplay_19")
-            cla "Um, do I look weird?"
-            $ akki_foreplay.set_state(with_dissolve, akki_face="happy")
-            $ gallery.unlock("akki_foreplay_20")
-            ak "No... You're beautiful, [claire_name]."
-            $ akki_foreplay.set_state(with_dissolve, claire_face="smile")
-            $ gallery.unlock("akki_foreplay_21")
-            ak "I'm happy you're comfortable with me."
-            $ akki_foreplay.set_state(with_dissolve, akki_arm="breast")
-            $ gallery.unlock("akki_foreplay_22")
-            "He cups my breasts again, caressing each one equally. His thumbs resume their brushes over my nipples, which peak under his touch."
-            if akki_sex_choices.pectouch:
-                $ akki_foreplay.set_state(with_dissolve, claire_arm="chest")
-                $ gallery.unlock("akki_foreplay_23")
-                "I do the same in return, admiring his firm muscle under my hand."
-                
-        "I'd like to stop now.":    
+            $ persistent.akki_choice3 = "akki_sex_choice3_2"
+            jump akki_sex_choice3_2
+            
+        "I'd like to stop now.":
+            $ persistent.akki_choice3 = "akki_early_stop"
             jump akki_early_stop
 
+
+label akki_sex_choice3_1:
+    $ akki_sex_choices.top_off = False
+    $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
+    cla "I'd like to leave it on. I'm still shy when it comes to my body..."
+    ak "That's alright. I'll do my best to pleasure you like this."
+    "He playfully kneads them then places a kiss between my breasts."
+    jump akki_sex_choice3_cont
+
+
+label akki_sex_choice3_2:
+    $ akki_sex_choices.top_off = True
+    cla "Sure... It'd feel more equal like this."
+    "We exchange a laugh. I lift up my arms and he nimbly pulls my shirt off."
+    $ akki_foreplay.set_state(with_dissolve, claire_top="bra", akki_face="nervous", claire_arm="down", akki_arm="down")
+    $ gallery.unlock("akki_foreplay_14")
+    "He stares at the bra contraption, then reaches around my back."
+    $ claire.set_state(base="bra")
+    cla "It actually unclasps at the front."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="happy")
+    $ gallery.unlock("akki_foreplay_15")
+    ak "Oh, that's convenient. Now I won't fumble because I can't see." 
+    cla "Haha, unhooking different bras will be a useful skill to pick up."
+    if akki_scenes >= 3:
+        ak "Depends on how many styles you own."
+        cla "Huh?"
+        $ akki_foreplay.set_state(with_dissolve, akki_face="D:")
+        $ gallery.unlock("akki_foreplay_16")
+        ak "Um... is it okay if you're my first for longer...?"
+        $ akki_foreplay.set_state(with_dissolve, claire_face="smile")
+        $ gallery.unlock("akki_foreplay_17")
+        cla "Aw, Akki..."
+    $ akki_foreplay.set_state(with_dissolve, claire_top="off", akki_face="nervous")
+    $ gallery.unlock("akki_foreplay_18")
+    $ claire.set_state(base="naked")
+    "He removes the bra, releasing the constrains. For a second he gazes at me intently, then looks away, blushing."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
+    $ gallery.unlock("akki_foreplay_19")
+    cla "Um, do I look weird?"
+    $ akki_foreplay.set_state(with_dissolve, akki_face="happy")
+    $ gallery.unlock("akki_foreplay_20")
+    ak "No... You're beautiful, [claire_name]."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="smile")
+    $ gallery.unlock("akki_foreplay_21")
+    ak "I'm happy you're comfortable with me."
+    $ akki_foreplay.set_state(with_dissolve, akki_arm="breast")
+    $ gallery.unlock("akki_foreplay_22")
+    "He cups my breasts again, caressing each one equally. His thumbs resume their brushes over my nipples, which peak under his touch."
+    if akki_sex_choices.pectouch:
+        $ akki_foreplay.set_state(with_dissolve, claire_arm="chest")
+        $ gallery.unlock("akki_foreplay_23")
+        "I do the same in return, admiring his firm muscle under my hand."
+    jump akki_sex_choice3_cont
+    
+            
+label akki_sex_choice3_cont:
     $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure")
     "My body stirs from the featherlight motions, and I feel heat radiate between my thighs. My heart races, and I subconsciously spread my knees out a little wider."
     $ akki_sex_choices.breasts = False
@@ -614,283 +676,361 @@ label akki_sex:
     else:
         ak "Would you feel comfortable with your shorts off?"
 
+    if _in_replay:
+        jump expression persistent.akki_choice4
+        
     menu:
         "Yes.":
-            $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
-            cla "I'd like to feel you directly."
-            $ akki_foreplay.set_state(with_dissolve, akki_face="nervous")
-            ak "... I'll do my best."
-            $ akki_sex_choices.naked_below = True
-            $ akki_foreplay.set_state(with_dissolve, claire_arm="down", akki_arm="down")
-            "I unzip my shorts and pull them down. Once they're off, I tug at the ends of my pantyhose, trying not to get the delicate fabric caught."
-            "I can almost feel the seconds tick loudly."
-            $ akki_foreplay.set_state(with_dissolve, akki_face="D:")
-            ak "That's... a lot of layers."
-            cla "I-I wasn't prepared... or thought ahead..."
-            $ akki_foreplay.set_state(with_dissolve, akki_face="happy", claire_face="happy")
-            ak "It's alright, I can wait."
-            cla "You didn't wait when you bridal carried me." 
-            "I stretch and slingshot the leggings at him. He catches them, laughing, then tosses them aside."
-            $ akki_foreplay.set_state(with_dissolve, claire_bottom="off")
-            "My hands slow down considerably while I carefully strip off my panties, and I suddenly feel a little colder. I hesitantly look back at Akki, unsure about his reaction."
-            ak "You're gorgeous."
-            $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
-            "I blush when I realize I didn't, um, trim exactly down there. Akki was so excited earlier we skipped any chance to prepare ourselves..."
-            cla "You mean it?"
-            ak "Of course. It's you."
-            $ akki_foreplay.set_state(with_dissolve, heads="kiss", claire_face="default", akki_face="default", akki_arm="finger")
-            "His fingers tease the rim of my pubic hair, and he kisses me passionately again, familiar with how I love my kisses." 
-            ak "You're adorable..."
-            "His fingers wander down, brushing my lower lips and my body responds to his touch."
-            ak "Um, wow, you're so wet..."
-            "He presses against the cleft between my legs and continues stroking me with increased vigor."
-            menu:
-                "Touch him in return.":
-                    $ akki_sex_choices.mutual_touching = True
-                    $ akki_foreplay.set_state(claire_face="smile", akki_face="happy")
-                    $ akki_foreplay.set_state(with_dissolve, heads="apart")
-                    cla "I want to make you feel what I feel... Akki."
-                    "My eyes drift to his hardness pressing against the fabric of his pants. He blushes, then covers it."
-                    $ akki_foreplay.set_state(with_dissolve, akki_face="nervous")
-                    ak "If it's okay with you... I thought the experience would be more about you?"
-                    cla "It wouldn't feel right if it wasn't mutual."
-                    $ akki_foreplay.set_state(with_dissolve, claire_arm="down", akki_arm="down")
-                    ak "That makes sense..."
-                    "Oddly, he doesn't undo his belts, and instead inserts his thumbs under the leather."
-                    cla "That's... rather convenient."
-                    ak "Well, incubi... um... are supposed to be ready for anything..."
-                    "I politely glance upward and realize he's blushing as much as I am."
-                    $ akki_foreplay.set_state(with_dissolve, claire_arm="chest", akki_bottom="off", claire_face="surprised")
-                    "He tugs down the front of his pants, exposing his erection. The giddiness leaves my body and I'm unsure of how to react."
-                    cla "..."
-                    cla "...Impressive..."
-                    ak "W-we're incubi ... we're supposed to be..."
-                    "I reach out and stroke under his navel before descending, trailing my fingers through his hair. He deeply inhales in anticipation and I can sense the heat before I directly touch him."
-                    "He twitches and I recoil."
-                    cla "I-it moved."
-                    ak "It's a natural reflex! I can't help it."
-                    cla "H-huh... I don't remember this in any romance books..."
-                    $ akki_foreplay.set_state(with_dissolve, claire_arm="handjob")
-                    "My face burns as I grip his shaft, wondering if I should observe to help perform better, or look away and focus on the sensation." 
-                    "After I clumsily slide my hand up and down, Akki gently demonstrates."
-                    $ akki_foreplay.set_state(with_dissolve, akki_face="happy")
-                    ak "Here, I like it when there's a twisty motion..."
-                    $ akki_foreplay.set_state(with_dissolve, akki_face="pleasure")
-                    "Using his hand, he mimics the action over his leg, and I dutifully replicate the request."
-                    cla "Better?"
-                    ak "Much."
-                    $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
-                    cla "Now I'm the one who's fumbling..."
-                    $ akki_foreplay.set_state(with_dissolve, akki_face="happy")
-                    ak "No worries, take your time. You're doing great."
-                    $ akki_foreplay.set_state(with_dissolve, akki_face="pleasure", claire_face="pleasure", akki_arm="finger")
-                    "He resumes touching me again, his fingers stroking me deeply. I try to maintain the pace, but it's getting harder to concentrate from the increasing pleasure building inside of me."
-                    "Occasionally Akki pauses and takes a breath before continuing and I realize we both feel the same way."
-                    $ akki_foreplay.set_state(with_dissolve, akki_face="happy", claire_face="smile")
-                    "Our eyes happen to meet, and it's obvious he's enjoying himself. We both accelerate our movements, wanting to share the same rhythm."
-                    $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure")
-                "Enjoy the moment.":    
-                    "The tickle I felt earlier spreads and I lean heavily against him, finding it hard to concentrate on anything beyond the sensation."
-                    
-                "I'd like to stop.":
-                    jump akki_middle_stop
-
-            cla "Ah... it feels so good.."
-            if akki_sex_choices.mutual_touching == True:
-                $ akki_foreplay.set_state(with_dissolve, claire_arm="down")
-                "My hands drop, unable to focus anymore."
-            $ akki_foreplay.set_state(with_dissolve, heads="apart", akki_face="happy", claire_face="pleasure")
-            hide screen sex_stop
-            "He continues the motions, and my body arches against him."
-            $cl_face = "O"
-            "My words are incomprehensible; I can only utter a soft groan. The core of my being vibrates and pressure that built up suddenly shoots down my legs and arms."
-            "My breathing escalates until I sharply heave from one final wave of pleasure."
-            $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure", akki_arm="down")
-            "Akki holds me closely as my entire body shudders, followed by a floating sensation."
-            "I feel I could melt in his arms and disappear..."
-            "Akki shifts under me, then reaches for my hand, while the other brushes away my sweaty bangs."
-            ak "I felt it... Are you okay?"
-            $ akki_foreplay.set_state(with_dissolve, claire_face="smile")
-            cla "I... wow, Akki. That was amazing, I never had anything like that by myself."
-            ak "I did a good job?"
-            $ akki_foreplay.set_state(with_dissolve, claire_face="happy")
-            cla "Of course you did! I, hahaha..."
-            show screen sex_stop("akki_stop_now")
-            "Feeling giddy, I press my lips against him. My thighs feel sore and I'm fighting off exhaustion and yet I want to show him how amazing he is."
-            $ akki_foreplay.set_state(claire_face="default", akki_face="default")
-            $ akki_foreplay.set_state(with_dissolve, heads="kiss")
+            $ persistent.akki_choice4 = "akki_sex_choice4_1"
+            jump akki_sex_choice4_1
 
         "This is fine.":
-            cla "I'm happy like this..."
-            $ akki_foreplay.set_state(akki_face="happy", claire_face="smile")
-            $ akki_foreplay.set_state(with_dissolve, heads="apart")
-            $ akki_sex_choices.naked_below = False
-            $ akki_foreplay.set_state(with_dissolve, akki_face="D:")
-            ak "I can tell... Er, even through the fabric..."
-            $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure")
-            "He rubs deeply against the fabric, paying attention to my reactions. Whenever I wriggle sightly he repeats the motion with more vigor, and I can feel his fingers becoming moist against my shorts." 
-            menu:
-                "Touch him in return.":
-                    $ akki_foreplay.set_state(with_dissolve, claire_face="smile")
-                    cla "I want to make you feel what I feel... Akki."
-                    "My eyes drift to his hardness pressing against the fabric of his pants. He blushes, then covers it."
-                    $ akki_foreplay.set_state(with_dissolve, akki_face="nervous")
-                    ak "If it's okay with you... I thought the experience would be more about you?"
-                    $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
-                    cla "It wouldn't feel right if it wasn't mutual. Um, this is my first time so..."
-                    $ akki_foreplay.set_state(with_dissolve, akki_arm="down")
-                    "He widens his legs and I take it as a cue to reach in."
-                    $ akki_foreplay.set_state(with_dissolve, claire_face="smile", akki_arm="down", claire_arm="crotch")
-                    "Teasing, I stroke under his navel first before my fingers wriggle below his belts. He inhales deeply in anticipation, and my hand glides down to the stretched fabric."
-                    $ akki_foreplay.set_state(with_dissolve, akki_face="pleasure")
-                    "I can feel my face heat up as I grab his shaft. Maybe it's a good thing he's still covered..."
-                    "After a few clumsy fondles, Akki places a hand inches above mine."
-                    ak "I'll feel more here..."
-                    "I nod, shift my fingers higher, and make twirling motions around his tip."
-                    cla "Like this?"
-                    ak "Uh-huh..."
-                    $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure", akki_arm="finger")
-                    "He closes his eyes briefly, then reaches out to resume touching me."
-                
-                "Enjoy the moment.":
-                    "We resume kissing while he strokes me. I can feel pressure build inside me gradually, although there's only so much Akki can do with layers between us."
-                
-                "I'd like to stop now.":
-                    jump akki_middle_stop
-                
+            $ persistent.akki_choice4 = "akki_sex_choice4_2"
+            jump akki_sex_choice4_2
             
         "I'd like to stop now.":
+            $ persistent.akki_choice4 = "akki_middle_stop"
             jump akki_middle_stop
 
+
+label akki_sex_choice4_1:
+    $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
+    cla "I'd like to feel you directly."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="nervous")
+    ak "... I'll do my best."
+    $ akki_sex_choices.naked_below = True
+    $ akki_foreplay.set_state(with_dissolve, claire_arm="down", akki_arm="down")
+    "I unzip my shorts and pull them down. Once they're off, I tug at the ends of my pantyhose, trying not to get the delicate fabric caught."
+    "I can almost feel the seconds tick loudly."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="D:")
+    ak "That's... a lot of layers."
+    cla "I-I wasn't prepared... or thought ahead..."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="happy", claire_face="happy")
+    ak "It's alright, I can wait."
+    cla "You didn't wait when you bridal carried me." 
+    "I stretch and slingshot the leggings at him. He catches them, laughing, then tosses them aside."
+    $ akki_foreplay.set_state(with_dissolve, claire_bottom="off")
+    "My hands slow down considerably while I carefully strip off my panties, and I suddenly feel a little colder. I hesitantly look back at Akki, unsure about his reaction."
+    ak "You're gorgeous."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
+    "I blush when I realize I didn't, um, trim exactly down there. Akki was so excited earlier we skipped any chance to prepare ourselves..."
+    cla "You mean it?"
+    ak "Of course. It's you."
+    $ akki_foreplay.set_state(with_dissolve, heads="kiss", claire_face="default", akki_face="default", akki_arm="finger")
+    "His fingers tease the rim of my pubic hair, and he kisses me passionately again, familiar with how I love my kisses." 
+    ak "You're adorable..."
+    "His fingers wander down, brushing my lower lips and my body responds to his touch."
+    ak "Um, wow, you're so wet..."
+    "He presses against the cleft between my legs and continues stroking me with increased vigor."
+
+    if _in_replay:
+        jump expression persistent.akki_choice4_1
+        
+    menu:
+        "Touch him in return.":
+            $ persistent.akki_choice4_1 = "akki_sex_choice4_1_1"
+            jump akki_sex_choice4_1_1
+
+        "Enjoy the moment.":
+            $ persistent.akki_choice4_1 = "akki_sex_choice4_1_2"
+            jump akki_sex_choice4_1_2
+                   
+        "I'd like to stop.":
+            $ persistent.akki_choice4_1 = "akki_middle_stop"
+            jump akki_middle_stop
+
+label akki_sex_choice4_1_1:
+    $ akki_sex_choices.mutual_touching = True
+    $ akki_foreplay.set_state(claire_face="smile", akki_face="happy")
+    $ akki_foreplay.set_state(with_dissolve, heads="apart")
+    cla "I want to make you feel what I feel... Akki."
+    "My eyes drift to his hardness pressing against the fabric of his pants. He blushes, then covers it."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="nervous")
+    ak "If it's okay with you... I thought the experience would be more about you?"
+    cla "It wouldn't feel right if it wasn't mutual."
+    $ akki_foreplay.set_state(with_dissolve, claire_arm="down", akki_arm="down")
+    ak "That makes sense..."
+    "Oddly, he doesn't undo his belts, and instead inserts his thumbs under the leather."
+    cla "That's... rather convenient."
+    ak "Well, incubi... um... are supposed to be ready for anything..."
+    "I politely glance upward and realize he's blushing as much as I am."
+    $ akki_foreplay.set_state(with_dissolve, claire_arm="chest", akki_bottom="off", claire_face="surprised")
+    "He tugs down the front of his pants, exposing his erection. The giddiness leaves my body and I'm unsure of how to react."
+    cla "..."
+    cla "...Impressive..."
+    ak "W-we're incubi ... we're supposed to be..."
+    "I reach out and stroke under his navel before descending, trailing my fingers through his hair. He deeply inhales in anticipation and I can sense the heat before I directly touch him."
+    "He twitches and I recoil."
+    cla "I-it moved."
+    ak "It's a natural reflex! I can't help it."
+    cla "H-huh... I don't remember this in any romance books..."
+    $ akki_foreplay.set_state(with_dissolve, claire_arm="handjob")
+    "My face burns as I grip his shaft, wondering if I should observe to help perform better, or look away and focus on the sensation." 
+    "After I clumsily slide my hand up and down, Akki gently demonstrates."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="happy")
+    ak "Here, I like it when there's a twisty motion..."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="pleasure")
+    "Using his hand, he mimics the action over his leg, and I dutifully replicate the request."
+    cla "Better?"
+    ak "Much."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
+    cla "Now I'm the one who's fumbling..."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="happy")
+    ak "No worries, take your time. You're doing great."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="pleasure", claire_face="pleasure", akki_arm="finger")
+    "He resumes touching me again, his fingers stroking me deeply. I try to maintain the pace, but it's getting harder to concentrate from the increasing pleasure building inside of me."
+    "Occasionally Akki pauses and takes a breath before continuing and I realize we both feel the same way."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="happy", claire_face="smile")
+    "Our eyes happen to meet, and it's obvious he's enjoying himself. We both accelerate our movements, wanting to share the same rhythm."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure")
+    jump akki_sex_choice4_1_cont
+
+
+label akki_sex_choice4_1_2:
+    "The tickle I felt earlier spreads and I lean heavily against him, finding it hard to concentrate on anything beyond the sensation."
+    jump akki_sex_choice4_1_cont
+
+    
+label akki_sex_choice4_1_cont:
+    cla "Ah... it feels so good.."
+    if akki_sex_choices.mutual_touching == True:
+        $ akki_foreplay.set_state(with_dissolve, claire_arm="down")
+        "My hands drop, unable to focus anymore."
+    $ akki_foreplay.set_state(with_dissolve, heads="apart", akki_face="happy", claire_face="pleasure")
+    hide screen sex_stop
+    "He continues the motions, and my body arches against him."
+    $cl_face = "O"
+    "My words are incomprehensible; I can only utter a soft groan. The core of my being vibrates and pressure that built up suddenly shoots down my legs and arms."
+    "My breathing escalates until I sharply heave from one final wave of pleasure."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure", akki_arm="down")
+    "Akki holds me closely as my entire body shudders, followed by a floating sensation."
+    "I feel I could melt in his arms and disappear..."
+    "Akki shifts under me, then reaches for my hand, while the other brushes away my sweaty bangs."
+    ak "I felt it... Are you okay?"
+    $ akki_foreplay.set_state(with_dissolve, claire_face="smile")
+    cla "I... wow, Akki. That was amazing, I never had anything like that by myself."
+    ak "I did a good job?"
+    $ akki_foreplay.set_state(with_dissolve, claire_face="happy")
+    cla "Of course you did! I, hahaha..."
+    show screen sex_stop("akki_stop_now")
+    "Feeling giddy, I press my lips against him. My thighs feel sore and I'm fighting off exhaustion and yet I want to show him how amazing he is."
+    $ akki_foreplay.set_state(claire_face="default", akki_face="default")
+    $ akki_foreplay.set_state(with_dissolve, heads="kiss")
+    jump akki_sex_choice4_cont
+
+
+label akki_sex_choice4_2:
+    cla "I'm happy like this..."
+    $ akki_foreplay.set_state(akki_face="happy", claire_face="smile")
+    $ akki_foreplay.set_state(with_dissolve, heads="apart")
+    $ akki_sex_choices.naked_below = False
+    $ akki_foreplay.set_state(with_dissolve, akki_face="D:")
+    ak "I can tell... Er, even through the fabric..."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure")
+    "He rubs deeply against the fabric, paying attention to my reactions. Whenever I wriggle sightly he repeats the motion with more vigor, and I can feel his fingers becoming moist against my shorts."
+
+    if _in_replay:
+        jump expression persistent.akki_choice4_2
+        
+    menu:
+        "Touch him in return.":
+            $ persistent.akki_choice4_2 = "akki_sex_choice4_2_1"
+            jump akki_sex_choice4_2_1
+            
+        "Enjoy the moment.":
+            $ persistent.akki_choice4_2 = "akki_sex_choice4_2_2"
+            jump akki_sex_choice4_2_2
+            
+        "I'd like to stop now.":
+            $ persistent.akki_choice4_2 = "akki_middle_stop"
+            jump akki_middle_stop
+
+label akki_sex_choice4_2_1:
+    $ akki_foreplay.set_state(with_dissolve, claire_face="smile")
+    cla "I want to make you feel what I feel... Akki."
+    "My eyes drift to his hardness pressing against the fabric of his pants. He blushes, then covers it."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="nervous")
+    ak "If it's okay with you... I thought the experience would be more about you?"
+    $ akki_foreplay.set_state(with_dissolve, claire_face="embarrassed")
+    cla "It wouldn't feel right if it wasn't mutual. Um, this is my first time so..."
+    $ akki_foreplay.set_state(with_dissolve, akki_arm="down")
+    "He widens his legs and I take it as a cue to reach in."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="smile", akki_arm="down", claire_arm="crotch")
+    "Teasing, I stroke under his navel first before my fingers wriggle below his belts. He inhales deeply in anticipation, and my hand glides down to the stretched fabric."
+    $ akki_foreplay.set_state(with_dissolve, akki_face="pleasure")
+    "I can feel my face heat up as I grab his shaft. Maybe it's a good thing he's still covered..."
+    "After a few clumsy fondles, Akki places a hand inches above mine."
+    ak "I'll feel more here..."
+    "I nod, shift my fingers higher, and make twirling motions around his tip."
+    cla "Like this?"
+    ak "Uh-huh..."
+    $ akki_foreplay.set_state(with_dissolve, claire_face="pleasure", akki_arm="finger")
+    "He closes his eyes briefly, then reaches out to resume touching me."
+    jump akki_sex_choice4_cont
+    
+
+label akki_sex_choice4_2_2:
+    "We resume kissing while he strokes me. I can feel pressure build inside me gradually, although there's only so much Akki can do with layers between us."
+    jump akki_sex_choice4_cont
+
+    
+label akki_sex_choice4_cont:
     $ akki_foreplay.set_state(claire_face="smile", akki_face="happy")
     $ akki_foreplay.set_state(with_dissolve, heads="apart")
     ak "Would you like it if we took it further...?"
+
+    if _in_replay:
+        jump expression persistent.akki_choice5
+        
     menu:
         "Yes.":
-            hide screen sex_stop
-            cla "Just take it slow..."
-            ak "Of course."
-            scene bg bedroom_night with dissolve
-            $akki.set_state(eyes="tender", mouth="default", eyebrows="tender", emotion_base="small blush")
-            show akki at center_alone2 with dissolve
-            stop music fadeout 3
-            "Wait, now that it's getting to that point..."
-            
-            menu:
-                "Suggest a condom.":
-                    $claire.set_state(eyes="default", eyebrows="up", mouth="uh", emotion_base="large blush")
-                    cl "Before I forget... Is it okay if you put on a condom? There should be one in the drawer next to us..."
-                    "He nods and reaches over to the nightstand. I'm glad I accepted those free packages they handed out at the university..."
-                "It'll be fine.":
-                    "I'm on the pill, so..."
-
-            if akki_sex_choices.naked_below and not akki_sex_choices.top_off:
-                "I raise my arms and Akki pulls my shirt off, tossing it aside."
-                $akki.set_state(with_dissolve, base="naked")
-            elif not akki_sex_choices.naked_below and akki_sex_choices.top_off:
-                "I unzip my shorts and pull them down. Once they're off, I tug at the ends of my pantyhose, regretting all these layers that I decided to wear. Akki does the same, although fumbles with the belts in his rush."
-                "My hands slow down considerably while I carefully strip off my panties, and I suddenly feel a little colder. I hesitantly look back at Akki, unsure about his reaction."              
-                $akki.set_state(with_dissolve, base="naked", mouth="happy")
-                ak "You look beautiful..."
-            elif not akki_sex_choices.naked_below and akki_sex_choices.top_off:
-                "I raise my arms and Akki pulls my shirt off, tossing it aside."
-                "I unzip my shorts and pull them down. Once they're off, I tug at the ends of my pantyhose, regretting all these layers that I decided to wear. Akki does the same, although fumbles with the belts in his rush."
-                "My hands slow down considerably while I carefully strip off my panties, and I suddenly feel a little colder. I hesitantly look back at Akki, unsure about his reaction."
-                $akki.set_state(with_dissolve, base="naked", mouth="happy")
-                ak "You look beautiful..."  
-
-            play music music_romance fadein 2
-            $akki.set_state(with_dissolve, base="naked")
-            pause(0.3)
-            $ akki_missionary_sprite.set_state(claire=1, akki=1)
-            scene akki_missionary with dissolve  
-            show screen sex_stop("akki_stop_now")
-            "Gingerly, he lays me down on the bed, his body straddling mine with his elbows propped up beside me. He gently lowers himself until I can feel his heartbeat against my chest, his warm breath tickling my ear."
-            $ akki_sex_choices.missionary = True
-            $ claire.set_state(base="naked")
-            ak "I'm not too heavy?"
-            cla "No, this is perfect."
-            $ akki_missionary_sprite.set_state(with_dissolve, akki=2, claire=2)
-            "I embrace him and he kisses me lightly, adjusting his position until his hardness presses against my thigh."
-            "Moaning, I break from the kiss and hug him tighter, pushing my hips against him to close the distance. My fingers dig into him as he slides against me with long sensual strokes, causing me to shiver each time."
-            "He adjusts his angle, nudging into me, causing me to gasp in surprise. Akki pauses as I get used to him and, slowly, I allow myself to relax."
-            $ akki_missionary_sprite.set_state(with_dissolve, akki=1, claire=1)
-            ak "Should I keep going?"
-            cla "Yes, I'm fine now."
-            $ akki_missionary_sprite.set_state(with_dissolve, akki=2, claire=2)
-            "I feel like I'm sinking into the pillows as he enters me. When our hips touch, I inhale sharply from the warmth and filling sensation. He notices I'm clenching the sheets and leans in."
-            $ akki_missionary_sprite.set_state(with_dissolve, akki=1, claire=1)
-            ak "Are you okay?"
-            cla "Yeah. Um, it's a little tight so... don't move around too much."
-            ak "I understand. I'll..."
-            $ akki_missionary_sprite.set_state(with_dissolve, akki=2)
-            "He moves his hip back, slides forward again, keeping an unhurried tempo."
-            $ akki_missionary_sprite.set_state(with_dissolve, claire=2)
-            ak "Ah..."
-
-            #remove stop button, it's all done.
-            hide screen sex_stop
-            $ akki_missionary_sprite.set_state(with_dissolve, akki=3)
-            stop music
-            play sound "assets/sfx/scratch.ogg"
-            $renpy.pause()
-            $ akki_missionary_sprite.set_state(with_dissolve, akki=4)
-            "Suddenly, he halts in his movements and he hastily averts his gaze from me."
-            $ akki_missionary_sprite.set_state(with_dissolve, claire=1)
-            cla "You okay?"
-            ak "..."
-            extend "Er, I finished early..."
-            cla "..."
-            $ akki_missionary_sprite.set_state(with_dissolve, akki=5)
-            ak "I can keep going."
-            cla "You sure? We can stop, you know."
-            ak "Seriously, I can keep going. Just... uh, give me a minute..."
-            $ akki_missionary_sprite.set_state(with_dissolve, claire=3)
-            "His abashed expression causes me to burst out laughing against my best intentions."
-            play music music_love fadein 1
-            cla "I-it's okay! Don't force yourself. I'm really happy with where we are."
-            $ akki_missionary_sprite.set_state(with_dissolve, akki=6)
-            ak "Really?"
-            cla "Yes, honest. This has been a great experience, Akki."
-            $ akki_missionary_sprite.set_state(with_dissolve, claire=1)
-            "I hug him close to show that I mean it, and I feel him chuckle lightly and relax."
-            ak "...Same here."
-            stop music fadeout 2
-            "We giggle and he kisses my forehead."
-            play music music_lullaby fadein 2
-            cla "Thank you, Akki."
-            #transition
-            scene white with dissolve
-            pause (0.8)
-            python:
-                akki_cuddle_sprite.set_state(
-                    base="naked" if akki_sex_choices.missionary else "clothed",
-                    claire=1, akki=3
-                )
-            scene akkicuddle with dissolve
-
-            "I'm curled up against Akki's chest, feeling fulfilled and happy. He places a protective hand on my head, and strokes my hair. I can tell he's still feeling a little sheepish over the whole incident."
-            $ akki_cuddle_sprite.set_state(with_dissolve, claire=2)
-            cla "No matter the conclusion, nothing beats a good cuddle afterwards, right, Akki?"
-            $ akki_cuddle_sprite.set_state(with_dissolve, akki=2)
-            ak "You can say that again."
-            $ akki_cuddle_sprite.set_state(with_dissolve, akki=1)
-            ak "How are you feeling?"
-            cla "Content... Maybe a little sore. I'm really happy my first time was with you."
-            ak "Same."
-            if akki_scenes >= 3:
-                $ persistent.akki_complete = True
-                ak "And I hope the next time will be even better for you."
-                cla "I know it will."
-            $ akki_cuddle_sprite.set_state(with_dissolve, akki=3, claire=3)
-            "Exhaustion creeps in and I know Akki obtained nourishment from our experience. Satisfied, I allow myself to fall into a deep sleep."
-            call credits from _call_credits_6
-            jump akki_epilogue
+            $ persistent.akki_choice5 = "akki_sex_choice5_1"
+            jump akki_sex_choice5_1
                 
-        "I'd like to stop now.":   
+        "I'd like to stop now.":
+            $ persistent.akki_choice5 = "akki_middle_stop"
             jump akki_middle_stop
 
 
+label akki_sex_choice5_1:
+    hide screen sex_stop
+    cla "Just take it slow..."
+    ak "Of course."
+    scene bg bedroom_night with dissolve
+    $akki.set_state(eyes="tender", mouth="default", eyebrows="tender", emotion_base="small blush")
+    show akki at center_alone2 with dissolve
+    stop music fadeout 3
+    "Wait, now that it's getting to that point..."
+
+    if _in_replay:
+        jump expression persistent.akki_choice5_1
+        
+    menu:
+        "Suggest a condom.":
+            $ persistent.akki_choice5_1 = "akki_sex_choice5_1_1"
+            jump akki_sex_choice5_1_1
+            
+        "It'll be fine.":
+            $ persistent.akki_choice5_1 = "akki_sex_choice5_1_2"
+            jump akki_sex_choice5_1_2
+
+    
+label akki_sex_choice5_1_1:
+    $claire.set_state(eyes="default", eyebrows="up", mouth="uh", emotion_base="large blush")
+    cl "Before I forget... Is it okay if you put on a condom? There should be one in the drawer next to us..."
+    "He nods and reaches over to the nightstand. I'm glad I accepted those free packages they handed out at the university..."
+    jump akki_sex_choice5_cont
+
+
+label akki_sex_choce5_1_2:
+    "I'm on the pill, so..."
+    jump akki_sex_choice5_cont
+
+
+label akki_sex_choice5_cont:
+    if akki_sex_choices.naked_below and not akki_sex_choices.top_off:
+        "I raise my arms and Akki pulls my shirt off, tossing it aside."
+        $akki.set_state(with_dissolve, base="naked")
+    elif not akki_sex_choices.naked_below and akki_sex_choices.top_off:
+        "I unzip my shorts and pull them down. Once they're off, I tug at the ends of my pantyhose, regretting all these layers that I decided to wear. Akki does the same, although fumbles with the belts in his rush."
+        "My hands slow down considerably while I carefully strip off my panties, and I suddenly feel a little colder. I hesitantly look back at Akki, unsure about his reaction."              
+        $akki.set_state(with_dissolve, base="naked", mouth="happy")
+        ak "You look beautiful..."
+    elif not akki_sex_choices.naked_below and akki_sex_choices.top_off:
+        "I raise my arms and Akki pulls my shirt off, tossing it aside."
+        "I unzip my shorts and pull them down. Once they're off, I tug at the ends of my pantyhose, regretting all these layers that I decided to wear. Akki does the same, although fumbles with the belts in his rush."
+        "My hands slow down considerably while I carefully strip off my panties, and I suddenly feel a little colder. I hesitantly look back at Akki, unsure about his reaction."
+        $akki.set_state(with_dissolve, base="naked", mouth="happy")
+        ak "You look beautiful..."  
+
+    play music music_romance fadein 2
+    $akki.set_state(with_dissolve, base="naked")
+    pause(0.3)
+    $ akki_missionary_sprite.set_state(claire=1, akki=1)
+    scene akki_missionary with dissolve  
+    show screen sex_stop("akki_stop_now")
+    "Gingerly, he lays me down on the bed, his body straddling mine with his elbows propped up beside me. He gently lowers himself until I can feel his heartbeat against my chest, his warm breath tickling my ear."
+    $ akki_sex_choices.missionary = True
+    $ claire.set_state(base="naked")
+    ak "I'm not too heavy?"
+    cla "No, this is perfect."
+    $ akki_missionary_sprite.set_state(with_dissolve, akki=2, claire=2)
+    "I embrace him and he kisses me lightly, adjusting his position until his hardness presses against my thigh."
+    "Moaning, I break from the kiss and hug him tighter, pushing my hips against him to close the distance. My fingers dig into him as he slides against me with long sensual strokes, causing me to shiver each time."
+    "He adjusts his angle, nudging into me, causing me to gasp in surprise. Akki pauses as I get used to him and, slowly, I allow myself to relax."
+    $ akki_missionary_sprite.set_state(with_dissolve, akki=1, claire=1)
+    ak "Should I keep going?"
+    cla "Yes, I'm fine now."
+    $ akki_missionary_sprite.set_state(with_dissolve, akki=2, claire=2)
+    "I feel like I'm sinking into the pillows as he enters me. When our hips touch, I inhale sharply from the warmth and filling sensation. He notices I'm clenching the sheets and leans in."
+    $ akki_missionary_sprite.set_state(with_dissolve, akki=1, claire=1)
+    ak "Are you okay?"
+    cla "Yeah. Um, it's a little tight so... don't move around too much."
+    ak "I understand. I'll..."
+    $ akki_missionary_sprite.set_state(with_dissolve, akki=2)
+    "He moves his hip back, slides forward again, keeping an unhurried tempo."
+    $ akki_missionary_sprite.set_state(with_dissolve, claire=2)
+    ak "Ah..."
+    
+    #remove stop button, it's all done.
+    hide screen sex_stop
+    $ akki_missionary_sprite.set_state(with_dissolve, akki=3)
+    stop music
+    play sound "assets/sfx/scratch.ogg"
+    $renpy.pause()
+    $ akki_missionary_sprite.set_state(with_dissolve, akki=4)
+    "Suddenly, he halts in his movements and he hastily averts his gaze from me."
+    $ akki_missionary_sprite.set_state(with_dissolve, claire=1)
+    cla "You okay?"
+    ak "..."
+    extend "Er, I finished early..."
+    cla "..."
+    $ akki_missionary_sprite.set_state(with_dissolve, akki=5)
+    ak "I can keep going."
+    cla "You sure? We can stop, you know."
+    ak "Seriously, I can keep going. Just... uh, give me a minute..."
+    $ akki_missionary_sprite.set_state(with_dissolve, claire=3)
+    "His abashed expression causes me to burst out laughing against my best intentions."
+    play music music_love fadein 1
+    cla "I-it's okay! Don't force yourself. I'm really happy with where we are."
+    $ akki_missionary_sprite.set_state(with_dissolve, akki=6)
+    ak "Really?"
+    cla "Yes, honest. This has been a great experience, Akki."
+    $ akki_missionary_sprite.set_state(with_dissolve, claire=1)
+    "I hug him close to show that I mean it, and I feel him chuckle lightly and relax."
+    ak "...Same here."
+    stop music fadeout 2
+    "We giggle and he kisses my forehead."
+    play music music_lullaby fadein 2
+    cla "Thank you, Akki."
+    #transition
+    scene white with dissolve
+    pause (0.8)
+    python:
+        akki_cuddle_sprite.set_state(
+            base="naked" if akki_sex_choices.missionary else "clothed",
+            claire=1, akki=3
+            )
+    scene akkicuddle with dissolve
+
+    "I'm curled up against Akki's chest, feeling fulfilled and happy. He places a protective hand on my head, and strokes my hair. I can tell he's still feeling a little sheepish over the whole incident."
+    $ akki_cuddle_sprite.set_state(with_dissolve, claire=2)
+    cla "No matter the conclusion, nothing beats a good cuddle afterwards, right, Akki?"
+    $ akki_cuddle_sprite.set_state(with_dissolve, akki=2)
+    ak "You can say that again."
+    $ akki_cuddle_sprite.set_state(with_dissolve, akki=1)
+    ak "How are you feeling?"
+    cla "Content... Maybe a little sore. I'm really happy my first time was with you."
+    ak "Same."
+    if akki_scenes >= 3:
+        $ persistent.akki_complete = True
+        ak "And I hope the next time will be even better for you."
+        cla "I know it will."
+    $ akki_cuddle_sprite.set_state(with_dissolve, akki=3, claire=3)
+    "Exhaustion creeps in and I know Akki obtained nourishment from our experience. Satisfied, I allow myself to fall into a deep sleep."
+    call credits from _call_credits_6
+    jump akki_epilogue
+    
 
 label akki_early_stop:
     hide screen sex_stop
@@ -1144,6 +1284,7 @@ label akki_epilogue:
     $ claire.set_state(eyes="semi open", eyebrows="default", mouth="grin")
     cl "Aw, I thought the aebleskiver were delicious."
     cl "Thanks, Akki."
+    $ renpy.end_replay()
     scene white with dissolve
     return
 
