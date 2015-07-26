@@ -2,6 +2,10 @@
 screen disable_Lmouse():
     key "mouseup_1" action NullAction()
 
+# repurpose menu for Replay mode
+screen replay_controls():
+    key "game_menu" action [Hide("replay_controls"), renpy.end_replay]
+
 
 # Stop button
 screen sex_stop(target):

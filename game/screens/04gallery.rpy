@@ -3,9 +3,10 @@ init python:
     gallery = Gallery(
         GalleryFolder(
             "Akki",
-            [CG("chibi_akki01", "assets/chibis/akki_hug.png")],
-            [CG("chibi_akki02", "assets/chibis/akki_sit.png")],
-            [SpriteCG("akki_cuddle", akki_cuddle_sprite,
+            ImageSet(CG("chibi_akki01", "assets/chibis/akki_hug.png")),
+            ImageSet(CG("chibi_akki02", "assets/chibis/akki_sit.png")),
+            ImageSet(
+                SpriteCG("akki_cuddle", akki_cuddle_sprite,
                       {
                         "base": "clothed",
                         "akki": 1,
@@ -16,8 +17,9 @@ init python:
                       { "akki": 2, "claire": 2 }, # ?
                       { "akki": 2, "claire": 1 }, # ?
                       { "akki": 1, "claire": 2 }, # ?
-                      { "akki": 3, "claire": 3 })],
-            [SpriteCG("akki_cuddle", akki_cuddle_sprite,
+                      { "akki": 3, "claire": 3 })),
+            ImageSet(
+                SpriteCG("akki_cuddle", akki_cuddle_sprite,
                       {
                         "base": "naked",
                         "akki": 1,
@@ -28,58 +30,105 @@ init python:
                       { "akki": 2, "claire": 2 },
                       { "akki": 2, "claire": 1 },
                       { "akki": 1, "claire": 2 },
-                      { "akki": 3, "claire": 3 })],            
-            [SpriteCG("akki_foreplay", akki_foreplay,
-                      {
-                        "akki_bottom": "on",
-                        "claire_arm": "down",
-                        "claire_bottom": "on",
-                        "claire_top": "on",
-                        "akki_arm": "down",
-                        "heads": "kiss",
-                        "claire_face": "default",
-                        "akki_face": "default"
-                        },
-                      {
-                        "akki_face": "D:",
-                        "claire_face": "smile",
-                        "heads": "apart"
-                        },
-                      {
-                        "heads": "kiss",
-                        "claire_face": "default",
-                        "akki_face": "default",
-                        "akki_arm": "breast"
-                        },
-                      {
-                        "claire_face": "smile",
-                        "akki_face": "nervous",
-                        "heads": "apart"
-                        },
-                      {
-                        "akki_face": "D:"
-                        },
-                      {
-                        "claire_face": "pleasure"
-                        }
-                      )]
+                      { "akki": 3, "claire": 3 })),
+            ReplayBundle("akki_sex",
+                         akki_foreplay.snapshot( akki_bottom="on",
+                                                 claire_arm="down",
+                                                 claire_bottom="on",
+                                                 claire_top="on",
+                                                 akki_arm="down",
+                                                 heads="kiss",
+                                                 claire_face="default",
+                                                 akki_face="default" ),
+                         lambda: { "akki_name": "Akki",
+                                   "claire_name": persistent.akki_claire_name,
+                                   "akki_scenes": persistent.akki_scenes }
+                )
+#            [SpriteCG("akki_foreplay", akki_foreplay,
+#                      {
+#                        "akki_bottom": "on",
+#                        "claire_arm": "down",
+#                        "claire_bottom": "on",
+#                        "claire_top": "on",
+#                        "akki_arm": "down",
+#                        "heads": "kiss",
+#                        "claire_face": "default",
+#                        "akki_face": "default"
+#                        },
+#                      {
+#                        "akki_face": "D:",
+#                        "claire_face": "smile",
+#                        "heads": "apart"
+#                        },
+#                      {
+#                        "heads": "kiss",
+#                        "claire_face": "default",
+#                        "akki_face": "default",
+#                        "akki_arm": "breast"
+#                        },
+#                      {
+#                        "claire_face": "smile",
+#                        "akki_face": "nervous",
+#                        "heads": "apart"
+#                        },
+#                      {
+#                        "akki_face": "D:"
+#                        },
+#                      {
+#                        "claire_face": "pleasure"
+#                        }
+#                      )],
+#            [SpriteCG("akki_foreplay", akki_foreplay,
+#                      {
+#                        "akki_bottom": "on",
+#                        "claire_arm": "down",
+#                        "claire_bottom": "on",
+#                        "claire_top": "on",
+#                        "akki_arm": "down",
+#                        "heads": "kiss",
+#                        "claire_face": "default",
+#                        "akki_face": "default"
+#                        },
+#                      {
+#                        "akki_face": "nervous"
+#                        },
+#                      {
+#                        "akki_arm": "down",
+#                        "claire_arm": "chest"
+#                        },
+#                      {
+#                        "heads": "kiss",
+#                        "claire_face": "default",
+#                        "akki_face": "default",
+#                        "akki_arm": "breast"
+#                        },
+#                      {
+#                        "claire_face": "smile",
+#                        "akki_face": "happy",
+#                        "heads": "apart"
+#                        },
+#                      {
+#                        "claire_face": "pleasure"
+#                        }
+#                      )
+#                ]
         ),
         GalleryFolder(
             "Orias",
-            [CG("chibi_orias01", "assets/chibis/orias_tea.png")]
+            ImageSet(CG("chibi_orias01", "assets/chibis/orias_tea.png"))
         ),
         GalleryFolder(
             "Kael",
-            [CG("chibi_kael01", "assets/chibis/kael_laundry.png")]
+            ImageSet(CG("chibi_kael01", "assets/chibis/kael_laundry.png"))
         ),
         GalleryFolder(
             "Mirari",
-            [CG("chibi_mira01", "assets/chibis/mirari_hair.png")]
+            ImageSet(CG("chibi_mira01", "assets/chibis/mirari_hair.png"))
         ),
         GalleryFolder(
             "Others",
-            [CG("chibi_nosex01", "assets/chibis/NoOneEnd_01.png"),
-             CG("chibi_nosex02", "assets/chibis/NoOneEnd_02.png")]
+            ImageSet(CG("chibi_nosex01", "assets/chibis/NoOneEnd_01.png"),
+                     CG("chibi_nosex02", "assets/chibis/NoOneEnd_02.png"))
         )
     )
 
@@ -106,8 +155,8 @@ screen gallery():
 
             for bundle in gallery[gallery_folder]:
                 button:
-                    if bundle.unlocked > 0:
-                        action Show("gallery_view", dissolve, bundle)
+                    if bundle.is_unlocked():
+                        action bundle.display()
 
                     vbox:
                         frame:

@@ -38,6 +38,9 @@ label next_day:
 
 
 label credits:
+    if _in_replay:
+        return
+    
     # [TODO]
     scene white with dissolve
     pause(1)
