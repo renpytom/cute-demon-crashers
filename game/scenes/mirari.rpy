@@ -5,6 +5,12 @@ define mlay_clarm = "fold"
 define mlay_mface = "tender"
 define mlay_clface = "oh"
 
+define mcuddle_mface = "1"
+define mcuddle_cface = "1"
+
+define mira_epilong = False
+
+
 
 
 label mirari_hangout1:
@@ -25,41 +31,49 @@ label mirari_hangout1:
     cl "Are you taking care of them?"
     $mirari.set_state(eyes="happy", emotion="note")
     show mirari at bounce_up_alone
+    voice "m_w08"
     mi "Oh, hi, [claire_name]! And yes. The poor things were nearly wilting."
     "She reaches into her barely-there shirt and pulls out a memo. I accept it and recognize the handwriting."
     "'I want my garden alive when I return. Love, Dad.'" 
     $claire.set_state(eyebrows="inwards", emotion="lll", eyes="flat", emotion_base="dark", mouth="ehh")
     cl "Ah... Yeah, I sorta forgot about that..."
     $mirari.set_state(with_dissolve, eyes="default", emotion="default", mouth="happy")
+    voice "m_s01"
     mi "I can take care of that while I'm here; I love being outside."
     "I glance over at the fence."
     $claire.set_state(eyebrows="inwards", eyes="default", mouth="oh", emotion_base="default", emotion="sweat")
     cl "Um, have the neighbors noticed you? Did they question you?"
     $mirari.set_state(eyes="wink", mouth="smile", emotion="note")
     show mirari at bounce_up_alone
+    voice "m_s08"
     mi "Oh yes, but I told them I was a 'cause-player' and they ate it right up! Teehee, I fooled them good, so my identity is safe~"
     $claire.set_state(eyes="happy", mouth="smile")
     cl "..."
     $mirari.set_state(with_dissolve, eyes="default", eyebrows="inwards", mouth="oh", emotion="default")
+    voice "m_w09"
     mi "You okay, hon?"
     $claire.set_state(eyes="default", mouth="low")
     cl "Can I ask you a question? Um, why me?"
+    voice "m_s15"
     $mirari.set_state(with_dissolve, mouth="uh", eyebrows="up")
     mi "You mean how I found you?"
     $claire.set_state(eyes="happy", mouth="smile")
     cl "That, too."
     stop music fadeout 1
     $mirari.set_state(eyes="happy", mouth="smile", emotion="flowers")
+    voice "m_w10"
     mi "Your scent of course."
     $claire.set_state(eyebrows="up", mouth="uh", eyes="default", emotion="default")
     play music music_silly fadein 1
     cl "Huh?"
     $mirari.set_state(with_dissolve,eyes="wink", emotion="note")
+    voice "m_s09"
     mi "We can detect when a human is releasing sexual energy. I was on my usual hunt when I sensed you and went to investigate." 
     $claire.set_state(emotion_base="large blush",eyes="wide", mouth="low")
     cl "..."
     $mirari.set_state(eyes="happy", emotion="heart", mouth="happy")
     show mirari at sway
+    voice "m_s10"
     mi "You have a really delicious smell~" 
     $claire.set_state(emotion="steam", eyes="big")
     cl "...."
@@ -68,6 +82,7 @@ label mirari_hangout1:
     cl "Oh my god, how embarrassing."
     play music music_mirari fadein 3
     $mirari.set_state(with_dissolve,emotion="default", eyebrows="inwards", mouth="smile", eyes="default")
+    voice "m_w11"
     mi "Don't be! It's something only we sex demons can pick up. Not only that, that was when I heard you wishing you could experience a fling. I thought I could help you out."
     $mirari.set_state(with_dissolve,eyes="happy", emotion="sweat")
     
@@ -77,6 +92,7 @@ label mirari_hangout1:
     $claire.set_state(emotion="sweat", eyes="happy", emotion_base="default", eyebrows="inwards", mouth="smile")
     cl "It was a huge shock but I see there's good intentions behind your visit. It's kind of you to offer, even if I can't promise I'll even take up on it."
     $mirari.set_state(with_dissolve, emotion="default", mouth="neutral")
+    voice "m_w12"
     mi "That's fine! No pressure. You do seem a little insecure about sex in general."
     $claire.set_state(eyes="down", mouth="low", emotion="default", emotion_base="small blush")
     cl "Ah, yeah... On one hand I'd like to experience sex, but I don't want to get intimate with just anyone."
@@ -84,8 +100,10 @@ label mirari_hangout1:
     cl "I'm not even talking about the 'true love' thing. Just someone who'd care and treat me well, if that makes sense?"
     $mirari.set_state(emotion="default", mouth="smile", eyes="happy", eyebrows="up")
     show mirari at bounce_up_alone
+    voice "m_s14"
     mi "It does! Incubi and succubi can't form romantic relationships like you humans can – it's our nature after all – but we can still develop deep bonds with others. It's more akin to a friendship or attachment."
     $mirari.set_state(with_dissolve, eyes="tender")
+    voice "m_s10"
     mi "Whoever you choose, I promise they'd treat you kindly and make sure you're happy and secure." 
     $mirari.set_state(with_dissolve, eyes="wink", emotion="note", eyebrows="default", mouth="happy")
     mi "Hehe, after all, we get our nourishment from positive sexual energy. It doesn't do anything if our lover is unhappy, and we like making them feel good." 
@@ -94,6 +112,7 @@ label mirari_hangout1:
     $claire.set_state(emotion="default", eyes="happy", mouth="happy", eyebrows="default", emotion_base="default")
     cl "It does, thank you, Mirari." 
     $mirari.set_state(with_dissolve, emotion="default", eyes="happy", mouth="default")
+    voice "m_w13"
     mi "Anytime~" 
     stop music fadeout 2
     jump next_day
@@ -112,31 +131,37 @@ label mirari_hangout2:
     $mirari.set_state(mouth="happy", eyebrows="up", emotion="bars")
     show mirari at center_alone with dissolve
     show mirari at bounce_up_alone
+    voice "m_w16"
     mi "[claire_name]! [claire_name]! Would you like to play a game with me?"
     $claire.set_state(mouth="smile")
     cl "A game? Sure, what is it?"
     $claire.set_state(with_dissolve, eyes="happy", eyebrows="inwards", mouth="ehh", emotion="sweat")
     cl "I hope it's not strip poker."
     $mirari.set_state(with_dissolve, emotion="sweat", eyes="happy", eyebrows="inwards")
+    voice "m_s05"
     mi "Haha, if it was, I'd already be at a huge disadvantage."
     $mirari.set_state(with_dissolve, **Emotion.normal())
     mi "It's the newest game that's all the rage! Or was... I can't keep track of human time."
     "She points to a board game with various pegs and holes in the wood. We take a seat around the low table."
     $mirari.set_state(mouth="happy", emotion="note", eyebrows="up")
     show mirari at bounce_up_alone
+    voice "m_s01"
     mi "Have you played Mastermind?"
     $claire.set_state(mouth="smile", emotion_base="dark")  
     cl "(This looks like a board game older than I am...)"
     $claire.set_state(eyes="default", emotion_base="default", eyebrows="default", emotion="default")  
     cl "No. How does this work?"
     $mirari.set_state(with_dissolve, eyes="happy", emotion="default")
+    voice "m_s15"
     mi "You gotta break the code! You need to guess the pattern the codemaker created by placing coloured pegs in a row. You get ten tries to break the code."
     $claire.set_state(mouth="uh", eyebrows="up")
     cl "And how will I know I'm on the right track?"
     $mirari.set_state(eyes="wink", mouth="smile")
     show mirari at bounce_up_alone
+    voice "m_s10"
     mi "From my feedback. A red key indicates you got a correct colored peg in the correct position. A white one is a correct color but in an incorrect spot. Bah, explaining is hard, you'll learn as you go."
     $mirari.set_state(with_dissolve, eyes="happy", mouth="happy", emotion="note")
+    voice "m_w17"
     mi "Let's start! Create your code, [claire_name]."
     $claire.set_state(eyebrows="frown", mouth="smile", emotion="note")
     cl "Okay... Let's see..."
@@ -147,6 +172,7 @@ label mirari_hangout2:
     show mmturn_1 at chibi_scene with dissolve
     $claire.set_state(emotion="default", mouth="uh")
     cl "There."
+    voice "m_s10"
     mi "Haha, you play like Akki. No pegs, dear."
     $claire.set_state(with_dissolve, mouth="default", eyes="semi open")
     cl "So no white at all..." 
@@ -174,6 +200,7 @@ label mirari_hangout2:
     show mirari at center_alone with dissolve
     show mirari at bounce_up_alone
     ##Oh gee, I wasn't following before but are they playing as codemaker and breaker at once? Is... is that how you play?
+    voice "m_w18"
     mi "I win! But you still have five chances to guess mine."
     "And I only found one correct colour! While I strain my brain, she gets up to tend to the flowers."
     hide mirari with dissolve
@@ -194,20 +221,25 @@ label mirari_hangout2:
     show mmscore_12 at chibi_scene with dissolve
 
     #7th guess
+    voice "m_s10"
     mi "I love a challenge! Plus some of them are useful and can be harvested"
     show mmturn_13 at chibi_scene with dissolve
     mi "Orias and I formed a little partnership surrounding that. I punch the flowers into submission and he brews a lovely cup from them." 
     show mmscore_13 at chibi_scene with dissolve
     #8th guess
-    $claire.set_state(mouth="oh", eyes="dots", eyebrows="up", emotion="default")
-    cl "...Interesting." 
+    #$claire.set_state(mouth="oh", eyes="dots", eyebrows="up", emotion="default")
+    show chibi_mira02 at chibi_scene with dissolve
+    cla "...Interesting." 
+    voice "m_w19"
     mi "They are! Would you like me to bring a flower from our world for you as a gift?"
+    hide chibi_mira02 with dissolve
     show mmturn_14 at chibi_scene with dissolve
     $claire.set_state(mouth="smile", eyes="happy", eyebrows="inwards", emotion_base="dark", emotion="sweat")
     cl "No, it's okay. It'll be hard to explain to my parents why there's a rose bush devouring their fence."
     show mmscore_14 at chibi_scene with dissolve
     $claire.set_state(mouth="wavy", eyes="clench", eyebrows="frown", emotion_base="default")
     cl "Arg, this game is hard as well!"
+    voice "m_s14"
     mi "You're almost there."
     #9th guess
     $claire.set_state(mouth="oh", eyebrows="up", emotion="default", eyes="wide")
@@ -226,6 +258,7 @@ label mirari_hangout2:
     hide mmscore_13
     hide mmscore_14
     hide mmscore_15
+    voice "m_w20"
     mi "Wow, you cracked the code. Congratulations!"
     hide mastermind with dissolve
     $mirari.set_state(emotion="default")
@@ -233,10 +266,12 @@ label mirari_hangout2:
     $claire.set_state(emotion="sigh", eyes="flat", mouth="uhh", eyebrows="inwards")
     cl "Phew. I feel I pulled a brain muscle there." 
     $mirari.set_state(with_dissolve, **Emotion.normal())
+    voice "m_s10"
     mi "Would you like to play again?"
     $claire.set_state(emotion_base="default", emotion="default", eyes="happy", mouth="smile", eyebrows="default")
     cl "Maybe later. Thanks though, it was fun!"
     $mirari.set_state(with_dissolve, eyes="happy")
+    voice "m_w13"
     mi "Anytime."
     stop music fadeout 2
     jump next_day
@@ -259,10 +294,12 @@ label mirari_hangout3:
     $mirari.set_state(emotion="note")
     show mirari at center_alone with dissolve
     show mirari at bounce_up_alone
+    voice "m_w27"
     mi "Want me to help with that?"
     $claire.set_state(eyes="default", eyebrows="default", mouth="uh", emotion="default")
     cl "Will you?"
     $mirari.set_state(with_dissolve, eyes="happy", mouth="happy", emotion="heart")
+    voice "m_s10"
     mi "Of course! Take a seat and I'll comb your hair for you."
     hide mirari with dissolve
     show chibi_mira01 at chibi_scene with dissolve
@@ -270,6 +307,7 @@ label mirari_hangout3:
     "Grateful for the tempting offer, I sit down on the grass in front of her lawn chair. She leans in, running her fingers through my hair as she brushes it."
     "I close my eyes and let out a little happy hum. It feels soooo good."
     cla "It's been a while since someone pampered me like this..."
+    voice "m_s09"
     mi "Were you going for a new hairstyle?"
     cla "Trying. I can't tame my hair at all."
     cla "I get a little worried about my appearance sometimes, but I guess that's normal."
@@ -277,6 +315,7 @@ label mirari_hangout3:
     hide chibi_mira01
     $mirari.set_state(emotion="default", eyes="default", eyebrows="frown", mouth="uh")
     show mirari at center_alone with dissolve
+    voice "m_w28"
     mi "Hon, if the person truly cares for you, they'd never ever be disappointed by your appearance in bed. If they make you feel inadequate, they aren't worth your time."
     $mirari.set_state(with_dissolve, eyes="closed", eyebrows="default", mouth="smile")
     mi "You deserve to be with someone who makes you feel beautiful."
@@ -286,10 +325,12 @@ label mirari_hangout3:
     show mirari at bounce_left
     "I feel a flick at the back of my head."
     $mirari.set_state(with_dissolve, eyes="wink", mouth="uh", emotion="default")
+    voice "m_w29"
     mi "I know it sounds odd coming from a succubus, but, surprise, sex isn't about 'mind-blowing experiences'. There's more to it than impressing your lover."
     $mirari.set_state(with_dissolve, eyes="closed", mouth="happy", eyebrows="up")
     mi "It's about willingness to explore, practice and being okay if things don't go as planned."
     $mirari.set_state(with_dissolve, eyes="tender", mouth="default", eyebrows="default")
+    voice "m_s12"
     mi "I've had many - many - partners over the years, but I still learn new things. Everyone is different and has their own needs and, yes, insecurities."
     $mirari.set_state(with_dissolve, eyes="happy")
     mi "Basically, you'll know when you feel ready, [claire_name]. Don't try to rush it." 
@@ -297,6 +338,7 @@ label mirari_hangout3:
     cl "...Thank you. I really needed this little pep talk."
     $mirari.set_state(mouth="uh", eyebrows="frown")
     show mirari at bounce_up_alone
+    voice "m_s08"
     mi "It's not a problem. And if I ever hear someone saying you're uncute, I'll toss spiders through their bedroom window." 
     $claire.set_state(mouth="happy")
     stop music fadeout 2
@@ -306,22 +348,26 @@ label mirari_hangout3:
     cl "I never considered whether I'm attracted to women or not, but I think you're really beautiful, too."
     $mirari.set_state(emotion="flowers", eyes="default", eyebrows="inwards", mouth="smile", emotion_base="small blush")
     show mirari at bounce_up_alone
+    voice "m_w31"
     mi "You do!? Aw, you're adorable, [claire_name]!"
     "She hugs me tightly from behind."
     $mirari.set_state(with_dissolve, emotion="heart", eyes="tender", emotion_base="default")
     mi "I know we've only been together for a few days, but I think you're a sweet person. I hope whoever you choose down the road makes you very happy."
     $mirari.set_state(emotion="note", eyes="happy", eyebrows="up")
     show mirari at sway
+    voice "m_s09"
     mi "There, hair's done! Where's that mirror... What do you think?"
     $claire.set_state(emotion="sweat", emotion_base="default", eyebrows="flat", eyes="default", mouth="low")
     cl "I don't look any different?"
     $mirari.set_state(with_dissolve, emotion="default", eyes="default", eyebrows="default")
+    voice "m_s08"
     mi "It's because I love your hair the way it is." 
     $mirari.set_state(with_dissolve, emotion="heart", eyes="wink", mouth="tongue")
     mi "Although... later tonight, I'd love to give it a cute disheveled appearance, too." 
     $claire.set_state(emotion_base="large blush", emotion="steam", eyes="dots", eyebrows="up", mouth="wavy")
     cl "R-really?"
     $mirari.set_state(with_dissolve, emotion="default", eyes="happy", mouth="smile", emotion_base="small_blush")
+    voice "m_s01"
     mi "Kidding aside... but if you do pick me... I promise you won't disappoint me, and I'd make it a fun, relaxing, experience for you."
     $claire.set_state(emotion="default", eyes="tender", mouth="smile", eyebrows="default")
     stop music fadeout 3
@@ -421,7 +467,7 @@ label mirari_sex:
                 "Go for it.":
                     $ mirari_sex_choices.nibbles = True
                     cla "Sure, although what would you even nib—"
-                    #show mira_back nibble with dissolve
+                    show mira_back nibble with dissolve
                     "Her tongue trails up my ear rim, then she blows lightly on it, creating a cooling sensation. I gasp as she leans in and nibbles my earlobe. I feel my face go warm from the gesture." 
                     cla "Ng..."
                     mi "You're adorable..."
@@ -434,8 +480,8 @@ label mirari_sex:
 
                 "I'd like to stop...":
                     jump mirari_stop_now
-            # if mirari_sex_choices.nibbles == True:
-            #     show mira_back with dissolve
+            if mirari_sex_choices.nibbles == True:
+                show mira_back with dissolve
             "When she gets to my shoulder blade, I cringe when her fingers push against what feels like a cluster of nerves."
             cla "Ouch..."
             mi "A knot?"
@@ -485,10 +531,12 @@ label mirari_sex:
                     cla "Sure."
                     $ mirari_sex_choices.nibbles = True
                     "Her fingers lightly tug my toes, one by one. She looks up at me with a teasing glint in her eye, then carefully bites my big toe."
+                    show mira_foot nibble with dissolve
                     "I can sense my face heat up. I didn't expect the gesture to feel - or appear - so erotic." 
                     cla "...Ng..."
                     "Her fingers keep working my arch while her moist lips suck and nibble my toes and the top of my foot." 
                     mi "So cute..."
+                    show mira_foot with dissolve
 
                 "No nibbling.":
                     $ mirari_sex_choices.nibbles = False
@@ -808,12 +856,17 @@ label continuing_to_end:
     if mirari_scenes >= 3:
         $ persistent.mirari_complete = True
         mi "Hope you feel a little better about yourself. I enjoyed this and you didn't disappoint me in the least."
+        $mcuddle_mface = "2"
         mi "Ah, the disheveled hair look {i}is{/i} cute on you after all."
         "I use a free hand to at least pat down my bangs."
         cla "T-thank you... for making me feel beautiful."
+        $mcuddle_mface = "1"
         mi "You {i}are{/i} beautiful."
         "She giggles and we exchange a small kiss. After that, she closes her eyes and gives my hand a comforting squeeze."
+    $mcuddle_mface = "3"
+    $mcuddle_cface = "2"
     "Mirari's closeness and warmth is more soothing than any blanket, and I find myself drifting off to sleep as well..."
+    $mira_epilong = True
     call credits from _call_credits_1
     jump mirari_epilogue
 
@@ -1025,8 +1078,8 @@ label mirari_epilogue:
     # smaller epilogues you get if:
     #1) didn't see all three scenes from the same sex demon
     #2)didn't make it ALL the way with sex. 
-    if mirari_scenes==3:
-        pass
+    if mirari_scenes==3 and mira_epilong == True:
+        jump mirari_epilogue_long
     else:
         pass
     scene bg bedroom_day with dissolve 
@@ -1043,15 +1096,93 @@ label mirari_epilogue:
     cl "...Was it a dream?"
     "I sit up and reach for my phone as part of my routine. But there's something different about it. Next to my phone is a note. Curious, I pick it up."
     scene white with dissolve
+    voice "mirarinote1"
     show text "{color=#000}'Good morning, sweetie!\n I wish I could've cuddled with you longer, or wake up together and give you a kiss.\n It was so adorable how you fell asleep holding my hand. <3\n If you ever want to see me again, draw the mark at the bottom of the note and say the words on the back.\n Even if you just want a massage, I'd be more than happy to provide.{/color}" with dissolve
     $renpy.pause()
+    voice "mirarinote2"
     show text "{color=#000}Take care of yourself, hon! - Mirari.'{/color}" with dissolve
     #content face
     $renpy.pause()
     show bg bedroom_day with dissolve
     $ claire.set_state(eyes="default", eyebrows="default", mouth="smile", emotion_base="small blush")
     cl "..."
-    $ claire.set_state(eyes="happy", eyebrows="default", mouth="grin")
+    $ claire.set_state(with_dissolve, eyes="happy", eyebrows="default", mouth="grin")
     cl "I might take up on that offer one day... Thanks, Mirari."
+    scene white with dissolve
+    return
+
+label mirari_epilogue_long:
+    stop music fadeout 1
+    scene black with dissolve
+    $renpy.choice_for_skipping()
+    $renpy.pause(0.4)
+    play music music_mirari
+    scene bg street with dissolve
+    $ claire.set_state(base="default", **Emotion.normal())
+    "..."
+    "..."
+    $claire.set_state(eyes="down", emotion="default", eyebrows="default", mouth="smile", emotion_base="default")
+    cl "Five attempts... I'm getting better at mastermind."
+    "I pocket my phone as I walk home from university. Although I'm happy with my little victory, it feels hollow since I can't play it with a certain someone..."
+    "Even though it's been a week after spring break, I still find myself missing Mirari. I wonder if she punched out a flower recently."
+    voice "m_epi01"
+    "???" "[claire_name]! There you are!"
+    $mirari.set_state(base="human", **Emotion.normal())
+    show mirari at center_alone2 with dissolve
+    $claire.set_state(eyes="wide", emotion="default", eyebrows="up", mouth="oh", emotion_base="default")
+    cl "M-Mirari!?"
+    $mirari.set_state(eyes= "happy", mouth="grin", eyebrows="default", emotion="note", emotion_base="default")
+    show mirari at bounce_up_alone2
+    voice "m_s01"
+    "She envelops me in a tight hug and it takes me a moment to register she's right here in front of me."
+    $mirari.set_state(with_dissolve, eyes= "happy", mouth="grin", eyebrows="default", emotion="default", emotion_base="default")
+    voice "m_epi02"
+    mi "Good! I'm so glad I've been able to find you. I've been excited to give you this present; I collected them myself."
+    $mirari.set_state(with_dissolve, eyes= "default", mouth="smile", eyebrows="default", emotion="default", emotion_base="default")
+    "She gives me a small packet with a crude drawing of a tulip-like plant on the front. I open up the packet and see tiny little seeds."
+    $claire.set_state(with_dissolve, eyes="happy", emotion="sweat", eyebrows="default", mouth="grin", emotion_base="default")
+    cl "Oh wow... They won't eat the fence, right?"
+    $mirari.set_state(with_dissolve, eyes= "happy", mouth="happy", eyebrows="default", emotion="flowers", emotion_base="default")
+    voice "m_epi03"
+    mi "Of course not! I took note you didn't want any carnivorous plants. It only needs a little sun and sugar water."
+    $mirari.set_state(with_dissolve, eyes= "default", mouth="smile", eyebrows="default", emotion="default", emotion_base="default")
+    mi "Once they bloom, at night they release balls of light that resembles your world's fireflies. I keep one by my bedroom window sill, actually, so I thought..."
+    $mirari.set_state(with_dissolve, eyes= "happy", mouth="uh", eyebrows="default", emotion="sweat", emotion_base="default")
+    voice "m_epi04"
+    mi "It wouldn't be a hassle... I hope? I promise they're super harmless and similar to your earth flowers."
+    $claire.set_state(eyes="happy", emotion="default", eyebrows="default", mouth="happy", emotion_base="default")
+    cl "No, I love it. And I promise I'll water them."
+    $mirari.set_state(with_dissolve, eyes= "default", mouth="smile", eyebrows="default", emotion="default", emotion_base="default")
+    $claire.set_state(with_dissolve, eyes="default", emotion="default", eyebrows="default", mouth="oh", emotion_base="default")
+    cl "Is this the only reason you came to see me?"
+    $mirari.set_state(with_dissolve, eyes= "closed", mouth="smile", eyebrows="default", emotion="default", emotion_base="small blush")
+    "She twirls a strand of her hair, then grabs my hand."
+    $mirari.set_state(with_dissolve, eyes= "tender", mouth="grin", eyebrows="default", emotion="default", emotion_base="small blush")
+    voice "m_epi05"
+    mi "No, I wanted to see you too. I thought, if you wanted to, we could be lovers."
+    $mirari.set_state(with_dissolve, eyes= "wink", mouth="smile", eyebrows="default", emotion="default", emotion_base="small blush")
+    voice "m_s01"
+    mi "I enjoyed our little night together, and I'd love to give you more memories." 
+    show mirari at bounce_down_alone2 
+    $mirari.set_state(with_dissolve, eyes= "happy", mouth="smile", eyebrows="default", emotion="default", emotion_base="default")
+    "She leans in and we share a gentle kiss."
+    $claire.set_state(eyes="default", emotion="default", eyebrows="default", mouth="smile", emotion_base="small blush")
+    cl "I'd like that."
+    $mirari.set_state(with_dissolve, eyes= "default", mouth="happy", eyebrows="default", emotion="flowers", emotion_base="default")
+    voice "m_epi06"
+    mi "Wonderful! We should celebrate."
+    $mirari.set_state(with_dissolve, eyes= "default", mouth="smile", eyebrows="default", emotion="default", emotion_base="default")
+    voice "m_epi07"
+    mi "I think it's time for me to get a new babydoll. Shall we do a little shopping?"
+    $claire.set_state(eyes="tender side", emotion="default", eyebrows="default", mouth="low", emotion_base="small blush")
+    cl "True... If we're going to see each other often, I think I need more than one outfit..." 
+    show mirari at sway
+    $mirari.set_state(with_dissolve, eyes= "happy", mouth="kitty", eyebrows="default", emotion="heart", emotion_base="small blush")
+    voice "m_s01"
+    mi "Ah, I'd love to dress you up in cute lingerie. It'll be a lot of fun. I think something with frills will look super adorable on you."
+    $mirari.set_state(with_dissolve, eyes= "happy", mouth="smile", eyebrows="default", emotion="heart", emotion_base="small blush")
+    $claire.set_state(eyes="happy", emotion="default", eyebrows="default", mouth="grin", emotion_base="small blush")
+    cl "Sounds like a plan."
+    stop music fadeout 1
     scene white with dissolve
     return

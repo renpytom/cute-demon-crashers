@@ -1,6 +1,8 @@
 # label day3_morning:
 #     jump choose_a_place_to_hangout
 
+define everybody_sex = False
+
 label sex_choice:
     scene black with dissolve 
     play music music_tension
@@ -24,6 +26,7 @@ label sex_choice:
     "The others are already gathered in the hallway when I arrive." 
     $mirari.set_state(with_dissolve, eyes="wink")
     show mirari zorder 3 at speak
+    voice "m_w30"
     mi "Remember, the portal closes around midnight, so it should give you plenty of time with whoever you pick." 
     $mirari.set_state(eyes="default")
     show mirari zorder 0 at endspeak
@@ -48,6 +51,14 @@ label sex_choice:
     $akki.set_state(eyes="default")
     show akki at endspeak
     "...Who should I pick?"
+
+    if persistent.akki_complete:
+        if persistent.orias_complete:
+            if persistent.kael_complete:
+                if persistent.mirari_complete:
+                    $everybody_sex = True
+
+
     menu:
         
         "Akki.":
@@ -103,6 +114,8 @@ label sex_choice:
                     $orias.set_state(with_dissolve, eyes="closed", eyebrows="tender", mouth="smile")
                     ori "It's a good match."
 
+            show kael zorder 2
+            show orias zorder 1
             show akki zorder 3 at speak
             $akki.set_state(eyebrows="frown",eyes="default", mouth="happy")
             ak "Let's do this! Come on~"
@@ -128,6 +141,7 @@ label sex_choice:
             mi "We should find a way to celebrate when he gets back! I say we bake a cake!"
             $kael.set_state(mouth="happy", eyes="happy", emotion="note")
             show kael at bounce_up
+            voice "k_w15"
             ka "I like that suggestion. Should we write something on it?"
             $orias.set_state(with_dissolve, mouth="happy", eyes="closed", emotion="note", eyebrows="up")
             ori "Something like... 'Congratulations On Your Copulation' followed by three exclamation marks."
@@ -136,126 +150,290 @@ label sex_choice:
             $orias.set_state(with_dissolve,eyes="default", emotion="default", mouth="smile")
             $mirari.set_state(with_dissolve, eyes="happy", mouth="happy")
             show mirari at bounce_up
+            voice "m_w33"
             mi "I love it! I have a feeling it'll go successfully for the both of them~" 
             jump akki_sex
         #transition to sex scene
-               
-        # "Kael.":
-        #     if kael_scenes >= 3:
-        #         "Kael and I exchange looks and he gives an encouraging nod."
-        #         cl "Kael. If you don't mind someone as inexperienced as me..."
-        #         ka "I'd be honored."
-        #     else:
-        #         cl "Then, I choose Kael. Is that okay with you?"
-        #         ka "Of course it is."
-        #         if akki_scenes >= 3:
-        #             mi "How wonderful! Kael's very gentle, [claire_name]."
-        #             ori "It will be a good first-time experience."
-        #             ak "Can't beat experience..."
-        #         if mirari_scenes >= 3:
-        #             ori "It will be a good first-time experience."
-        #             ak "You'll learn a lot from him. (I still do...)"
-        #             mi "He is a good cook after all..."
-        #         if orias_scenes >= 3:
-        #             mi "How wonderful! Kael's very gentle, [claire_name]."
-        #             ak "You'll learn a lot from him. (I still do...)"
-        #             ori "He would be more compatible..."
-        #         else:    
-        #             mi "How wonderful! Kael's very gentle, [claire_name]."
-        #             ori "It will be a good first-time experience."
-        #             ak "You'll learn a lot from him. (I still do...)"
-        #     mi "Then we'll let you two be~"
-        #     ori "We'll take our leave, then."
-        #     ak "Later!"
-        #     cl "Take care."
-        #     #3 leave
-        #     cl "..."
-        #     ka "Nervous?"
-        #     cl "A bit..."
-        #     ka "I don't blame you. Feel free to refreshen up with a shower or whatever you need to do. I'll meet you in the bedroom."
-        #     cl "Sounds good."
-        #     ka "Oh and..."
-        #     cl "Hm?"
-        #     ka "If it gets to that point... would you prefer if I use a condom?"
-        #     cl "..."
-        #     ka "I thought it'd be better to discuss this beforehand than during the moment." 
-        #     cl "I see... Do demons usually use condoms?"
-        #     ka "For us, we don't need them. We can't get humans pregnant, and we're naturally immune. However, I know partners may want them for aesthetic reasons or it 'feels proper' to them."
-        #     cl "Then..."
-        #     menu:
-        #         "Yes please.":
-        #             $ kael_sex_choices.condom = True
-        #             cl "Considering how much safe sex ed I've had ingrained into me during high school... I'd feel at ease if you used a condom."
-        #         "We'll be fine.":
-        #             $ kael_sex_choices.condom = False
-        #             cl "If it's not needed, then we'll be okay. I trust you, Kael."
-        #     ka "Got it. Thank you."
-        #     cl "No, thank you for bringing it up. Um, I'll see you after my shower."
 
-        #     jump kael_sex
+         
+        "Kael.":
+            if kael_scenes >= 3:
+                $kael.set_state( with_dissolve, eyes="closed" )
+                "Kael and I exchange looks and he gives an encouraging nod."
+                $claire.set_state(eyebrows="inwards", mouth="smile")
+                cl "Kael. If you don't mind someone as inexperienced as me..."
+                voice "k_w34"
+                show kael zorder 3 at speak
+                $kael.set_state(with_dissolve, mouth="smile", eyes= "tender")
+                ka "I'd be honored."
+            else:
+                $claire.set_state(eyebrows="inwards", mouth="smile")
+                cl "Then, I choose Kael. Is that okay with you?"
+                if akki_scenes >= 3:
+                    $akki.set_state(with_dissolve, eyebrows="up", mouth="neutral")
+                if mirari_scenes >= 3:
+                    $mirari.set_state(with_dissolve, eyebrows="inwards")
+                if orias_scenes >= 3:
+                    $orias.set_state(with_dissolve, eyebrows="inwards")
+
+                show kael zorder 3 at speak
+                $kael.set_state(with_dissolve, mouth="smile", eyes= "tender")
+                voice "k_w20"
+                ka "Of course it is."
+                if akki_scenes >= 3:
+                    show mirari at sway
+                    $mirari.set_state(with_dissolve, eyes="happy", mouth="happy", emotion="heart")
+                    voice "m_epi06"
+                    mi "How wonderful! Kael's very gentle, [claire_name]."
+                    show orias at bounce_up
+                    $orias.set_state (with_dissolve, mouth="smile", eyes="closed")
+                    ori "It will be a good first-time experience."
+                    $akki.set_state(with_dissolve, eyes="closed",mouth="smile", eyebrows="inwards", emotion="sweat" )
+                    ak "Can't beat experience..."
+                elif mirari_scenes >= 3:
+                    show orias at bounce_up
+                    $orias.set_state (with_dissolve, mouth="smile", eyes="closed")
+                    ori "It will be a good first-time experience."
+                    show akki at bounce_up
+                    $akki.set_state (with_dissolve, eyes="happy", mouth ="happy")
+                    ak "You'll learn a lot from him. (I still do...)"
+                    $mirari.set_state (with_dissolve, eyebrows="inwards", emotion="sweat", eyes="closed", mouth="smile")
+                    voice "m_s18"
+                    mi "He is a good cook after all..."
+                elif orias_scenes >= 3:
+                    show mirari at sway
+                    $mirari.set_state(with_dissolve, eyes="happy", mouth="happy", emotion="heart")
+                    voice "m_epi06"
+                    mi "How wonderful! Kael's very gentle, [claire_name]."
+                    show akki at bounce_up
+                    $akki.set_state (with_dissolve, eyes="happy", mouth ="happy")
+                    ak "You'll learn a lot from him. (I still do...)"
+                    $orias.set_state(with_dissolve, eyes="closed", mouth="smile")
+                    ori "He would be more compatible..."
+                else:    
+                    show mirari at sway
+                    $mirari.set_state(with_dissolve, eyes="happy", mouth="happy", emotion="heart")
+                    voice "m_epi06"
+                    mi "How wonderful! Kael's very gentle, [claire_name]."
+                    show orias at bounce_up
+                    $orias.set_state (with_dissolve, mouth="smile", eyes="closed")
+                    ori "It will be a good first-time experience."
+                    show akki at bounce_up
+                    $akki.set_state (with_dissolve, eyes="happy", mouth ="happy")
+                    ak "You'll learn a lot from him. (I still do...)"
+            $mirari.set_state(with_dissolve, eyes="wink", emotion="default", mouth="smile", eyebrows="default")
+            $akki.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="smile", emotion="default")
+            $orias.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="smile", emotion="default")
+            show kael at endspeak
+            voice "m_s12"
+            show mirari at bounce_up
+            mi "Then we'll let you two be~"
+            show orias at bounce_up
+            ori "We'll take our leave, then."
+            show akki at bounce_up
+            $akki.set_state(with_dissolve, eyes="wink", mouth="grin")
+            ak "Later!"
+            $claire.set_state(eyes="happy", mouth="happy", eyebrows="default")
+            cl "Take care."
+            
+            #3 leave
+            hide orias
+            hide mirari
+            hide akki
+            with moveoutright
+            show kael at center with move
+            show kael at center_alone2 with dissolve
+
+
+            $claire.set_state(eyes="tender", mouth="smile", emotion="sweat", eyebrows="inwards")
+            cl "..."
+            voice "k_w35"
+            $kael.set_state(with_dissolve, eyebrows="inwards")
+            ka "Nervous?"
+            $claire.set_state(eyes="happy")
+            cl "A bit..."
+            $kael.set_state(with_dissolve, eyes="wink")
+            voice "k_s01"
+            ka "I don't blame you. Feel free to refreshen up with a shower or whatever you need to do. I'll meet you in the bedroom."
+            $claire.set_state(eyes="default", eyebrows="default", emotion="default")
+            cl "Sounds good."
+            voice "k_w36"
+            $kael.set_state(with_dissolve, eyes="default", eyebrows="up", mouth="ah")
+            ka "Oh and..."
+            $claire.set_state(eyebrows="up", mouth="low")
+            cl "Hm?"
+            $kael.set_state(with_dissolve,eyes="tender", mouth="smile", emotion="heart")
+            voice "k_s12"
+            ka "If it gets to that point... would you prefer if I use a condom?"
+            $claire.set_state(eyes="dots", emotion_base="large blush", mouth="v", emotion="steam")
+            cl "..."
+            $kael.set_state(with_dissolve,eyes="happy", eyebrows="inwards", emotion="sweat")
+            voice "k_s03"
+            ka "I thought it'd be better to discuss this beforehand than during the moment." 
+            $claire.set_state(eyes="default", emotion_base="small blush", emotion="default", mouth="uh")
+            cl "I see... Do demons usually use condoms?"
+            voice "k_s14"
+            $kael.set_state(with_dissolve,eyes="default", eyebrows="default", emotion="default")
+            ka "For us, we don't need them. We can't get humans pregnant, and we're naturally immune. However, I know partners may want them for aesthetic reasons or it 'feels proper' to them."
+            $claire.set_state(eyebrows="flat", mouth="default")
+            cl "Then..."
+            menu:
+                "Yes please.":
+                    $ kael_sex_choices.condom = True
+                    $claire.set_state(eyes="closed", mouth="uh")
+                    cl "Considering how much safe sex ed I've had ingrained into me during high school... I'd feel at ease if you used a condom."
+                "We'll be fine.":
+                    $ kael_sex_choices.condom = False
+                    $claire.set_state(eyes="tender", eyebrows="default", mouth="smile")
+                    cl "If it's not needed, then we'll be okay. I trust you, Kael."
+            voice "k_w37"    
+            $kael.set_state(with_dissolve, eyes="wink")    
+            ka "Got it. Thank you."
+            $claire.set_state(eyes="happy", emotion="sweat")
+            cl "No, thank you for bringing it up. Um, I'll see you after my shower."
+
+            jump kael_sex
 
                  
-        # "Orias.":
-        #     if orias_scenes >= 3:
-        #         "Orias averts his eyes, not expecting my answer."
-        #         cl "I... pick Orias."
-        #         ori "..."
-        #         ak "Wow."
-        #         ka "It's rare for him to be picked for their first time."
-        #         mi "Aw, look, he's secretly pleased~"
-        #         ori "A-anyway..."
-        #     else:
-        #         cl "I choose Orias."
-        #         ori "M-me?"
-        #         if akki_scenes >= 3:
-        #             ak "She picked expert mode..."
-        #             mi "You do know what he's into, right?"
-        #             ka "You feel comfortable with your choice?"
-        #             cl "Was I not supposed to pick Orias?"
-        #             mi "Oh, it's not that, it's more um... a pleasant surprise."
-        #         if mirari_scenes >= 3:
-        #             ak "You sure?"
-        #             ka "You feel comfortable with your choice?"
-        #             mi "I didn't see that coming..."
-        #             cl "Was I not supposed to pick Orias?"
-        #             mi "Oh, it's not that, it's more um... a pleasant surprise."
-        #         if kael_scenes >= 3:
-        #             ak "You sure?"
-        #             mi "You do know what he's into, right?"
-        #             ka "Wonder if it's the tea..."
-        #             cl "Was I not supposed to pick Orias?"
-        #             mi "Oh, it's not that, it's more um... a pleasant surprise."
-        #         else:
-        #             ak "You sure?"
-        #             mi "You do know what he's into, right?"
-        #             ka "You feel comfortable with your choice?"
-        #             cl "Was I not supposed to pick Orias?"
-        #             mi "Oh, it's not that, it's more um... a pleasant surprise."
-        #     ori "To be honest, I didn't expect to be a potential suitor, let alone picked."
-        #     ori "However, thank you. I promise to give you a memorable experience."
-        #     mi "He may seem cold, but he's very sweet. He'll treat you well."
-        #     ka "I guess it's time to let you two be, then."
-        #     ak "Later, [claire_name]."
-        #     ak "Remember, the safeword is 'red' with him."
-        #     cl "Huh, what?"
-        #     ori "Please don't say things like that so suddenly. I'll explain later."
-        #     # 3 leave
-        #     cl "So..."
-        #     ori "Foremost, this would be an opportune time for you to relax and prepare. I highly suggest a bath, considering what I already have planned for tonight."
-        #     cl "You sure thought this out thoroughly for someone who didn't expect to be picked."
-        #     if orias_scenes >= 3:
-        #         ori "..."
-        #         ori "I had a slim hope you would..."
-        #     else:
-        #         ori "I like being prepared."
-        #     ori "Since you're new to this, everything we'll do will be extremely tame under my usual standards." 
-        #     ori "I promise you can feel safe with me." 
-        #     cl "Thank you, Orias. I'll take your advice, then. See you in a bit."
-        #     ori "Oh, before I forget... Any allergies I should be aware of?"
-        #     cl "Unless you plan to bring bees into the bedroom, I should be okay."
-        #     ori "Heh, duly noted."
+        "Orias.":
+            if orias_scenes >= 3:
+                $orias.set_state(with_dissolve, eyes="side", mouth="default", eyebrows="tender")
+                "Orias averts his eyes, not expecting my answer."
+                $claire.set_state(eyebrows="default", mouth="smile")
+                cl "I... pick Orias."
+                $orias.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="oh", emotion="bars")
+                $akki.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="low", emotion="shock")
+                $kael.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="ah", emotion="shock")
+                $mirari.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="oh", emotion="shock")
+                ori "..."
+                $orias.set_state(with_dissolve, emotion="default",emotion_base="small blush", mouth="default")
+                $akki.set_state(with_dissolve, mouth="ah", emotion="default")
+                $kael.set_state(with_dissolve, emotion="default")
+                $mirari.set_state(with_dissolve, emotion="default")
+                ak "Wow."
+                $kael.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="default")
+                ka "It's rare for him to be picked for their first time."
+                $akki.set_state(with_dissolve, mouth="default", eyes="happy", eyebrows="default")
+                $mirari.set_state(eyes="happy", mouth="kitty", emotion="note", eyebrows="default")
+                $orias.set_state(with_dissolve, eyes="side", eyebrows="tender", mouth="smile")
+                show mirari at sway
+                mi "Aw, look, he's secretly pleased~"
+                $mirari.set_state(with_dissolve, emotion="default", eyes="tender", mouth="default")
+                $orias.set_state(with_dissolve, eyes="closed", mouth="oh", emotion="sweat", eyebrows="frown")
+                show orias at bounce_up
+                ori "A-anyway..."
+            else:
+                $claire.set_state(eyebrows="flat", mouth="oh", emotion="default", eyes="closed")
+                cl "I choose Orias."
+                $orias.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="oh", emotion="bars")
+                $akki.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="low", emotion="shock")
+                $kael.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="ah", emotion="shock")
+                $mirari.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="oh", emotion="shock")
+                show orias at bounce_up
+                ori "M-me?"
+                if akki_scenes >= 3:
+                    $orias.set_state(with_dissolve, emotion="default",emotion_base="small blush", mouth="default")
+                    $akki.set_state(with_dissolve, mouth="low", emotion="sweat", eyes="dots", eyebrows="inwards")
+                    $kael.set_state(with_dissolve, emotion="default", mouth="neutral")
+                    $mirari.set_state(with_dissolve, emotion="default",  mouth="neutral")
+                    ak "She picked expert mode..."
+                    $mirari.set_state(with_dissolve, eyebrows="inwards", mouth="smile", eyes="happy", emotion="sweat")
+                    mi "You do know what he's into, right?"
+                    $kael.set_state(with_dissolve, eyes="default", mouth="smile", eyebrows="inwards", emotion="sweat")
+                    ka "You feel comfortable with your choice?"
+                    $claire.set_state(eyebrows="inwards", mouth="low", eyes="default", emotion="sweat")
+                    cl "Was I not supposed to pick Orias?"
+                    $mirari.set_state(with_dissolve, mouth="uh", emotion="note", eyebrows="up")
+                    mi "Oh, it's not that, it's more um... a pleasant surprise."
+                elif mirari_scenes >= 3:
+                    $orias.set_state(with_dissolve, emotion="default",emotion_base="small blush", mouth="default")
+                    $kael.set_state(with_dissolve, emotion="default",  mouth="neutral")
+                    $mirari.set_state(with_dissolve, emotion="default", mouth="neutral")
+                    $akki.set_state(with_dissolve, eyebrows="default", eyes="default", emotion="sweat", mouth="uhh")
+                    ak "You sure?"
+                    $kael.set_state(with_dissolve, eyes="default", mouth="smile", eyebrows="inwards", emotion="sweat")
+                    ka "You feel comfortable with your choice?"
+                    $mirari.set_state(with_dissolve, eyes="closed", eyebrows="inwards", emotion="sweat")
+                    mi "I didn't see that coming..."
+                    $claire.set_state( eyebrows="inwards", mouth="low", eyes="default", emotion="sweat")
+                    cl "Was I not supposed to pick Orias?"
+                    $mirari.set_state(with_dissolve, mouth="uh", emotion="note", eyebrows="up")
+                    mi "Oh, it's not that, it's more um... a pleasant surprise."
+                elif kael_scenes >= 3:
+                    $orias.set_state(with_dissolve, emotion="default",emotion_base="small blush", mouth="default")
+                    $kael.set_state(with_dissolve, emotion="default",  mouth="neutral")
+                    $mirari.set_state(with_dissolve, emotion="default",  mouth="neutral")
+                    $akki.set_state(with_dissolve, eyebrows="default", eyes="default", emotion="sweat",mouth="uhh")
+                    ak "You sure?"
+                    $mirari.set_state(with_dissolve, eyebrows="inwards", mouth="smile", eyes="happy", emotion="sweat")
+                    mi "You do know what he's into, right?"
+                    $kael.set_state(with_dissolve, eyes="tender side", eyebrows="inwards", mouth="low", emotion="sweat")
+                    ka "Wonder if it's the tea..."
+                    $claire.set_state( eyebrows="inwards", mouth="low", eyes="default")
+                    cl "Was I not supposed to pick Orias?"
+                    $mirari.set_state(with_dissolve, mouth="uh", emotion="note", eyebrows="up")
+                    mi "Oh, it's not that, it's more um... a pleasant surprise."
+                else:
+                    $orias.set_state(with_dissolve, emotion="default",emotion_base="small blush", mouth="default")
+                    $kael.set_state(with_dissolve, emotion="default", mouth="neutral")
+                    $mirari.set_state(with_dissolve, emotion="default", mouth="neutral")
+                    $akki.set_state(with_dissolve, eyebrows="default", eyes="default", emotion="sweat", mouth="uhh")
+                    ak "You sure?"
+                    $mirari.set_state(with_dissolve, eyebrows="inwards", mouth="smile", eyes="happy", emotion="sweat")
+                    mi "You do know what he's into, right?"
+                    $kael.set_state(with_dissolve, eyes="default", mouth="smile", eyebrows="inwards", emotion="sweat")
+                    ka "You feel comfortable with your choice?"
+                    $claire.set_state(eyebrows="inwards", mouth="low", eyes="default", emotion="sweat")
+                    cl "Was I not supposed to pick Orias?"
+                    $mirari.set_state(with_dissolve, mouth="uh", emotion="note", eyebrows="up")
+                    show mirari at bounce_up
+                    mi "Oh, it's not that, it's more um... a pleasant surprise."
+            $mirari.set_state(with_dissolve, **Emotion.normal())
+            $orias.set_state(with_dissolve, eyes="side", mouth="oh", eyebrows="tender")
+            ori "To be honest, I didn't expect to be a potential suitor, let alone picked."
+            $kael.set_state(with_dissolve, **Emotion.normal())
+            $akki.set_state(with_dissolve, **Emotion.normal())
+            $orias.set_state(with_dissolve, mouth="smile", eyes="default")
+            ori "However, thank you. I promise to give you a memorable experience."
+            $mirari.set_state(with_dissolve, eyes="happy", mouth="happy")
+            mi "He may seem cold, but he's very sweet. He'll treat you well."
+            $kael.set_state(with_dissolve, eyes="happy")
+            ka "I guess it's time to let you two be, then."
+            $akki.set_state(with_dissolve, mouth="happy")
+            ak "Later, [claire_name]."
+            $akki.set_state(with_dissolve, mouth="uh")
+            show akki zorder 3 at speak
+            ak "Remember, the safeword is 'red' with him."
+            $claire.set_state(eyes="dots", eyebrows="up")
+            cl "Huh, what?"
+            $orias.set_state(eyebrows="frown", mouth="wavy", eyes="closed")
+            ori "Please don't say things like that so suddenly. I'll explain later."
+            hide mirari
+            hide kael
+            hide akki
+            with moveoutright
+            show orias at center with move
+            #[TODO]
+            #---------- ADD FACES-------------------------
+            $claire.set_state(**Emotion.normal())
+            $orias.set_state(**Emotion.normal())
+            cl "So..."
+            show orias at center_alone2 with dissolve
+            ori "Foremost, this would be an opportune time for you to relax and prepare. I highly suggest a bath, considering what I already have planned for tonight."
+            cl "You sure thought this out thoroughly for someone who didn't expect to be picked."
+            if orias_scenes >= 3:
+                ori "..."
+                ori "I had a slim hope you would..."
+            else:
+                ori "I like being prepared."
+            ori "Since you're new to this, everything we'll do will be extremely tame under my usual standards." 
+            ori "I promise you can feel safe with me." 
+            cl "Thank you, Orias. I'll take your advice, then. See you in a bit."
+            ori "Oh, before I forget... Any allergies I should be aware of?"
+            cl "Unless you plan to bring bees into the bedroom, I should be okay."
+            ori "Heh, duly noted."
 
-        #     jump orias_sex
+            jump orias_sex
                 
                 
         "Mirari.":
@@ -266,6 +444,7 @@ label sex_choice:
                 cl "I'd like to be with you, Mirari."
                 show mirari zorder 3 at bounce_up
                 $mirari.set_state(eyes="happy", emotion="flowers", mouth="happy")
+                voice "m_w31"
                 mi "Yay! I promise we'll have a great time together."
             else:
                 $claire.set_state(eyebrows="inwards", mouth="smile")
@@ -276,6 +455,7 @@ label sex_choice:
             if akki_scenes >= 3:
                 $kael.set_state(with_dissolve,eyes="happy")
                 show kael zorder 3 at bounce_up
+                voice "k_w13"
                 ka "This is a good arrangement."
                 show orias zorder 4
                 $orias.set_state(with_dissolve, eyes="closed", mouth="smile", eyebrows="tender")
@@ -307,6 +487,7 @@ label sex_choice:
             elif orias_scenes >= 3:
                 $kael.set_state(with_dissolve,eyes="happy")
                 show kael zorder 3 at bounce_up
+                voice "k_w13"
                 ka "This is a good arrangement."
                 $orias.set_state(with_dissolve, eyebrows="inwards", eyes="closed")
                 ori "It'd be more relaxing with Mirari, I admit..."
@@ -321,6 +502,7 @@ label sex_choice:
             else:
                 $kael.set_state(eyes="happy")
                 show kael zorder 3 at bounce_up
+                voice "k_w13"
                 ka "This is a good arrangement."
                 show orias zorder 4
                 $orias.set_state(with_dissolve, eyes="closed", mouth="smile", eyebrows="tender")
@@ -336,6 +518,7 @@ label sex_choice:
             $orias.set_state(with_dissolve, eyes="default", eyebrows="tender", mouth="smile")
             ori "Then excuse us."
             $kael.set_state(with_dissolve, **Emotion.normal())
+            voice "k_w14"
             ka "Take care, [claire_name]."
             $akki.set_state(with_dissolve, eyes="happy", emotion="default", mouth="default", eyebrows="default")
             ak "Later!"
@@ -443,23 +626,63 @@ label sex_choice:
             "I ended up not having sex after all, but I still had a memorable spring break..."
             jump credits
                 
-        #"All of them." if persistent.sexcomplete:
-        #   cl "This is going to sound crazy but I pick all of you."
-        #   mi "A-all of us!?"
-        #    ka "Like... a giant orgy?"
-        #    ori "This is quite the request..." 
-        #    ak "You sure?"
-        #    cl "Definitely. I trust you guys."
-        #    mi "Why not, sounds like fun!"
-        #    ka "I haven't participated in one in a long time..."
-        #    ori "It has been ages..."
-        #    mi "It's strange, I pegged you for a virgin but... I feel there's something about you, [claire_name]..."
-        #    ka "Are you sure you haven't experienced sex before?"
-        #    cl "Hehe... it's a little complicated to explain."
-        #    mi "No matter. However, we'll go easy on you just the same. And Akki."
-        #    ak "H-hey, you don't need to worry about me. Let's go, [claire_name]."
-        #    cl "Okay!"
-        #    "And then we had mind-blowing sex."
-        #    #silly 'everyone sleeping in bed' picture then credits I guess?
+        "All of them." if everybody_sex :
+            #[TODO]
+            #---------- ADD SPRITE MOVEMENT-------------------------
+            $claire.set_state(emotion="sweat", eyes="happy", mouth="grin", emotion_base="default", eyebrows ="inwards")
+            cl "This is going to sound crazy but I pick all of you."
+            stop music
+            play sound "assets/sfx/scratch.ogg"
+            $akki.set_state(with_dissolve,emotion="shock", eyes="wide", mouth="ah", emotion_base="default", eyebrows ="up")
+            $mirari.set_state(with_dissolve,emotion="default", eyes="wide", mouth="oh", emotion_base="default", eyebrows ="up")
+            $kael.set_state(with_dissolve,emotion="default", eyes="wide", mouth="low", emotion_base="default", eyebrows ="up")
+            $orias.set_state(with_dissolve,emotion="default", eyes="wide", mouth="low", emotion_base="default", eyebrows ="up")
+            mi "A-all of us!?"
+            play music music_love fadein 3
+            $kael.set_state(with_dissolve,emotion="default", eyes="default", mouth="ah", emotion_base="default", eyebrows ="default")
+            ka "Like... a giant orgy?"
+            $mirari.set_state(with_dissolve,emotion="default", eyes="default", mouth="default", emotion_base="default", eyebrows ="default")
+            $kael.set_state(with_dissolve,emotion="default", eyes="default", mouth="low", emotion_base="default", eyebrows ="default")
+            $akki.set_state(with_dissolve,emotion="default", eyes="tender side", mouth="wavy", emotion_base="small blush", eyebrows ="tender")
+            $orias.set_state(with_dissolve,emotion="default", eyes="side", mouth="oh", emotion_base="default", eyebrows ="default")
+            ori "This is quite the request..." 
+            $akki.set_state(with_dissolve,emotion="default", eyes="default", mouth="oh", emotion_base="small blush", eyebrows ="up")
+            $orias.set_state(with_dissolve, mouth="default")
+            ak "You sure?"
+            $akki.set_state(with_dissolve,emotion="default", eyes="default", mouth="default", emotion_base="default", eyebrows ="default")
+            $claire.set_state(emotion="default", eyes="default", mouth="grin", emotion_base="small blush", eyebrows ="default")
+            cl "Definitely. I trust you guys."
+            $kael.set_state(with_dissolve,mouth="smile")
+            $mirari.set_state(with_dissolve,emotion="flowers", eyes="happy", mouth="happy", emotion_base="small blush", eyebrows ="up")
+            mi "Why not, sounds like fun!"
+            $kael.set_state(with_dissolve,emotion="default", eyes="happy", mouth="smile", emotion_base="default", eyebrows ="default")
+            ka "I haven't participated in one in a long time..."
+            $mirari.set_state(with_dissolve,emotion="default")
+            $orias.set_state(with_dissolve,emotion="default", eyes="closed", mouth="smile", emotion_base="default", eyebrows ="tender")
+            ori "It has been ages..."
+            $orias.set_state(with_dissolve,emotion="default", eyes="default", mouth="default", emotion_base="default", eyebrows ="default")
+            $mirari.set_state(with_dissolve,emotion="default", eyes="default", mouth="uh", emotion_base="default", eyebrows ="inwards")
+            mi "It's strange, I pegged you for a virgin but... I feel there's something about you, [claire_name]..."
+            $mirari.set_state(with_dissolve,mouth = "default")
+            $kael.set_state(with_dissolve,emotion="default", eyes="default", mouth="ah", emotion_base="default", eyebrows ="one up")
+            ka "Are you sure you haven't experienced sex before?"
+            $claire.set_state(emotion="sweat", eyes="happy", mouth="ehh", emotion_base="default", eyebrows ="default")
+            cl "Hehe... it's a little complicated to explain."
+            $mirari.set_state(with_dissolve,emotion="heart", eyes="happy", mouth="grin", emotion_base="default", eyebrows ="default")
+            mi "No matter. We'll go easy on you just the same. And Akki."
+            $akki.set_state(with_dissolve,emotion="default", eyes="clench", mouth="ah", emotion_base="small blush", eyebrows ="up")
+            ak "H-hey, you don't need to worry about me. Let's go, [claire_name]."
+            $claire.set_state(emotion="default", eyes="happy", mouth="happy", emotion_base="small blush", eyebrows ="default")
+            cl "Okay!"
+            hide mirari
+            hide orias
+            hide kael
+            hide akki 
+            with dissolve
+            show group at panpan with dissolve
+            "..."
+            "And then we had mind-blowing sex."
+            jump credits
+           #silly 'everyone sleeping in bed' picture then credits I guess?
                 
 

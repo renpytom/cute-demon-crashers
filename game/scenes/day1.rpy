@@ -23,6 +23,7 @@ label day1_morning:
     cl "Something smells good... but why?"
     $kael.set_state(base="apron", eyes="default")
     show kael at center with dissolve
+    voice "k_w08"
     ka "Good morning, [claire_name]. Did you have a restful sleep?" 
     $claire.set_state(emotion="sweat", eyes="dots", mouth="low", emotion_base="default")
     cl "...G-good morning..."
@@ -30,6 +31,7 @@ label day1_morning:
     
     $kael.set_state(emotion="flowers", mouth="happy", eyebrows="up", eyes="happy" )
     show kael at speak
+    voice "k_w09"
     ka "I thought the whole 'demons showing up in your house' must've taken a lot out of you, so I made breakfast. Look, it's even happy to see you."
     "He places a plate down before me and a smiley face made out of sunny-side up eggs and three strips of bacon stares back. The dish matches the demon's grin." 
     cl "Uh... thank you... Um..."
@@ -63,6 +65,7 @@ label day1_morning:
     $claire.set_state(mouth="uhh")
     cl "It's better than cereal..."
     $kael.set_state(emotion="panic", eyebrows="inwards", mouth="wah", eyes="wide")
+    voice "k_s13"
     show kael at center_alone with dissolve
     ka "A-are you okay? I never made someone cry over my cooking before. Does it taste that bad?"
     $claire.set_state(mouth="oh")
@@ -143,6 +146,7 @@ label day1_morning:
     $claire.set_state(with_dissolve, emotion="default", emotion_base="default", eyes="default", eyebrows="default")
     cl "Thanks again for the breakfast, Kael."
     $kael.set_state(with_dissolve, eyes="happy", mouth="happy")
+    voice "k_w10"
     ka "Anytime."
     hide kael with dissolve
     "He takes the dishes, and I stand up, wondering what to do now."

@@ -18,6 +18,7 @@ label day2_morning:
     cl "(Someone in the kitchen again? I'm being spoiled.)"
     mi "Ah, flip them! Flip them or they'll burn again!"
     ak "I know what I'm doing; don't badger me."
+    voice "m_w21"
     mi "Remember, it has to be perfect. Human stomaches are extremely sensitive and we can't have [claire_name] keel over because the mix was still raw... or burnt." 
     ak "I got this."
     $claire.set_state(eyebrows="up", emotion_base="default", emotion="sweat", eyes="default", mouth="uh")
@@ -25,6 +26,7 @@ label day2_morning:
     $mirari.set_state(eyes="happy", eyebrows="up", mouth="happy", emotion="note", emotion_base="default")
     show mirari at center with dissolve
     show mirari at bounce_up
+    voice "m_w22"
     mi "[claire_name]! Good morning. Have a good sleep?"
     $claire.set_state(eyebrows="default", mouth="happy", emotion="default")
     cl "I did. Where's Kael?"
@@ -73,11 +75,13 @@ label day2_morning:
     $claire.set_state(eyes="default", emotion="sweat", eyebrows="flat")
     cl "You know... for sex demons, you sure focus on human food."
     $mirari.set_state(with_dissolve, eyes="wink", mouth="happy", emotion="heart", eyebrows="up")
+    voice "m_w24"
     mi "Of course. That's how human sustain themselves, and we get our energy from humans."
     $claire.set_state(eyebrows="up", emotion="default", mouth="uh")
     cl "So it's a mutual exchange. Um... does that mean when you take sexual energy... they get tired?"
     $mirari.set_state(with_dissolve,**Emotion.normal())
     $mirari.set_state(emotion="note")
+    voice "m_w25"
     mi "Yes, but we make sure to only take what we need. I even made an extra parfait for you to eat tomorrow. We take care of our lovers~"
     $claire.set_state(eyes="happy", mouth="smile", eyebrows="default")
     cl "Thank you."
@@ -92,10 +96,12 @@ label day2_morning:
     show kael at mright4 with dissolve
     "I turn and Kael looks rather haggard. He yawns and sleepily glances over at Akki then back to Mirari."
     $kael.set_state(with_dissolve, mouth="ehh", emotion_base="dark")
+    voice "k_w11"
     ka "I'm fine. For some reason I'm not as well rested as I could be... I feel there's something I overlooked at home..."
     $mirari.set_state(with_dissolve, eyebrows="inwards", mouth="smile",emotion="sweat")
     mi "I'm sure everything's spick and span, you—"
     $mirari.set_state(with_dissolve, eyebrows="up", eyes="wide", mouth="low", emotion="panic")
+    voice "m_w26"
     extend " Orias, you too?"
     $kael.set_state(with_dissolve, mouth="low")
     show kael at center
@@ -159,6 +165,7 @@ label day2_morning:
     show kael at speak
     ka "I know it's our last day, but remember there's no pressure."
     $kael.set_state(with_dissolve, eyes="happy")
+    voice "k_w12"
     ka "Even if you decline, it's been fun. It's rare that we all get to visit the human world together, and this is Akki's first time."
     $kael.set_state(with_dissolve, eyes="default")
     ka "We're not mind-readers but we can sense when someone's feeling uncertain in bed. Your honest answer will be the right answer." 

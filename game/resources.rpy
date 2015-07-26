@@ -160,6 +160,18 @@ init -1:
         easeout 0.2 yoffset 380
         easein 0.4 yoffset 350
 
+    #Pan for the group sex scene
+    transform panpan:
+        subpixel True
+        parallel:
+            yalign 1.0
+            linear 8.0 yalign 0.05
+        parallel:
+            xalign 0.0
+            linear 8.0 xalign 0.7
+
+
+
 
     # -- Images --------------------------------------------------------
     python:
@@ -201,13 +213,7 @@ init -1:
                     "assets/sprites/claire/cl_emo_shiver.png", 0.1, None,
                     "assets/sprites/claire/cl_emo_shiver3.png", 0.1, None
                 ),
-                "shock": anim.TransitionAnimation(
-                    "assets/sprites/claire/cl_emo_shock.png", 0.1, None,
-                    "assets/sprites/claire/cl_emo_shock2.png", 0.1, None,
-                    "assets/sprites/claire/cl_emo_shock3.png", 0.1, None,
-                    "assets/sprites/claire/cl_emo_shock4.png", 0.1, None,
-                    "assets/sprites/claire/cl_emo_shock5.png"
-                ),
+                "shock": "assets/sprites/claire/cl_emo_shock4.png",
                 "sigh": "assets/sprites/claire/cl_emo_sigh.png",
                 "steam": "assets/sprites/claire/cl_emo_steam.png",
                 "sweat": "assets/sprites/claire/cl_emo_sweat.png",
@@ -244,7 +250,20 @@ init -1:
                 "fun side": "assets/sprites/claire/cl_eyes_funside.png",
                 "happy": "assets/sprites/claire/cl_eyes_happy.png",
                 "mortified": "assets/sprites/claire/cl_eyes_mortified.png",
-                "default": "assets/sprites/claire/cl_eyes_open.png",
+                "default": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_eyes_open.png", 1.2, None,
+                    "assets/sprites/claire/cl_eyes_semi.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_open.png", 3.0, None,
+                    "assets/sprites/claire/cl_eyes_semi.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_open.png", 2.0, None,
+                    "assets/sprites/claire/cl_eyes_semi.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None
+                    ),
+
+
+
                 "semi open": "assets/sprites/claire/cl_eyes_semi.png",
                 "shock": "assets/sprites/claire/cl_eyes_shock.png",
                 "starry": anim.TransitionAnimation(
@@ -435,16 +454,7 @@ init -1:
                 "default": Null(),
                 "bars": mi_sprite("emo_bars"),
                 
-                "flowers": anim.TransitionAnimation(
-                    mi_sprite("emo_flowers"), 0.1, None,
-                    mi_sprite("emo_flowers2"), 0.1, None,
-                    mi_sprite("emo_flowers3"), 0.1, None,
-                    mi_sprite("emo_flowers4"), 0.1, None,
-                    mi_sprite("emo_flowers5"), 0.1, None,
-                    mi_sprite("emo_flowers6"), 0.1, None,
-                    mi_sprite("emo_flowers7"), 0.1, None,
-                    Null()
-                ),
+                "flowers": mi_sprite("emo_flowers"),
                 "heart": mi_sprite("emo_heart"),
                 "lll": mi_sprite("emo_lll"),
                 "note": mi_sprite("emo_note"),
@@ -672,6 +682,7 @@ init -1:
                 "default": ori_sprite("base_clothed"),
                 "jacketless": ori_sprite("base_jacketless"),
                 "tea": ori_sprite("base_tea"),
+                "human" : ori_sprite("base_human"),
                 "naked": naked(ori_sprite("base_naked{0}"))
             }
         )
@@ -795,6 +806,7 @@ init -1:
     image bg hallway_night = "assets/bgs/hallway night.png"
     image bg kitchen = "assets/bgs/kitchen.png"
     image bg living_room = "assets/bgs/living.png"
+    image bg street = "assets/bgs/street.png"
 
 
     # --- Chibis -------------------------------------------------------
@@ -802,10 +814,15 @@ init -1:
     image chibi_akki02 = "assets/chibis/akki_sit.png"
     
     image chibi_orias01 = "assets/chibis/orias_tea.png"
+    image chibi_orias02 = "assets/chibis/orias_read.png"
 
     image chibi_mira01 = "assets/chibis/mirari_hair.png"
+    image chibi_mira02 = "assets/chibis/mirari_flowers.png"
 
     image chibi_kael01 = "assets/chibis/kael_laundry.png"
+    image chibi_kael02 = "assets/chibis/kael_cut.png"
+
+
 
 
     # -- CGs and cut-ins------------------------------------------------
@@ -873,6 +890,9 @@ init -1:
     image nosex02 = "assets/chibis/NoOneEnd_02.png"
 
     ##-- Akki
+    image akki_kiss A = "assets/CGs/akki_kissA.jpg"
+    image akki_kiss B = "assets/CGs/akki_kissB.jpg"
+
     python:
         akki_foreplay_bottom = StateMachineDisplayable(
             "akkifp_bottom", "on",
@@ -1146,9 +1166,24 @@ init -1:
     image mira_foot = "assets/CGs/mirari_massage_leg.jpg"
     image mira_foot nibble = "assets/CGs/mirari_nibble_foot.png"
     image mira_back = "assets/CGs/mirari_massage_back.jpg"
-    #image mira_back nibble = "assets/CGs/mirari_nibble_ear.png"
+    image mira_back nibble = "assets/CGs/mirari_nibble_ear.png"
     image mira_breast = naked("assets/CGs/mirari_breasts{0}.jpg")
-    image mira_cuddle = "assets/CGs/mirari_cuddling.jpg"
+    #image mira_cuddle = "assets/CGs/mirari_cuddling.jpg"
+
+    image mira_cuddle = LiveComposite((1280,800),
+        (0, 0), "assets/CGs/mirari_cuddling_base.jpg",
+        #Mirari face
+        (0, 0), ConditionSwitch(
+            "mcuddle_mface == '1'", "assets/CGs/mirari_cuddling_mface1.png",
+            "mcuddle_mface == '2'", "assets/CGs/mirari_cuddling_mface2.png",
+            "mcuddle_mface == '3'", "assets/CGs/mirari_cuddling_mface3.png",
+            ), 
+        #Claire face
+        (0,0), ConditionSwitch(
+            "mcuddle_cface == '1'", "assets/CGs/mirari_cuddling_cface1.png",
+            "mcuddle_cface == '2'", "assets/CGs/mirari_cuddling_cface2.png",
+            ), 
+        )
 
     image mira_lying = LiveComposite((1280, 800),
         (0, 0), naked("assets/CGs/mirari04{0}.jpg"),
@@ -1181,15 +1216,258 @@ init -1:
             ),      
         )
 
+    ##-- orias
+    image orias_play cold ="assets/CGs/orias_play_cold.png"
+    image orias_play nipple =naked("assets/CGs/orias_play_nipple{0}.png")
+    image orias_play nipple_ice =naked("assets/CGs/orias_play_nipple_ice{0}.png")
+    image orias_play nipple_suck =naked("assets/CGs/orias_play_nipple_suck{0}.png")
+    
+    image orias_play hot ="assets/CGs/orias_play_hot.png"
+    image orias_play wax_pour ="assets/CGs/orias_play_wax_pour.png"
+    image orias_play wax_rub ="assets/CGs/orias_play_wax_rub.png"
+    image orias_play wax_scratch ="assets/CGs/orias_play_wax_scratch.png"
+
+    image orias_play tickle ="assets/CGs/orias_play_tickle.png"
+    image orias_play nipple_tickle =naked("assets/CGs/orias_play_nipple_tickle{0}.png")
+    image orias_play tickle_armpit ="assets/CGs/orias_play_tickle_armpit.png"
+    image orias_play tickle_body ="assets/CGs/orias_play_tickle_body.png"
+    image orias_play tickle_foot ="assets/CGs/orias_play_tickle_foot.png"
+    image orias_play tickle_thighs ="assets/CGs/orias_play_tickle_thighs.png"
+    
+    image orias_play lick ="assets/CGs/orias_play_lick.png"
+    image orias_play kiss ="assets/CGs/orias_play_kiss.png"
+    image orias_play kiss_blind ="assets/CGs/orias_play_kiss_blind.png"
+    
+    image orias_bed =LiveComposite((1280, 800),
+        (0, 0), "assets/CGs/orias01.jpg",
+        (0, 0), "assets/CGs/orias01_orias.png",
+        (0, 0), ConditionSwitch(
+            "orias_naked == True", Null(width=1),
+            "True", "assets/CGs/orias01_orias_clothes.png",
+            ),
+        (0, 0), ConditionSwitch (
+            "orilay_oriface == 'laugh'", "assets/CGs/orias01_oriface_laugh.png",
+            "orilay_oriface == 'smile'", "assets/CGs/orias01_oriface_smile.png",
+            "orilay_oriface == 'smile2'", "assets/CGs/orias01_oriface_smile2.png",
+            "orilay_oriface == 'neutral'", "assets/CGs/orias01_oriface_neutral.png",
+            "True", "assets/CGs/orias01_oriface_neutral.png",
+            ),
+        (0, 0), naked("assets/CGs/orias01_claire{0}.png"),
+        (0, 0), ConditionSwitch(
+            "orilay_panties == 'off'", naked("assets/CGs/orias01_claire_nopan{0}.png"),
+            "True", "assets/CGs/orias01_claire_panties.png",
+            ),
+        (0, 0), ConditionSwitch(
+            "orilay_tiedup == True", "assets/CGs/orias01_clarms_tied.png",
+            "True", "assets/CGs/orias01_clarms_free.png",
+            
+            ),
+        (0, 0), ConditionSwitch(
+            "orilay_clface== 'worried'", "assets/CGs/orias01_clface_worried.png",
+            "orilay_clface== 'content'", "assets/CGs/orias01_clface_content.png",
+            "orilay_clface== 'happy'", "assets/CGs/orias01_clface_happy.png",
+            "orilay_clface== 'laughing'", "assets/CGs/orias01_clface_laughing.png",
+            "orilay_clface== 'pleasure'", "assets/CGs/orias01_clface_pleasure.png",
+            "orilay_clface== 'shiver'", "assets/CGs/orias01_clface_shiver.png",
+            "orilay_clface== 'O'", "assets/CGs/orias01_clface_O.png",
+            "True", "assets/CGs/orias01_clface_content.png",
+            ),
+        (0, 0), ConditionSwitch(
+            "orilay_blindfold == True","assets/CGs/orias01_blindfold.png",
+            "True", Null(width=1),
+            ),
+
+        
+        )
+    
+    image orias_finish oral =LiveComposite((1280,800),
+        (450,0), ConditionSwitch(
+            "orias_naked == True", Null(width=1),
+            "True", "assets/CGs/orias_finish_oral_clothes.png",
+            ),
+        (450,0),
+        naked("assets/CGs/orias_finish_oral{0}.png"),
+        )
+    image orias_finish fingers =LiveComposite((1280,800),
+        (450,0), ConditionSwitch(
+            "orias_naked == True", Null(width=1),
+            "True", "assets/CGs/orias_finish_fingers_clothes.png",
+            ),
+        (450,0), naked("assets/CGs/orias_finish_fingers{0}.png"),
+        )
+
+    image orias_cuddles = LiveComposite((1280, 800),
+        (0, 0), ("assets/CGs/orias_cuddles.jpg"),
+        (0, 0), ConditionSwitch(
+            "orias_naked == True", Null(width=1),
+            "True", "assets/CGs/orias_cuddles_oriasclothes.png", 
+            ),
+        (0, 0), ConditionSwitch(
+            "orias_clnaked == True", Null(width=1), 
+            "True", "assets/CGs/orias_cuddles_chemise.png", 
+            ),
+        (0, 0), ConditionSwitch(
+            "orias_cuddles_clface == '1'", "assets/CGs/orias_cuddles_cface1.png", 
+            "orias_cuddles_clface == '2'", "assets/CGs/orias_cuddles_cface2.png", 
+            "orias_cuddles_clface == '3'", "assets/CGs/orias_cuddles_cface3.png", 
+            "orias_cuddles_clface == '4'", "assets/CGs/orias_cuddles_cface4.png", 
+            "orias_cuddles_clface == '5'", "assets/CGs/orias_cuddles_cface5.png", 
+            ),
+        (0, 0), ConditionSwitch(
+            "orias_cuddles_oriface == '1'", "assets/CGs/orias_cuddles_oface1.png", 
+            "orias_cuddles_oriface == '2'", "assets/CGs/orias_cuddles_oface2.png", 
+            "orias_cuddles_oriface == '3'", "assets/CGs/orias_cuddles_oface3.png", 
+            "orias_cuddles_oriface == '4'", "assets/CGs/orias_cuddles_oface4.png", 
+            ),    
+        )
+
+    #-- Kael
+
+    image kael_start = "assets/CGs/kael_start_kneel.jpg"
+    image kael_start hand = "assets/CGs/kael_start_kneel2.jpg"
+    image kael_start kiss = "assets/CGs/kael_start_kiss.jpg"
+    image kael_start pillow = "assets/CGs/kael_start_pillow.jpg"
+
+    image kael_leaning = "assets/CGs/kael_leaning.jpg"
+    image kael_leaning b= "assets/CGs/kael_leaning2.jpg"
+
+    image kael_kissing A1 = "assets/CGs/kael_kissing_a1.png"
+    image kael_kissing A2 = "assets/CGs/kael_kissing_a2.png"
+    image kael_kissing B = "assets/CGs/kael_kissing_b.png"
+
+    image kael_warmup = LiveComposite((1280,800),
+        #base
+        (0, 0), naked("assets/CGs/kael_warmup_base{0}.jpg"),
+        #Claire face
+        (0, 0), ConditionSwitch(
+            "kael_warmup_clface == '1'","assets/CGs/kael_warmup_clface1.png",
+            "kael_warmup_clface == '2'","assets/CGs/kael_warmup_clface2.png",
+            ),
+        #Kael position
+        (0, 0), ConditionSwitch(
+            "kael_warmup_kael == '1'", "assets/CGs/kael_warmup_kael1.png",
+            "kael_warmup_kael == '2'", naked("assets/CGs/kael_warmup_kael2{0}.png"),
+            "kael_warmup_kael == '3'", naked("assets/CGs/kael_warmup_kael3{0}.png"),
+            ),
+
+        )
+
+    image kael_missionary = LiveComposite((1280,800),
+        #base
+        (0, 0), naked("assets/CGs/kael_missionary{0}.jpg"),
+        #claire face
+        (0, 0), ConditionSwitch(
+            "kael_mis_clface == '1'","assets/CGs/kael_missionary_clface1.png",
+            "kael_mis_clface == '2'","assets/CGs/kael_missionary_clface2.png",
+            "kael_mis_clface == '3'","assets/CGs/kael_missionary_clface3.png",
+            "kael_mis_clface == '4'","assets/CGs/kael_missionary_clface4.png",
+            "kael_mis_clface == '5'","assets/CGs/kael_missionary_clface5.png",
+            "kael_mis_clface == '6'","assets/CGs/kael_missionary_clface6.png",
+            ),
+        #kael face
+          (0, 0), ConditionSwitch(
+            "kael_mis_kface == '1'","assets/CGs/kael_missionary_kface1.png",
+            "kael_mis_kface == '2'","assets/CGs/kael_missionary_kface2.png",
+            "kael_mis_kface == '3'","assets/CGs/kael_missionary_kface3.png",
+            "kael_mis_kface == '4'","assets/CGs/kael_missionary_kface4.png",
+            ),
+        )
+
+    image kael_cuddles = LiveComposite((1280,800),
+        #base
+        (0, 0), "assets/CGs/kael_cuddles_base.jpg",
+        #claire face
+        (0, 0), ConditionSwitch(
+            "kael_cuddle_clface == '1'","assets/CGs/kael_cuddles_cface1.png",
+            "kael_cuddle_clface == '2'","assets/CGs/kael_cuddles_cface2.png",
+            ),
+        #kael face
+        (0, 0), ConditionSwitch(
+            "kael_cuddle_kface == '1'","assets/CGs/kael_cuddles_kface1.png",
+            "kael_cuddle_kface == '2'","assets/CGs/kael_cuddles_kface2.png",
+            ),
+        #kael clothes
+        (0,0), ConditionSwitch(
+            "kael_naked == True", Null(width=1),
+            "True", "assets/CGs/kael_cuddles_kclothes.png",
+            ),
+        #caire clothes
+        (0,0), ConditionSwitch(
+            "kael_claire_naked == True", Null(width=1),
+            "True", "assets/CGs/kael_cuddles_chemise.png",
+            ),
+        )
+
+    image group = naked("assets/CGs/orgy{0}.jpg")
+
+
+    # -- CG Test
+    python:
+        #Orias Cuddles
+        orias_cuddles_base = StateMachineDisplayable(
+            "orias_cuddle_base", "default",
+            {
+                "default": "assets/CGs/orias_cuddles.jpg"
+            }
+        )
+        orias_cuddles_orias_clothes = StateMachineDisplayable(
+            "orias_cuddles_orias_clothes", "default",
+            {
+                "default": "assets/CGs/orias_cuddles_oriasclothes.png",
+                "naked": Null(),
+            }
+        )
+        orias_cuddles_claire_clothes = StateMachineDisplayable(
+            "orias_cuddles_claire_clothes", "default",
+            {
+                "default": "assets/CGs/orias_cuddles_chemise.png",
+                "naked": Null(),
+            }
+        )
+        orias_cuddles_orias_face = StateMachineDisplayable(
+            "orias_cuddles_orias_face", "default",
+            {
+                "default": "assets/CGs/orias_cuddles_oface1.png",
+                "1": "assets/CGs/orias_cuddles_oface1.png",
+                "2": "assets/CGs/orias_cuddles_oface2.png",
+                "3": "assets/CGs/orias_cuddles_oface3.png",
+                "4": "assets/CGs/orias_cuddles_oface1.png",
+            }
+        )
+        orias_cuddles_claire_face = StateMachineDisplayable(
+            "orias_cuddles_claire_face", "default",
+            {
+                "default": "assets/CGs/orias_cuddles_cface1.png",
+                "1": "assets/CGs/orias_cuddles_cface1.png",
+                "2": "assets/CGs/orias_cuddles_cface2.png",
+                "3": "assets/CGs/orias_cuddles_cface3.png",
+                "4": "assets/CGs/orias_cuddles_cface1.png",
+                "4": "assets/CGs/orias_cuddles_cface1.png",
+            }
+        )
+        orias_cuddles_test = ComposedSprite(
+            (1280,800),
+            ("base", (0, 0), "assets/CGs/orias_cuddles.jpg"),
+            ("o_clothes", (0, 0), orias_cuddles_orias_clothes),
+            ("cl_clothes", (0, 0), orias_cuddles_claire_clothes),
+            ("o_face", (0, 0), orias_cuddles_orias_face),
+            ("cl_face", (0, 0), orias_cuddles_claire_face)
+        )
+        orias_cuddles_test.set_state(o_clothes="default")
+
+    image orias_cuddles_test = At(orias_cuddles_test.displayable())
+
+
+
 
     # -- Characters ----------------------------------------------------
     define narrator = make_character(what_style="say_thought")
     define name_only = make_character()
     define cl = make_character('claire_name',
                                dynamic=True,
-                               show_side_image=At(claire.displayable(), say_image))
-    define ak = make_character(name='akki_name', dynamic=True)
-    define mi = make_character(name='mirari_name', dynamic=True)
-    define ka = make_character(name='kael_name', dynamic=True)
-    define ori = make_character(name='orias_name', dynamic=True)
-    define cla = make_character('claire_name', dynamic=True)
+                               show_side_image=At(claire.displayable(), say_image), color="#bdff14")
+    define ak = make_character(name='akki_name', dynamic=True, color="#ff8575")
+    define mi = make_character(name='mirari_name', dynamic=True, color="#ffc2d9")
+    define ka = make_character(name='kael_name', dynamic=True, color="#9ebbff")
+    define ori = make_character(name='orias_name', dynamic=True, color="#e29eff")
+    define cla = make_character('claire_name', dynamic=True, color="#bdff14")

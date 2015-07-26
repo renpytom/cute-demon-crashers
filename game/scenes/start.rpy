@@ -179,6 +179,7 @@ label start:
     $akki.set_state(mouth="ehh", eyebrows="frown", eyes="shock")
     show akki at bounce_up
     ak "How could we not when you conjured a portal RIGHT IN THE HALLWAY?" 
+    voice "k_s01"
     $kael.set_state(with_dissolve, emotion="sweat", mouth="ah")
     ka "Ah, Miss, we mean you no harm. There already seems to be a misunderstanding on our part, and I apologize for the confusion. Um..."
     show kael zorder 3 at speak with None
@@ -193,6 +194,7 @@ label start:
     $ claire.set_state(with_dissolve, **Emotion.shock())
     $claire.set_state(eyebrows="frown")
     extend " HEY, DON'T CHANGE THE SUBJECT. I'm not lowering my guard." 
+    voice "k_w01"
     $kael.set_state(with_dissolve, eyes="happy", mouth="default")
     ka "Right. I think I would be terrified too, if four strangers suddenly showed up in my house."
     $claire.set_state(emotion="default", mouth="wavy", emotion_base="dark")
@@ -235,9 +237,12 @@ label start:
             #Figure out what to do with the music for the rest of the scene
             "I approach the door and hold my ear close to the frame. They're not even trying to lower their voices, making it easy to catch every word." 
             ka "...We completely scared that poor girl, Mirari."
+            voice "m_s18"
             ak "Ah, Kael's mad... he's never mad..."
             ori "This is why it's important to plan in advance..."
+            voice "m_w02"
             mi "I know! I'm sorry! I just... took action without really thinking... I only wanted to help her... I feel awful now..."
+            voice "k_s18"
             ka "Should we try talking to her once she calms down? We can at least apologize."
             "It truly does sound like there's a misunderstanding going on... Maybe they aren't that bad...?"
             $claire.set_state(eyebrows="inwards", eyes="closed", emotion="sweat", mouth="wavy")
@@ -277,16 +282,21 @@ label start_hallway:
     cl "...Are you cosplayers?"
     $mirari.set_state(with_dissolve, eyes="default", mouth="default")
     show mirari at bounce_up
+    voice "m_w03"
     mi "Cosplayers...? And we won't be strangers anymore if we give you our names!"
     show mirari zorder 0 at endspeak
     $kael.set_state(mouth="default", emotion="sweat")
     show kael zorder 3 at speak
-    ka "I agree, we should properly introduce ourselves. I'm Kael. I apologize for the commotion earlier, my friend here can be a little, uh, impulsive."
+    voice "k_w02"
+    ka "I agree, we should properly introduce ourselves." 
+    voice "k_w03"
+    ka "I'm Kael. I apologize for the commotion earlier, my friend here can be a little, uh, impulsive."
 
     $ kael_name = 'Kael'
     show kael zorder 0 at endspeak
     $mirari.set_state(eyes="happy")
     show mirari zorder 3 at speak
+    voice "m_w04"
     mi "Eh-heh, I guess I did jump in a little too soon. I'm Mirari, but Mira is okay too~"
 
     $ mirari_name = 'Mirari'
@@ -312,6 +322,7 @@ label start_hallway:
     ak "You don't recognize us? We're incubi!"
     $mirari.set_state(eyebrows="default", eyes="default")
     show mirari at bounce_up
+    voice "m_s07"
     mi "*cough* And one succubus." 
     cl "Incub...? Encubes? Wait, like the sex demons?" 
     $ claire.set_state(with_dissolve ,eyes="wide", eyebrows="up", emotion="panic", emotion_base="large blush", mouth="ehh")
@@ -352,6 +363,7 @@ label start_hallway:
     show kael zorder 0 at endspeak
     $mirari.set_state(emotion="flowers", mouth="default", eyebrows="up")
     show mirari zorder 3 at speak
+    voice "m_s08"
     mi "You were feeling lonely, right? And you were fantasizing about having a fling."
     $mirari.set_state(emotion="default")
     show mirari zorder 0 at endspeak
@@ -360,6 +372,7 @@ label start_hallway:
     ori "You were right about calling us 'demons' though. We feed off the sexual pleasure from humans."
     $mirari.set_state(emotion="flowers", eyes="happy", mouth="happy")
     show mirari at bounce_up
+    voice "m_s10"
     mi "So it's a win-win situation! You get to have a good time, and we get nourished." 
     $claire.set_state(emotion="panic", eyebrows="up", eyes="big", mouth="wah", emotion_base="large blush")
     $orias.set_state(mouth="neutral")
@@ -375,6 +388,7 @@ label start_hallway:
     show orias zorder 0 at endspeak
     show kael zorder 3
     $kael.set_state(with_dissolve, eyes="tender side", mouth="low", eyebrows ="inwards")
+    voice "k_s14"
     ka "But she does bring up a point..."
     $orias.set_state(with_dissolve, eyes="closed", mouth="oh")
     show kael zorder 0
@@ -388,13 +402,16 @@ label start_hallway:
     show akki zorder 0
     $mirari.set_state(mouth="wavy", emotion="lll", emotion_base="dark", eyebrows="inwards")
     show mirari zorder 3 at sway
+    voice "m_s03"
     mi "Ah, I kinda... conjured the multi-being portal and it took a lot of effort... It has to run its course anyway... It won't vanish until a few days have gone by."
     $mirari.set_state(emotion="bars", emotion_base="default", eyes="default", mouth="happy", eyebrows="up")
     show mirari at bounce_up
+    voice "m_w05"
     mi "I know! We can stay here for a little while until you feel comfortable experimenting with any of us." 
     $kael.set_state(**Emotion.normal())
     show kael zorder 3 at speak
     $mirari.set_state(emotion="default", mouth="default")
+    voice "k_w04"
     ka "If you still don't trust us, we can leave. I promise we won't pressure you to do anything while we're here." 
     show kael zorder 0 at endspeak
     $orias.set_state(eyebrows="tender", eyes="default", mouth="oh")
@@ -407,6 +424,7 @@ label start_hallway:
     show orias zorder 0 at endspeak
     show mirari zorder 3 at speak
     $mirari.set_state(emotion="flowers", eyes="happy", mouth="happy")
+    voice "m_w06"
     mi "Thank you! I promise you won't regret it, [claire_name]." 
     $mirari.set_state(emotion="default", mouth="smile")
     $akki.set_state(eyes="happy", mouth="grin", eyebrows="default", emotion="starry")
@@ -415,6 +433,7 @@ label start_hallway:
     ak "Don't worry, we'll go easy on you since you're a virgin."
     $mirari.set_state(eyes="fun side", mouth="v", eyebrows="up", emotion="note")
     show mirari at bounce_up
+    voice "m_s06"
     mi "If anything, you'll have to go easy on {i}him{/i}. He's inexperienced, too." 
     $akki.set_state(emotion="shock", eyes="big", mouth="fun ah", emotion_base="large blush")
     $kael.set_state(eyes="happy", eyebrows="inwards")
@@ -428,6 +447,7 @@ label start_hallway:
     show mirari zorder 3 at sway
     $akki.set_state(emotion_base="small blush", eyes="default", mouth="low", emotion="default")
     show akki zorder 0 at endspeak
+    voice "m_s16"
     mi "Now that's settled... Ah, I haven't been to the human realm in a while! I think I'll take a walk outside~"
 
     hide mirari with moveoutleft
@@ -437,6 +457,7 @@ label start_hallway:
     "I guess she'll be okay; it's a dream after all."
     $kael.set_state(**Emotion.normal())
     show kael zorder 3 at speak
+    voice "k_w05"
     ka "I hate to impose, but may I ask where the kitchen is?"
     $claire.set_state(**Emotion.normal())
     $claire.set_state(mouth="low")
