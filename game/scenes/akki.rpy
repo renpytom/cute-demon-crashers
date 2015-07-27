@@ -1093,7 +1093,6 @@ label akki_super_late_stop:
 
 
 label akki_stop_now:
-    $ print last_statement
     $ persistent.akki_sex_stop = last_statement
     hide screen sex_stop 
     if akki_sex_choices.missionary:
