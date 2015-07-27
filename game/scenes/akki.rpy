@@ -372,6 +372,13 @@ label akki_sex:
     $akki.set_state(**Emotion.normal())
     $claire.set_state(**Emotion.normal())
 
+    if _in_replay:
+        $ sex_stop_label = "akki_stop_now"
+    
+    if not _in_replay:
+        $ persistent.akki_claire_name = claire_name
+        $ persistent.akki_scenes = akki_scenes
+
     scene black with dissolve
     scene bg bedroom_night with dissolve
     ak "Now what?"
@@ -1086,6 +1093,8 @@ label akki_super_late_stop:
 
 
 label akki_stop_now:
+    $ print last_statement
+    $ persistent.akki_sex_stop = last_statement
     hide screen sex_stop 
     if akki_sex_choices.missionary:
         $lay_cface = "2"
@@ -1159,6 +1168,7 @@ label akki_epilogue:
     cl "Aw, I thought the aebleskiver were delicious."
     cl "Thanks, Akki."
     scene white with dissolve
+    $ renpy.end_replay()
     return
 
 label akki_epilogue_long:

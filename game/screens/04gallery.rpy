@@ -42,7 +42,8 @@ init python:
                                                  akki_face="default" ),
                          lambda: { "akki_name": "Akki",
                                    "claire_name": persistent.akki_claire_name,
-                                   "akki_scenes": persistent.akki_scenes }
+                                   "akki_scenes": persistent.akki_scenes,
+                                   "sex_stop_statement": persistent.akki_sex_stop }
                 )
 #            [SpriteCG("akki_foreplay", akki_foreplay,
 #                      {

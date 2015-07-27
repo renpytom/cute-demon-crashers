@@ -1,4 +1,13 @@
-﻿init python:
+﻿# The last statement executed
+define last_statement = None
+
+# The statement where the user clicked the Stop button in the sex scene
+define sex_stop_statement = None
+
+# The label we transfer control to when the user stops the sex scene
+define sex_stop_label = None
+
+init python:
     # Track things that happened in a sex scene
     
     # SexChoiceSets are backed by the Ren'Py store on top of StoreBackedSet,
