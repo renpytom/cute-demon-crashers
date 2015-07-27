@@ -8,6 +8,21 @@ screen replay_controls():
 
 
 # Stop button
+init python:
+    def maybe_stop_scene(ev, **kwargs):
+        def should_stop():
+            return context.current == renpy.store.sex_stop_statement \
+               and renpy.store.sex_stop_label
+        
+        if ev == "begin":
+            context = renpy.game.context()
+            renpy.store.last_statement = context.current
+            if _in_replay and should_stop():
+                renpy.jump(renpy.store.sex_stop_label)
+            
+    config.character_callback = maybe_stop_scene
+
+    
 screen sex_stop(target):
     imagebutton:
         auto "assets/ui/stop_sex_%s.png"
