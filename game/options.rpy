@@ -8,6 +8,9 @@ init -1 python hide:
     if persistent.censor_18 is None:
         persistent.censor_18 = False
 
+    if persistent.menu_choices is None:
+        persistent.menu_choices = {}
+
     # -- Config stuff --------------------------------------------------
     config.developer = True
 
@@ -531,6 +534,18 @@ init -1 python hide:
     ## Used when the image is changed by a say statement with image attributes.
     config.say_attribute_transition = None
 
+    ## Used for providing auto-choices for menus
+    def menu_choice_before_callback(choices, name):
+        if _in_replay:
+            return persistent.menu_choices.get(name, None)
+
+    def menu_choice_after_callback(choice_, name):
+        if not _in_replay:
+            persistent.menu_choices[name] = choice_
+    
+    config.menu_choice_before_callback = menu_choice_before_callback
+    config.menu_choice_after_callback = menu_choice_after_callback
+    
     #########################################
     ## This is the name of the directory where the game's data is
     ## stored. (It needs to be set early, before any other init code
