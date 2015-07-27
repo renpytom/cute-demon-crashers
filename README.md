@@ -17,6 +17,15 @@ queen@robotlolita.me, or through Twitter
 them! ♥
 
 
+## Prerequisites
+
+You'll need Ren'Py to run this game. The *Replay* feature requires a
+[modified version of Ren'Py][renpy]. You'll need to either patch a Ren'Py
+distribution or compile it yourself from the source code.
+
+[renpy]: https://github.com/robotlolita/renpy/commit/38b2ce06afdd1c920e252b3d60a4b7c67e0a8376
+
+
 ## Running the game
 
 Only the source code is provided in this repository, so if you want to play
