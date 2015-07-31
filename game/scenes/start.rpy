@@ -1,13 +1,4 @@
-﻿# The last statement executed
-define last_statement = None
-
-# The statement where the user clicked the Stop button in the sex scene
-define sex_stop_statement = None
-
-# The label we transfer control to when the user stops the sex scene
-define sex_stop_label = None
-
-init python:
+﻿init python:
     # Track things that happened in a sex scene
     
     # SexChoiceSets are backed by the Ren'Py store on top of StoreBackedSet,
@@ -107,6 +98,16 @@ label start:
     $mirari.set_state(base="default",**Emotion.normal())
     $akki.set_state(base="default", **Emotion.normal())
 
+    #TESTING TUTORIAL SCREEN
+    if not persistent.played_once:
+        "It looks like it is your first time playing {b}Cute Demon Crashers!{/b} \nWould you like to see some tips on how to play?"
+        menu:
+            "Take me to the tutorial!":
+                call screen tutorial
+            "No, thank you.":
+                pass
+        "You can still see the tips on the Extras menu if you feel lost."    
+
     $ claire_name = renpy.input("What's your name?", default='Claire',length=12).strip()
     if claire_name == "":
         $ claire_name = "Claire"
@@ -146,6 +147,7 @@ label start:
 
     stop music
 
+    $persistent.played_once = True
     play sound "assets/sfx/scratch.ogg"
     "???" "I could help with that!"
     $mirari.set_state(with_dissolve, eyes="default", emotion="flowers")
@@ -472,6 +474,7 @@ label start_hallway:
     $claire.set_state(mouth="low")
     cl "Um, that way."
     $kael.set_state(eyes="happy")
+    voice "k_w06"
     ka "Thank you."
     $akki.set_state(eyes="happy", emotion_base="default", mouth="grin")
     show akki at bounce_up
@@ -487,6 +490,7 @@ label start_hallway:
 
     #off-screen
     ak "Hey, I found the video games! Wow, check out this collection!"
+    voice "k_w07"
     ka "Akki, don't raid her house!"
     ori "Be sure to return everything to its proper place."
     $claire.set_state(eyes="flat", emotion="sweat", emotion_base="dark", eyebrows="flat", mouth="uhh")

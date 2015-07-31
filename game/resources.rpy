@@ -237,14 +237,37 @@ init -1:
             "claire_eyes", "default",
             {
                 "big": "assets/sprites/claire/cl_eyes_big.png",
-                "bug cry": "assets/sprites/claire/cl_eyes_bugcry.png",
+                "bug cry": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_eyes_bugcry.png", 0.2, None,
+                    "assets/sprites/claire/cl_eyes_bugcry2.png", 0.2, None,
+                    ),
                 "clench": "assets/sprites/claire/cl_eyes_clench.png",
                 "clench tear": "assets/sprites/claire/cl_eyes_clenchtear.png",
                 "closed": "assets/sprites/claire/cl_eyes_closed.png",
-                "cry": "assets/sprites/claire/cl_eyes_cry.png",
+                "cry": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_eyes_cry.png", 0.2, None,
+                    "assets/sprites/claire/cl_eyes_cry2.png", 0.2, None,
+                    ),
                 "dizzy": "assets/sprites/claire/cl_eyes_dizzy.png",
-                "dots": "assets/sprites/claire/cl_eyes_dots.png",
-                "down": "assets/sprites/claire/cl_eyes_down.png",
+                "dots": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_eyes_dots.png", 1.2, None,
+                    "assets/sprites/claire/cl_eyes_dots_blink.png", 0.3, None,
+                    "assets/sprites/claire/cl_eyes_dots.png", 3.0, None,
+                    "assets/sprites/claire/cl_eyes_dots_blink.png", 0.3, None,
+                    "assets/sprites/claire/cl_eyes_dots.png", 2.0, None,
+                    "assets/sprites/claire/cl_eyes_dots_blink.png", 0.3, None,
+                    ),
+                "down": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_eyes_down.png", 1.2, None,
+                    "assets/sprites/claire/cl_eyes_down_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_down.png", 3.0, None,
+                    "assets/sprites/claire/cl_eyes_down_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_down.png", 2.0, None,
+                    "assets/sprites/claire/cl_eyes_down_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    ),
                 "flat": "assets/sprites/claire/cl_eyes_flat.png",
                 "fun front": "assets/sprites/claire/cl_eyes_funfront.png",
                 "fun side": "assets/sprites/claire/cl_eyes_funside.png",
@@ -252,27 +275,64 @@ init -1:
                 "mortified": "assets/sprites/claire/cl_eyes_mortified.png",
                 "default": anim.TransitionAnimation(
                     "assets/sprites/claire/cl_eyes_open.png", 1.2, None,
-                    "assets/sprites/claire/cl_eyes_semi.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_open_blink.png", 0.1, None,
                     "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
                     "assets/sprites/claire/cl_eyes_open.png", 3.0, None,
-                    "assets/sprites/claire/cl_eyes_semi.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_open_blink.png", 0.1, None,
                     "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
                     "assets/sprites/claire/cl_eyes_open.png", 2.0, None,
-                    "assets/sprites/claire/cl_eyes_semi.png", 0.1, None,
-                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None
+                    "assets/sprites/claire/cl_eyes_open_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
                     ),
-
-
-
-                "semi open": "assets/sprites/claire/cl_eyes_semi.png",
+                "semi open": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_eyes_semi.png", 1.2, None,
+                    "assets/sprites/claire/cl_eyes_semi_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_semi.png", 3.0, None,
+                    "assets/sprites/claire/cl_eyes_semi_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_semi.png", 2.0, None,
+                    "assets/sprites/claire/cl_eyes_semi_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    ),
                 "shock": "assets/sprites/claire/cl_eyes_shock.png",
                 "starry": anim.TransitionAnimation(
                     "assets/sprites/claire/cl_eyes_starry1.png", 0.2, None,
-                    "assets/sprites/claire/cl_eyes_starry2.png", 0.2, None
-                ),
-                "tender": "assets/sprites/claire/cl_eyes_tender.png",
-                "tender side": "assets/sprites/claire/cl_eyes_tenderside.png",
-                "wide": "assets/sprites/claire/cl_eyes_wide.png"
+                    "assets/sprites/claire/cl_eyes_starry2.png", 0.2, None,
+                    ),
+                "tender": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_eyes_tender.png", 1.2, None,
+                    "assets/sprites/claire/cl_eyes_open_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_tender.png", 3.0, None,
+                    "assets/sprites/claire/cl_eyes_open_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_tender.png", 2.0, None,
+                    "assets/sprites/claire/cl_eyes_open_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    ),
+                "tender side": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_eyes_tenderside.png", 1.2, None,
+                    "assets/sprites/claire/cl_eyes_tenderside_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_tenderside.png", 3.0, None,
+                    "assets/sprites/claire/cl_eyes_tenderside_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_tenderside.png", 2.0, None,
+                    "assets/sprites/claire/cl_eyes_tenderside_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    ),
+                "wide": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_eyes_wide.png", 1.2, None,
+                    "assets/sprites/claire/cl_eyes_wide_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_wide.png", 3.0, None,
+                    "assets/sprites/claire/cl_eyes_wide_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_wide.png", 2.0, None,
+                    "assets/sprites/claire/cl_eyes_wide_blink.png", 0.1, None,
+                    "assets/sprites/claire/cl_eyes_closed.png", 0.1, None,
+                    ),
             }
         )
 
@@ -372,27 +432,84 @@ init -1:
             "akki_eyes", "default",
             {
                 "big"       : ak_sprite("eyes_big"),
-                "bugteary"  : ak_sprite("eyes_bugteary"),
+                "bugteary"  : anim.TransitionAnimation(
+                    ak_sprite("eyes_bugteary"), 0.2, None,
+                    ak_sprite("eyes_bugteary2"), 0.2, None,
+                    ),
                 "clench"    : ak_sprite("eyes_clench"),
                 "closed"    : ak_sprite("eyes_closed"),
-                "cry"       : ak_sprite("eyes_cry"),
+                "cry"       : anim.TransitionAnimation(
+                    ak_sprite("eyes_cry"), 0.2, None,
+                    ak_sprite("eyes_cry2"), 0.2, None,
+                    ),
                 "dizzy"     : ak_sprite("eyes_dizzy"),
-                "dots"      : ak_sprite("eyes_dots"),
+                "dots"      : anim.TransitionAnimation(
+                    ak_sprite("eyes_dots"), 1.5, None,
+                    ak_sprite("eyes_dots_blink"), 0.3, None,
+                    ak_sprite("eyes_dots"), 2.6, None,
+                    ak_sprite("eyes_dots_blink"), 0.3, None,
+                    ak_sprite("eyes_dots"), 3.0, None,
+                    ak_sprite("eyes_dots_blink"), 0.3, None,
+                    
+                    ),
                 "flat"      : ak_sprite("eyes_flat"),
                 "fun front" : ak_sprite("eyes_funfront"),
                 "fun side"  : ak_sprite("eyes_funside"),
                 "happy"     : ak_sprite("eyes_happy"),
                 "mortified" : ak_sprite("eyes_mortified"),
-                "default"   : ak_sprite("eyes_open"),
+                "default"   : anim.TransitionAnimation(
+                    ak_sprite("eyes_open"), 1.5, None,
+                    ak_sprite("eyes_open_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ak_sprite("eyes_open"), 2.6, None,
+                    ak_sprite("eyes_open_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ak_sprite("eyes_open"), 3.0, None,
+                    ak_sprite("eyes_open_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ),
                 "shock"     : ak_sprite("eyes_shock"),
                 "starry": anim.TransitionAnimation(
                     ak_sprite("eyes_starry1"), 0.2, None,
                     ak_sprite("eyes_starry2"), 0.2, None
                 ),
-                "tender"      : ak_sprite("eyes_tender"),
-                "tender side" : ak_sprite("eyes_tenderside"),
-                "twitch"      : ak_sprite("eyes_twitch"),
-                "wide"        : ak_sprite("eyes_wide"),
+                "tender"      : anim.TransitionAnimation(
+                    ak_sprite("eyes_tender"), 1.5, None,
+                    ak_sprite("eyes_open_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ak_sprite("eyes_tender"), 2.6, None,
+                    ak_sprite("eyes_open_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ak_sprite("eyes_tender"), 3.0, None,
+                    ak_sprite("eyes_open_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ),
+                "tender side" : anim.TransitionAnimation(
+                    ak_sprite("eyes_tenderside"), 1.5, None,
+                    ak_sprite("eyes_tenderside_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ak_sprite("eyes_tenderside"), 2.6, None,
+                    ak_sprite("eyes_tenderside_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ak_sprite("eyes_tenderside"), 3.0, None,
+                    ak_sprite("eyes_tenderside_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ),
+                "twitch"      : anim.TransitionAnimation(
+                    ak_sprite("eyes_twitch"), 0.2, None,
+                    ak_sprite("eyes_twitch2"), 0.2, None
+                ),
+                "wide"        : anim.TransitionAnimation(
+                    ak_sprite("eyes_wide"), 1.5, None,
+                    ak_sprite("eyes_wide_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ak_sprite("eyes_wide"), 2.6, None,
+                    ak_sprite("eyes_wide_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ak_sprite("eyes_wide"), 3.0, None,
+                    ak_sprite("eyes_wide_blink"), 0.1, None,
+                    ak_sprite("eyes_closed"), 0.1, None,
+                    ),
                 "wink"        : ak_sprite("eyes_wink")
             }
         )
@@ -492,15 +609,38 @@ init -1:
         mirari_eyes = StateMachineDisplayable(
             "mirari_eyes", "default",
             {
-                "default": mi_sprite("eyes_open"),
+                "default": anim.TransitionAnimation(
+                    mi_sprite("eyes_open"), 1.7, None,
+                    mi_sprite("eyes_open_blink"), 0.1, None,
+                    mi_sprite("eyes_closed"), 0.1, None,
+                    mi_sprite("eyes_open"), 2.4, None,
+                    mi_sprite("eyes_open_blink"), 0.1, None,
+                    mi_sprite("eyes_closed"), 0.1, None,
+                    mi_sprite("eyes_open"), 2.8, None,
+                    mi_sprite("eyes_open_blink"), 0.1, None,
+                    mi_sprite("eyes_closed"), 0.1, None,
+                    ),
                 "angry": mi_sprite("eyes_angry"),
                 "big": mi_sprite("eyes_big"),
-                "bugteary": mi_sprite("eyes_bugteary"),
+                "bugteary": anim.TransitionAnimation(
+                    mi_sprite("eyes_bugteary"), 0.2, None,
+                    mi_sprite("eyes_bugteary2"), 0.2, None
+                ),
                 "clench": mi_sprite("eyes_clench"),
                 "closed": mi_sprite("eyes_closed"),
-                "cry": mi_sprite("eyes_cry"),
+                "cry": anim.TransitionAnimation(
+                    mi_sprite("eyes_cry"), 0.2, None,
+                    mi_sprite("eyes_cry2"), 0.2, None
+                ),
                 "dizzy": mi_sprite("eyes_dizzy"),
-                "dots": mi_sprite("eyes_dots"),
+                "dots":  anim.TransitionAnimation(
+                    mi_sprite("eyes_dots"), 1.7, None,
+                    mi_sprite("eyes_dots_blink"), 0.3, None,
+                    mi_sprite("eyes_dots"), 2.4, None,
+                    mi_sprite("eyes_dots_blink"), 0.3, None,
+                    mi_sprite("eyes_dots"), 2.8, None,
+                    mi_sprite("eyes_dots_blink"), 0.3, None,
+                    ),
                 "flat": mi_sprite("eyes_flat"),
                 "fun front": mi_sprite("eyes_funfront"),
                 "fun side": mi_sprite("eyes_funside"),
@@ -511,8 +651,28 @@ init -1:
                     mi_sprite("eyes_starry1"), 0.2, None,
                     mi_sprite("eyes_starry2"), 0.2, None
                 ),
-                "tender": mi_sprite("eyes_tender"),
-                "wide": mi_sprite("eyes_wide"),
+                "tender": anim.TransitionAnimation(
+                    mi_sprite("eyes_tender"), 1.7, None,
+                    mi_sprite("eyes_open_blink"), 0.1, None,
+                    mi_sprite("eyes_closed"), 0.1, None,
+                    mi_sprite("eyes_tender"), 2.4, None,
+                    mi_sprite("eyes_open_blink"), 0.1, None,
+                    mi_sprite("eyes_closed"), 0.1, None,
+                    mi_sprite("eyes_tender"), 2.8, None,
+                    mi_sprite("eyes_open_blink"), 0.1, None,
+                    mi_sprite("eyes_closed"), 0.1, None,
+                    ),
+                "wide":   anim.TransitionAnimation(
+                    mi_sprite("eyes_wide"), 1.7, None,
+                    mi_sprite("eyes_wide_blink"), 0.1, None,
+                    mi_sprite("eyes_closed"), 0.1, None,
+                    mi_sprite("eyes_wide"), 2.4, None,
+                    mi_sprite("eyes_wide_blink"), 0.1, None,
+                    mi_sprite("eyes_closed"), 0.1, None,
+                    mi_sprite("eyes_wide"), 2.8, None,
+                    mi_sprite("eyes_wide_blink"), 0.1, None,
+                    mi_sprite("eyes_closed"), 0.1, None,
+                    ),
                 "wink": mi_sprite("eyes_wink")
             }
         )
@@ -616,20 +776,83 @@ init -1:
                 "big"       : ka_sprite("eyes_big"),
                 "clench"    : ka_sprite("eyes_clench"),
                 "closed"    : ka_sprite("eyes_closed"),
-                "cry"       : ka_sprite("eyes_cry"),
+                "cry"       : anim.TransitionAnimation(
+                    ka_sprite("eyes_cry"), 0.2, None,
+                    ka_sprite("eyes_cry2"), 0.2, None
+                    ),
                 "dizzy"     : ka_sprite("eyes_dizzy"),
-                "dots"      : ka_sprite("eyes_dots"),
+                "dots"      : anim.TransitionAnimation(
+                    ka_sprite("eyes_dots"), 2.3, None,
+                    ka_sprite("eyes_dots_blink"), 0.3, None,
+                    ka_sprite("eyes_dots"), 2.0, None,
+                    ka_sprite("eyes_dots_blink"), 0.3, None,
+                    ka_sprite("eyes_dots"), 2.5, None,
+                    ka_sprite("eyes_dots_blink"), 0.3, None,    
+                    ),
                 "flat"      : ka_sprite("eyes_flat"),
                 "fun front" : ka_sprite("eyes_funfront"),
                 "fun side"  : ka_sprite("eyes_funside"),
                 "happy"     : ka_sprite("eyes_happy"),
-                "default"   : ka_sprite("eyes_open"),
+                "default"   : anim.TransitionAnimation(
+                    ka_sprite("eyes_open"), 2.3, None,
+                    ka_sprite("eyes_open_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ka_sprite("eyes_open"), 2.0, None,
+                    ka_sprite("eyes_open_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ka_sprite("eyes_open"), 2.5, None,
+                    ka_sprite("eyes_open_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ),
                 "shock"     : ka_sprite("eyes_shock"),
-                "sparkly": ka_sprite("eyes_sparkly"),
-                "tender"      : ka_sprite("eyes_tender"),
-                "tender side" : ka_sprite("eyes_tenderside"),
-                "up": ka_sprite("eyes_up"),
-                "wide"        : ka_sprite("eyes_wide"),
+                "sparkly": anim.TransitionAnimation(
+                    ka_sprite("eyes_sparkly"), 0.2, None,
+                    ka_sprite("eyes_sparkly2"), 0.2, None
+                    ),
+                "tender"      : anim.TransitionAnimation(
+                    ka_sprite("eyes_tender"), 2.3, None,
+                    ka_sprite("eyes_open_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ka_sprite("eyes_tender"), 2.0, None,
+                    ka_sprite("eyes_open_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ka_sprite("eyes_tender"), 2.5, None,
+                    ka_sprite("eyes_open_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ),
+                "tender side" : anim.TransitionAnimation(
+                    ka_sprite("eyes_tenderside"), 2.3, None,
+                    ka_sprite("eyes_tenderside_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ka_sprite("eyes_tenderside"), 2.0, None,
+                    ka_sprite("eyes_tenderside_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ka_sprite("eyes_tenderside"), 2.5, None,
+                    ka_sprite("eyes_tenderside_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ),
+                "up": anim.TransitionAnimation(
+                    ka_sprite("eyes_up"), 2.3, None,
+                    ka_sprite("eyes_up_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ka_sprite("eyes_up"), 2.0, None,
+                    ka_sprite("eyes_up_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ka_sprite("eyes_up"), 2.5, None,
+                    ka_sprite("eyes_up_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ),
+                "wide"        : anim.TransitionAnimation(
+                    ka_sprite("eyes_wide"), 2.3, None,
+                    ka_sprite("eyes_wide_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ka_sprite("eyes_wide"), 2.0, None,
+                    ka_sprite("eyes_wide_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ka_sprite("eyes_wide"), 2.5, None,
+                    ka_sprite("eyes_wide_blink"), 0.1, None,
+                    ka_sprite("eyes_closed"), 0.1, None,
+                    ),
                 "wink"        : ka_sprite("eyes_wink")
             }
         )
@@ -731,18 +954,55 @@ init -1:
         orias_eyes = StateMachineDisplayable(
             "orias_eyes", "default",
             {
-                "default": ori_sprite("eyes_open"),
+                "default": anim.TransitionAnimation(
+                    ori_sprite("eyes_open"), 1.8, None,
+                    ori_sprite("eyes_open_blink"), 0.1, None,
+                    ori_sprite("eyes_closed"), 0.1, None,
+                    ori_sprite("eyes_open"), 2.5, None,
+                    ori_sprite("eyes_open_blink"), 0.1, None,
+                    ori_sprite("eyes_closed"), 0.1, None,
+                    ori_sprite("eyes_open"), 1.7, None,
+                    ori_sprite("eyes_open_blink"), 0.1, None,
+                    ori_sprite("eyes_closed"), 0.1, None,
+                    ),
                 "closed"    : ori_sprite("eyes_closed"),
                 "dizzy"     : ori_sprite("eyes_dizzy"),
-                "dots"      : ori_sprite("eyes_dots"),
+                "dots"      : anim.TransitionAnimation(
+                    ori_sprite("eyes_dots"), 1.8, None,
+                    ori_sprite("eyes_dots_blink"), 0.3, None,
+                    ori_sprite("eyes_dots"), 2.5, None,
+                    ori_sprite("eyes_dots_blink"), 0.3, None,
+                    ori_sprite("eyes_dots"), 1.7, None,
+                    ori_sprite("eyes_dots_blink"), 0.3, None,    
+                    ),
                 "flat"      : ori_sprite("eyes_flat"),
                 "fun front" : ori_sprite("eyes_funfront"),
                 "fun side"  : ori_sprite("eyes_funside"),
                 "happy"     : ori_sprite("eyes_happy"),
                 "shock"     : ori_sprite("eyes_shock"),
-                "side": ori_sprite("eyes_side"),
+                "side": anim.TransitionAnimation(
+                    ori_sprite("eyes_side"), 1.8, None,
+                    ori_sprite("eyes_side_blink"), 0.1, None,
+                    ori_sprite("eyes_closed"), 0.1, None,
+                    ori_sprite("eyes_side"), 2.5, None,
+                    ori_sprite("eyes_side_blink"), 0.1, None,
+                    ori_sprite("eyes_closed"), 0.1, None,
+                    ori_sprite("eyes_side"), 1.7, None,
+                    ori_sprite("eyes_side_blink"), 0.1, None,
+                    ori_sprite("eyes_closed"), 0.1, None,
+                    ),
                 "squint": ori_sprite("eyes_squint"),
-                "wide": ori_sprite("eyes_wide"),
+                "wide": anim.TransitionAnimation(
+                    ori_sprite("eyes_wide"), 1.8, None,
+                    ori_sprite("eyes_wide_blink"), 0.1, None,
+                    ori_sprite("eyes_closed"), 0.1, None,
+                    ori_sprite("eyes_wide"), 2.5, None,
+                    ori_sprite("eyes_wide_blink"), 0.1, None,
+                    ori_sprite("eyes_closed"), 0.1, None,
+                    ori_sprite("eyes_wide"), 1.7, None,
+                    ori_sprite("eyes_wide_blink"), 0.1, None,
+                    ori_sprite("eyes_closed"), 0.1, None,
+                    ),
                 "wink"        : ori_sprite("eyes_wink")                
             }
         )
@@ -809,7 +1069,7 @@ init -1:
     image bg street = "assets/bgs/street.png"
 
 
-    # --- Chibis -------------------------------------------------------
+    # --- Chibis  and items --------------------------------------------
     image chibi_akki01 = "assets/chibis/akki_hug.png"
     image chibi_akki02 = "assets/chibis/akki_sit.png"
     
@@ -822,8 +1082,50 @@ init -1:
     image chibi_kael01 = "assets/chibis/kael_laundry.png"
     image chibi_kael02 = "assets/chibis/kael_cut.png"
 
+    image item sock: 
+        "assets/items/item_sock1.png"
+        pause 0.2
+        "assets/items/item_sock2.png"
+        pause 0.2
+        repeat
 
+    image item parfait: 
+        "assets/items/item_parfait.png"
+        pause 0.2
+        "assets/items/item_parfait2.png"
+        pause 0.2
+        repeat
 
+    image item bacon: 
+        "assets/items/item_bacon1.png"
+        pause 0.2
+        "assets/items/item_bacon2.png"
+        pause 0.2
+        repeat
+
+    image item pizza: 
+        "assets/items/item_pizza1.png"
+        pause 0.2
+        "assets/items/item_pizza2.png"
+        pause 0.2
+        repeat
+
+    image item tea: 
+        "assets/items/item_tea1.png"
+        pause 0.2
+        "assets/items/item_tea2.png"
+        pause 0.2
+        repeat
+
+    image item toast: 
+        "assets/items/item_toast1.png"
+        pause 0.2
+        "assets/items/item_toast2.png"
+        pause 0.2
+        repeat
+
+    image item pancakes = "assets/items/item_pancakes.png"
+       
 
     # -- CGs and cut-ins------------------------------------------------
     image portal = "assets/CGs/portal.png"
@@ -1252,7 +1554,7 @@ init -1:
             "orilay_oriface == 'neutral'", "assets/CGs/orias01_oriface_neutral.png",
             "True", "assets/CGs/orias01_oriface_neutral.png",
             ),
-        (0, 0), naked("assets/CGs/orias01_claire{0}.png"),
+        (0, 0), "assets/CGs/orias01_claire.png",
         (0, 0), ConditionSwitch(
             "orilay_panties == 'off'", naked("assets/CGs/orias01_claire_nopan{0}.png"),
             "True", "assets/CGs/orias01_claire_panties.png",
@@ -1262,6 +1564,7 @@ init -1:
             "True", "assets/CGs/orias01_clarms_free.png",
             
             ),
+        (0, 0), naked("assets/CGs/orias01_claire_breasts{0}.png"),
         (0, 0), ConditionSwitch(
             "orilay_clface== 'worried'", "assets/CGs/orias01_clface_worried.png",
             "orilay_clface== 'content'", "assets/CGs/orias01_clface_content.png",

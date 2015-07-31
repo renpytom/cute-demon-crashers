@@ -13,7 +13,9 @@ label day1_morning:
     $claire.set_state(with_dissolve, mouth="uhh", emotion="sweat lots")
     cl "It's still here."
     play sound "assets/sfx/portal_whoop.ogg"
+    show item sock at chibi_scene with dissolve
     "Hesitantly, I pick up a dirty, discarded sock and toss it into the purple portal. It vanishes into the void." 
+    hide item with dissolve
     $claire.set_state(mouth="wavy", emotion="lll", eyebrows="inwards")
     cl "...I must still be tired. I should eat. I hope there's cereal left."
     scene bg kitchen with dissolve
@@ -33,9 +35,12 @@ label day1_morning:
     show kael at speak
     voice "k_w09"
     ka "I thought the whole 'demons showing up in your house' must've taken a lot out of you, so I made breakfast. Look, it's even happy to see you."
+    show item bacon at chibi_scene with dissolve
     "He places a plate down before me and a smiley face made out of sunny-side up eggs and three strips of bacon stares back. The dish matches the demon's grin." 
+    hide item with dissolve
     cl "Uh... thank you... Um..."
     $kael.set_state(**Emotion.normal())
+    voice "k_w03"
     ka "Kael. Akki is the young redhead and Orias is the long-haired one. I think you'll remember Mirari since you met her first."
     hide kael with dissolve
     "He maneuvers back to the stove, and I slowly pick up my fork to poke at the fried yolk."
@@ -44,12 +49,14 @@ label day1_morning:
     "I pinch my cheek hard."
     $claire.set_state(eyes="clench tear", mouth="uhh")
     cl "Nnng, ow."
+    show item bacon at chibi_scene with dissolve
     "I scoop some of the egg onto my fork, then give it a cautious sniff before sampling it."
     $claire.set_state(emotion="flowers", emotion_base="small blush", eyes="wide", eyebrows="up", mouth="uh")
     cl "It's... good."
     stop music fadeout 4
     "The texture, the smell, the tinge of salt and pepper, it fills my mouth. I feel the weight as I chew, then swallow it."
     "There's no way this isn't real..."
+    hide item with dissolve
     $claire.set_state(with_dissolve, emotion="default", eyes="bug cry", mouth="wavy")
     cl "I wasn't dreaming...?"
     $claire.set_state(eyebrows="inwards")
@@ -84,6 +91,7 @@ label day1_morning:
     $claire.set_state(with_dissolve, eyebrows="flat", eyes="default")
     cl "... while wearing my dad's apron."
     $kael.set_state(with_dissolve, eyes="happy", emotion="sweat", mouth="default")
+    voice "k_s03"
     ka "It's a lot to take in, but I assure you you're safe with us. It'll only be for two days. Until then, please relax and enjoy yourself." 
     $kael.set_state(with_dissolve, eyes="default", eyebrows="default", emotion="default", mouth="default")
     ka "However you enjoy yourself is up to you."
@@ -96,9 +104,11 @@ label day1_morning:
     show orias at right with moveinright
     
     ori "Feeling better? Here, some tea that'll help calm your nerves." 
+    show item tea at chibi_scene with dissolve
     "Orias appears and gently sets down a fancy, unfamiliar tea cup and a flowery aroma fills the air. With slightly trembling hands, I take it."
     $claire.set_state(eyes="default", eyebrows="up", mouth="oh")
     cl "What kind of tea is it?"
+    hide item with dissolve
     $orias.set_state(with_dissolve, mouth="oh", eyebrows="tender")
     show orias at speak
     ori "It's similar to your earth passionflower. I promise it's safe for humans; I've been brewing this type for centuries." 
@@ -109,6 +119,7 @@ label day1_morning:
     #kael =< =< =<
     $kael.set_state(emotion="panic", eyebrows="inwards", mouth="ah", eyes="clench", emotion_base="no nose")
     show kael at bounce_up
+    voice "k_s09"
     ka "I'd never!" 
     $claire.set_state(emotion="default", mouth="uh", eyes="default", eyebrows="default")
     cl "Okay, if this isn't a dream... where are the others?"
@@ -135,11 +146,13 @@ label day1_morning:
     show kael at center with move
     show kael at speak
     $kael.set_state(**Emotion.normal())
+    voice "k_s04"
     ka "Sounds like you're much calmer now."
     cl "The tea helped and... you guys seem nice. I haven't had people dote on me in a long time."
     $claire.set_state(with_dissolve, emotion_base="small blush", eyes="tender side", eyebrows="inwards", mouth="low")
     cl "Um... do I still have to... you know..."
     $kael.set_state(with_dissolve, eyes="closed")
+    voice "k_w04"
     ka "Only if you're comfortable. We wouldn't pressure you to do something you'd rather not."
     $claire.set_state(eyes="happy", mouth="smile", emotion="sweat")
     cl "I see. I mean it's still bizarre that there's mystical beings crashing at my house, but I promise I won't freak out anymore. Or pinch myself."

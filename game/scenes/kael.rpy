@@ -20,6 +20,8 @@ define oral2 = False
 define fingers2 = False
 define kaelontop = False
 define kaelinside = False
+define kael_cutin = False
+define kael_epilong = False
 
 
 
@@ -110,7 +112,6 @@ label kael_hangout1:
     ka "I'm simply being me. We all are. We'd like you to feel comfortable around us; there's no point in being dishonest about who we are." 
     hide kael with dissolve
     show chibi_kael01 at chibi_scene with dissolve
-    $ gallery.unlock("chibi_kael01")
     play music music_silly fadein 2
     "He picks up the basket, and it's then I spot some lacy underwear on the pile."
     cla "Ah, I'll wash those!"
@@ -522,7 +523,7 @@ label kissingpermission:
             ka "I'll come back to this later~"
             $claire.set_state(eyes="clench", emotion_base="large blush", mouth="v", eyebrows="inwards")
             cl "You tease." 
-            $kael.set_state(with_dissolve, eyebrows="up", mouth="smile", emotion="default")
+            $kael.set_state(with_dissolve, eyebrows="one up", mouth="smile", emotion="default")
             voice "k_sex20"
             ka "Am I?"
             "Kael kisses above my navel, which I can feel through my chemise. He travels upward, then stops below my breasts. He crosses his arms there, then rests his chin on them, gazing at me fondly." 
@@ -595,58 +596,85 @@ label kissingpermission:
         "How about {i}I{/i} kiss you all over?":
             $ kissinghimactivity = True
             hide kael_leaning with dissolve
+            $kael.set_state(with_dissolve, eyes="tender", eyebrows="default", emotion_base="default", emotion="default", mouth="smile")
             show kael at center_alone2 with dissolve
+            $claire.set_state(eyes="down", mouth="v", eyebrows="up")
             cl "Um... I'd like to do this to you instead, if it's alright..."
+            $kael.set_state(with_dissolve, eyebrows="up", eyes="default")
+            voice "k_s10"
             ka "Oh?"
+            $claire.set_state(eyes="clench", mouth="kitty", emotion_base="large blush", eyebrows="inwards")
             cl "Yes..."
+            $kael.set_state(with_dissolve, eyes="wink", emotion="note", eyebrows="default")
+            voice "k_sex26"
             ka "I'd like that."
             "He kisses my forehead, then hugs me close. He playfully rolls over until I'm the one over him."
             hide kael with dissolve
             show kael_kissing B with dissolve
             "I gaze down at him, unsure where to start now that I'm the one leading."
+            voice "k_sex27"
             ka "Here, a starting point."
             "His lips meet mine, dissolving my uncertainty. Hesitantly, I separate the kiss and brush my lips against his chin. I give him light fluttering kisses on his neck, admiring the feel of his skin against mine."
             "When I reach his collar, my fingers slide underneath the cloth teasingly, tracing over his tattoos."
             "As soon as my face lowers to his chest, I pause, sensing his warm body heat and the lingering earthy smell."
             "My cheeks flush and I bury myself against him."
+            voice "k_sex28"
             ka "You okay?"
             cla "Uh, yea, just... gimme a minute... I'm registering the fact that I'm kissing a handsome half-naked guy all over." 
+            voice "k_sex29"
             ka "Incubus."
             if kael_scenes >= 3:
                 cla "I always seem to forget that little detail..." 
+                voice "k_s03"
                 ka "Then I'll gladly remind you."
+            voice "k_s04"
             "He chuckles and musses up my hair, letting his fingers caress the back of my head." 
             "Gathering my courage, I continue kissing his chest, slowly making my way down his stomach. I glance at him, and he's smiling sweetly with his eyes closed, focusing on my touch."
             "I'm glad he's enjoying it..."
             "When I'm closer to his navel, again, I pause, flustered."
             hide kael_kissing with dissolve
+            $kael.set_state(eyes="closed", mouth="smile", eyebrows="up", emotion_base="blush", emotion="default")
             show kael at center_alone2 with dissolve
+            $claire.set_state(eyes="dots", mouth="uh", eyebrows="inwards", emotion="sweat", emotion_base="large blush")
+            $kael.set_state(with_dissolve, eyes="default")
             cl "Um, should I..."
+            $kael.set_state(with_dissolve, eyes="tender", eyebrows="inwards")
+            voice "k_sex30"
             ka "Oh, no, you don't have to. Tonight is all about you, remember?"
+            $kael.set_state(with_dissolve, emotion="heart", eyebrows="default", eyes="wink")
             ka "If anything, I'd like to warm you up this way, if you're okay with it." 
+            $claire.set_state(eyes="tender side", mouth="default", eyebrows="default", emotion="default", emotion_base="small blush")
             cl "Then..."
             $ kissinghimactivity = False
             menu:
                 "I'd like that.":
                     $ kaeloral = True
                     $ undressingtime = True
+                    $claire.set_state(emotion_base="large blush", eyes="tender", eyebrows="inwards", mouth="smile")
                     cl "I'm okay with it." 
+                    $kael.set_state(emotion="default", eyes="tender")
                     "We switch positions, and I make myself comfortable on the bed again."
                     "I pull up my chemise, and his fingers slip under the lace of my panties, giving it a teasing tug."
                     $kael_claire_naked = True
                 "Ask him to use his fingers.":
                     $ undressingtime = True
                     $ kaelfinger = True
+                    $claire.set_state(emotion_base="large blush", eyes="tender", eyebrows="inwards", mouth="uh")
                     cl "Um, is it okay if you use your fingers for the first time?"
+                    voice "k_sex23"
                     ka "I can do that."
+                    $kael.set_state(with_dissolve, emotion="default", eyes="tender")
                     "We switch positions, and I make myself comfortable on the bed again."
                     "I pull up my chemise, and his fingers slip under the lace of my panties, giving it a teasing tug."
                     $kael_claire_naked = True
                 "I'd like to stop now.":
+                    $kael.set_state(with_dissolve, eyebrows="up", mouth="low", eyes="default", emotion="default")
+                    $claire.set_state(eyes="default", eyebrows="inwards", mouth="low", emotion="default", emotion_base="small blush")
                     cl "Um... Wait..."
+                    $kael.set_state(with_dissolve, eyebrows="inwards", mouth="neutral",)
                     "I move back and Kael sits up in concern." 
                     $kael.set_state(**Emotion.normal())
-                    $kael.set_state(eyebrows="inwards", mouth="neutral", eyes="tender")
+                    $kael.set_state(eyebrows="inwards",  eyes="default", mouth="ah")
                     ka "Everything all right?"
                     $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low")
                     cl "Yes. I don't think I'm ready to go farther. Sorry if I ruined the mood..."
@@ -665,22 +693,30 @@ label kissingpermission:
             jump kaelstoppingnow 
         
 label oralactivity:
-    $claire.set_state(base="naked")
+    $claire.set_state(base="naked", eyes="down", mouth="low")
     cl "Um, sorry, I didn't really... shave down there... only trimmed..."
     $ claireundressed = True
-    scene kael_warmup with dissolve
     "I curl up my legs so he can remove my panties, and he sets them aside."
+    $kael.set_state(with_dissolve, eyes="closed")
+    voice "k_s18"
     ka "I wouldn't worry about that; I think you're cute the way you are."
+    $kael.set_state(with_dissolve, eyes="up", eyebrows="up")
     ka "Besides, I'm not one to judge."
-    $kael.set_state(base="naked")
+    $kael.set_state(base="naked", eyes="wink", mouth="grin", eyebrows="default")
     $kael_naked = True
-    scene bg bedroom_night with dissolve
-    show kael at center with dissolve
+    show kael at center_group with dissolve
     $kael.set_state(with_dissolve, base="naked")
     "He lifts up and removes his neckpiece, revealing the intricate tattoos on his upper chest. Winking, he unties the sash around his waist to loosen the loincloth." 
+    $kael.set_state(with_dissolve, eyes="happy", mouth="smile", emotion="default")
+    voice "k_s04"
     "While he disrobes, I peek down then shyly look away. Our eyes meet, and we both let out an amused chuckle."
+    $claire.set_state(eyes="tender", mouth="smile", emotion_base="small blush", emotion="heart", eyebrows="default")
     cl "Ah, no wonder... I like the way you are, too."
+    $kael.set_state(with_dissolve, eyes="tender", emotion="heart")
     ka "Thank you."
+    voice "k_sex32"
+    $kael.set_state(with_dissolve, eyes="wink", emotion="note")
+    show kael at center_alone2 with dissolve
     ka "Now, where was I?"
     scene kael_warmup with dissolve
     $ undressingtime = False
@@ -710,133 +746,222 @@ label oralactivity:
     $ kaeloral = False
     $ kaelfinger = False
     scene bg bedroom_night with dissolve
+    $kael.set_state(with_dissolve, emotion="default", eyes="tender", emotion_base="default", mouth="smile")
     show kael at center_alone2 with dissolve
     "Kael positions himself over me and delivers a kiss to my forehead."
+    voice "k_sex33"
     ka "Would you like to be closer?"
     "He presses against my thigh slightly while his hand seeks mine."
     "Our fingers intertwine as I absorb the question."
     "I give a nod."
+    $claire.set_state(eyes="tender", mouth="smile", eyebrows="inwards", emotion="default")
     cl "Yes, I'd like that."
     if kael_sex_choices.condom == True:
         "He reaches over for the condom wrapper on the nightstand, and I politely glance away until he's done."   
     "Kael grabs a pillow next to me."
+    voice "k_sex27"
     ka "Here, it'll ease your back, and make you more comfortable since I'm bigger..."
+    $claire.set_state(eyes="dots", eyebrows="up", mouth="v")
     cl "Bigger?"
+    $kael.set_state(with_dissolve, eyes="wide", emotion_base="small blush", emotion="panic", eyebrows="up", mouth="ah")
     ka "Ah, height. My stature. I was only referring to that, I swear."
+    $kael.set_state(with_dissolve, eyes="dots", emotion_base="small blush", emotion="sweat", eyebrows="up", mouth="low")
     "A rare blush spreads across his face. I lift my back and he slides a pillow underneath."
+    $kael.set_state(with_dissolve, eyes="tender", emotion_base="default", emotion="default", eyebrows="up", mouth="smile")
     "Once I'm settled, he crawls over me and repositions himself. He catches me staring and he leans in to block my view."
+    $kael.set_state(with_dissolve, emotion_base="default", emotion="heart", eyebrows="default", mouth="smile")
+    voice "k_sex34"
     ka "Like what you see?"
+    $claire.set_state(emotion_base="small blush", eyebrows="frown", mouth="kitty", eyes="fun side")
     cl "I... couldn't see under that hair."
+    voice "k_s10"
+    $kael.set_state(with_dissolve, eyebrows="one up", emotion="default")
     ka "Oh, getting cheeky are we?"
     "He lightly pinches my cheek, and I giggle as he tickles my forehead with adoring air kisses."
+    $claire.set_state(eyes="happy", emotion_base="large blush", mouth="happy", eyebrows="inwards")
     cl "O-okay, I like what I see..."
+    $kael.set_state(with_dissolve, eyebrows="default", eyes="closed")
     "He shifts his head until I feel his hot breath against my ear and changes his voice to a sultry tone."
+    $kael.set_state(with_dissolve, eyes="tender", emotion="heart")
+    voice "k_sex35"
     ka "I like what I see, too."     
     $ kaelontop = True
+    $kael_mis_clface="2"
+    $kael_mis_kface="2"
     scene kael_missionary with dissolve
     "I feel my face flush. He lowers until his chest touches mine and aligns his hips against me."
+    voice "k_sex36"
     ka "I'm not too heavy?"
     cla "No."
+    $kael_mis_clface="1"
     "With my pelvis elevated, he settles between my moist thighs then glides back and forth."
     "A soft moan escapes my lips as Kael delves deeper with each stroke until I can feel a gentle pressure against my entrance. I embrace him and relax my head on the pillow, closing my eyes." 
+    voice "k_sex37"
     ka "How does that feel?"
+    $kael_mis_clface="2"
     cla "Feels wonderful. You can keep going, just, um..."
     "He gropes for my hand then gives it a tender squeeze."
+    voice "k_sex38"
     ka "I'll take it slow."
     $ kaelontop = False
     $ kaelinside = True
+    $kael_mis_clface="1"
     "His tip nudges into me and a shock of pleasure radiates from my stomach, along with a stretching sensation."   
+    voice "k_sex39"
     ka "You okay?"
     cla "Good... Tight, but doesn't hurt."
+    $kael_mis_kface="1"
     "He kisses my forehead and increases the pressure just a little bit more, stopping to gauge my reaction. After a sharp inhale, I relax, letting my body get used to the sensation."
     "Each movement becomes slicker from how wet I've become, and I sense him take a deep breath before continuing."
     "We both gasp as I feel the expansion within me massaging me from the inside." 
     "Our bodies join, and his chest lightly rests against mine as I embrace him. For a moment we say nothing and I wonder what I can say regarding this physical milestone."
+    $kael_mis_clface="2"
+    $kael_mis_kface="2"
     cla "That... didn't hurt like I thought it would."
+    $kael_mis_kface="3"
+    voice "k_sex40"
     ka "I'd never do that. Who do you think you're with?" 
+    $kael_mis_clface="3"
     "He pouts, then blows an air kiss against my neck, causing me to giggle."
+    $kael_mis_clface="2"
     cla "I also thought sex was all serious sexytimes and no laughing."
+    $kael_mis_kface="4"
+    voice "k_s03"
     ka "I allow moans of ecstasy and giggling here. Even the occasional, 'Oh, god, yes'."
+    $kael_mis_clface="3"
     "I burst out laughing from his tone, unwittingly causing my pelvic muscles to contract around him, and I dissolve into a half-chuckle half-gasp."
+    $kael_mis_clface="1"
     cla "Don't make me laugh... that felt good."
+    voice "k_sex41"
+    $kael_mis_kface="2"
     ka "I'll take it easy, okay? Let me know if it starts to feel uncomfortable." 
+    $kael_mis_kface="1"
     "After adjusting his elbows, he begins a deep, sensual stroke followed by shallow thrusts. At first I feel nothing, then the friction and warmth starts to build inside. The base of his shaft rubs against my clit, escalating the sensation."
     "Whenever it starts to become too intense or monotonous, he senses the cues in my voice and expression then changes angles or tempo. My hips squirm under the constant but pleasant pressure in my lower belly."
     #remove stop button and return for menu
     hide screen sex_stop
+    voice "k_s21"
+    $kael_mis_clface="4"
     "I moan as the overwhelming bliss makes it impossible to distinguish Kael's rhythm anymore, and I feel my muscles clench against him."
     "It's nothing I ever experienced before – it's feels like a cup that has overflowed and each spill ripples throughout my body in pure ecstasy. The intensity takes a hold of me, stringing me along like a hook, not letting me go."
     "I shudder after the final release and sink back into the bed. The warmth slowly fades away, like a receding tide, leaving me relaxed and very satisfied."
+    $kael_mis_clface="1"
     cla "...Wow..."
+    $kael_mis_kface="2"
+    voice "k_sex42"
     ka "Sounds like you enjoyed it."
+    $kael_mis_clface="2"
     cla "Sounds...?"
+    voice "k_s03"
     ka "You made some very cute noises."
+    $kael_mis_clface="6"
     cla "...I didn't even realize... Oh gosh, I hope I didn't wake the neighbors."
+    $kael_mis_kface="4"
+    voice "k_s04"
     "I cover my face and Kael chuckles, leaning in."
+    voice "k_sex43"
     ka "You were fine."
+    scene bg bedroom_night with dissolve
     "We gingerly separate and sit up. He reaches over, grabs a folded dry towel off the floor, and starts to pat me down tenderly. I turn around so he can wipe my back."
+    $kael.set_state(emotion="default")
+    show kael at center_alone2 with dissolve
+    voice "k_sex44"
     ka "How are you feeling?"
-    cla "A little exhausted, sore, but... happy. Thank you, it's because of you I really enjoyed my first time..." 
+    $claire.set_state(emotion="heart", eyes="tender", eyebrows="default", mouth="smile", emotion_base="small blush")
+    cl "A little exhausted, sore, but... happy. Thank you, it's because of you I really enjoyed my first time..." 
+    $kael.set_state(with_dissolve, emotion="note", eyes="happy", mouth="grin")
     ka "I enjoyed myself with you, too. You were great, [claire_name]."
-    cla "M-me? But... I'm inexperienced and... didn't... do much..."
+    $claire.set_state(eyes="wide", eyebrows="up", mouth="uh", emotion="default")
+    cl "M-me? But... I'm inexperienced and... didn't... do much..."
+    $kael.set_state(with_dissolve, eyes="closed", emotion="default", mouth="smile")
     ka "It's not about experience."
+    $kael.set_state(with_dissolve, eyes="wink")
+    show kael at bounce_up_alone2
     "His hands dart around and he tickles my stomach, causing me to squeal."
     ka "You were honest, open, and willing to try new things. You became comfortable with yourself, and with me."
+    $kael.set_state(with_dissolve, emotion="note", mouth="grin")
+    voice "k_s04"
     ka "A sense of humour doesn't hurt either." 
     if pillowrecall==True:
+        $kael.set_state(with_dissolve, emotion="flowers", mouth="happy", eyes="happy")
         ka "It's also been a while since I had a good pillow fight."
     #if wrestlerecall==True:
         #ka "I never expected you'd want to wrestle me, either..."
     if tenderrecall==True:
         "He kisses the back of my head." 
+    $kael.set_state(with_dissolve, emotion="default", mouth="smile", eyes="tender")
     ka "So I mean it when I say you were great."
-    cla "I guess if you put it that way..." 
-    cla "Um, did I nourish you during this...?"
+    $claire.set_state(emotion="default", eyes="tender side", eyebrows="default", mouth="smile", emotion_base="small blush")
+    cl "I guess if you put it that way..." 
+    $claire.set_state(with_dissolve, eyes="tender", eyebrows="up", mouth="low", emotion_base="small blush")
+    cl "Um, did I nourish you during this...?"
+    $kael.set_state(with_dissolve, emotion="flowers", mouth="happy", eyes="happy")
     ka "You did. Now I'm all ready for a round two."
-    cla "R-round two!?"
+    $claire.set_state(emotion="shock", eyes="wide", mouth="wah", eyebrows="up", emotion_base="large blush")
+    cl "R-round two!?"
+    voice "k_s05"
+    $kael.set_state(with_dissolve, eyebrows="inwards", emotion="default")
+    show kael at bounce_up_alone2
     "He laughs, hugging me close before we topple to our sides."
+    $kael.set_state(with_dissolve, eyebrows="default", eyes="wink", mouth="grin", emotion="default")
     ka "I mean a cuddle." 
     if pillowrecall==True:
+        $kael.set_state(with_dissolve, mouth="happy", emotion="note")
         ka "Unless you want another pillow fight."
     #if wrestlerecall==True:
         #ka "Unless you want to horse around again." 
-    cla "Heh, a cuddle sounds nice..."    
+    $claire.set_state(emotion="default", eyes="happy", eyebrows="default", mouth="grin", emotion_base="small blush")
+    cl "Heh, a cuddle sounds nice..."    
     label kaellatestop:
+    $kael_cuddle_clface="1"
+    $kael_cuddle_kface="1"
     scene kael_cuddles with dissolve
     "Kael moulds his body against mine, weaving our legs together."
     if kael_scenes >= 3 :
+        voice "k_s03"
         ka "I hope you've had a memorable spring break."
         cla "I did. It wasn't the least bit lonely. You could say it was unbelievable."
+    $kael_cuddle_clface="1"
+    $kael_cuddle_kface="1"
     "His breath warms the base of my neck, and it's then I realize there's soft music still drifting in the room. Both have a soothing effect on me, along with his comforting embrace."
     "Relaxed and secure in his arms, I close my eyes and fall into a restful sleep."
+    $kael_epilong = True
     call credits
     jump kael_epilogue
     
 label kaelstoppingnow:
+    hide screen sex_stop
     if tenderactivity==True:
         cla "I'd like to stop..."
-        hide kael_start with dissolve
+        hide kael_start 
+        hide kael_leaning 
+        with dissolve
         $kael.set_state(**Emotion.normal())
+        $claire.set_state(**Emotion.normal())
         $kael.set_state(eyebrows="inwards", mouth="smile", eyes="tender")
+        scene bg bedroom_night with dissolve
         show kael at center_alone2 with dissolve
         voice "k_sex46"
         ka "I understand. You know yourself best."
         voice "k_s12"
         ka "Would a cuddle suffice, instead?"
         "He gives my hand a reassuring squeeze and I give a grateful nod."
-        $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
+        $claire.set_state(eyes="tender", mouth="smile", eyebrows="default", emotion="default")
         cl "I'd like that... Thanks, Kael." 
         stop music fadeout 2
         jump kaelearlystop
     if sillyactivity==True:
+        $claire.set_state(**Emotion.normal())
         cla "Um, I'd like to stop..."
-        hide kael_start with dissolve
+        hide kael_start
+        hide kael_leaning 
+        with dissolve
         $kael.set_state(**Emotion.normal())
         $kael.set_state(eyebrows="inwards", mouth="smile", eyes="tender")
         show kael at center_alone2 with dissolve
         voice "k_sex39"
         ka "You okay?"
-        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low")
+        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low", emotion="default")
         cl "Yeah, the activity is fun but... I don't think I'd be ready for what comes after."
         voice "k_sex46"
         ka "I understand. Here."
@@ -848,17 +973,18 @@ label kaelstoppingnow:
         stop music fadeout 2   
         jump kaelearlystop
     if kissingactivity==True:
+        $claire.set_state(**Emotion.normal())
         hide kael_kissing with dissolve
-        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low")
+        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low", emotion="default")
+        $kael.set_state(with_dissolve,  eyebrows="up", mouth="neutral", eyes="default", emotion="default", emotion_base="default")
         cl "I'd like to stop now..."
         "He immediately stops kissing and turns to me."
         voice "k_sex46"
-        $kael.set_state(eyebrows="inwards", mouth="smile", eyes="tender")
+        $kael.set_state(eyebrows="inwards", mouth="smile", eyes="tender", emotion="default", emotion_base="default")
         show kael at center_alone2 with dissolve
         ka "I understand. I hope I didn't make you uncomfortable."
         cl "Of course not. I just think I'm not ready for what happens beyond it..."
         $kael.set_state(with_dissolve, eyebrows="inwards", mouth="smile", eyes="closed")
-        show kael at center_alone2 with dissolve
         voice "k_sex47"
         $kael.set_state(with_dissolve, eyebrows="default", eyes="tender")
         ka "And that's okay."
@@ -871,11 +997,12 @@ label kaelstoppingnow:
         stop music fadeout 2
         jump kaelearlystop
     if kissinghimactivity==True:
+        $claire.set_state(**Emotion.normal())
         "I pause and look away shyly."
         hide kael_kissing with dissolve
-        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low")
+        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low", emotion="default")
         cl "Um, I'd like to stop..."
-        $kael.set_state(eyebrows="inwards", mouth="smile", eyes="tender")
+        $kael.set_state(eyebrows="inwards", mouth="smile", eyes="tender", emotion="default", emotion_base="default")
         show kael at center_alone2 with dissolve
         voice "k_sex46"
         ka "I understand."
@@ -893,69 +1020,137 @@ label kaelstoppingnow:
         stop music fadeout 2
         jump kaelearlystop
     if undressingtime == True:
+        $claire.set_state(**Emotion.normal())
+        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low", emotion="default")
         cl "Wait... I'd like to stop."
+        voice "k_sex48"
+        $kael.set_state(with_dissolve, eyebrows="up", eyes="tender", mouth="smile", emotion="default")
         ka "All done?"
+        $claire.set_state(eyes="down", eyebrows="inwards", emotion="sweat", emotion_base="small blush", mouth="uh")
+        $kael.set_state(with_dissolve, eyebrows="inwards")
         cl "Yeah. Things were fine but then I got nervous when we started to undress..." 
+        $kael.set_state(with_dissolve, eyebrows="default", eyes="closed")
+        voice "k_sex46"
         ka "I understand, we don't need to continue."
+        $claire.set_state(eyes="closed", mouth="low", emotion="default")
         cl "I'm sorry for spoiling the mood..."
+        show kael at center_alone2 with dissolve
+        show kael at bounce_up_alone2
         "He leans in and musses up my hair affectionately."
+        $kael.set_state(with_dissolve, eyebrows="default", eyes="wink")
+        voice "k_s03"
         ka "You didn't, promise. I want you to feel comfortable. Would you like to cuddle, instead?"
+        $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
         cl "I would..."
         stop music fadeout 2
         jump kealearlystop
     if oral2==True or fingers2==True:
-        cl "Um... I'd like to stop here."
+        $claire.set_state(**Emotion.normal())
+        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low", emotion="default")
+        cla "Um... I'd like to stop here."
+        scene bg bedroom_night with dissolve
+        $claire.set_state(**Emotion.normal())
+        $kael.set_state(**Emotion.normal())
         if oral2==True:
             "Kael pauses, then withdraws, allowing me to sit up."
         if fingers2==True:
             "Kael pauses, then removes his fingers, allowing me to sit up."
+        $kael.set_state(eyebrows="inwards", mouth="neutral", eyes="tender", emotion="default", emotion_base="default")
+        show kael at center_alone2 with dissolve
+        voice "k_sex49"
         ka "I apologize, was it too much for your first time?"
+        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low", emotion="default")
         cl "Um, no. Er, I mean... You didn't do anything wrong, Kael. I just don't think I'm ready for more yet..." 
+        $kael.set_state(with_dissolve, eyebrows="default", mouth="smile", eyes="closed")
+        voice "k_sex46"
         ka "I understand."
+        $claire.set_state(eyes="closed", eyebrows="inwards", emotion_base="small blush", mouth="low", emotion="default")
         cl "I feel I ruined the moment..."
+        voice "k_sex50"
+        $kael.set_state(with_dissolve, eyebrows="default", mouth="smile", eyes="tender")
         ka "Don't be. I'm glad you spoke up when you were feeling uncomfortable."
         ka "Honest, here."
+        show kael at bounce_up_alone2
         "He leans in and touches his forehead to mine."
+        $kael.set_state(with_dissolve, eyes="wink")
         ka "I'd be more than happy to cuddle if you'd like that."
+        $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
         cl "Thank you... and that sounds nice."
         stop music fadeout 2
         jump kaelmiddlestop
     if kaelontop==True:
-        cl "I'd like to stop."
+        cla "I'd like to stop."
+        scene bg bedroom_night with dissolve
+        $claire.set_state(**Emotion.normal())
+        $kael.set_state(**Emotion.normal())
         "Kael withdraws and I sit up, clutching the pillow that was previously under me."
+        $kael.set_state(with_dissolve, eyebrows="up", eyes="tender", mouth="smile", emotion="default")
+        show kael at center_alone2 with dissolve
+        voice "k_sex24"
         ka "Everything okay?"
+        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low", emotion="default")
         cl "Yes. Sorry for bringing everything to a halt... I just don't think I'm ready to, um, go further..."
+        voice "k_sex07"
+        $kael.set_state(with_dissolve, eyebrows="default", mouth="smile", eyes="closed")
         ka "That's alright. Sometimes you don't know your own comfort level until you feel yourself leaving it."
+        $kael.set_state(with_dissolve, eyes="wink")
         ka "We got to try a little foreplay, and I'm sure that was very new to you."
+        $claire.set_state(eyebrows="default", mouth="smile", eyes="down", emotion_base="large blush")
         cl "Yea, I never gotten that far with someone before."
+        $kael.set_state(with_dissolve, mouth="grin", eyes="happy", emotion="heart")
+        voice "k_s03"
         ka "Then I consider it a good first step. You were great, [claire_name]."
+        $kael.set_state(with_dissolve, eyes="wink", mouth="smile", emotion="note")
         ka "If you'd like, we can cuddle instead."
+        $claire.set_state(eyes="tender", mouth="smile", eyebrows="default", emotion_base="small blush")
         cl "I'd like that, thanks." 
         stop music fadeout 2
         jump kaelmiddlestop
     if kaelinside==True:
-        cl "I'd like to stop now."
+        cla "I'd like to stop now."
+        scene bg bedroom_night with dissolve
+        $claire.set_state(**Emotion.normal())
+        $kael.set_state(**Emotion.normal())
         if kael_sex_choices.condom == True:
             "He pauses and gently pulls out, careful of the condom."
         else:
             "He pauses and gently pulls out."
+        $kael.set_state(with_dissolve, eyebrows="up", eyes="tender", mouth="smile", emotion="default")
+        show kael at center_alone2 with dissolve
+        voice "k_sex48"
         ka "All done?"
+        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low", emotion="default")
         cl "Yes... Sorry for halting everything when we barely started..."
+        $kael.set_state(with_dissolve, eyebrows="default", eyes="happy")
         ka "That's fine. I enjoyed what we did together. There's nothing wrong with changing your mind."
+        $kael.set_state(with_dissolve, eyes="tender")
         ka "I hope I was able to make it a good experience for you."
+        $claire.set_state(eyes="tender", mouth="smile", eyebrows="default", emotion_base="large blush")
         cl "You did. Thank you. I guess that makes you my first..."
+        $kael.set_state(eyes="happy", emotion="heart")
+        voice "k_s03"
         ka "I'm honoured to be your first." 
+        show kael at bounce_up_alone2
         "He leans in and nudges my forehead with his." 
+        $kael.set_state(with_dissolve, eyes="wink", mouth="smile", emotion="note")
         ka "If you're up for it, we can cuddle for a while."
+        $claire.set_state(eyes="happy", mouth="smile", eyebrows="default")
         cl "Thank you. That sounds nice." 
         stop music fadeout 2
         jump kaelmiddlestop
         
     else:
+        scene bg bedroom_night with dissolve
+        $claire.set_state(**Emotion.normal())
+        $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low")
         cl "Um, I'd like to stop."
+        $kael.set_state(eyebrows="inwards", mouth="smile", eyes="tender", emotion="default", emotion_base="default")
+        show kael at center_alone2 with dissolve
         ka "I understand. You know yourself best."
         "He gives me a platonic kiss on the forehead."
+        $kael.set_state(eyebrows="default")
         ka "We can do something else, like cuddling."
+        $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
         cl "I'd like that..." 
         stop music fadeout 2
         jump kaelearlystop
@@ -972,7 +1167,7 @@ label kaelearlystop:
 label kaelmiddlestop:
     "Kael pats me down with a dry towel, then ruffles my hair."
     voice "k_s03"
-    $kael.set_state(with_dissolve, eyes="closed", mouth="smile", eyebrows="default", emotion_base="default", emotion="default")
+    $kael.set_state(with_dissolve, eyes="happy", mouth="smile", eyebrows="default", emotion_base="default", emotion="default")
     ka "I... also got nourished by you. Thank you."
     scene kael_cuddles with dissolve
     play music music_lullaby fadein 2
@@ -982,7 +1177,7 @@ label kaelmiddlestop:
     call credits
     jump kael_epilogue
     
-    label kaellatestop:
+label kaellatestop:
     $kael_cuddle_kface = "1"
     $kael_cuddle_clface = "1"
     scene kael_cuddles with dissolve
@@ -1001,7 +1196,7 @@ label kaelmiddlestop:
 
 label kael_epilogue:
     #kael epilogue
-    if kael_scenes==3:
+    if kael_scenes==3 and kael_epilong == True:
         jump kael_epilogue_long
     else:
         pass

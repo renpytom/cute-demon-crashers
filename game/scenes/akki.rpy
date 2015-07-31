@@ -159,10 +159,12 @@ label akki_hangout2:
     play sound "assets/sfx/knock.ogg"
     "On cue, I hear a knock and praise its speedy delivery. I glance back to see if Akki's gone, then open the door."
     "Delivery Boy" "Hi, here's your large pizza: half cheese, half pepperoni. The total comes to 15.74..."
+    show item pizza at chibi_scene with dissolve
     "I place the pizza on the living room table and return with the cash." 
     $ claire.set_state(eyebrows="default", eyes="happy", mouth="grin")
     cl "Right, here's..."
     $akki.set_state(emotion="bars", eyes="default", mouth="uh")
+    hide item with dissolve
     show akki at mright4 with moveinright
     ak "Did the pizza arrive?"
     $ claire.set_state(eyebrows="up", eyes="dots", mouth="low")

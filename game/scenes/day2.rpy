@@ -16,6 +16,7 @@ label day2_morning:
 
     $claire.set_state(eyebrows="default", eyes="clench", emotion="flowers", mouth="kitty", emotion_base="small blush")
     cl "(Someone in the kitchen again? I'm being spoiled.)"
+    voice "m_s13"
     mi "Ah, flip them! Flip them or they'll burn again!"
     ak "I know what I'm doing; don't badger me."
     voice "m_w21"
@@ -44,19 +45,25 @@ label day2_morning:
     $mirari.set_state(eyes="default", eyebrows="default", emotion="flowers", mouth="happy")
     $akki.set_state(**Emotion.normal())
     show mirari zorder 3 at speak
+    voice "m_s08"
     mi "Enough about that, you must be hungry, [claire_name]. I made a raspberry parfait!"
+    show item parfait zorder 4 at chibi_scene with dissolve
     "I sit down at the table and she places a cute cup before me. Eager, I dig in and take a bit of yogurt and realize it's drizzled with honey too." 
     $claire.set_state(eyes="clench", emotion="flowers", mouth="kitty", emotion_base="small blush")
     cl "Delicious. I didn't know you could cook."
+    hide item with dissolve
     $mirari.set_state(with_dissolve, eyes="happy", mouth="default")
+    voice "m_s12"
     mi "Just the recipes that don't require a stove. I'm glad you like it, hon."
     $mirari.set_state(emotion="default")
     show mirari zorder 0 at endspeak
     $akki.set_state(emotion_base="small blush", mouth="low", eyebrows="tender")
     show akki zorder 3 at speak
+    show item pancakes zorder 4 at chibi_scene with dissolve
     "Akki places a small plate filled with spherical pancakes before me. There's powered sugar sprinkled on top in an attempt to hide the unevenly cooked surface."
     ak "Um, here..."
     "Unsure of what to make of it, I take a knife and cut into one."
+    hide item with dissolve
     $claire.set_state(emotion="default", eyes="default", emotion_base="default", mouth="uh")
     cl "Oh, there's cream cheese in this...?"
     $akki.set_state(with_dissolve, mouth="default", emotion_base="default")
@@ -86,9 +93,11 @@ label day2_morning:
     $claire.set_state(eyes="happy", mouth="smile", eyebrows="default")
     cl "Thank you."
     $mirari.set_state(with_dissolve,eyes="happy", emotion="default")
+    voice "m_w14"
     mi "Not a problem!"
     $mirari.set_state(with_dissolve, eyes="default", eyebrows="up", mouth="oh")
     stop music fadeout 2
+    voice "m_s15"
     mi "...Oh, Kael! You made it just in time. Akki's almost done the second batch... Are you okay?"
     play music music_silly
     show mirari at mleft4 with move
@@ -99,6 +108,7 @@ label day2_morning:
     voice "k_w11"
     ka "I'm fine. For some reason I'm not as well rested as I could be... I feel there's something I overlooked at home..."
     $mirari.set_state(with_dissolve, eyebrows="inwards", mouth="smile",emotion="sweat")
+    voice "m_s18"
     mi "I'm sure everything's spick and span, you—"
     $mirari.set_state(with_dissolve, eyebrows="up", eyes="wide", mouth="low", emotion="panic")
     voice "m_w26"
@@ -115,6 +125,7 @@ label day2_morning:
     $orias.set_state(with_dissolve, emotion_base="default", mouth="oh", eyes="side", eyebrows="tender")
     ori "I found a rather fascinating book and... the hours melted away."
     $mirari.set_state(with_dissolve, emotion="sweat", eyebrows="inwards", eyes="happy", mouth="smile")
+    voice "m_s05"
     mi "Might as well eat something; even if it won't exactly nourish us, it'll wake you up. You can eat Akki's mistakes at least."
     $orias.set_state(eyes="closed", mouth="neutral")
     show mirari at left4
@@ -137,10 +148,12 @@ label day2_morning:
     ori "Mirari, when will the portal close?"
     $kael.set_state(with_dissolve,eyebrows="inwards", eyes="closed", emotion="sweat")
     show kael at bounce_up
+    voice "k_s03"
     ka "You could also afford to brush up on your summoning skills."
     $mirari.set_state(with_dissolve,eyes="clench", emotion="panic", mouth="low")
     $orias.set_state(with_dissolve,**Emotion.normal())
     show mirari zorder 3 at sway
+    voice "m_s02"
     mi "I-I did it rather hastily, all right? It should close this midnight, then we'll be out of your hair, [claire_name]."
     $claire.set_state(eyes="happy", eyebrows="inwards", mouth="smile")
     cl "Oh... right."
@@ -149,6 +162,7 @@ label day2_morning:
     show akki zorder 3 at sway
     ak "If Mirari was able to close it any time, we could've avoided this situation."
     $mirari.set_state(with_dissolve, eyes="flat", emotion_base="dark", emotion="sweat", mouth="wavy")
+    voice "m_s05"
     mi "It would've been embarrassing if you asked us to leave and you were still stuck with a gateway between our worlds for days after..."
     $claire.set_state(eyes="fun side", emotion_base="dark")
     cl "I'd wonder if I was still dreaming and probably throw things into it."
@@ -163,6 +177,7 @@ label day2_morning:
     "When we're done with breakfast, I load my dishes into the dishwasher while Kael sticks around to clean up as well."
     $kael.set_state(with_dissolve, **Emotion.normal())
     show kael at speak
+    voice "k_w04"
     ka "I know it's our last day, but remember there's no pressure."
     $kael.set_state(with_dissolve, eyes="happy")
     voice "k_w12"
