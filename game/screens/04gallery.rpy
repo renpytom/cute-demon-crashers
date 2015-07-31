@@ -5,32 +5,6 @@ init python:
             "Akki",
             ImageSet(CG("chibi_akki01", "assets/chibis/akki_hug.png")),
             ImageSet(CG("chibi_akki02", "assets/chibis/akki_sit.png")),
-            ImageSet(
-                SpriteCG("akki_cuddle", akki_cuddle_sprite,
-                      {
-                        "base": "clothed",
-                        "akki": 1,
-                        "claire": 1
-                        },
-                      { "akki": 3, "claire": 1 },
-                      { "akki": 3, "claire": 2 }, # ?
-                      { "akki": 2, "claire": 2 }, # ?
-                      { "akki": 2, "claire": 1 }, # ?
-                      { "akki": 1, "claire": 2 }, # ?
-                      { "akki": 3, "claire": 3 })),
-            ImageSet(
-                SpriteCG("akki_cuddle", akki_cuddle_sprite,
-                      {
-                        "base": "naked",
-                        "akki": 1,
-                        "claire": 1
-                        },
-                      { "akki": 3, "claire": 1 },
-                      { "akki": 3, "claire": 2 },
-                      { "akki": 2, "claire": 2 },
-                      { "akki": 2, "claire": 1 },
-                      { "akki": 1, "claire": 2 },
-                      { "akki": 3, "claire": 3 })),
             ReplayBundle("akki_sex",
                          akki_foreplay.snapshot( akki_bottom="on",
                                                  claire_arm="down",
@@ -45,74 +19,6 @@ init python:
                                    "akki_scenes": persistent.akki_scenes,
                                    "sex_stop_statement": persistent.akki_sex_stop }
                 )
-#            [SpriteCG("akki_foreplay", akki_foreplay,
-#                      {
-#                        "akki_bottom": "on",
-#                        "claire_arm": "down",
-#                        "claire_bottom": "on",
-#                        "claire_top": "on",
-#                        "akki_arm": "down",
-#                        "heads": "kiss",
-#                        "claire_face": "default",
-#                        "akki_face": "default"
-#                        },
-#                      {
-#                        "akki_face": "D:",
-#                        "claire_face": "smile",
-#                        "heads": "apart"
-#                        },
-#                      {
-#                        "heads": "kiss",
-#                        "claire_face": "default",
-#                        "akki_face": "default",
-#                        "akki_arm": "breast"
-#                        },
-#                      {
-#                        "claire_face": "smile",
-#                        "akki_face": "nervous",
-#                        "heads": "apart"
-#                        },
-#                      {
-#                        "akki_face": "D:"
-#                        },
-#                      {
-#                        "claire_face": "pleasure"
-#                        }
-#                      )],
-#            [SpriteCG("akki_foreplay", akki_foreplay,
-#                      {
-#                        "akki_bottom": "on",
-#                        "claire_arm": "down",
-#                        "claire_bottom": "on",
-#                        "claire_top": "on",
-#                        "akki_arm": "down",
-#                        "heads": "kiss",
-#                        "claire_face": "default",
-#                        "akki_face": "default"
-#                        },
-#                      {
-#                        "akki_face": "nervous"
-#                        },
-#                      {
-#                        "akki_arm": "down",
-#                        "claire_arm": "chest"
-#                        },
-#                      {
-#                        "heads": "kiss",
-#                        "claire_face": "default",
-#                        "akki_face": "default",
-#                        "akki_arm": "breast"
-#                        },
-#                      {
-#                        "claire_face": "smile",
-#                        "akki_face": "happy",
-#                        "heads": "apart"
-#                        },
-#                      {
-#                        "claire_face": "pleasure"
-#                        }
-#                      )
-#                ]
         ),
         GalleryFolder(
             "Orias",
