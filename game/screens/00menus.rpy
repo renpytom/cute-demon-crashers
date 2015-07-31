@@ -184,7 +184,7 @@ screen options_menu():
                     textbutton _("Off") action SetPersistent("censor_18", False)
 
     else:
-        grid 2 2:
+        grid 2 3:
             style_group "mm_opts"
 
             vbox:
@@ -199,6 +199,11 @@ screen options_menu():
 
             vbox:
                 frame:
+                    add "assets/ui/h-voice-volume.png"
+                bar value Preference("voice volume")
+
+            vbox:
+                frame:
                     add "assets/ui/h-transitions.png"
                 hbox:
                     textbutton _("All") action Preference("transitions", "all")
@@ -210,7 +215,9 @@ screen options_menu():
                 hbox:
                     textbutton _("Window") action Preference("display", "window")
                     textbutton _("Fullscreen") action Preference("display", "fullscreen")
-        
+
+            null
+                    
 
 # Extras menu
 screen extras_menu():
