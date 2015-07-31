@@ -22,6 +22,32 @@ init python:
             
     config.character_callback = maybe_stop_scene
 
+# Tutorial
+screen tutorial:
+    default cur_screen_num = 1
+    python:
+        cur_screen = "assets/ui/tut/tips_%s.jpg"%(cur_screen_num)
+    add cur_screen
+    imagebutton:
+        auto "assets/ui/tut/tips_prev_%s.png"
+        insensitive Null(width=1)
+        action If(cur_screen_num == 1, None, SetScreenVariable("cur_screen_num", cur_screen_num-1))    
+        hovered Play("sound", "assets/sfx/menu_hover3.ogg")
+        xpos 80
+        ypos 680
+    imagebutton:
+        auto "assets/ui/tut/tips_next_%s.png"
+        action If(cur_screen_num == 6, None, SetScreenVariable("cur_screen_num", cur_screen_num+1))    
+        hovered Play("sound", "assets/sfx/menu_hover3.ogg")
+        insensitive Null(width=1)
+        xpos 1040
+        ypos 680
+    imagebutton: 
+        auto "assets/ui/tut/tips_exit_%s.png"
+        action Return()
+        hovered Play("sound", "assets/sfx/menu_hover3.ogg")
+        xpos 1140
+        ypos 15
     
 screen sex_stop(target):
     imagebutton:
