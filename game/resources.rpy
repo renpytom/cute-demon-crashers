@@ -1252,7 +1252,7 @@ init -1:
         akki_foreplay_claire_face = StateMachineDisplayable(
             "akkifp_clface", "default",
             {
-                "default": Null(width=1), 
+                "none": Null(width=1), 
                 "surprised": "assets/CGs/akki01_clface_surprised.png",
                 "embarrassed": "assets/CGs/akki01_clface_embarrased.png", 
                 "smile": "assets/CGs/akki01_clface_smile.png",
@@ -1265,7 +1265,7 @@ init -1:
         akki_foreplay_akki_face = StateMachineDisplayable(
             "akkifp_akface", "default",
             {
-                "default": Null(width=1), 
+                "none": Null(width=1), 
                 "happy": "assets/CGs/akki01_akface_happy.png", 
                 "nervous": "assets/CGs/akki01_akface_nervous.png",
                 "pleasure": "assets/CGs/akki01_akface_pleasure.png",
