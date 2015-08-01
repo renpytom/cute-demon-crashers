@@ -30,7 +30,19 @@ init python:
         ),
         GalleryFolder(
             "Mirari",
-            ImageSet(CG("chibi_mira01", "assets/chibis/mirari_hair.png"))
+            ImageSet(CG("chibi_mira01", "assets/chibis/mirari_hair.png")),
+            ImageSet(CG("chibi_mira02", "assets/chibis/mirari_flowers.png")),
+            ImageSet(CG("mira_foot", "assets/CGs/mirari_massage_leg.jpg"),
+                     CG("mira_foot nibble", "assets/CGs/mirari_nibble_foot.png")),
+            ImageSet(CG("mira_back", "assets/CGs/mirari_massage_back.jpg"),
+                     CG("mira_back nibble", "assets/CGs/mirari_nibble_ear.png")),
+            ImageSet(CG("mira_breast", naked("assets/CGs/mirari_breasts{0}.jpg"))),
+            ReplayBundle("mirari_sex",
+                         mirari_lying_sprite.snapshot(**mirari_lying_initial),
+                         lambda: { "mirari_name": "Mirari",
+                                   "claire_name": persistent.mirari_claire_name,
+                                   "mirari_scenes": persistent.mirari_scenes,
+                                   "sex_stop_statement": persistent.mirari_sex_stop })
         ),
         GalleryFolder(
             "Others",
