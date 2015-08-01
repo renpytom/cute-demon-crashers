@@ -110,6 +110,18 @@ init -100 python:
         def to_gallery_items(self):
             return [GalleryItem(self.id, self.image)]
 
+
+    class RenpyImage(object):
+        def __init__(self, id):
+            self.id = id
+            self.image = renpy.display.image.ImageReference(id)
+
+        def is_locked(self):
+            return not renpy.seen_image(self.id)
+
+        def to_gallery_items(self):
+            return [self]
+        
         
     class SpriteCG(CG):
         def __init__(self, id, sprite, initial_state, *states):
