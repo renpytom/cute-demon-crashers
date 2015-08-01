@@ -1240,7 +1240,8 @@ label akki_super_late_stop:
 
 
 label akki_stop_now:
-    $ persistent.akki_sex_stop = last_statement
+    if not _in_replay:
+        $ persistent.akki_sex_stop = last_statement
     hide screen sex_stop 
     if akki_sex_choices.missionary:
         $ akki_missionary_sprite.set_state(with_dissolve, claire=2)
