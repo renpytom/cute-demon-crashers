@@ -22,7 +22,31 @@ init python:
         ),
         GalleryFolder(
             "Orias",
-            ImageSet(CG("chibi_orias01", "assets/chibis/orias_tea.png"))
+            ImageSet(RenpyImage("chibi_orias01")),
+            ImageSet(RenpyImage("chibi_orias02")),
+            ImageSet(RenpyImage("orias_play cold"),
+                     RenpyImage("orias_play nipple"),
+                     RenpyImage("orias_play nipple_ice"),
+                     RenpyImage("orias_play nipple_suck"),
+                     RenpyImage("orias_play lick")),
+            ImageSet(RenpyImage("orias_play hot"),
+                     RenpyImage("orias_play wax_pour"),
+                     RenpyImage("orias_play wax_rub"),
+                     RenpyImage("orias_play wax_scratch"),
+                     RenpyImage("orias_play kiss"),
+                     RenpyImage("orias_play kiss_blind")),
+            ImageSet(RenpyImage("orias_play tickle"),
+                     RenpyImage("orias_play nipple_tickle"),
+                     RenpyImage("orias_play tickle_armpit"),
+                     RenpyImage("orias_play tickle_body"),
+                     RenpyImage("orias_play tickle_foot"),
+                     RenpyImage("orias_play tickle_thighs")),
+            ReplayBundle("orias_sex",
+                         orias_bed_sprite.snapshot(**orias_bed_initial),
+                         lambda: { "orias_name": "Orias",
+                                   "claire_name": persistent.orias_claire_name,
+                                   "orias_scenes": persistent.orias_scenes,
+                                   "sex_stop_statement": persistent.orias_sex_stop })
         ),
         GalleryFolder(
             "Kael",
@@ -30,8 +54,8 @@ init python:
         ),
         GalleryFolder(
             "Mirari",
-            ImageSet(CG("chibi_mira01", "assets/chibis/mirari_hair.png")),
-            ImageSet(CG("chibi_mira02", "assets/chibis/mirari_flowers.png")),
+            ImageSet(RenpyImage("chibi_mira01")),
+            ImageSet(RenpyImage("chibi_mira02")),
             ImageSet(CG("mira_foot", "assets/CGs/mirari_massage_leg.jpg"),
                      CG("mira_foot nibble", "assets/CGs/mirari_nibble_foot.png")),
             ImageSet(CG("mira_back", "assets/CGs/mirari_massage_back.jpg"),
@@ -47,7 +71,9 @@ init python:
         GalleryFolder(
             "Others",
             ImageSet(CG("chibi_nosex01", "assets/chibis/NoOneEnd_01.png"),
-                     CG("chibi_nosex02", "assets/chibis/NoOneEnd_02.png"))
+                     CG("chibi_nosex02", "assets/chibis/NoOneEnd_02.png")),
+            ImageSet(RenpyImage("item tea")),
+            ImageSet(RenpyImage("item toast"))
         )
     )
 

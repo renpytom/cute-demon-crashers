@@ -330,6 +330,14 @@ label orias_hangout3:
 
 label orias_sex:
     $ in_sex = True
+
+    if _in_replay:
+        $ sex_stop_label = "orias_stoppingnow"
+
+    if not _in_replay:
+        $ persistent.orias_claire_name = claire_name
+        $ persistent.orias_scenes = orias_scenes
+    
     stop music fadeout 2
     scene black with dissolve
     $renpy.choice_for_skipping()
@@ -1086,6 +1094,8 @@ label orias_sex:
     jump orias_epilogue
             
 label orias_stoppingnow:
+        if not _in_replay:
+            $ persistent.orias_sex_stop = last_statement
         hide screen sex_stop
         if firsthalf == True and halfwayyay == False:
             if orias_cutin == True:
@@ -1313,6 +1323,7 @@ label orias_epilogue:
     $ claire.set_state(with_dissolve,eyes="default", eyebrows="default", mouth="grin", emotion="default")
     cl "Thanks, Orias."
     scene white with dissolve
+    $ renpy.end_replay()
     return
 
 label orias_epilogue_long:
@@ -1410,4 +1421,5 @@ label orias_epilogue_long:
     cl "Yeah... No rush."
     stop music fadeout 1
     scene white with dissolve
+    $ renpy.end_replay()
     return
