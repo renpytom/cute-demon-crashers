@@ -1639,49 +1639,133 @@ init -1:
     image orias_play lick ="assets/CGs/orias_play_lick.png"
     image orias_play kiss ="assets/CGs/orias_play_kiss.png"
     image orias_play kiss_blind ="assets/CGs/orias_play_kiss_blind.png"
-    
-    image orias_bed =LiveComposite((1280, 800),
-        (0, 0), "assets/CGs/orias01.jpg",
-        (0, 0), "assets/CGs/orias01_orias.png",
-        (0, 0), ConditionSwitch(
-            "orias_naked == True", Null(width=1),
-            "True", "assets/CGs/orias01_orias_clothes.png",
-            ),
-        (0, 0), ConditionSwitch (
-            "orilay_oriface == 'laugh'", "assets/CGs/orias01_oriface_laugh.png",
-            "orilay_oriface == 'smile'", "assets/CGs/orias01_oriface_smile.png",
-            "orilay_oriface == 'smile2'", "assets/CGs/orias01_oriface_smile2.png",
-            "orilay_oriface == 'neutral'", "assets/CGs/orias01_oriface_neutral.png",
-            "True", "assets/CGs/orias01_oriface_neutral.png",
-            ),
-        (0, 0), "assets/CGs/orias01_claire.png",
-        (0, 0), ConditionSwitch(
-            "orilay_panties == 'off'", naked("assets/CGs/orias01_claire_nopan{0}.png"),
-            "True", "assets/CGs/orias01_claire_panties.png",
-            ),
-        (0, 0), ConditionSwitch(
-            "orilay_tiedup == True", "assets/CGs/orias01_clarms_tied.png",
-            "True", "assets/CGs/orias01_clarms_free.png",
-            
-            ),
-        (0, 0), naked("assets/CGs/orias01_claire_breasts{0}.png"),
-        (0, 0), ConditionSwitch(
-            "orilay_clface== 'worried'", "assets/CGs/orias01_clface_worried.png",
-            "orilay_clface== 'content'", "assets/CGs/orias01_clface_content.png",
-            "orilay_clface== 'happy'", "assets/CGs/orias01_clface_happy.png",
-            "orilay_clface== 'laughing'", "assets/CGs/orias01_clface_laughing.png",
-            "orilay_clface== 'pleasure'", "assets/CGs/orias01_clface_pleasure.png",
-            "orilay_clface== 'shiver'", "assets/CGs/orias01_clface_shiver.png",
-            "orilay_clface== 'O'", "assets/CGs/orias01_clface_O.png",
-            "True", "assets/CGs/orias01_clface_content.png",
-            ),
-        (0, 0), ConditionSwitch(
-            "orilay_blindfold == True","assets/CGs/orias01_blindfold.png",
-            "True", Null(width=1),
-            ),
 
-        
+    python:
+        orias_bed_naked = StateMachineDisplayable(
+            "orias_bed_naked", False,
+            {
+                True: Null(width=1),
+                False: "assets/CGs/orias01_orias_clothes.png"
+            }
         )
+
+        orias_bed_oriface = StateMachineDisplayable(
+            "orias_bed_oriface", "smile",
+            {
+                "laught": "assets/CGs/orias01_oriface_laugh.png",
+                "smile": "assets/CGs/orias01_oriface_smile.png",
+                "smile2": "assets/CGs/orias01_oriface_smile2.png",
+                "neutral": "assets/CGs/orias01_oriface_neutral.png",
+                "default": "assets/CGs/orias01_oriface_neutral.png"
+            }
+        )
+
+        orias_bed_panties = StateMachineDisplayable(
+            "orias_bed_panties", "on",
+            {
+                "off": naked("assets/CGs/orias01_claire_nopan{0}.png"),
+                "on": "assets/CGs/orias01_claire_panties.png"
+            }
+        )
+
+        orias_bed_tiedup = StateMachineDisplayable(
+            "orias_bed_tiedup", False,
+            {
+                True: "assets/CGs/orias01_clarms_tied.png",
+                False: "assets/CGs/orias01_clarms_free.png"
+            }
+        )
+
+        orias_bed_clface = StateMachineDisplayable(
+            "orias_bed_clface", "happy",
+            {
+                "worried": "assets/CGs/orias01_clface_worried.png",
+                "content": "assets/CGs/orias01_clface_content.png",
+                "happy": "assets/CGs/orias01_clface_happy.png",
+                "laughing": "assets/CGs/orias01_clface_laughing.png",
+                "pleasure": "assets/CGs/orias01_clface_pleasure.png",
+                "shiver": "assets/CGs/orias01_clface_shiver.png",
+                "O": "assets/CGs/orias01_clface_O.png",
+                "default": "assets/CGs/orias01_clface_content.png"
+            }
+        )
+
+        orias_bed_blindfold = StateMachineDisplayable(
+            "orias_bed_blindfold", False,
+            {
+                True: "assets/CGs/orias01_blindfold.png",
+                False: Null(width=1),
+            }
+        )
+
+        orias_bed_sprite = ComposedSprite(
+            (1280, 800),
+            (None, (0, 0), "assets/CGs/orias01.jpg"),
+            (None, (0, 0), "assets/CGs/orias01_orias.png"),
+            ("naked", (0, 0), orias_bed_naked),
+            ("orias_face", (0, 0), orias_bed_oriface),
+            (None, (0, 0), "assets/CGs/orias01_claire.png"),
+            ("panties", (0, 0), orias_bed_panties),
+            ("tiedup", (0, 0), orias_bed_tiedup),
+            (None, (0, 0), naked("assets/CGs/orias01_claire_breasts{0}.png")),
+            ("claire_face", (0, 0), orias_bed_clface),
+            ("blindfold", (0, 0), orias_bed_blindfold)
+        )
+
+        orias_bed_initial = {
+            "naked": False,
+            "orias_face": "smile",
+            "panties": "on",
+            "tiedup": False,
+            "claire_face": "happy",
+            "blindfold": False
+        }
+
+    image orias_bed = orias_bed_sprite.displayable()
+
+    
+#    image orias_bed =LiveComposite((1280, 800),
+#        (0, 0), "assets/CGs/orias01.jpg",
+#        (0, 0), "assets/CGs/orias01_orias.png",
+#        (0, 0), ConditionSwitch(
+#            "orias_naked == True", Null(width=1),
+#            "True", "assets/CGs/orias01_orias_clothes.png",
+#            ),
+#        (0, 0), ConditionSwitch (
+#            "orilay_oriface == 'laugh'", "assets/CGs/orias01_oriface_laugh.png",
+#            "orilay_oriface == 'smile'", "assets/CGs/orias01_oriface_smile.png",
+#            "orilay_oriface == 'smile2'", "assets/CGs/orias01_oriface_smile2.png",
+#            "orilay_oriface == 'neutral'", "assets/CGs/orias01_oriface_neutral.png",
+#            "True", "assets/CGs/orias01_oriface_neutral.png",
+#            ),
+#        (0, 0), "assets/CGs/orias01_claire.png",
+#        (0, 0), ConditionSwitch(
+#            "orilay_panties == 'off'", naked("assets/CGs/orias01_claire_nopan{0}.png"),
+#            "True", "assets/CGs/orias01_claire_panties.png",
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "orilay_tiedup == True", "assets/CGs/orias01_clarms_tied.png",
+#            "True", "assets/CGs/orias01_clarms_free.png",
+#            
+#            ),
+#        (0, 0), naked("assets/CGs/orias01_claire_breasts{0}.png"),
+#        (0, 0), ConditionSwitch(
+#            "orilay_clface== 'worried'", "assets/CGs/orias01_clface_worried.png",
+#            "orilay_clface== 'content'", "assets/CGs/orias01_clface_content.png",
+#            "orilay_clface== 'happy'", "assets/CGs/orias01_clface_happy.png",
+#            "orilay_clface== 'laughing'", "assets/CGs/orias01_clface_laughing.png",
+#            "orilay_clface== 'pleasure'", "assets/CGs/orias01_clface_pleasure.png",
+#            "orilay_clface== 'shiver'", "assets/CGs/orias01_clface_shiver.png",
+#            "orilay_clface== 'O'", "assets/CGs/orias01_clface_O.png",
+#            "True", "assets/CGs/orias01_clface_content.png",
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "orilay_blindfold == True","assets/CGs/orias01_blindfold.png",
+#            "True", Null(width=1),
+#            ),
+#
+#        
+#        )
     
     image orias_finish oral =LiveComposite((1280,800),
         (450,0), ConditionSwitch(
@@ -1699,30 +1783,87 @@ init -1:
         (450,0), naked("assets/CGs/orias_finish_fingers{0}.png"),
         )
 
-    image orias_cuddles = LiveComposite((1280, 800),
-        (0, 0), ("assets/CGs/orias_cuddles.jpg"),
-        (0, 0), ConditionSwitch(
-            "orias_naked == True", Null(width=1),
-            "True", "assets/CGs/orias_cuddles_oriasclothes.png", 
-            ),
-        (0, 0), ConditionSwitch(
-            "orias_clnaked == True", Null(width=1), 
-            "True", "assets/CGs/orias_cuddles_chemise.png", 
-            ),
-        (0, 0), ConditionSwitch(
-            "orias_cuddles_clface == '1'", "assets/CGs/orias_cuddles_cface1.png", 
-            "orias_cuddles_clface == '2'", "assets/CGs/orias_cuddles_cface2.png", 
-            "orias_cuddles_clface == '3'", "assets/CGs/orias_cuddles_cface3.png", 
-            "orias_cuddles_clface == '4'", "assets/CGs/orias_cuddles_cface4.png", 
-            "orias_cuddles_clface == '5'", "assets/CGs/orias_cuddles_cface5.png", 
-            ),
-        (0, 0), ConditionSwitch(
-            "orias_cuddles_oriface == '1'", "assets/CGs/orias_cuddles_oface1.png", 
-            "orias_cuddles_oriface == '2'", "assets/CGs/orias_cuddles_oface2.png", 
-            "orias_cuddles_oriface == '3'", "assets/CGs/orias_cuddles_oface3.png", 
-            "orias_cuddles_oriface == '4'", "assets/CGs/orias_cuddles_oface4.png", 
-            ),    
+
+    python:
+        orias_cuddles_naked = StateMachineDisplayable(
+            "orias_cuddles_naked", True,
+            {
+                True: Null(width=1),
+                False: "assets/CGs/orias_cuddles_oriasclothes.png", 
+            }
         )
+
+        orias_cuddles_clnaked = StateMachineDisplayable(
+            "orias_cuddles_clnaked", True,
+            {
+                True: Null(width=1), 
+                False: "assets/CGs/orias_cuddles_chemise.png", 
+            }
+        )
+
+        orias_cuddles_clface = StateMachineDisplayable(
+            "orias_cuddles_clface", 1,
+            {
+                1: "assets/CGs/orias_cuddles_cface1.png", 
+                2: "assets/CGs/orias_cuddles_cface2.png", 
+                3: "assets/CGs/orias_cuddles_cface3.png", 
+                4: "assets/CGs/orias_cuddles_cface4.png", 
+                5: "assets/CGs/orias_cuddles_cface5.png", 
+            }
+        )
+
+        orias_cuddles_oriface = StateMachineDisplayable(
+            "orias_cuddles_oriface", 1,
+            {
+                1: "assets/CGs/orias_cuddles_oface1.png", 
+                2: "assets/CGs/orias_cuddles_oface2.png", 
+                3: "assets/CGs/orias_cuddles_oface3.png", 
+                4: "assets/CGs/orias_cuddles_oface4.png", 
+            }
+        )
+
+        orias_cuddles_sprite = ComposedSprite(
+            (1280, 800),
+            (None, (0, 0), ("assets/CGs/orias_cuddles.jpg")),
+            ("orias_naked", (0, 0), orias_cuddles_naked),
+            ("claire_naked", (0, 0), orias_cuddles_clnaked),
+            ("claire_face", (0, 0), orias_cuddles_clface),
+            ("orias_face", (0, 0), orias_cuddles_oriface)
+        )
+
+        orias_cuddles_initial = {
+            "orias_naked": False,
+            "claire_naked": False,
+            "claire_face": 3,
+            "orias_face": 1
+        }
+
+    image orias_cuddles = orias_cuddles_sprite.displayable()
+    
+#    image orias_cuddles = LiveComposite((1280, 800),
+#        (0, 0), ("assets/CGs/orias_cuddles.jpg"),
+#        (0, 0), ConditionSwitch(
+#            "orias_naked == True", Null(width=1),
+#            "True", "assets/CGs/orias_cuddles_oriasclothes.png", 
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "orias_clnaked == True", Null(width=1), 
+#            "True", "assets/CGs/orias_cuddles_chemise.png", 
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "orias_cuddles_clface == '1'", "assets/CGs/orias_cuddles_cface1.png", 
+#            "orias_cuddles_clface == '2'", "assets/CGs/orias_cuddles_cface2.png", 
+#            "orias_cuddles_clface == '3'", "assets/CGs/orias_cuddles_cface3.png", 
+#            "orias_cuddles_clface == '4'", "assets/CGs/orias_cuddles_cface4.png", 
+#            "orias_cuddles_clface == '5'", "assets/CGs/orias_cuddles_cface5.png", 
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "orias_cuddles_oriface == '1'", "assets/CGs/orias_cuddles_oface1.png", 
+#            "orias_cuddles_oriface == '2'", "assets/CGs/orias_cuddles_oface2.png", 
+#            "orias_cuddles_oriface == '3'", "assets/CGs/orias_cuddles_oface3.png", 
+#            "orias_cuddles_oriface == '4'", "assets/CGs/orias_cuddles_oface4.png", 
+#            ),    
+#        )
 
     #-- Kael
 
