@@ -1,13 +1,4 @@
 #CG variables
-define mlay_panties = "on"
-define mlay_marm = "breast"
-define mlay_clarm = "fold"
-define mlay_mface = "tender"
-define mlay_clface = "oh"
-
-define mcuddle_mface = "1"
-define mcuddle_cface = "1"
-
 define mira_epilong = False
 
 
@@ -229,6 +220,7 @@ label mirari_hangout2:
     #8th guess
     #$claire.set_state(mouth="oh", eyes="dots", eyebrows="up", emotion="default")
     show chibi_mira02 at chibi_scene with dissolve
+    $ gallery.unlock("chibi_mira02")
     cla "...Interesting." 
     voice "m_w19"
     mi "They are! Would you like me to bring a flower from our world for you as a gift?"
@@ -303,6 +295,7 @@ label mirari_hangout3:
     mi "Of course! Take a seat and I'll comb your hair for you."
     hide mirari with dissolve
     show chibi_mira01 at chibi_scene with dissolve
+    $ gallery.unlock("chibi_mira01")
     "Grateful for the tempting offer, I sit down on the grass in front of her lawn chair. She leans in, running her fingers through my hair as she brushes it."
     "I close my eyes and let out a little happy hum. It feels soooo good."
     cla "It's been a while since someone pampered me like this..."
@@ -377,6 +370,14 @@ label mirari_hangout3:
 
 label mirari_sex:
     $ in_sex = True
+
+    if _in_replay:
+        $ sex_stop_label = "mirari_stop_now"
+
+    if not _in_replay:
+        $ persistent.mirari_claire_name = claire_name
+        $ persistent.mirari_scenes = mirari_scenes
+    
     stop music fadeout 2
     scene black with dissolve
     $renpy.choice_for_skipping()
@@ -442,8 +443,6 @@ label mirari_sex:
     cl "Then..."
     menu:
         "A shoulder massage.":
-            
-
             $ mirari_sex_choices.top_choice = True
             play music music_love fadein 3
             cl "When I think of a massage, I always think of shoulders and back first, so... That sounds like a good starting point."
@@ -456,6 +455,7 @@ label mirari_sex:
             "She applies oil to her hands and starts rubbing them together. The soft scent of jasmine now lingers in the air, relaxing me."
             hide mirari with dissolve
             show mira_back with dissolve
+            $ gallery.unlock("mira_back")
             "She straddles my rear and lightly sits on me, supporting most of her weight on her knees."         
             show screen sex_stop("mirari_stop_now")
             $ mirari_sex_choices.shoulder_massage = True
@@ -478,6 +478,7 @@ label mirari_sex:
                     $ mirari_sex_choices.nibbles = True
                     cla "Sure, although what would you even nib—"
                     show mira_back nibble with dissolve
+                    $ gallery.unlock("mira_back nibble")
                     "Her tongue trails up my ear rim, then she blows lightly on it, creating a cooling sensation. I gasp as she leans in and nibbles my earlobe. I feel my face go warm from the gesture." 
                     cla "Ng..."
                     voice "m_sex16"
@@ -494,6 +495,7 @@ label mirari_sex:
                     jump mirari_stop_now
             if mirari_sex_choices.nibbles == True:
                 show mira_back with dissolve
+                $ gallery.unlock("mira_back")
             "When she gets to my shoulder blade, I cringe when her fingers push against what feels like a cluster of nerves."
             cla "Ouch..."
             mi "A knot?"
@@ -524,7 +526,6 @@ label mirari_sex:
             jump mirari_butt_choice
             
         "Feet first.":
-            
             play music music_love fadein 3
             $ mirari_sex_choices.top_choice = False
             $ mirari_sex_choices.foot_massage = True
@@ -536,6 +537,7 @@ label mirari_sex:
             show screen sex_stop("mirari_stop_now")
             hide mirari with dissolve
             show mira_foot with dissolve
+            $ gallery.unlock("mira_foot")
             "She kneels down in front of me, and I raise one foot. She applies some oil to her hands and starts rubbing them together. A light jasmine scent fills the air."
             "Cupping my foot gently in her hands, she begins rubbing the top, then looks up to gauge my reaction."
             voice "m_sex09"
@@ -553,12 +555,14 @@ label mirari_sex:
                     $ mirari_sex_choices.nibbles = True
                     "Her fingers lightly tug my toes, one by one. She looks up at me with a teasing glint in her eye, then carefully bites my big toe."
                     show mira_foot nibble with dissolve
+                    $ gallery.unlock("mira_foot nibble")
                     "I can sense my face heat up. I didn't expect the gesture to feel - or appear - so erotic." 
                     cla "...Ng..."
                     "Her fingers keep working my arch while her moist lips suck and nibble my toes and the top of my foot." 
                     voice "m_sex17"
                     mi "So cute..."
                     show mira_foot with dissolve
+                    $ gallery.unlock("mira_foot")
 
                 "No nibbling.":
                     $ mirari_sex_choices.nibbles = False
@@ -620,13 +624,16 @@ label mirari_sex:
             $claire.set_state(with_dissolve, mouth="smile", eyes="tender")
             stop music fadeout 2
             cl "No, a cuddle sounds nice."
+            $ mirari_cuddle_sprite.set_state(**mirari_cuddle_initial)
             scene mira_cuddle with dissolve
             play music music_lullaby fadein 2
-            $mcuddle_mface ="3"
+            $ mirari_cuddle_sprite.set_state(with_dissolve, mirari=3)
+#            $mcuddle_mface ="3"
             "We curl up on the bed, our fingers intertwined between us. She smiles and gives my hand an affectionate squeeze before closing her eyes."
             cla "Thank you, Mirari..."
             "The candles flicker softly, creating a cozy atmosphere."
-            $mcuddle_cface ="2"
+            $ mirari_cuddle_sprite.set_state(with_dissolve, claire=2)
+#            $mcuddle_cface ="2"
             "Her closeness and warmth is more soothing than any blanket, and I find myself drifting off to sleep as well..."
             call credits from _call_credits
             jump mirari_epilogue
@@ -707,6 +714,7 @@ label mirari_butt_choice:
             mi "I want you to feel happy and secure, not guilty that you're not enjoying something but too afraid to speak up." 
             hide mirari with dissolve
             show mira_back with dissolve
+            $ gallery.unlock("mira_back")
             $ claire.set_state(base="naked")
             $ mirari_sex_choices.butt_massage = True
             "She lifts up my chemise and starts working on my lower back, kneading it lightly with her knuckles." 
@@ -773,6 +781,7 @@ label mirari_back_massage_scene:
 label mirari_breast_massage_scene:
     #$ mirari_sex_choices.back_massage = False
     show mira_breast with dissolve
+    $ gallery.unlock("mira_breast")
     "Her arms wrap around, and she places her hands right below my chest. I can feel my heart beat against her fingers, and she seems content rubbing there first." 
     cla "T-they're not too small or anything...?"
     voice "m_sex24"
@@ -805,6 +814,7 @@ label mirari_breast_massage_scene:
             show mirari at center_alone with dissolve
             voice "m_sex32"
             mi "There we go. We'll start with an easy position. Now, where was I~?"
+            $ mirari_lying_sprite.set_state(**mirari_lying_initial)
             scene mira_lying with dissolve
             play music music_romance
 
@@ -816,15 +826,18 @@ label mirari_breast_massage_scene:
                 "Mutually touch her back.":
                     $ mirari_sex_choices.mutual_touching = True
                     cla "I'd like to return the favor somehow..."
-                    $ mlay_clarm = "breast"
+                    $ mirari_lying_sprite.set_state(with_dissolve, claire_arm="breast")
+#                    $ mlay_clarm = "breast"
                     "Hesitantly, I bring up my hand to her breasts, and she raises an eyebrow in surprise."
                     voice "m_sex33"
                     mi "Oh~? You'd like to?"
                     cla "I-if it's okay with you..."
-                    $mlay_mface = "happy"
+                    $ mirari_lying_sprite.set_state(with_dissolve, mirari_face="happy")
+#                    $mlay_mface = "happy"
                     voice "m_sex07"
                     mi "Of course. Go easy on me."
-                    $mlay_clface = "smile" 
+                    $ mirari_lying_sprite.set_state(with_dissolve, claire_face="smile")
+#                    $mlay_clface = "smile" 
                     "She winks and I blush heavily, resting an open palm on the center of her chest, not sure what I'm doing."
                     voice "m_sex13"
                     mi "Hehe, we're pretty similar. Just think about what makes you feel good, and do the same to me." 
@@ -855,53 +868,67 @@ label mirari_breast_massage_scene:
 label continuing_to_end:                     
     "Her fingers flirt with the lace of my panties, and she makes eye contact with me. I reach down and tug them off, and she does the same. I notice she sports a heart-shaped trim."
     $mirari.set_state(base="naked")
-    $mlay_panties = "off"
+    $ mirari_lying_sprite.set_state(with_dissolve, panties="off")
+#    $mlay_panties = "off"
     cla "That's cute..."
-    $mlay_mface = "happy"
+    $ mirari_lying_sprite.set_state(with_dissolve, mirari_face="happy")
+#    $mlay_mface = "happy"
     voice "m_sex34"
     mi "Aw, thank you. You're cute as well."
-    $mlay_mface = "tender"
-    $mlay_marm = "touch"
+    $ mirari_lying_sprite.set_state(with_dissolve, mirari_face="tender", mirari_arm="touch")
+#    $mlay_mface = "tender"
+#    $mlay_marm = "touch"
     "She shifts her weight closer, her fingers tickling the edge of my pubic hair. My body heightens in anticipation, and I can feel heat radiating between my thighs as her hand covers my front." 
     if mirari_sex_choices.mutual_touching:
-        $mlay_clarm = "touch"
+        $ mirari_lying_sprite.set_state(with_dissolve, claire_arm="touch")
+#        $mlay_clarm = "touch"
         "I clumsily mimic her movements, careful not to push her arm away as I brush toward her inner thighs." 
     voice "m_sex13"
     mi "I'm glad the massage felt this good.."
-    $mlay_clface = "pleasure"
+    $ mirari_lying_sprite.set_state(with_dissolve, claire_face="pleasure")
+#    $mlay_clface = "pleasure"
     "Her fingers stroke my lips, using my wetness to further lubricate me as she explores." 
     if mirari_sex_choices.mutual_touching:
-        $mlay_mface = "pleasure"
+        $ mirari_lying_sprite.set_state(with_dissolve, mirari_face="pleasure")
+#        $mlay_mface = "pleasure"
         "After tracing her heart, I gently wedge my fingers between the cleft of her thighs, feeling the slick wetness between my fingers."
-    $mlay_clface = "smile"
+    $ mirari_lying_sprite.set_state(with_dissolve, claire_face="smile")
+#    $mlay_clface = "smile"
     cla "I'm glad you're enjoying yourself too..." 
     voice "m_s01"
-    $mlay_mface = "happy"
+    $ mirari_lying_sprite.set_state(with_dissolve, mirari_face="happy")
+#    $mlay_mface = "happy"
     "She gauges my awkward expression and giggles." 
     mi "Of course. I'm with you."
     "Her motions turn circular once she finds my budding clit and begins rubbing it. My legs squirm under her touch, and I try not to trap her fingers between my thighs." 
     hide screen sex_stop
-    $mlay_clface = "pleasure"
+    $ mirari_lying_sprite.set_state(with_dissolve, claire_face="pleasure")
+#    $mlay_clface = "pleasure"
     "Tension builds below my stomach as she presses against me, alternating between her fingers quickly."
     if mirari_sex_choices.mutual_touching:
         "My hand between her thighs turns limp as I lose concentration."
-    $mlay_clface = "O"
+    $ mirari_lying_sprite.set_state(with_dissolve, claire_face="O")
+#    $mlay_clface = "O"
     "I let out a little moan and wriggle my face into the pillow. It feels like there's bursts of white lights in my mind, and I close my eyes to focus on the sensation." 
-    "My body seizes up briefly and I feel contractions through my stomach. After one final shudder, I exhale deeply and relax." 
-    $mlay_clface = "smile"
+    "My body seizes up briefly and I feel contractions through my stomach. After one final shudder, I exhale deeply and relax."
+    $ mirari_lying_sprite.set_state(with_dissolve, claire_face="smile")
+#    $mlay_clface = "smile"
     "Mirari hugs me close, keeping her touch light as she smothers my sweaty forehead with kisses."
-    $mlay_clarm = "fold"
-    $mlay_mface = "happy"
+    $ mirari_lying_sprite.set_state(with_dissolve, claire_arm="fold", mirari_face="happy")
+#    $mlay_clarm = "fold"
+#    $mlay_mface = "happy"
     voice "m_sex35"
     mi "You did great, hon."
     cla "...That was intense... I never experienced that on my own."
     mi "It's thanks to the lengthly massage keeping you nice and ready throughout."
     voice "m_sex13"
     mi "I could tell. You smelled so delicious and..."
-    $mlay_marm = "lick"
-    $mlay_mface = "tease"
+    $ mirari_lying_sprite.set_state(with_dissolve, mirari_arm="lick", mirari_face="tease")
+#    $mlay_marm = "lick"
+#    $mlay_mface = "tease"
     "She removes her hand from my thigh and licks her fingers."
-    $mlay_clface = "shock"
+    $ mirari_lying_sprite.set_state(with_dissolve, claire_face="shock")
+#    $mlay_clface = "shock"
     cla "JLKFDKLDSA?"
     voice "m_sex15"
     mi "...you taste lovely, too."
@@ -920,23 +947,27 @@ label continuing_to_end:
 
     "She takes a damp handcloth and playfully wipes me down, the cool dampness a blessing against my aching warm body."
     play music music_lullaby fadein 2
+    $ mirari_cuddle_sprite.set_state(**mirari_cuddle_initial)
     scene mira_cuddle with dissolve
     $ claire.set_state(base="chemise")
     "Once she's done, we both settle into the bed facing each other, my hand in hers. I can still smell the faint jasmine, further relaxing me." 
     if mirari_scenes >= 3:
         $ persistent.mirari_complete = True
         mi "Hope you feel a little better about yourself. I enjoyed this and you didn't disappoint me in the least."
-        $mcuddle_mface = "2"
+        $ mirari_cuddle_sprite.set_state(with_dissolve, mirari=2)
+#        $mcuddle_mface = "2"
         voice "m_sex15"
         mi "Ah, the disheveled hair look {i}is{/i} cute on you after all."
         "I use a free hand to at least pat down my bangs."
         cla "T-thank you... for making me feel beautiful."
-        $mcuddle_mface = "1"
+        $ mirari_cuddle_sprite.set_state(with_dissolve, mirari=1)
+#        $mcuddle_mface = "1"
         voice "m_sex36"
         mi "You {i}are{/i} beautiful."
         "She giggles and we exchange a small kiss. After that, she closes her eyes and gives my hand a comforting squeeze."
-    $mcuddle_mface = "3"
-    $mcuddle_cface = "2"
+    $ mirari_cuddle_sprite.set_state(with_dissolve, mirari=3, claire=2)
+#    $mcuddle_mface = "3"
+#    $mcuddle_cface = "2"
     "Mirari's closeness and warmth is more soothing than any blanket, and I find myself drifting off to sleep as well..."
     $mira_epilong = True
     call credits from _call_credits_1
@@ -944,6 +975,8 @@ label continuing_to_end:
 
 
 label mirari_stop_now:
+    if not _in_replay:
+        $ persistent.mirari_sex_stop = last_statement
     hide screen sex_stop
     if mirari_sex_choices.on_side:
         "I squirm a bit."
@@ -1080,8 +1113,9 @@ label mirari_stop_early:
     stop music fadeout 2
     voice "m_sex07"
     mi "Of course. We can snuggle tonight."
-    $mcuddle_mface = "3"
-    $mcuddle_cface = "2"
+    $ mirari_cuddle_sprite.set_state(mirari=3, claire=2)
+#    $mcuddle_mface = "3"
+#    $mcuddle_cface = "2"
     scene mira_cuddle with dissolve 
     play music music_lullaby fadein 2
     "We curl up on the bed, our fingers intertwined between us. She smiles and gives my hand an affectionate squeeze before closing her eyes."
@@ -1130,8 +1164,9 @@ label mirari_stop_middle:
     stop music fadeout 2
     $claire.set_state(eyes="happy", mouth="smile", eyebrows="default", emotion_base="small_blush", emotion="default")
     cl "I'd like that."
-    $mcuddle_mface = "3"
-    $mcuddle_cface = "2"
+    $ mirari_cuddle_sprite.set_state(mirari=3, claire=2)
+#    $mcuddle_mface = "3"
+#    $mcuddle_cface = "2"
     scene mira_cuddle with dissolve
     play music music_lullaby fadein 2
     "After I retrieve my chemise, I curl up beside Mirari, facing her. Our fingers lace together and we make ourselves comfortable." 
@@ -1166,9 +1201,10 @@ label mirari_stop_late:
     mi "Tired? Would you like to cuddle?"
     $claire.set_state(with_dissolve, eyes="tender", emotion="note")
     stop music fadeout 2
-    cl "That sounds perfect right now..." 
-    $mcuddle_mface = "3"
-    $mcuddle_cface = "2"
+    cl "That sounds perfect right now..."
+    $ mirari_cuddle_sprite.set_state(mirari=3, claire=2)
+#    $mcuddle_mface = "3"
+#    $mcuddle_cface = "2"
     scene mira_cuddle with dissolve
     play music music_lullaby fadein 2
     "We retrieve our lingerie, and I curl up next to Mirari, holding hands." 
@@ -1213,6 +1249,7 @@ label mirari_epilogue:
     $ claire.set_state(with_dissolve, eyes="happy", eyebrows="default", mouth="grin")
     cl "I might take up on that offer one day... Thanks, Mirari."
     scene white with dissolve
+    $ renpy.end_replay()
     return
 
 label mirari_epilogue_long:
@@ -1289,4 +1326,5 @@ label mirari_epilogue_long:
     cl "Sounds like a plan."
     stop music fadeout 1
     scene white with dissolve
+    $ renpy.end_replay()
     return

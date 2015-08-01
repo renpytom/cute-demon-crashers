@@ -1250,7 +1250,7 @@ init -1:
         )
 
         akki_foreplay_claire_face = StateMachineDisplayable(
-            "akkifp_clface", "default",
+            "akkifp_clface", "none",
             {
                 "none": Null(width=1), 
                 "surprised": "assets/CGs/akki01_clface_surprised.png",
@@ -1263,7 +1263,7 @@ init -1:
         )
 
         akki_foreplay_akki_face = StateMachineDisplayable(
-            "akkifp_akface", "default",
+            "akkifp_akface", "none",
             {
                 "none": Null(width=1), 
                 "happy": "assets/CGs/akki01_akface_happy.png", 
@@ -1472,51 +1472,151 @@ init -1:
     image mira_breast = naked("assets/CGs/mirari_breasts{0}.jpg")
     #image mira_cuddle = "assets/CGs/mirari_cuddling.jpg"
 
-    image mira_cuddle = LiveComposite((1280,800),
-        (0, 0), "assets/CGs/mirari_cuddling_base.jpg",
-        #Mirari face
-        (0, 0), ConditionSwitch(
-            "mcuddle_mface == '1'", "assets/CGs/mirari_cuddling_mface1.png",
-            "mcuddle_mface == '2'", "assets/CGs/mirari_cuddling_mface2.png",
-            "mcuddle_mface == '3'", "assets/CGs/mirari_cuddling_mface3.png",
-            ), 
-        #Claire face
-        (0,0), ConditionSwitch(
-            "mcuddle_cface == '1'", "assets/CGs/mirari_cuddling_cface1.png",
-            "mcuddle_cface == '2'", "assets/CGs/mirari_cuddling_cface2.png",
-            ), 
+    python:
+        mirari_cuddle_mface = StateMachineDisplayable(
+            "mirari_cuddle_mface", 1,
+            { 
+                1: "assets/CGs/mirari_cuddling_mface1.png",
+                2: "assets/CGs/mirari_cuddling_mface2.png",
+                3: "assets/CGs/mirari_cuddling_mface3.png",
+            }
         )
 
-    image mira_lying = LiveComposite((1280, 800),
-        (0, 0), naked("assets/CGs/mirari04{0}.jpg"),
-        (0, 0), ConditionSwitch(
-            "mlay_panties == 'on'", "assets/CGs/mirari04_panties.png", 
-            "mlay_panties == 'off'", naked("assets/CGs/mirari04_nopan{0}.png"), 
-            ),
-        (0, 0), ConditionSwitch(
-            "mlay_marm == 'breast'", "assets/CGs/mirari04_marm_breast.png", 
-            "mlay_marm == 'touch'", "assets/CGs/mirari04_marm_touch.png", 
-            "mlay_marm == 'lick'", "assets/CGs/mirari04_marm_lick.png", 
-            ),
-        (0, 0), ConditionSwitch(
-            "mlay_clarm == 'breast'", "assets/CGs/mirari04_clarm_breast.png", 
-            "mlay_clarm == 'touch'", "assets/CGs/mirari04_clarm_touch.png", 
-            "mlay_clarm == 'fold'", "assets/CGs/mirari04_clarm_fold.png", 
-            ),
-        (0, 0), ConditionSwitch(
-            "mlay_mface == 'happy'", "assets/CGs/mirari04_mface_happy.png", 
-            "mlay_mface == 'tease'", "assets/CGs/mirari04_mface_tease.png", 
-            "mlay_mface == 'pleasure'", "assets/CGs/mirari04_mface_pleasure.png", 
-            "mlay_mface == 'tender'", "assets/CGs/mirari04_mface_tender.png", 
-            ), 
-        (0, 0), ConditionSwitch(
-            "mlay_clface == 'O'", "assets/CGs/mirari04_clface_O.png", 
-            "mlay_clface == 'oh'", "assets/CGs/mirari04_clface_oh.png", 
-            "mlay_clface == 'pleasure'", "assets/CGs/mirari04_clface_pleasure.png", 
-            "mlay_clface == 'smile'", "assets/CGs/mirari04_clface_smile.png", 
-            "mlay_clface == 'shock'", "assets/CGs/mirari04_clface_shock.png", 
-            ),      
+        mirari_cuddle_cface = StateMachineDisplayable(
+            "mirari_cuddle_cface", 1,
+            {
+                1: "assets/CGs/mirari_cuddling_cface1.png",
+                2: "assets/CGs/mirari_cuddling_cface2.png",
+            }
         )
+
+        mirari_cuddle_sprite = ComposedSprite(
+            (1280, 800),
+            (None, (0, 0), "assets/CGs/mirari_cuddling_base.jpg"),
+            ("mirari", (0, 0), mirari_cuddle_mface),
+            ("claire", (0, 0), mirari_cuddle_cface)
+        )
+
+        mirari_cuddle_initial = {
+            "mirari": 1,
+            "claire": 1
+        }
+
+    image mira_cuddle = mirari_cuddle_sprite.displayable()
+        
+#    image mira_cuddle = LiveComposite((1280,800),
+#        (0, 0), "assets/CGs/mirari_cuddling_base.jpg",
+#        #Mirari face
+#        (0, 0), ConditionSwitch(
+#            "mcuddle_mface == '1'", "assets/CGs/mirari_cuddling_mface1.png",
+#            "mcuddle_mface == '2'", "assets/CGs/mirari_cuddling_mface2.png",
+#            "mcuddle_mface == '3'", "assets/CGs/mirari_cuddling_mface3.png",
+#            ), 
+#        #Claire face
+#        (0,0), ConditionSwitch(
+#            "mcuddle_cface == '1'", "assets/CGs/mirari_cuddling_cface1.png",
+#            "mcuddle_cface == '2'", "assets/CGs/mirari_cuddling_cface2.png",
+#            ), 
+#        )
+
+    python:
+        mirari_lying_panties = StateMachineDisplayable(
+            "mirari_lying_panties", "on",
+            {
+                "on": "assets/CGs/mirari04_panties.png", 
+                "off": naked("assets/CGs/mirari04_nopan{0}.png")
+            }
+        )
+
+        mirari_lying_marm = StateMachineDisplayable(
+            "mirari_lying_marm", "breast",
+            {
+                "breast": "assets/CGs/mirari04_marm_breast.png", 
+                "touch": "assets/CGs/mirari04_marm_touch.png", 
+                "lick": "assets/CGs/mirari04_marm_lick.png"
+            }
+        )
+
+        mirari_lying_clarm = StateMachineDisplayable(
+            "mirari_lying_carm", "fold",
+            {
+                "breast": "assets/CGs/mirari04_clarm_breast.png", 
+                "touch": "assets/CGs/mirari04_clarm_touch.png", 
+                "fold": "assets/CGs/mirari04_clarm_fold.png"
+            }
+        )
+
+        mirari_lying_mface = StateMachineDisplayable(
+            "mirari_lying_mface", "tender",
+            {
+                "happy": "assets/CGs/mirari04_mface_happy.png", 
+                "tease": "assets/CGs/mirari04_mface_tease.png", 
+                "pleasure": "assets/CGs/mirari04_mface_pleasure.png", 
+                "tender": "assets/CGs/mirari04_mface_tender.png"
+            }
+        )
+
+        mirari_lying_clface = StateMachineDisplayable(
+            "mirari_lying_clface", "oh",
+            {
+                "O": "assets/CGs/mirari04_clface_O.png", 
+                "oh": "assets/CGs/mirari04_clface_oh.png", 
+                "pleasure": "assets/CGs/mirari04_clface_pleasure.png", 
+                "smile": "assets/CGs/mirari04_clface_smile.png", 
+                "shock": "assets/CGs/mirari04_clface_shock.png", 
+            }
+        )
+
+        mirari_lying_sprite = ComposedSprite(
+            (1280, 800),
+            (None, (0, 0), naked("assets/CGs/mirari04{0}.jpg")),
+            ("panties", (0, 0), mirari_lying_panties),
+            ("mirari_arm", (0, 0), mirari_lying_marm),
+            ("claire_arm", (0, 0), mirari_lying_clarm),
+            ("mirari_face", (0, 0), mirari_lying_mface),
+            ("claire_face", (0, 0), mirari_lying_clface)
+            )
+
+        mirari_lying_initial = {
+            "panties": "on",
+            "mirari_arm": "breast",
+            "claire_arm": "fold",
+            "mirari_face": "tender",
+            "claire_face": "oh"
+        }
+
+    image mira_lying = mirari_lying_sprite.displayable()
+        
+#    image mira_lying = LiveComposite((1280, 800),
+#        (0, 0), naked("assets/CGs/mirari04{0}.jpg"),
+#        (0, 0), ConditionSwitch(
+#            "mlay_panties == 'on'", "assets/CGs/mirari04_panties.png", 
+#            "mlay_panties == 'off'", naked("assets/CGs/mirari04_nopan{0}.png"), 
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "mlay_marm == 'breast'", "assets/CGs/mirari04_marm_breast.png", 
+#            "mlay_marm == 'touch'", "assets/CGs/mirari04_marm_touch.png", 
+#            "mlay_marm == 'lick'", "assets/CGs/mirari04_marm_lick.png", 
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "mlay_clarm == 'breast'", "assets/CGs/mirari04_clarm_breast.png", 
+#            "mlay_clarm == 'touch'", "assets/CGs/mirari04_clarm_touch.png", 
+#            "mlay_clarm == 'fold'", "assets/CGs/mirari04_clarm_fold.png", 
+#            ),
+#        (0, 0), ConditionSwitch(
+#            "mlay_mface == 'happy'", "assets/CGs/mirari04_mface_happy.png", 
+#            "mlay_mface == 'tease'", "assets/CGs/mirari04_mface_tease.png", 
+#            "mlay_mface == 'pleasure'", "assets/CGs/mirari04_mface_pleasure.png", 
+#            "mlay_mface == 'tender'", "assets/CGs/mirari04_mface_tender.png", 
+#            ), 
+#        (0, 0), ConditionSwitch(
+#            "mlay_clface == 'O'", "assets/CGs/mirari04_clface_O.png", 
+#            "mlay_clface == 'oh'", "assets/CGs/mirari04_clface_oh.png", 
+#            "mlay_clface == 'pleasure'", "assets/CGs/mirari04_clface_pleasure.png", 
+#            "mlay_clface == 'smile'", "assets/CGs/mirari04_clface_smile.png", 
+#            "mlay_clface == 'shock'", "assets/CGs/mirari04_clface_shock.png", 
+#            ),      
+#        )
 
     ##-- orias
     image orias_play cold ="assets/CGs/orias_play_cold.png"
