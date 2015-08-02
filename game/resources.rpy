@@ -1879,68 +1879,189 @@ init -1:
     image kael_kissing A2 = "assets/CGs/kael_kissing_a2.png"
     image kael_kissing B = "assets/CGs/kael_kissing_b.png"
 
-    image kael_warmup = LiveComposite((1280,800),
-        #base
-        (0, 0), naked("assets/CGs/kael_warmup_base{0}.jpg"),
-        #Claire face
-        (0, 0), ConditionSwitch(
-            "kael_warmup_clface == '1'","assets/CGs/kael_warmup_clface1.png",
-            "kael_warmup_clface == '2'","assets/CGs/kael_warmup_clface2.png",
-            ),
-        #Kael position
-        (0, 0), ConditionSwitch(
-            "kael_warmup_kael == '1'", "assets/CGs/kael_warmup_kael1.png",
-            "kael_warmup_kael == '2'", naked("assets/CGs/kael_warmup_kael2{0}.png"),
-            "kael_warmup_kael == '3'", naked("assets/CGs/kael_warmup_kael3{0}.png"),
-            ),
-
+    python:
+        kael_warmup_clface = StateMachineDisplayable(
+            "kael_warmup_clface", 1,
+            {
+                1: "assets/CGs/kael_warmup_clface1.png",
+                2: "assets/CGs/kael_warmup_clface2.png"
+            }
         )
 
-    image kael_missionary = LiveComposite((1280,800),
-        #base
-        (0, 0), naked("assets/CGs/kael_missionary{0}.jpg"),
-        #claire face
-        (0, 0), ConditionSwitch(
-            "kael_mis_clface == '1'","assets/CGs/kael_missionary_clface1.png",
-            "kael_mis_clface == '2'","assets/CGs/kael_missionary_clface2.png",
-            "kael_mis_clface == '3'","assets/CGs/kael_missionary_clface3.png",
-            "kael_mis_clface == '4'","assets/CGs/kael_missionary_clface4.png",
-            "kael_mis_clface == '5'","assets/CGs/kael_missionary_clface5.png",
-            "kael_mis_clface == '6'","assets/CGs/kael_missionary_clface6.png",
-            ),
-        #kael face
-          (0, 0), ConditionSwitch(
-            "kael_mis_kface == '1'","assets/CGs/kael_missionary_kface1.png",
-            "kael_mis_kface == '2'","assets/CGs/kael_missionary_kface2.png",
-            "kael_mis_kface == '3'","assets/CGs/kael_missionary_kface3.png",
-            "kael_mis_kface == '4'","assets/CGs/kael_missionary_kface4.png",
-            ),
+        kael_warmup_kael = StateMachineDisplayable(
+            "kael_warmup_kael", 1,
+            {
+                1: "assets/CGs/kael_warmup_kael1.png",
+                2: naked("assets/CGs/kael_warmup_kael2{0}.png"),
+                3: naked("assets/CGs/kael_warmup_kael3{0}.png")
+            }
         )
 
-    image kael_cuddles = LiveComposite((1280,800),
-        #base
-        (0, 0), "assets/CGs/kael_cuddles_base.jpg",
-        #claire face
-        (0, 0), ConditionSwitch(
-            "kael_cuddle_clface == '1'","assets/CGs/kael_cuddles_cface1.png",
-            "kael_cuddle_clface == '2'","assets/CGs/kael_cuddles_cface2.png",
-            ),
-        #kael face
-        (0, 0), ConditionSwitch(
-            "kael_cuddle_kface == '1'","assets/CGs/kael_cuddles_kface1.png",
-            "kael_cuddle_kface == '2'","assets/CGs/kael_cuddles_kface2.png",
-            ),
-        #kael clothes
-        (0,0), ConditionSwitch(
-            "kael_naked == True", Null(width=1),
-            "True", "assets/CGs/kael_cuddles_kclothes.png",
-            ),
-        #caire clothes
-        (0,0), ConditionSwitch(
-            "kael_claire_naked == True", Null(width=1),
-            "True", "assets/CGs/kael_cuddles_chemise.png",
-            ),
+        kael_warmup_sprite = ComposedSprite(
+            (1280, 800),
+            (None, (0, 0), naked("assets/CGs/kael_warmup_base{0}.jpg")),
+            ("claire", (0, 0), kael_warmup_clface),
+            ("kael", (0, 0), kael_warmup_kael)
         )
+
+        kael_warmup_initial = {
+            "claire": 1,
+            "kael": 1
+        }
+
+    image kael_warmup = kael_warmup_sprite.displayable()
+        
+#    image kael_warmup = LiveComposite((1280,800),
+#        #base
+#        (0, 0), naked("assets/CGs/kael_warmup_base{0}.jpg"),
+#        #Claire face
+#        (0, 0), ConditionSwitch(
+#            "kael_warmup_clface == '1'","assets/CGs/kael_warmup_clface1.png",
+#            "kael_warmup_clface == '2'","assets/CGs/kael_warmup_clface2.png",
+#            ),
+#        #Kael position
+#        (0, 0), ConditionSwitch(
+#            "kael_warmup_kael == '1'", "assets/CGs/kael_warmup_kael1.png",
+#            "kael_warmup_kael == '2'", naked("assets/CGs/kael_warmup_kael2{0}.png"),
+#            "kael_warmup_kael == '3'", naked("assets/CGs/kael_warmup_kael3{0}.png"),
+#            ),
+#
+#        )
+
+    python:
+        kael_missionary_clface = StateMachineDisplayable(
+            "kael_missionary_clface", 1,
+            {
+                1: "assets/CGs/kael_missionary_clface1.png",
+                2: "assets/CGs/kael_missionary_clface2.png",
+                3: "assets/CGs/kael_missionary_clface3.png",
+                4: "assets/CGs/kael_missionary_clface4.png",
+                5: "assets/CGs/kael_missionary_clface5.png",
+                6: "assets/CGs/kael_missionary_clface6.png",
+            }
+        )
+
+        kael_missionary_kface = StateMachineDisplayable(
+            "kael_missionary_kface", 1,
+            {
+                1: "assets/CGs/kael_missionary_kface1.png",
+                2: "assets/CGs/kael_missionary_kface2.png",
+                3: "assets/CGs/kael_missionary_kface3.png",
+                4: "assets/CGs/kael_missionary_kface4.png",
+            }
+        )
+
+        kael_missionary_sprite = ComposedSprite(
+            (1280, 800),
+            (None, (0, 0), naked("assets/CGs/kael_missionary{0}.jpg")),
+            ("claire", (0, 0), kael_missionary_clface),
+            ("kael", (0, 0), kael_missionary_kface)
+        )
+
+        kael_missionary_initial = {
+            "claire": 1,
+            "kael": 1
+        }
+
+    image kael_missionary = kael_missionary_sprite.displayable()
+
+    
+#    image kael_missionary = LiveComposite((1280,800),
+#        #base
+#        (0, 0), naked("assets/CGs/kael_missionary{0}.jpg"),
+#        #claire face
+#        (0, 0), ConditionSwitch(
+#            "kael_mis_clface == '1'","assets/CGs/kael_missionary_clface1.png",
+#            "kael_mis_clface == '2'","assets/CGs/kael_missionary_clface2.png",
+#            "kael_mis_clface == '3'","assets/CGs/kael_missionary_clface3.png",
+#            "kael_mis_clface == '4'","assets/CGs/kael_missionary_clface4.png",
+#            "kael_mis_clface == '5'","assets/CGs/kael_missionary_clface5.png",
+#            "kael_mis_clface == '6'","assets/CGs/kael_missionary_clface6.png",
+#            ),
+#        #kael face
+#          (0, 0), ConditionSwitch(
+#            "kael_mis_kface == '1'","assets/CGs/kael_missionary_kface1.png",
+#            "kael_mis_kface == '2'","assets/CGs/kael_missionary_kface2.png",
+#            "kael_mis_kface == '3'","assets/CGs/kael_missionary_kface3.png",
+#            "kael_mis_kface == '4'","assets/CGs/kael_missionary_kface4.png",
+#            ),
+#        )
+
+    python:
+        kael_cuddles_clface = StateMachineDisplayable(
+            "kael_cuddles_clface", 2,
+            {
+                1: "assets/CGs/kael_cuddles_cface1.png",
+                2: "assets/CGs/kael_cuddles_cface2.png"
+            }
+        )
+
+        kael_cuddles_kface = StateMachineDisplayable(
+            "kael_cuddles_kface", 2,
+            {
+                1: "assets/CGs/kael_cuddles_kface1.png",
+                2: "assets/CGs/kael_cuddles_kface2.png"
+            }
+        )
+
+        kael_cuddles_knaked = StateMachineDisplayable(
+            "kael_cuddles_knaked", False,
+            {
+                True: Null(width=1),
+                False: "assets/CGs/kael_cuddles_kclothes.png"
+            }
+        )
+
+        kael_cuddles_clnaked = StateMachineDisplayable(
+            "kael_cuddles_clnaked", False,
+            {
+                True: Null(width=1),
+                False: "assets/CGs/kael_cuddles_chemise.png",
+            }
+        )
+
+        kael_cuddles_sprite = ComposedSprite(
+            (1280, 800),
+            (None, (0, 0), "assets/CGs/kael_cuddles_base.jpg"),
+            ("claire_face", (0, 0), kael_cuddles_clface),
+            ("kael_face", (0, 0), kael_cuddles_kface),
+            ("kael_naked", (0, 0), kael_cuddles_knaked),
+            ("claire_naked", (0, 0), kael_cuddles_clnaked)
+        )
+
+        kael_cuddles_initial = {
+            "claire_face": 2,
+            "kael_face": 2,
+            "kael_naked": False,
+            "claire_naked": False
+        }
+
+    image kael_cuddles = kael_cuddles_sprite.displayable()
+        
+#    image kael_cuddles = LiveComposite((1280,800),
+#        #base
+#        (0, 0), "assets/CGs/kael_cuddles_base.jpg",
+#        #claire face
+#        (0, 0), ConditionSwitch(
+#            "kael_cuddle_clface == '1'","assets/CGs/kael_cuddles_cface1.png",
+#            "kael_cuddle_clface == '2'","assets/CGs/kael_cuddles_cface2.png",
+#            ),
+#        #kael face
+#        (0, 0), ConditionSwitch(
+#            "kael_cuddle_kface == '1'","assets/CGs/kael_cuddles_kface1.png",
+#            "kael_cuddle_kface == '2'","assets/CGs/kael_cuddles_kface2.png",
+#            ),
+#        #kael clothes
+#        (0,0), ConditionSwitch(
+#            "kael_naked == True", Null(width=1),
+#            "True", "assets/CGs/kael_cuddles_kclothes.png",
+#            ),
+#        #caire clothes
+#        (0,0), ConditionSwitch(
+#            "kael_claire_naked == True", Null(width=1),
+#            "True", "assets/CGs/kael_cuddles_chemise.png",
+#            ),
+#        )
 
     image group = naked("assets/CGs/orgy{0}.jpg")
 

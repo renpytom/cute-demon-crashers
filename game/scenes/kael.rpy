@@ -336,6 +336,9 @@ label kael_sex:
     pause(0.5)
     play music music_tension
     scene bg hallway_night with dissolve
+    $ kael_cuddles_sprite.set_state(**kael_cuddles_initial)
+    $ kael_warmup_sprite.set_state(**kael_warmup_initial)
+    $ kael_missionary_sprite.set_state(**kael_missionary_initial)
     $kael.set_state(**Emotion.normal())
     $ claire.set_state(**Emotion.normal())
     $ claire.set_state(base="chemise", emotion_base="large blush", mouth="wavy", eyebrows="flat")
@@ -703,6 +706,7 @@ label oralactivity:
     $kael.set_state(with_dissolve, eyes="up", eyebrows="up")
     ka "Besides, I'm not one to judge."
     $kael.set_state(base="naked", eyes="wink", mouth="grin", eyebrows="default")
+    $ kael_cuddles_sprite.set_state(kael_naked=True)
     $kael_naked = True
     show kael at center_group with dissolve
     $kael.set_state(with_dissolve, base="naked")
@@ -726,18 +730,22 @@ label oralactivity:
         "His fingers tease the edge of my pubic hair, and I widen my legs in anticipation. He uses the opportunity to massage my inner thighs."
     ka "I'm glad you've enjoyed yourself so far."
     if kaeloral ==True:
-        $kael_warmup_kael = "3"
+        $ kael_warmup_sprite.set_state(with_dissolve, kael=3)
+#        $kael_warmup_kael = "3"
         $ oral2 = True
-        "To demonstrate, he lowers his head and brushes his lips against my folds. I let out a moan as his tongue dips down, licking with lingering strokes." 
-        $kael_warmup_clface = "2"
+        "To demonstrate, he lowers his head and brushes his lips against my folds. I let out a moan as his tongue dips down, licking with lingering strokes."
+        $ kael_warmup_sprite.set_state(with_dissolve, claire=2)
+#        $kael_warmup_clface = "2"
         "Kael takes his time, keeping his tongue soft as he explores the base of my clit, causing me to squirm from the sensation. My breathing quickens, and I close my eyes." 
         "The movements don't increase in intensity, but the pleasant feeling steadily builds inside me, sending jolts through my limbs."
         "It leaves me wanting more, and I suddenly feel cold when he removes his mouth."
     if kaelfinger==True:
         $ fingers2 = True
-        $kael_warmup_kael = "2"
+        $ kael_warmup_sprite.set_state(with_dissolve, kael=2)
+#        $kael_warmup_kael = "2"
         "To demonstrate, he dips two fingers into my lower lips, stroking the moist sides. I let out a moan as he circles around my entrance, teasing."
-        $kael_warmup_clface = "2"
+        $ kael_warmup_sprite.set_state(with_dissolve, claire=2)
+#        $kael_warmup_clface = "2"
         "Kael takes his time, experimenting with circular and up-and-down motions as he gauges my reactions. I squirm as his fingers gradually stroke below my clit, making me breathe deeper from the sensation." 
         "The movements don't increase in intensity, but the pleasant feeling steadily builds inside me, sending jolts through my limbs."
         "It leaves me wanting more, and I suddenly feel cold when he removes his fingers."
@@ -786,77 +794,97 @@ label oralactivity:
     voice "k_sex35"
     ka "I like what I see, too."     
     $ kaelontop = True
-    $kael_mis_clface="2"
-    $kael_mis_kface="2"
+    $ kael_missionary_sprite.set_state(claire=2, kael=2)
+#    $kael_mis_clface="2"
+#    $kael_mis_kface="2"
     scene kael_missionary with dissolve
     "I feel my face flush. He lowers until his chest touches mine and aligns his hips against me."
     voice "k_sex36"
     ka "I'm not too heavy?"
     cla "No."
-    $kael_mis_clface="1"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=1)
+#    $kael_mis_clface="1"
     "With my pelvis elevated, he settles between my moist thighs then glides back and forth."
     "A soft moan escapes my lips as Kael delves deeper with each stroke until I can feel a gentle pressure against my entrance. I embrace him and relax my head on the pillow, closing my eyes." 
     voice "k_sex37"
     ka "How does that feel?"
-    $kael_mis_clface="2"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=2)
+#    $kael_mis_clface="2"
     cla "Feels wonderful. You can keep going, just, um..."
     "He gropes for my hand then gives it a tender squeeze."
     voice "k_sex38"
     ka "I'll take it slow."
     $ kaelontop = False
     $ kaelinside = True
-    $kael_mis_clface="1"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=1)
+#    $kael_mis_clface="1"
     "His tip nudges into me and a shock of pleasure radiates from my stomach, along with a stretching sensation."   
     voice "k_sex39"
     ka "You okay?"
     cla "Good... Tight, but doesn't hurt."
-    $kael_mis_kface="1"
+    $ kael_missionary_sprite.set_state(with_dissolve, kael=1)
+#    $kael_mis_kface="1"
     "He kisses my forehead and increases the pressure just a little bit more, stopping to gauge my reaction. After a sharp inhale, I relax, letting my body get used to the sensation."
     "Each movement becomes slicker from how wet I've become, and I sense him take a deep breath before continuing."
     "We both gasp as I feel the expansion within me massaging me from the inside." 
     "Our bodies join, and his chest lightly rests against mine as I embrace him. For a moment we say nothing and I wonder what I can say regarding this physical milestone."
-    $kael_mis_clface="2"
-    $kael_mis_kface="2"
+    $ kael_missionary_sprite.set_state(with_dissolve, kael=2, claire=2)
+#    $kael_mis_clface="2"
+#    $kael_mis_kface="2"
     cla "That... didn't hurt like I thought it would."
-    $kael_mis_kface="3"
+    $ kael_missionary_sprite.set_state(with_dissolve, kael=3)
+#    $kael_mis_kface="3"
     voice "k_sex40"
-    ka "I'd never do that. Who do you think you're with?" 
-    $kael_mis_clface="3"
+    ka "I'd never do that. Who do you think you're with?"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=3)
+#    $kael_mis_clface="3"
     "He pouts, then blows an air kiss against my neck, causing me to giggle."
-    $kael_mis_clface="2"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=2)
+#    $kael_mis_clface="2"
     cla "I also thought sex was all serious sexytimes and no laughing."
-    $kael_mis_kface="4"
+    $ kael_missionary_sprite.set_state(with_dissolve, kael=4)
+#    $kael_mis_kface="4"
     voice "k_s03"
     ka "I allow moans of ecstasy and giggling here. Even the occasional, 'Oh, god, yes'."
-    $kael_mis_clface="3"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=3)
+#    $kael_mis_clface="3"
     "I burst out laughing from his tone, unwittingly causing my pelvic muscles to contract around him, and I dissolve into a half-chuckle half-gasp."
-    $kael_mis_clface="1"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=1)
+#    $kael_mis_clface="1"
     cla "Don't make me laugh... that felt good."
     voice "k_sex41"
-    $kael_mis_kface="2"
-    ka "I'll take it easy, okay? Let me know if it starts to feel uncomfortable." 
-    $kael_mis_kface="1"
+    $ kael_missionary_sprite.set_state(with_dissolve, kael=2)
+#    $kael_mis_kface="2"
+    ka "I'll take it easy, okay? Let me know if it starts to feel uncomfortable."
+    $ kael_missionary_sprite.set_state(with_dissolve, kael=1)
+#    $kael_mis_kface="1"
     "After adjusting his elbows, he begins a deep, sensual stroke followed by shallow thrusts. At first I feel nothing, then the friction and warmth starts to build inside. The base of his shaft rubs against my clit, escalating the sensation."
     "Whenever it starts to become too intense or monotonous, he senses the cues in my voice and expression then changes angles or tempo. My hips squirm under the constant but pleasant pressure in my lower belly."
     #remove stop button and return for menu
     hide screen sex_stop
     voice "k_s21"
-    $kael_mis_clface="4"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=4)
+#    $kael_mis_clface="4"
     "I moan as the overwhelming bliss makes it impossible to distinguish Kael's rhythm anymore, and I feel my muscles clench against him."
     "It's nothing I ever experienced before – it's feels like a cup that has overflowed and each spill ripples throughout my body in pure ecstasy. The intensity takes a hold of me, stringing me along like a hook, not letting me go."
     "I shudder after the final release and sink back into the bed. The warmth slowly fades away, like a receding tide, leaving me relaxed and very satisfied."
-    $kael_mis_clface="1"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=1)
+#    $kael_mis_clface="1"
     cla "...Wow..."
-    $kael_mis_kface="2"
+    $ kael_missionary_sprite.set_state(with_dissolve, kael=2)
+#    $kael_mis_kface="2"
     voice "k_sex42"
     ka "Sounds like you enjoyed it."
-    $kael_mis_clface="2"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=2)
+#    $kael_mis_clface="2"
     cla "Sounds...?"
     voice "k_s03"
     ka "You made some very cute noises."
-    $kael_mis_clface="6"
+    $ kael_missionary_sprite.set_state(with_dissolve, claire=6)
+#    $kael_mis_clface="6"
     cla "...I didn't even realize... Oh gosh, I hope I didn't wake the neighbors."
-    $kael_mis_kface="4"
+    $ kael_missionary_sprite.set_state(with_dissolve, kael=4)
+#    $kael_mis_kface="4"
     voice "k_s04"
     "I cover my face and Kael chuckles, leaning in."
     voice "k_sex43"
@@ -912,17 +940,19 @@ label oralactivity:
         #ka "Unless you want to horse around again." 
     $claire.set_state(emotion="default", eyes="happy", eyebrows="default", mouth="grin", emotion_base="small blush")
     cl "Heh, a cuddle sounds nice..."    
-    label kaellatestop:
-    $kael_cuddle_clface="1"
-    $kael_cuddle_kface="1"
+
+label kaellatestop:
+    $ kael_cuddles_sprite.set_state(claire_face=1, kael_face=1)
+#    $kael_cuddle_clface="1"
+#    $kael_cuddle_kface="1"
     scene kael_cuddles with dissolve
     "Kael moulds his body against mine, weaving our legs together."
     if kael_scenes >= 3 :
         voice "k_s03"
         ka "I hope you've had a memorable spring break."
         cla "I did. It wasn't the least bit lonely. You could say it was unbelievable."
-    $kael_cuddle_clface="1"
-    $kael_cuddle_kface="1"
+#    $kael_cuddle_clface="1"
+#    $kael_cuddle_kface="1"
     "His breath warms the base of my neck, and it's then I realize there's soft music still drifting in the room. Both have a soothing effect on me, along with his comforting embrace."
     "Relaxed and secure in his arms, I close my eyes and fall into a restful sleep."
     $kael_epilong = True
@@ -970,7 +1000,7 @@ label kaelstoppingnow:
         ka "We can do something less intense. Like cuddling."
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
         cl "I'd like that..."     
-        stop music fadeout 2   
+        stop music fadeout 2
         jump kaelearlystop
     if kissingactivity==True:
         $claire.set_state(**Emotion.normal())
@@ -1178,8 +1208,9 @@ label kaelmiddlestop:
     jump kael_epilogue
     
 label kaellatestop:
-    $kael_cuddle_kface = "1"
-    $kael_cuddle_clface = "1"
+    $ kael_cuddles_sprite.set_state(kael_face=1, claire_face=1)
+#    $kael_cuddle_kface = "1"
+#    $kael_cuddle_clface = "1"
     scene kael_cuddles with dissolve
     play music music_lullaby fadein 2
     "He gives me a reassuring kiss on the forehead. I roll over, and Kael hugs me from behind, moulding his body against mine." 
@@ -1187,8 +1218,10 @@ label kaellatestop:
         voice "k_s03"
         ka "I hope you've had a memorable spring break."
         cla "Ha, I did. It wasn't the least bit lonely. You could say it was unbelievable."
-    $kael_cuddle_kface = "2"
-    $kael_cuddle_clface = "2"
+
+    $ kael_cuddles_sprite.set_state(with_dissolve, kael_face=2, claire_face=2)
+#    $kael_cuddle_kface = "2"
+#    $kael_cuddle_clface = "2"
     "His breath warms the base of my neck, and it's then I realize there's soft music still drifting in the room. Both have a soothing effect on me, along with his comforting embrace."
     "Relaxed and secure in his arms, I close my eyes and fall into a restful sleep."    
     call credits
