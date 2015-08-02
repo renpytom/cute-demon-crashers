@@ -330,6 +330,14 @@ label kael_hangout3:
 
 label kael_sex:
     $ in_sex = True
+
+    if _in_replay:
+        $ sex_stop_label = "kaelstoppingnow"
+
+    if not _in_replay:
+        $ persistent.kael_claire_name = claire_name
+        $ persistent.kael_scenes = kael_scenes
+    
     stop music fadeout 2
     scene black with dissolve
     $renpy.choice_for_skipping()
@@ -960,6 +968,8 @@ label kaellatestop:
     jump kael_epilogue
     
 label kaelstoppingnow:
+    if not _in_replay:
+        $ persistent.kael_sex_stop = last_statement
     hide screen sex_stop
     if tenderactivity==True:
         cla "I'd like to stop..."
@@ -1261,6 +1271,7 @@ label kael_epilogue:
     $ claire.set_state(with_dissolve, eyes="closed", mouth="smile", eyebrows="default", emotion="default")
     cl "Thanks, Kael."
     scene white with dissolve
+    $ renpy.end_replay()
     return
 label kael_epilogue_long:
     $ persistent.kael_complete = True
@@ -1353,4 +1364,5 @@ label kael_epilogue_long:
     ka "Sure. We can catch up this way. And I can get recipe ideas for our next date."
     hide kael with dissolve
     scene white with dissolve
+    $ renpy.end_replay()
     return

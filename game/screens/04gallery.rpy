@@ -3,8 +3,8 @@ init python:
     gallery = Gallery(
         GalleryFolder(
             "Akki",
-            ImageSet(CG("chibi_akki01", "assets/chibis/akki_hug.png")),
-            ImageSet(CG("chibi_akki02", "assets/chibis/akki_sit.png")),
+            ImageSet(RenpyImage("chibi_akki01")),
+            ImageSet(RenpyImage("chibi_akki02")),
             ReplayBundle("akki_sex",
                          akki_foreplay.snapshot( akki_bottom="on",
                                                  claire_arm="down",
@@ -50,7 +50,23 @@ init python:
         ),
         GalleryFolder(
             "Kael",
-            ImageSet(CG("chibi_kael01", "assets/chibis/kael_laundry.png"))
+            ImageSet(RenpyImage("chibi_kael01")),
+            ImageSet(RenpyImage("chibi_kael02")),
+            ImageSet(RenpyImage("kael_start"),
+                     RenpyImage("kael_start hand"),
+                     RenpyImage("kael_start kiss"),
+                     RenpyImage("kael_start pillow")),
+            ImageSet(RenpyImage("kael_leaning"),
+                     RenpyImage("kael_leaning b")),
+            ImageSet(RenpyImage("kael_kissing A1"),
+                     RenpyImage("kael_kissing A2"),
+                     RenpyImage("kael_kissing B")),
+            ReplayBundle("kael_sex",
+                         kael_warmup_sprite.snapshot(**kael_warmup_initial),
+                         lambda: { "kael_name": "Kael",
+                                   "claire_name": persistent.kael_claire_name,
+                                   "kael_scenes": persistent.kael_scenes,
+                                   "sex_stop_statement": persistent.kael_sex_stop })
         ),
         GalleryFolder(
             "Mirari",
@@ -70,10 +86,16 @@ init python:
         ),
         GalleryFolder(
             "Others",
-            ImageSet(CG("chibi_nosex01", "assets/chibis/NoOneEnd_01.png"),
-                     CG("chibi_nosex02", "assets/chibis/NoOneEnd_02.png")),
-            ImageSet(RenpyImage("item tea")),
-            ImageSet(RenpyImage("item toast"))
+            ImageSet(RenpyImage("nosex01"),
+                     RenpyImage("nosex02")),
+            ImageSet(RenpyImage("item sock")),
+            ImageSet(RenpyImage("item parfait"),
+                     RenpyImage("item bacon"),
+                     RenpyImage("item pizza"),
+                     RenpyImage("item tea"),
+                     RenpyImage("item toast"),
+                     RenpyImage("item pancakes")),
+            ImageSet(RenpyImage("group"))
         )
     )
 
