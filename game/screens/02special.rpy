@@ -55,3 +55,47 @@ screen tutorial:
         hovered Play("sound", "assets/sfx/menu_hover3.ogg")
         xpos 1140
         ypos 15
+
+
+init:
+    style phone_message_vbox:
+        xalign 0.5
+        yalign 0
+        ypos 570
+        xsize 240
+        xoffset -10
+        
+    style phone_message_frame:
+        background Solid("#d9398c")
+        ypadding 10
+        xpadding 10
+
+    style phone_message_contents:
+        spacing 10
+
+    style phone_message is say_dialogue:
+        xoffset 0
+        outlines []
+        
+    style phone_message_who is phone_message:
+        color "#ecf0f1"
+        size 18
+
+    style phone_message_what is phone_message:
+        color "#ffffff"
+        size 18
+        
+screen phone_message(who, what):
+    vbox at incoming_message:
+        style_group "phone_message"
+
+        add "assets/ui/bubble-tip.png" at phone_message_bubble_tip
+        frame:
+            style_group "phone_message"
+
+            vbox:
+                style "phone_message_contents"
+                
+                text who style "phone_message_who"
+                text what style "phone_message_what"
+        

@@ -123,9 +123,33 @@ label start:
     "The phone on my nightstand vibrates, ruining the moment. I let out a groan, but roll over anyway. Using my clean hand, I grab the device and read the display."
    
     ## Add cellphone screen here
-    "Kelsey: Picture attached. I'm having an awesome time with my bf >o<b we just arrived in mexico sooooo romantic!"
-    "Chelsea: OMG jelly. well i'm going 2 a party this wkend and gonna snag myself a hottie <3"
-    "Elsie: guess who's celebrating their 2 week anniversary with her GF. This one /o/ "
+    show phone at phone_pickup
+
+    $ renpy.pause(0.2)
+    show screen phone_message("Kelsey", "I'm having an awesome time with my bf >o<b we just arrived in mexico sooooo romantic!")
+    $ renpy.pause()
+
+    hide screen phone_message
+    $ renpy.pause(0.1)
+
+    show screen phone_message("Chelsea", "OMG jelly. well i'm going 2 a party this wkend and gonna snag myself a hottie <3")
+    $ renpy.pause()
+
+    hide screen phone_message
+    $ renpy.pause(0.1)
+
+    show screen phone_message("Elsie", "guess who's celebrating their 2 week anniversary with her GF. This one /o/")
+    $ renpy.pause()
+
+    hide screen phone_message
+    hide phone
+
+    $renpy.pause(0.2)
+    
+    
+#    "Kelsey: Picture attached. I'm having an awesome time with my bf >o<b we just arrived in mexico sooooo romantic!"
+#    "Chelsea: OMG jelly. well i'm going 2 a party this wkend and gonna snag myself a hottie <3"
+#    "Elsie: guess who's celebrating their 2 week anniversary with her GF. This one /o/ "
 
     $ claire.set_state(emotion_base="default", mouth="uhh", emotion="sigh", eyes="flat")
     cl "..."

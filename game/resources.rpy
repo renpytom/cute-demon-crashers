@@ -170,6 +170,35 @@ init -1:
             xalign 0.0
             linear 8.0 xalign 0.7
 
+    # Picking up the phone
+    transform phone_pickup:
+        yalign 1.0 xalign 0.5
+        yoffset 600
+        easein 0.3 yoffset 200
+
+        on hide:
+            easeout 0.2 yoffset 600
+
+    transform phone_message_bubble_tip:
+        xoffset 10
+        yoffset 1
+
+    transform scrolling_out_message:
+        easeout 0.1 yoffset -30 alpha 0
+        
+    transform incoming_message:
+        yoffset 100
+        alpha 0
+        parallel:
+            easein 0.1 alpha 1
+        parallel:
+            easein 0.2 yoffset 0
+
+        on hide:
+            scrolling_out_message
+        
+        
+
 
 
 
@@ -1056,6 +1085,7 @@ init -1:
     image white = "#ffffff"
     image logo = "assets/ui/logo.png"
     image sugarlogo = "assets/ui/mm-group-logo.png"
+    image phone = "assets/ui/phone.png"
     
     # -- Backgrounds ---------------------------------------------------
     image bg bedroom_candles = "assets/bgs/bedroom candles.png"
