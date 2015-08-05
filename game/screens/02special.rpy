@@ -22,6 +22,13 @@ init python:
             
     config.character_callback = maybe_stop_scene
 
+screen sex_stop(target):
+    imagebutton:
+        auto "assets/ui/stop_sex_%s.png"
+        action Jump(target)
+        xalign .99
+
+    
 # Tutorial
 screen tutorial:
     default cur_screen_num = 1
@@ -48,9 +55,3 @@ screen tutorial:
         hovered Play("sound", "assets/sfx/menu_hover3.ogg")
         xpos 1140
         ypos 15
-    
-screen sex_stop(target):
-    imagebutton:
-        auto "assets/ui/stop_sex_%s.png"
-        action Jump(target)
-        xalign .99
