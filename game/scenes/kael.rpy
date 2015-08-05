@@ -478,6 +478,7 @@ label kael_sex:
             voice "k_s12"
             $kael.set_state(with_dissolve, eyebrows="up", eyes="default")
             ka "Would a cuddle suffice?"
+            stop music fadeout 2
             cl "Yeah... I'd like that."
             scene kael_cuddles with dissolve
             play music music_lullaby fadein 2
@@ -705,6 +706,7 @@ label kissingpermission:
         
 label oralactivity:
     $claire.set_state(base="naked", eyes="down", mouth="low")
+    $ kael_cuddles_sprite.set_state(claire_naked=True)
     cl "Um, sorry, I didn't really... shave down there... only trimmed..."
     $ claireundressed = True
     "I curl up my legs so he can remove my panties, and he sets them aside."
@@ -946,10 +948,12 @@ label oralactivity:
         ka "Unless you want another pillow fight."
     #if wrestlerecall==True:
         #ka "Unless you want to horse around again." 
+    stop music fadeout 2
     $claire.set_state(emotion="default", eyes="happy", eyebrows="default", mouth="grin", emotion_base="small blush")
     cl "Heh, a cuddle sounds nice..."    
 
 label kaellatestop:
+    play music music_lullaby fadein 2
     $ kael_cuddles_sprite.set_state(claire_face=1, kael_face=1)
 #    $kael_cuddle_clface="1"
 #    $kael_cuddle_kface="1"
@@ -961,6 +965,7 @@ label kaellatestop:
         cla "I did. It wasn't the least bit lonely. You could say it was unbelievable."
 #    $kael_cuddle_clface="1"
 #    $kael_cuddle_kface="1"
+    $ kael_cuddles_sprite.set_state(with_dissolve, kael_face=2, claire_face=2)
     "His breath warms the base of my neck, and it's then I realize there's soft music still drifting in the room. Both have a soothing effect on me, along with his comforting embrace."
     "Relaxed and secure in his arms, I close my eyes and fall into a restful sleep."
     $kael_epilong = True
@@ -1083,7 +1088,7 @@ label kaelstoppingnow:
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
         cl "I would..."
         stop music fadeout 2
-        jump kealearlystop
+        jump kaelearlystop
     if oral2==True or fingers2==True:
         $claire.set_state(**Emotion.normal())
         $claire.set_state(eyes="tender side", eyebrows="inwards", emotion_base="small blush", mouth="low", emotion="default")
@@ -1208,6 +1213,7 @@ label kaelmiddlestop:
     "Kael pats me down with a dry towel, then ruffles my hair."
     voice "k_s03"
     $kael.set_state(with_dissolve, eyes="happy", mouth="smile", eyebrows="default", emotion_base="default", emotion="default")
+    stop music fadeout 2
     ka "I... also got nourished by you. Thank you."
     scene kael_cuddles with dissolve
     play music music_lullaby fadein 2

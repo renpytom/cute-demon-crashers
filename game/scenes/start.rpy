@@ -227,6 +227,7 @@ label start:
     $claire.set_state(eyes="happy", mouth="happy")
     cl "Oh thanks, I got it at—"
     $ claire.set_state(with_dissolve, **Emotion.shock())
+    $akki.set_state(with_dissolve, eyebrows="inwards", mouth="low", emotion="default")
     $claire.set_state(eyebrows="frown")
     extend " HEY, DON'T CHANGE THE SUBJECT. I'm not lowering my guard." 
     voice "k_w01"
