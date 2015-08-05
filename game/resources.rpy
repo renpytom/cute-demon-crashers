@@ -231,22 +231,98 @@ init -1:
             "claire_emotion", "default",
             {
                 "default": Null(),
-                "flowers": "assets/sprites/claire/cl_emo_flowers.png",
-                "heart": "assets/sprites/claire/cl_emo_heart.png",
-                "lll": "assets/sprites/claire/cl_emo_lll.png",
-                "note": "assets/sprites/claire/cl_emo_note.png",
-                "panic": "assets/sprites/claire/cl_emo_panic.png",
+                "flowers": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_emo_flowers1.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_flowers2.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_flowers3.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_flowers4.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_flowers5.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_flowers6.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_flowers7.png", 0.1, None,
+                ),
+
+                "heart": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_emo_heart1.png", 0.1, with_dissolve,
+                    "assets/sprites/claire/cl_emo_heart2.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_heart3.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_heart4.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_heart5.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_heart6.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_heart7.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_heart8.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_heart9.png", 0.1, None,
+                    Null(), 1.5 , None,
+                ),
+                "lll": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_emo_lll1.png", 0.1, with_dissolve,
+                    "assets/sprites/claire/cl_emo_lll2.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_lll3.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_lll4.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_lll5.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_lll6.png", 1.5 , None,
+                ),
+                "note": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_emo_note1.png", 0.1, with_dissolve,
+                    "assets/sprites/claire/cl_emo_note2.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_note3.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_note4.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_note5.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_note6.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_note7.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_note8.png", 1.5, None,
+                ),
+                "panic": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_emo_panic1.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_panic2.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_panic3.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_panic4.png", 0.1, None,
+                    
+                ),
                 "shiver": anim.TransitionAnimation(
                     "assets/sprites/claire/cl_emo_shiver.png", 0.1, None,
                     "assets/sprites/claire/cl_emo_shiver2.png", 0.1, None,
                     "assets/sprites/claire/cl_emo_shiver.png", 0.1, None,
                     "assets/sprites/claire/cl_emo_shiver3.png", 0.1, None
                 ),
-                "shock": "assets/sprites/claire/cl_emo_shock4.png",
-                "sigh": "assets/sprites/claire/cl_emo_sigh.png",
-                "steam": "assets/sprites/claire/cl_emo_steam.png",
-                "sweat": "assets/sprites/claire/cl_emo_sweat.png",
-                "sweat lots": "assets/sprites/claire/cl_emo_swtlots.png"
+                "shock": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_emo_shock.png", 0.1, with_dissolve,
+                    "assets/sprites/claire/cl_emo_shock2.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_shock3.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_shock4.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_shock5.png", 1.5, None,
+                    
+                ),
+                "sigh": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_emo_sigh1.png", 0.1, with_dissolve,
+                    "assets/sprites/claire/cl_emo_sigh2.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_sigh3.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_sigh4.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_sigh5.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_sigh6.png", 0.1, None,
+                    Null(), 1.5 , None,
+                ),
+                "steam":  anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_emo_steam1.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_steam2.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_steam3.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_steam4.png", 0.1, None,
+                ),
+                "sweat": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_emo_sweat1.png", 0.1, with_dissolve,
+                    "assets/sprites/claire/cl_emo_sweat2.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_sweat3.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_sweat4.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_sweat5.png", 3.0, None,
+                    
+                ),
+                "sweat lots": anim.TransitionAnimation(
+                    "assets/sprites/claire/cl_emo_swlots1.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_swlots2.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_swlots3.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_swlots4.png", 0.1, None,
+                    "assets/sprites/claire/cl_emo_swlots5.png", 0.1, None,
+                    
+                ),
             }
         )
 
@@ -428,20 +504,120 @@ init -1:
             "akki_emotion", "default",
             {
                 "default"    : Null(),
-                "bars"       : ak_sprite("emo_bars"),
-                "flowers"    : ak_sprite("emo_flowers"),
-                "heart"      : ak_sprite("emo_heart"),
-                "lll"        : ak_sprite("emo_lll"),
-                "note"       : ak_sprite("emo_note"),
-                "panic"      : ak_sprite("emo_panic"),
-                "shiver"     : ak_sprite("emo_shiver"),
-                "shock"      : ak_sprite("emo_shock"),
-                "sigh"       : ak_sprite("emo_sigh"),
-                "starry"     : ak_sprite("emo_starry"),
-                "steam"      : ak_sprite("emo_steam"),
-                "sweat"      : ak_sprite("emo_sweat"),
-                "sweat lots" : ak_sprite("emo_swtlots"),
-                "vein"       : ak_sprite("emo_vein")
+                "bars"       : anim.TransitionAnimation(
+                    ak_sprite("emo_bars1"), 0.1, None,
+                    ak_sprite("emo_bars"), 0.2, None,
+                    Null(), 0.2, None,
+                    ak_sprite("emo_bars"), 0.2, None,
+                    Null(), 0.2, None,
+                    ak_sprite("emo_bars"), 0.2, None,
+                    Null(), 1.0, None,
+                    ),
+
+                "flowers"    : anim.TransitionAnimation(
+                    ak_sprite("emo_flowers1"), 0.1, None,
+                    ak_sprite("emo_flowers2"), 0.1, None,
+                    ak_sprite("emo_flowers3"), 0.1, None,
+                    ak_sprite("emo_flowers4"), 0.1, None,
+                    ak_sprite("emo_flowers5"), 0.1, None,
+                    ak_sprite("emo_flowers6"), 0.1, None,
+                    ak_sprite("emo_flowers7"), 0.1, None,
+                    ),
+
+                "heart"      : anim.TransitionAnimation(
+                    ak_sprite("emo_heart1"), 0.1, with_dissolve,
+                    ak_sprite("emo_heart2"),  0.1, None,
+                    ak_sprite("emo_heart3"),  0.1, None,
+                    ak_sprite("emo_heart4"),  0.1, None,
+                    ak_sprite("emo_heart5"),  0.1, None,
+                    ak_sprite("emo_heart6"),  0.1, None,
+                    ak_sprite("emo_heart7"),  0.1, None,
+                    ak_sprite("emo_heart8"),  0.1, None,
+                    ak_sprite("emo_heart9"),  0.1, None,
+                    Null(), 1.5 , None,
+                    ),
+                "lll"        : anim.TransitionAnimation(
+                    ak_sprite("emo_lll1"), 0.1, with_dissolve,
+                    ak_sprite("emo_lll2"), 0.1, None,
+                    ak_sprite("emo_lll3"), 0.1, None,
+                    ak_sprite("emo_lll4"), 0.1, None,
+                    ak_sprite("emo_lll5"), 0.1, None,
+                    ak_sprite("emo_lll6"), 1.5 , None,
+                    ),
+                "note"       : anim.TransitionAnimation(
+                    ak_sprite("emo_note1"), 0.1, with_dissolve,
+                    ak_sprite("emo_note2"), 0.1, None,
+                    ak_sprite("emo_note3"), 0.1, None,
+                    ak_sprite("emo_note4"), 0.1, None,
+                    ak_sprite("emo_note5"), 0.1, None,
+                    ak_sprite("emo_note6"), 0.1, None,
+                    ak_sprite("emo_note7"), 0.1, None,
+                    ak_sprite("emo_note8"), 1.5, None,
+                    ),
+                "panic"      : anim.TransitionAnimation(
+                    ak_sprite("emo_panic1"), 0.1, None,
+                    ak_sprite("emo_panic2"), 0.1, None,
+                    ak_sprite("emo_panic3"), 0.1, None,
+                    ak_sprite("emo_panic4"), 0.1, None,
+                    
+                    ),
+                "shiver"     : anim.TransitionAnimation(
+                    ak_sprite("emo_shiver"), 0.1, None,
+                    ak_sprite("emo_shiver2"), 0.1, None,
+                    ak_sprite("emo_shiver"), 0.1, None,
+                    ak_sprite("emo_shiver3"), 0.1, None
+                    ),
+                "shock"      : anim.TransitionAnimation(
+                    ak_sprite("emo_shock1"), 0.1, with_dissolve,
+                    ak_sprite("emo_shock2"), 0.1, None,
+                    ak_sprite("emo_shock3"), 0.1, None,
+                    ak_sprite("emo_shock4"), 0.1, None,
+                    ak_sprite("emo_shock5"), 1.5, None,
+                        
+                ),
+                "sigh"       : anim.TransitionAnimation(
+                    ak_sprite("emo_sigh1"), 0.1, with_dissolve,
+                    ak_sprite("emo_sigh2"), 0.1, None,
+                    ak_sprite("emo_sigh3"), 0.1, None,
+                    ak_sprite("emo_sigh4"), 0.1, None,
+                    ak_sprite("emo_sigh5"), 0.1, None,
+                    ak_sprite("emo_sigh6"), 0.1, None,
+                    Null(), 1.5 , None,
+                    ),
+                "starry"     : anim.TransitionAnimation(
+                    ak_sprite("emo_starry1"), 0.1, None,
+                    ak_sprite("emo_starry2"), 0.1, None,
+                    
+                    ),
+                "steam"      : anim.TransitionAnimation(
+                    ak_sprite("emo_steam1"), 0.1, None,
+                    ak_sprite("emo_steam2"), 0.1, None,
+                    ak_sprite("emo_steam3"), 0.1, None,
+                    ak_sprite("emo_steam4"), 0.1, None,
+                    ),
+                "sweat"      : anim.TransitionAnimation(
+                    ak_sprite("emo_sweat1"), 0.1, with_dissolve,
+                    ak_sprite("emo_sweat2"), 0.1, None,
+                    ak_sprite("emo_sweat3"), 0.1, None,
+                    ak_sprite("emo_sweat4"), 0.1, None,
+                    ak_sprite("emo_sweat5"), 3.0, None,
+                    
+                    ),
+                "sweat lots" : anim.TransitionAnimation(
+                    ak_sprite("emo_swlots1"), 0.1, None,
+                    ak_sprite("emo_swlots2"), 0.1, None,
+                    ak_sprite("emo_swlots3"), 0.1, None,
+                    ak_sprite("emo_swlots4"), 0.1, None,
+                    ak_sprite("emo_swlots5"), 0.1, None,
+                    
+                    ),
+                "vein"       : anim.TransitionAnimation(
+                    ak_sprite("emo_vein1"), 0.1, None,
+                    ak_sprite("emo_vein2"), 0.1, None,
+                    ak_sprite("emo_vein3"), 0.1, None,
+                    ak_sprite("emo_vein2"), 0.1, None,
+                    
+                    ),
             }
         )
 
@@ -501,7 +677,7 @@ init -1:
                 "starry": anim.TransitionAnimation(
                     ak_sprite("eyes_starry1"), 0.2, None,
                     ak_sprite("eyes_starry2"), 0.2, None
-                ),
+                    ),
                 "tender"      : anim.TransitionAnimation(
                     ak_sprite("eyes_tender"), 1.5, None,
                     ak_sprite("eyes_open_blink"), 0.1, None,
@@ -527,7 +703,7 @@ init -1:
                 "twitch"      : anim.TransitionAnimation(
                     ak_sprite("eyes_twitch"), 0.2, None,
                     ak_sprite("eyes_twitch2"), 0.2, None
-                ),
+                    ),
                 "wide"        : anim.TransitionAnimation(
                     ak_sprite("eyes_wide"), 1.5, None,
                     ak_sprite("eyes_wide_blink"), 0.1, None,
@@ -598,20 +774,95 @@ init -1:
             "mirari_emotion", "default",
             {
                 "default": Null(),
-                "bars": mi_sprite("emo_bars"),
+                "bars": anim.TransitionAnimation(
+                    mi_sprite("emo_bars1"), 0.1, None,
+                    mi_sprite("emo_bars"), 0.2, None,
+                    Null(), 0.2, None,
+                    mi_sprite("emo_bars"), 0.2, None,
+                    Null(), 0.2, None,
+                    mi_sprite("emo_bars"), 0.2, None,
+                    Null(), 1.0, None,
+                    ),
                 
-                "flowers": mi_sprite("emo_flowers"),
-                "heart": mi_sprite("emo_heart"),
-                "lll": mi_sprite("emo_lll"),
-                "note": mi_sprite("emo_note"),
-                "panic": mi_sprite("emo_panic"),
-                "shiver": mi_sprite("emo_shiver"),
-                "shock": mi_sprite("emo_shock"),
+                "flowers": 
+                anim.TransitionAnimation(
+                    mi_sprite("emo_flowers"), 0.1, None,
+                    mi_sprite("emo_flowers2"), 0.1, None,
+                    mi_sprite("emo_flowers3"), 0.1, None,
+                    mi_sprite("emo_flowers4"), 0.1, None,
+                    mi_sprite("emo_flowers5"), 0.1, None,
+                    mi_sprite("emo_flowers6"), 0.1, None,
+                    mi_sprite("emo_flowers7"), 0.1, None,
+                    ),
+                "heart": anim.TransitionAnimation(
+                    mi_sprite("emo_heart1"), 0.1, with_dissolve,
+                    mi_sprite("emo_heart2"),  0.1, None,
+                    mi_sprite("emo_heart3"),  0.1, None,
+                    mi_sprite("emo_heart4"),  0.1, None,
+                    mi_sprite("emo_heart5"),  0.1, None,
+                    mi_sprite("emo_heart6"),  0.1, None,
+                    mi_sprite("emo_heart7"),  0.1, None,
+                    mi_sprite("emo_heart8"),  0.1, None,
+                    mi_sprite("emo_heart9"),  0.1, None,
+                    Null(), 1.5 , None,
+                    ),
+                "lll": anim.TransitionAnimation(
+                    mi_sprite("emo_lll1"), 0.1, with_dissolve,
+                    mi_sprite("emo_lll2"), 0.1, None,
+                    mi_sprite("emo_lll3"), 0.1, None,
+                    mi_sprite("emo_lll4"), 0.1, None,
+                    mi_sprite("emo_lll5"), 0.1, None,
+                    mi_sprite("emo_lll6"), 3.0, None,
+                ),
+                "note": anim.TransitionAnimation(
+                    mi_sprite("emo_note1"), 0.1, with_dissolve,
+                    mi_sprite("emo_note2"), 0.1, None,
+                    mi_sprite("emo_note3"), 0.1, None,
+                    mi_sprite("emo_note4"), 0.1, None,
+                    mi_sprite("emo_note5"), 0.1, None,
+                    mi_sprite("emo_note6"), 0.1, None,
+                    mi_sprite("emo_note7"), 0.1, None,
+                    mi_sprite("emo_note8"), 1.5, None,
+                ),
+                "panic": anim.TransitionAnimation(
+                    mi_sprite("emo_panic1"), 0.1, None,
+                    mi_sprite("emo_panic2"), 0.1, None,
+                    mi_sprite("emo_panic3"), 0.1, None,
+                    mi_sprite("emo_panic4"), 0.1, None,
+                    
+                ),
+                "shiver": anim.TransitionAnimation(
+                    mi_sprite("emo_shiver"), 0.1, None,
+                    mi_sprite("emo_shiver2"), 0.1, None,
+                    mi_sprite("emo_shiver"), 0.1, None,
+                    mi_sprite("emo_shiver3"), 0.1, None
+                ),
+                "shock": anim.TransitionAnimation(
+                    mi_sprite("emo_shock1"), 0.1, with_dissolve,
+                    mi_sprite("emo_shock2"), 0.1, None,
+                    mi_sprite("emo_shock3"), 0.1, None,
+                    mi_sprite("emo_shock4"), 0.1, None,
+                    mi_sprite("emo_shock5"), 1.5, None,
+                    
+                ),
                 "sigh": mi_sprite("emo_sigh"),
                 "starry": mi_sprite("emo_starry"),
-                "sweat": mi_sprite("emo_sweat"),
+                "sweat": anim.TransitionAnimation(
+                    mi_sprite("emo_sweat1"), 0.1, with_dissolve,
+                    mi_sprite("emo_sweat2"), 0.1, None,
+                    mi_sprite("emo_sweat3"), 0.1, None,
+                    mi_sprite("emo_sweat4"), 0.1, None,
+                    mi_sprite("emo_sweat5"), 3.0, None,
+                    
+                ),
                 "sweat lots": mi_sprite("emo_swlots"),
-                "vein": mi_sprite("emo_vein"),
+                "vein": anim.TransitionAnimation(
+                    mi_sprite("emo_vein1"), 0.1, None,
+                    mi_sprite("emo_vein2"), 0.1, None,
+                    mi_sprite("emo_vein3"), 0.1, None,
+                    mi_sprite("emo_vein2"), 0.1, None,
+                    
+                    ),
             }
         )
 
@@ -771,18 +1022,101 @@ init -1:
             "kael_emotion", "default",
             {
                 "default"    : Null(),
-                "bars"       : ka_sprite("emo_bars"),
-                "flowers"    : ka_sprite("emo_flowers"),
-                "heart"      : ka_sprite("emo_heart"),
-                "lll"        : ka_sprite("emo_lll"),
-                "note"       : ka_sprite("emo_note"),
-                "panic"      : ka_sprite("emo_panic"),
-                "shiver"     : ka_sprite("emo_shiver"),
-                "shock"      : ka_sprite("emo_shock"),
-                "sigh"       : ka_sprite("emo_sigh"),
+                "bars"       : anim.TransitionAnimation(
+                    ka_sprite("emo_bars1"), 0.1, None,
+                    ka_sprite("emo_bars"), 0.2, None,
+                    Null(), 0.2, None,
+                    ka_sprite("emo_bars"), 0.2, None,
+                    Null(), 0.2, None,
+                    ka_sprite("emo_bars"), 0.2, None,
+                    Null(), 1.0, None,
+                    ),
+                "flowers"    : anim.TransitionAnimation(
+                    ka_sprite("emo_flowers1"), 0.1, None,
+                    ka_sprite("emo_flowers2"), 0.1, None,
+                    ka_sprite("emo_flowers3"), 0.1, None,
+                    ka_sprite("emo_flowers4"), 0.1, None,
+                    ka_sprite("emo_flowers5"), 0.1, None,
+                    ka_sprite("emo_flowers6"), 0.1, None,
+                    ka_sprite("emo_flowers7"), 0.1, None,
+                ),
+                "heart"      : anim.TransitionAnimation(
+                    ka_sprite("emo_heart1"), 0.1, with_dissolve,
+                    ka_sprite("emo_heart2"),  0.1, None,
+                    ka_sprite("emo_heart3"),  0.1, None,
+                    ka_sprite("emo_heart4"),  0.1, None,
+                    ka_sprite("emo_heart5"),  0.1, None,
+                    ka_sprite("emo_heart6"),  0.1, None,
+                    ka_sprite("emo_heart7"),  0.1, None,
+                    ka_sprite("emo_heart8"),  0.1, None,
+                    ka_sprite("emo_heart9"),  0.1, None,
+                    Null(), 1.5 , None,
+                ),
+                "lll"        : anim.TransitionAnimation(
+                    ka_sprite("emo_lll1"), 0.1, with_dissolve,
+                    ka_sprite("emo_lll2"), 0.1, None,
+                    ka_sprite("emo_lll3"), 0.1, None,
+                    ka_sprite("emo_lll4"), 0.1, None,
+                    ka_sprite("emo_lll5"), 0.1, None,
+                    ka_sprite("emo_lll6"), 1.5 , None,
+                ),
+                "note"       : anim.TransitionAnimation(
+                    ka_sprite("emo_note1"), 0.1, with_dissolve,
+                    ka_sprite("emo_note2"), 0.1, None,
+                    ka_sprite("emo_note3"), 0.1, None,
+                    ka_sprite("emo_note4"), 0.1, None,
+                    ka_sprite("emo_note5"), 0.1, None,
+                    ka_sprite("emo_note6"), 0.1, None,
+                    ka_sprite("emo_note7"), 0.1, None,
+                    ka_sprite("emo_note8"), 1.5, None,
+                ),
+                "panic"      : anim.TransitionAnimation(
+                    ka_sprite("emo_panic1"), 0.1, None,
+                    ka_sprite("emo_panic2"), 0.1, None,
+                    ka_sprite("emo_panic3"), 0.1, None,
+                    ka_sprite("emo_panic4"), 0.1, None,
+                    
+                ),
+                "shiver"     : anim.TransitionAnimation(
+                    ka_sprite("emo_shiver"), 0.1, None,
+                    ka_sprite("emo_shiver2"), 0.1, None,
+                    ka_sprite("emo_shiver"), 0.1, None,
+                    ka_sprite("emo_shiver3"), 0.1, None
+                ),
+                "shock"      : anim.TransitionAnimation(
+                    ka_sprite("emo_shock1"), 0.1, with_dissolve,
+                    ka_sprite("emo_shock2"), 0.1, None,
+                    ka_sprite("emo_shock3"), 0.1, None,
+                    ka_sprite("emo_shock4"), 0.1, None,
+                    ka_sprite("emo_shock5"), 1.5, None,
+                    
+                ),
+                "sigh"       : anim.TransitionAnimation(
+                    ka_sprite("emo_sigh1"), 0.1, with_dissolve,
+                    ka_sprite("emo_sigh2"), 0.1, None,
+                    ka_sprite("emo_sigh3"), 0.1, None,
+                    ka_sprite("emo_sigh4"), 0.1, None,
+                    ka_sprite("emo_sigh5"), 0.1, None,
+                    ka_sprite("emo_sigh6"), 0.1, None,
+                    Null(), 1.5 , None,
+                    ),
                 "starry"     : ka_sprite("emo_starry"),
-                "sweat"      : ka_sprite("emo_sweat"),
-                "sweat lots" : ka_sprite("emo_swtlots"),
+                "sweat"      : anim.TransitionAnimation(
+                    ka_sprite("emo_sweat1"), 0.1, with_dissolve,
+                    ka_sprite("emo_sweat2"), 0.1, None,
+                    ka_sprite("emo_sweat3"), 0.1, None,
+                    ka_sprite("emo_sweat4"), 0.1, None,
+                    ka_sprite("emo_sweat5"), 3.0, None,
+                    
+                ),
+                "sweat lots" : anim.TransitionAnimation(
+                    ka_sprite("emo_swlots1"), 0.1, None,
+                    ka_sprite("emo_swlots2"), 0.1, None,
+                    ka_sprite("emo_swlots3"), 0.1, None,
+                    ka_sprite("emo_swlots4"), 0.1, None,
+                    ka_sprite("emo_swlots5"), 0.1, None,
+                    
+                ),
                 "vein"       : ka_sprite("emo_vein")
             }
         )
@@ -953,17 +1287,75 @@ init -1:
             "orias_emotion", "default",
             {
                 "default"    : Null(),
-                "bars"       : ori_sprite("emo_bars"),
-                "flowers"    : ori_sprite("emo_flowers"),
-                "heart"      : ori_sprite("emo_heart"),
-                "lll"        : ori_sprite("emo_lll"),
-                "note"       : ori_sprite("emo_note"),
-                "panic"      : ori_sprite("emo_panic"),
+                "bars"       : anim.TransitionAnimation(
+                    ori_sprite("emo_bars1"), 0.1, None,
+                    ori_sprite("emo_bars"), 0.2, None,
+                    Null(), 0.2, None,
+                    ori_sprite("emo_bars"), 0.2, None,
+                    Null(), 0.2, None,
+                    ori_sprite("emo_bars"), 0.2, None,
+                    Null(), 1.0, None,
+                    ),
+                "flowers"    : anim.TransitionAnimation(
+                    ori_sprite("emo_heart1"), 0.1, with_dissolve,
+                    ori_sprite("emo_heart2"),  0.1, None,
+                    ori_sprite("emo_heart3"),  0.1, None,
+                    ori_sprite("emo_heart4"),  0.1, None,
+                    ori_sprite("emo_heart5"),  0.1, None,
+                    ori_sprite("emo_heart6"),  0.1, None,
+                    ori_sprite("emo_heart7"),  0.1, None,
+                    ori_sprite("emo_heart8"),  0.1, None,
+                    ori_sprite("emo_heart9"),  0.1, None,
+                    Null(), 1.5 , None,
+                    ),
+                "heart"      : anim.TransitionAnimation(
+                    ori_sprite("emo_heart1"), 0.1, with_dissolve,
+                    ori_sprite("emo_heart2"),  0.1, None,
+                    ori_sprite("emo_heart3"),  0.1, None,
+                    ori_sprite("emo_heart4"),  0.1, None,
+                    ori_sprite("emo_heart5"),  0.1, None,
+                    ori_sprite("emo_heart6"),  0.1, None,
+                    ori_sprite("emo_heart7"),  0.1, None,
+                    ori_sprite("emo_heart8"),  0.1, None,
+                    ori_sprite("emo_heart9"),  0.1, None,
+                    Null(), 1.5 , None,
+                    ),
+                "lll"        : anim.TransitionAnimation(
+                    ori_sprite("emo_lll1"), 0.1, with_dissolve,
+                    ori_sprite("emo_lll2"), 0.1, None,
+                    ori_sprite("emo_lll3"), 0.1, None,
+                    ori_sprite("emo_lll4"), 0.1, None,
+                    ori_sprite("emo_lll5"), 0.1, None,
+                    ori_sprite("emo_lll6"), 1.5 , None,
+                ),
+                "note"       : anim.TransitionAnimation(
+                    ori_sprite("emo_note1"), 0.1, with_dissolve,
+                    ori_sprite("emo_note2"), 0.1, None,
+                    ori_sprite("emo_note3"), 0.1, None,
+                    ori_sprite("emo_note4"), 0.1, None,
+                    ori_sprite("emo_note5"), 0.1, None,
+                    ori_sprite("emo_note6"), 0.1, None,
+                    ori_sprite("emo_note7"), 0.1, None,
+                    ori_sprite("emo_note8"), 1.5, None,
+                ),
+                "panic"      : anim.TransitionAnimation(
+                    ori_sprite("emo_shiver"), 0.1, None,
+                    ori_sprite("emo_shiver2"), 0.1, None,
+                    ori_sprite("emo_shiver"), 0.1, None,
+                    ori_sprite("emo_shiver3"), 0.1, None
+                ),
                 "shiver"     : ori_sprite("emo_shiver"),
                 "shock"      : ori_sprite("emo_shock"),
                 "sigh"       : ori_sprite("emo_sigh"),
                 "starry"     : ori_sprite("emo_starry"),
-                "sweat"      : ori_sprite("emo_sweat"),
+                "sweat"      : anim.TransitionAnimation(
+                    ori_sprite("emo_sweat1"), 0.1, with_dissolve,
+                    ori_sprite("emo_sweat2"), 0.1, None,
+                    ori_sprite("emo_sweat3"), 0.1, None,
+                    ori_sprite("emo_sweat4"), 0.1, None,
+                    ori_sprite("emo_sweat5"), 3.0, None,
+                    
+                ),
                 "sweat lots" : ori_sprite("emo_swtlots"),
                 "vein"       : ori_sprite("emo_vein")
             }
