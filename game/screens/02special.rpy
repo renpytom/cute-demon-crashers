@@ -28,6 +28,12 @@ screen sex_stop(target):
         action Jump(target)
         xalign .99
 
+screen sex_stop_red(target):
+    imagebutton:
+        auto "assets/ui/stop_sex_red-%s.png"
+        action Jump(target)
+        xalign .99
+
     
 # Tutorial
 screen tutorial:

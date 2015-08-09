@@ -453,7 +453,7 @@ label kael_sex:
             cla "Careful!"
             hide kael_start with dissolve
             play music music_love fadein 3
-            "He loses his balance, toppling too close to the edge. I hastily drop my pillow and cling to his waist, pulling him toward me instead." 
+            "He loses his balance, teetering too close to the edge. I hastily drop my pillow and cling to his waist, pulling him toward me instead." 
             voice "k_s05"
             "I land on the bed with a thud, Kael straddling me. We look at each other in surprise, then burst out giggling." 
             show kael_leaning with dissolve
@@ -632,7 +632,7 @@ label kissingpermission:
             "My cheeks flush and I bury myself against him."
             voice "k_sex28"
             ka "You okay?"
-            cla "Uh, yea, just... gimme a minute... I'm registering the fact that I'm kissing a handsome half-naked guy all over." 
+            cla "Uh, yeah, just... gimme a minute... I'm registering the fact that I'm kissing a handsome half-naked guy all over." 
             voice "k_sex29"
             ka "Incubus."
             if kael_scenes >= 3:
@@ -720,7 +720,7 @@ label oralactivity:
     $kael_naked = True
     show kael at center_group with dissolve
     $kael.set_state(with_dissolve, base="naked")
-    "He lifts up and removes his neckpiece, revealing the intricate tattoos on his upper chest. Winking, he unties the sash around his waist to loosen the loincloth." 
+    "He lifts and removes his neckpiece, revealing the intricate tattoos on his upper chest. Winking, he unties the sash around his waist to loosen the loincloth." 
     $kael.set_state(with_dissolve, eyes="happy", mouth="smile", emotion="default")
     voice "k_s04"
     "While he disrobes, I peek down then shyly look away. Our eyes meet, and we both let out an amused chuckle."
@@ -906,7 +906,7 @@ label oralactivity:
     voice "k_sex44"
     ka "How are you feeling?"
     $claire.set_state(emotion="heart", eyes="tender", eyebrows="default", mouth="smile", emotion_base="small blush")
-    cl "A little exhausted, sore, but... happy. Thank you, it's because of you I really enjoyed my first time..." 
+    cl "A little exhausted, sore, but... happy. Thank you. It's because of you I really enjoyed my first time..." 
     $kael.set_state(with_dissolve, emotion="note", eyes="happy", mouth="grin")
     ka "I enjoyed myself with you, too. You were great, [claire_name]."
     $claire.set_state(eyes="wide", eyebrows="up", mouth="uh", emotion="default")
@@ -1356,13 +1356,13 @@ label kael_epilogue_long:
     $kael.set_state(with_dissolve, eyes= "clench", mouth="wah", eyebrows="frown", emotion="lll", emotion_base="no nose")
     show kael at sway
     voice "k_s11"
-    ka "Oh? *Now* you remember. When I'm in human form, no less."
+    ka "Oh? {i}Now{/i} you remember. When I'm in human form, no less."
     $kael.set_state(with_dissolve, eyes= "closed", mouth="smile", eyebrows="default", emotion="default", emotion_base="default")
     "I giggle while he playfully musses up my hair then plants a gentle kiss on my forehead."
     $kael.set_state(with_dissolve, eyes= "default", mouth="smile", eyebrows="default", emotion="default", emotion_base="default")
     ka "Are you going somewhere right now?"
     $claire.set_state(eyes="default", emotion="default", eyebrows="default", mouth="grin", emotion_base="small blush")
-    cl  "I'm making spaghetti tonight so I need to pick up some ingredients. Um, want to go together?"
+    cl "I'm making spaghetti tonight so I need to pick up some ingredients. Um, want to go together?"
     $kael.set_state(with_dissolve, eyes= "default", mouth="smile", eyebrows="default", emotion="default", emotion_base="default")
     "He holds my hand and gives it a comforting squeeze."
     $kael.set_state(with_dissolve, eyes= "happy", mouth="grin", eyebrows="default", emotion="note", emotion_base="default")

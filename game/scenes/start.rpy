@@ -106,7 +106,7 @@ label start:
                 call screen tutorial
             "No, thank you.":
                 pass
-        "You can still see the tips on the Extras menu if you feel lost."    
+        "You can still see the tips in the Extras menu if you feel lost."    
 
     $ claire_name = renpy.input("What's your name?", default='Claire',length=12).strip()
     if claire_name == "":

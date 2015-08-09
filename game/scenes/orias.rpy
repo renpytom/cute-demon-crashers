@@ -447,7 +447,7 @@ label orias_sex:
             $claire.set_state(eyes="default", eyebrows="default", mouth="smile", emotion_base = "default", emotion = "default")    
             cl "I'll try blindfolds first."
             ori "Perfect. Also, it'd be ideal to remove your chemise. It looks beautiful on you and I'd hate for it to be stained. Your underwear can stay on."
-            "He removes the items while I undress, and instructs me to lie on my back. I close my eyes as I feel the soft fabric slide down my forehead and rest on the bridge of my nose." 
+            "He removes the items while I undress and instructs me to lie on my back. I close my eyes as I feel the soft fabric slide down my forehead and rest on the bridge of my nose." 
             $ orias_bed_sprite.set_state(blindfold=True)
 #            $orilay_blindfold = True
             $orias.set_state(base="jacketless")
@@ -514,7 +514,7 @@ label orias_sex:
             jump orias_epilogue
         
     cla "Now what?"  
-    show screen sex_stop("orias_stoppingnow")  
+    show screen sex_stop_red("orias_stoppingnow")  
     $ firsthalf = True
     ori "Your choice. What would you like to experience first? Something cold, something warm, or something ticklish?" 
     cla "I..."
@@ -526,7 +526,7 @@ label orias_sex:
                 ori "No peeking; that's half the fun."
                 $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
                 $orilay_clface = "content"
-            "I hear something click together as it's brought over, something like glass. The bed shifts from Orias' weight, and I inhale in anticipation."
+            "I hear something clink together as it's brought over, something like glass. The bed shifts from Orias' weight, and I inhale in anticipation."
             "He's nearby but I don't sense anything. What is he planning...?"
             show orias_play cold with dissolve
             $orias_cutin = True
@@ -548,7 +548,7 @@ label orias_sex:
             $orias_cutin = True
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="pleasure")
             $orilay_clface = "pleasure"
-            "I sense his body heat as he leans down, and his breath tickles my stomach. Something moist glides along, lapping up the liquid paths and warming my skin. It's just his body temperature but it feels unusually hot thanks to the initial reaction."
+            "I sense his body heat as he leans down, and his breath tickles my stomach. Something moist glides along, lapping up the liquid paths and warming my skin. It's just his body temperature but it feels unusually hot thanks to the initial coldness."
             ori "There, to balance it out."
             "I shiver, but not from the temperature play." 
             hide orias_play with dissolve
@@ -569,7 +569,7 @@ label orias_sex:
                     $orilay_clface ="pleasure"
                     "I gasp as something frigid circles one of my nipples, causing it to feel numb and sending chills down my spine."
                     show orias_play nipple_suck with dissolve
-                    extend " Immediately I'm greeted by something hot, and I realize Orias has taken the nipple into this mouth, his tongue rolling over the nub."
+                    extend " Immediately I'm greeted by something hot, and I realize Orias has taken my nipple into this mouth, his tongue rolling over the nub."
                     cla "Oh..."
                     "While he's warming it up, the ice cube teases my other breast, creating a slight sharp sensation, which he quickly remedies with his mouth again." 
                     hide orias_play with dissolve
@@ -599,7 +599,7 @@ label orias_sex:
         "Warm.":
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried")
             $orilay_clface="worried"
-            cla "Warm... is it like warm-warm or hot-warm?"
+            cla "Warm... Is it like warm-warm or hot-warm?"
             ori "Just above your body temperature warm. Don't worry, I always test on myself before I pour the candle wax on someone else."
             $ orias_bed_sprite.set_state(with_dissolve, orias_face="smile2")
             $orilay_oriface ="smile2"
@@ -647,7 +647,7 @@ label orias_sex:
             show orias_play hot with dissolve
             $ orias_bed_sprite.set_state(with_dissolve, orias_face="smile")
             $orilay_oriface ="smile"
-            "He drips more wax between my shoulder blades, and the warm sensation continues down my back. Half the fun is guessing where and when and how much he applies."
+            "He drips more wax between my shoulder blades, and the warm sensation continues down my back. Half the fun is guessing where, when and how much he applies."
             "Whenever I think I have the pattern down, Orias changes it up."
             hide orias_play hot with dissolve
             $orias_cutin = False
@@ -689,7 +689,7 @@ label orias_sex:
                     "With each drop, I feel my senses heightened and... more aware of the touch? I can feel the wax slide down, or when it starts to pool, which Orias rubs down." 
                     ori "There. I'm going to remove it."
                     show orias_play wax_scratch with dissolve
-                    "Nails dig into my skin and gently travel up and down as pieces of the wax fall beside me."
+                    "Nails dig into my skin and gently travel up and down as pieces of wax fall beside me."
                     $ orias_bed_sprite.set_state(with_dissolve, claire_face="pleasure")
                     $orilay_clface="pleasure"
                     cla "Ah, if the wax was nice, this is heaven..." 
@@ -761,8 +761,8 @@ label orias_sex:
                     $orilay_clface = "pleasure"
                     show orias_play nipple_tickle with dissolve
                     $orias_cutin = True
-                    "Any laughter I still suppressed leaves my body with a gasp, and I sink into the bed farther."
-                    "The feather flirts under the next breast, then travels upward, on my sternum. I writhe ever so slightly as he keeps it up."
+                    "Any laughter I still suppressed leaves my body with a gasp, and I sink into the bed further."
+                    "The feather flirts under the next breast then travels upward to my sternum. I writhe ever so slightly as he keeps it up."
                     "The feather traces around my breasts like a spiral, circling closer and closer to my nipple. After it grazes it, he does the same to my other breast but counterclockwise to change it up."
                     "The sensation vanishes, and my body tenses up, anticipating the next touch."
                     show orias_play tickle_thighs with dissolve
@@ -877,7 +877,8 @@ label orias_sex:
             ori "Heh, that's a new term..."
             ori "I'm guessing you'll feel better if I took them off?"
             "I nod."
-            hide screen sex_stop
+            hide screen sex_stop_red
+
             scene bg bedroom_candles with dissolve
             $orias.set_state(mouth="default")
             show orias at center_alone2 with dissolve
@@ -918,7 +919,7 @@ label orias_sex:
             $orilay_clface="content"
             scene orias_bed with dissolve
             $orias_cg = True
-            show screen sex_stop("orias_stoppingnow")  
+            show screen sex_stop_red("orias_stoppingnow")  
                 
         "Enjoy the next session.":
             "What is he planning...?"
@@ -947,7 +948,7 @@ label orias_sex:
     hide orias_play with dissolve
     $ chocolatemouth = False
     $ oraltime = True
-    "Once all of the chocolate has been removed, his mouth flutters downward, alternating between warm kisses and hot breaths."
+    "Once all of the chocolate has been removed, he flutters downward, alternating between warm kisses and hot breaths."
     "When he reaches my navel, his lips close around it and I feel an incredible suction and nothing else. It's then I know what he's trying to hint..."
     ori "Should I keep going...?"
     menu:
@@ -962,12 +963,13 @@ label orias_sex:
             "With long broad strokes, he parts my lower lips, licking each side tenderly. I turn my head to the side, my body highly sensitive to every movement." 
             "The coiling sensation tightens like a spring, and every stroke and lick sends jolts up and down my body. His tongue narrows and traces along my entrance, and I start to squirm, my hips unable to keep still."
             "Orias continues his up-and-down motions, gradually increasing his movements, and applies more pressure against me."
-            hide screen sex_stop
+            hide screen sex_stop_red
+
             "I feel the lightest suction as his mouth brushes upward towards my clit, and I inhale in anticipation."
             if orilay_tiedup == True:
                 "Being binded only adds a sweet layer of pleasure – unable to adjust myself or clutch onto the sheets. Instead, my fingers tighten into fists in response."
-            "Orias flattens his tongue, and teases my clit with unhurried licks. I moan softly depending on his angles."
-            cla "...ah..."
+            "Orias flattens his tongue and teases my clit with unhurried licks. I moan softly depending on his angles."
+            cla "...Ah..."
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="O")
             $orilay_clface="O"
             "Eventually I'm unable to pick up the subtle touches as my mind becomes hazy from the increasing pleasure. My legs shift and my pelvis arches against him, not wanting him to let up the rhythm."
@@ -979,7 +981,7 @@ label orias_sex:
                 $orilay_clface ="worried"
                 cla "Orias...?"
                 ori "I'm here, and I'll remove everything."
-            "I feel a hand caress my forehead, removing the sweat."
+            "I feel a hand caress my forehead, wiping away the sweat."
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="happy")
             $orilay_clface ="happy"
             ori "Enjoyed yourself?"
@@ -1004,7 +1006,7 @@ label orias_sex:
             ori "I can do that."
             "He plants one last firm kiss just above my pubic hair, and I can subtly feel his fingers replace where his mouth was. Wriggling under the lace, he then pulls down my underwear."
             $orilay_panties = "off"
-            "His finger travels through my hair, then dips into the already moist parting. I widen my legs slightly to make it accessible."
+            "His finger travels through my hair, then dips into the already moist parting. I widen my legs slightly to make it easier for him."
             show orias_finish fingers with dissolve
             ori "I'm glad you enjoyed the sensation play."
             "One hand massages my inner thigh while the other begins stroking my outer lips. With each motion, his fingers explore deeper, tracing the sides and around my entrance." 
@@ -1016,7 +1018,8 @@ label orias_sex:
             "Encouraged by my reaction, he continues to stroke me while his other hand caresses my thigh."
             "One finger dips into me, and I feel a jolt up my body. After withdrawing, he lingers around my entrance again before traveling upward."
             "Gradually, he brushes over my clit, and I let out a little moan. The pressure I had felt for a while starts to disperse, making my body warm and pleasant throughout."
-            hide screen sex_stop
+            hide screen sex_stop_red
+
             cla "Mm..."
             "My legs squirm as he increases his vigor, his fingers first making circular motions over my clit before settling on up and down movements." 
             if orilay_tiedup == True:
@@ -1096,14 +1099,15 @@ label orias_sex:
 label orias_stoppingnow:
         if not _in_replay:
             $ persistent.orias_sex_stop = last_statement
-        hide screen sex_stop
+        hide screen sex_stop_red
+
         if firsthalf == True and halfwayyay == False:
             if orias_cutin == True:
                 hide orias_play with dissolve
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried", orias_face="neutral")
             $orilay_clface= "worried"
             $orilay_oriface = "neutral"
-            cla "Red. I'd like to stop the activity."
+            cla "Red. I'd like to stop."
             ori "I understand."
             scene bg bedroom_candles with dissolve
             if orilay_blindfold == True:
