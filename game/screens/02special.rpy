@@ -2,9 +2,19 @@
 screen disable_Lmouse():
     key "mouseup_1" action NullAction()
 
+
+init python:
+    def StopReplay():
+        renpy.hide_screen("replay_controls")
+        renpy.end_replay()
+    
 # repurpose menu for Replay mode
 screen replay_controls():
-    key "game_menu" action [Hide("replay_controls"), renpy.end_replay]
+    imagebutton:
+        auto "assets/ui/replay-exit-%s.png"
+        action StopReplay
+        xalign .99
+    key "game_menu" action StopReplay
 
 
 # Stop button
@@ -23,16 +33,18 @@ init python:
     config.character_callback = maybe_stop_scene
 
 screen sex_stop(target):
-    imagebutton:
-        auto "assets/ui/stop_sex_%s.png"
-        action Jump(target)
-        xalign .99
+    if not _in_replay:
+        imagebutton:
+            auto "assets/ui/stop_sex_%s.png"
+            action Jump(target)
+            xalign .99
 
 screen sex_stop_red(target):
-    imagebutton:
-        auto "assets/ui/stop_sex_red-%s.png"
-        action Jump(target)
-        xalign .99
+    if not _in_replay:
+        imagebutton:
+            auto "assets/ui/stop_sex_red-%s.png"
+            action Jump(target)
+            xalign .99
 
     
 # Tutorial

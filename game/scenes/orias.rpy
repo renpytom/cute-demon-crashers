@@ -333,6 +333,7 @@ label orias_sex:
 
     if _in_replay:
         $ sex_stop_label = "orias_stoppingnow"
+        show screen replay_controls()
 
     if not _in_replay:
         $ persistent.orias_claire_name = claire_name
@@ -1327,6 +1328,7 @@ label orias_epilogue:
     $ claire.set_state(with_dissolve,eyes="default", eyebrows="default", mouth="grin", emotion="default")
     cl "Thanks, Orias."
     scene white with dissolve
+    hide screen replay_controls
     $ renpy.end_replay()
     return
 
@@ -1425,5 +1427,6 @@ label orias_epilogue_long:
     cl "Yeah... No rush."
     stop music fadeout 1
     scene white with dissolve
+    hide screen replay_controls
     $ renpy.end_replay()
     return

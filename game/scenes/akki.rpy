@@ -376,6 +376,7 @@ label akki_sex:
 
     if _in_replay:
         $ sex_stop_label = "akki_stop_now"
+        show screen replay_controls()
     
     if not _in_replay:
         $ persistent.akki_claire_name = claire_name
@@ -1317,6 +1318,7 @@ label akki_epilogue:
     cl "Aw, I thought the aebleskiver were delicious."
     cl "Thanks, Akki."
     scene white with dissolve
+    hide screen replay_controls
     $ renpy.end_replay()
     return
 
@@ -1417,6 +1419,7 @@ label akki_epilogue_long:
     cl "That's the most unsexy compliment I've ever heard. I'll take it."
     stop music fadeout 1
     scene white with dissolve
+    hide screen replay_controls
     $ renpy.end_replay()
     return
 

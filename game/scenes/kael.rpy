@@ -333,6 +333,7 @@ label kael_sex:
 
     if _in_replay:
         $ sex_stop_label = "kaelstoppingnow"
+        show screen replay_controls()
 
     if not _in_replay:
         $ persistent.kael_claire_name = claire_name
@@ -1277,6 +1278,7 @@ label kael_epilogue:
     $ claire.set_state(with_dissolve, eyes="closed", mouth="smile", eyebrows="default", emotion="default")
     cl "Thanks, Kael."
     scene white with dissolve
+    hide screen replay_controls
     $ renpy.end_replay()
     return
 label kael_epilogue_long:
@@ -1370,5 +1372,6 @@ label kael_epilogue_long:
     ka "Sure. We can catch up this way. And I can get recipe ideas for our next date."
     hide kael with dissolve
     scene white with dissolve
+    hide screen replay_controls
     $ renpy.end_replay()
     return

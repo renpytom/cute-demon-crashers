@@ -373,6 +373,7 @@ label mirari_sex:
 
     if _in_replay:
         $ sex_stop_label = "mirari_stop_now"
+        show screen replay_controls()
 
     if not _in_replay:
         $ persistent.mirari_claire_name = claire_name
@@ -1249,6 +1250,7 @@ label mirari_epilogue:
     $ claire.set_state(with_dissolve, eyes="happy", eyebrows="default", mouth="grin")
     cl "I might take up on that offer one day... Thanks, Mirari."
     scene white with dissolve
+    hide screen replay_controls
     $ renpy.end_replay()
     return
 
@@ -1326,5 +1328,6 @@ label mirari_epilogue_long:
     cl "Sounds like a plan."
     stop music fadeout 1
     scene white with dissolve
+    hide screen replay_controls
     $ renpy.end_replay()
     return
