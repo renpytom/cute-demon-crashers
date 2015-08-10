@@ -218,17 +218,13 @@ init -1:
         hover_foreground "assets/ui/slot-fg.png"
 
     # -- Gallery -------------------------------------------------------
-    style gallery_vbox:
-        xpos 100
-        ypos 110
+    style gallery_hbox:
+        xpos 0
+        ypos 150
         spacing 20
 
-    style gallery_folders_hbox:
-        spacing 30
-        xoffset 20
-
-    style gallery_folders_button:
-        xpadding 60
+    style gallery_folders_vbox:
+        spacing 2
 
     style gallery_images_hbox:
         box_wrap True

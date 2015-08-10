@@ -48,7 +48,7 @@ screen sex_stop_red(target):
 
     
 # Tutorial
-screen tutorial:
+screen tutorial(action_=Return()):
     default cur_screen_num = 1
     python:
         cur_screen = "assets/ui/tut/tips_%s.jpg"%(cur_screen_num)
@@ -69,7 +69,7 @@ screen tutorial:
         ypos 680
     imagebutton: 
         auto "assets/ui/tut/tips_exit_%s.png"
-        action Return()
+        action action_
         hovered Play("sound", "assets/sfx/menu_hover3.ogg")
         xpos 1140
         ypos 15
