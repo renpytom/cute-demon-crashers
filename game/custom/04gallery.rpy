@@ -106,7 +106,6 @@ init -100 python:
         def get_displayable(self):
             return self.image
         
-        
 
     #### class: SpriteImageSet(GalleryItem)
     # 
@@ -143,20 +142,14 @@ init -100 python:
     # as a single entity in the Gallery.
     class GalleryBundle(object):
 
-        ##### method: __init__(self, idle_thumb, hover_thumble)
+        ##### method: __init__(self, thumb)
         # @type: Displayable, Displayable -> GalleryBundle
-        def __init__(self, idle_thumb, hover_thumb, **kwargs):
-            ##### data: idle_thumb
-            # @type: Displayable
+        def __init__(self, thumb, **kwargs):
+            ##### data: thumb
+            # @type: str
             #
-            # The thumbnail to show in the gallery when idle.
-            self.idle_thumb = idle_thumb
-
-            ##### data: hover_thumb
-            # @type: Displayable
-            #
-            # The thumbnail to show in the gallery when hovered.
-            self.hover_thumb = hover_thum
+            # The thumbnail specification to show in the gallery.
+            self.thumb = thumb
 
 
         ##### method: is_unlocked(self)
@@ -189,8 +182,8 @@ init -100 python:
         ##### method: __init__(self, *images, **kwargs)
         # @type: GalleryItem..., **any -> ImageBundle
         def __init__(self, *images, **kwargs):
-            super(ImageBundle, self).__init__(**kwargs)
-            self.images = flatten(map(lambda x: x.to_items(), images))
+            super(ImageBundle, self).__init__(kwargs.pop('thumb'), **kwargs)
+            self.images = flatten(map(lambda x: x.get_items(), images))
 
         ##### method: get_unlocked(self)
         # @type: () -> [GalleryItem]
@@ -202,7 +195,7 @@ init -100 python:
         def show(self):
             def run():
                 images = map(lambda x: x if x.is_unlocked() else None, self.images)
-                renpy.show_screen("gallery_view", images, transition=dissolve)
+                Show("gallery_view", dissolve, images)()
 
             return run
 
@@ -215,6 +208,7 @@ init -100 python:
         ##### method: __init__(self, label, initialiser, **kwargs)
         # @type: str, (() -> dict(a, b)), **any -> ReplayBundle
         def __init__(self, label, initialiser, **kwargs):
+            super(ReplayBundle, self).__init__(**kwargs)
             self.label = label
             self.initialiser = initialiser
 
@@ -261,27 +255,32 @@ init -100 python:
             super(ImageFolder, self).__init__(name, **kwargs)
             self.bundles = bundles
 
-            
+        def select(self):
+            return Show("image_folder", dissolve, self.bundles)
 
     #### class: CharacterFolder(ImageFolder)
     #
     # A gallery folder for a character, that supports showing
     # characters' outfits.
-    class CharacterFolder(GalleryFolder):
+    class CharacterFolder(ImageFolder):
         def __init__(self, name, sprite, *bundles, **kwargs):
             super(CharacterFolder, self).__init__(name, *bundles, **kwargs)
             self.sprite = sprite
 
+        def select(self):
+            return Show("image_folder", dissolve, self.bundles, character=self.sprite)
 
 
-    #### class: ReplayFolder(GalleryFolder)
+    #### class: ReplayFolder(ImageFolder)
     #
     # A gallery folder that contains Replay bundles.
-    class ReplayFolder(GalleryFolder):
+    class ReplayFolder(ImageFolder):
         def __init__(self, name, *bundles, **kwargs):
             super(ReplayFolder, self).__init__(name, **kwargs)
             self.bundles = bundles
 
+        def select(self):
+            return Show("replay_folder", dissolve, self.bundles)
     
 
         

@@ -1,5 +1,5 @@
 init python:
-    gallery_folder = "Akki"
+    gallery_folder = None
     gallery = Gallery(
         TutorialFolder(
             "tutorial",
@@ -8,29 +8,99 @@ init python:
         CharacterFolder(
             "akki",
             akki,
+            ImageBundle(
+                RenpyImage("chibi_akki01"),
+                thumb="assets/ui/gallery-akki-1-%s.png"),
+            ImageBundle(
+                RenpyImage("chibi_akki02"),
+                thumb="assets/ui/gallery-akki-2-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-akki-3-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-akki-4-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-akki-5-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-akki-6-%s.png"),
             thumb="assets/ui/gallerybtn-akki-%s.png"
         ),
         CharacterFolder(
             "mirari",
             mirari,
+            ImageBundle(thumb="assets/ui/gallery-mirari-1-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-mirari-2-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-mirari-3-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-mirari-4-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-mirari-5-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-mirari-6-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-mirari-7-%s.png"),
             thumb="assets/ui/gallerybtn-mirari-%s.png"
         ),
         CharacterFolder(
             "kael",
             kael,
+            ImageBundle(thumb="assets/ui/gallery-kael-1-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-kael-2-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-kael-3-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-kael-4-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-kael-5-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-kael-6-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-kael-7-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-kael-8-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-kael-9-%s.png"),            
             thumb="assets/ui/gallerybtn-kael-%s.png"
         ),
         CharacterFolder(
             "orias",
             orias,
+            ImageBundle(thumb="assets/ui/gallery-orias-1-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-orias-2-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-orias-3-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-orias-4-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-orias-5-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-orias-6-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-orias-7-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-orias-8-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-orias-9-%s.png"),            
             thumb="assets/ui/gallerybtn-orias-%s.png"
         ),
         ImageFolder(
             "other",
+            ImageBundle(thumb="assets/ui/gallery-other-1-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-other-2-%s.png"),
+            ImageBundle(thumb="assets/ui/gallery-other-3-%s.png"),            
             thumb="assets/ui/gallerybtn-other-%s.png"
         ),
         ReplayFolder(
             "replay",
+            ReplayBundle(
+                "akki_sex",
+                lambda: { "akki_name": "Akki",
+                          "claire_name": persistent.akki_claire_name,
+                          "akki_scenes": persistent.akki_scenes,
+                          "sex_stop_statement": persistent.akki_sex_stop },
+                thumb="assets/ui/gallery-replay-akki-%s.png"
+                ),
+            ReplayBundle(
+                "mirari_sex",
+                lambda: { "mirari_name": "Mirari",
+                          "claire_name": persistent.mirari_claire_name,
+                          "mirari_scenes": persistent.mirari_scenes,
+                          "sex_stop_statement": persistent.mirari_sex_stop },
+                thumb="assets/ui/gallery-replay-mirari-%s.png"
+                ),
+            ReplayBundle(
+                "kael_sex",
+                lambda: { "kael_name": "Kael",
+                          "claire_name": persistent.kael_claire_name,
+                          "kael_scenes": persistent.kael_scenes,
+                          "sex_stop_statement": persistent.kael_sex_stop },
+                thumb="assets/ui/gallery-replay-kael-%s.png"
+                ),
+            ReplayBundle(
+                "orias_sex",
+                lambda: { "orias_name": "Orias",
+                          "claire_name": persistent.orias_claire_name,
+                          "orias_scenes": persistent.orias_scenes,
+                          "sex_stop_statement": persistent.orias_sex_stop },
+                thumb="assets/ui/gallery-replay-orias-%s.png"
+                ),
             thumb="assets/ui/gallerybtn-scenereplay-%s.png"
         )
 
@@ -150,7 +220,7 @@ screen gallery():
             for folder in gallery.folders:
                 imagebutton:
                     auto folder.thumb
-                    action folder.select()
+                    action [folder.select(), SetVariable("gallery_folder", folder.name)]
 
 #        hbox:
 #            style_group "gallery_images"
@@ -164,27 +234,64 @@ screen gallery():
 #                        frame:
 #                            add bundle.thumbnail at slot_screenshot
 
+screen replay_folder(bundles):
+    tag gallery_folder
 
-screen gallery_view(bundle):
+    fixed:
+        style_group "replay_folder"
+        
+        frame:
+            style_group "replay_folder_images"
+
+            hbox:
+                for bundle in bundles:
+                    if bundle.is_unlocked():
+                        imagebutton:
+                            auto bundle.thumb
+                            action bundle.show()
+                    else:
+                        add "assets/ui/gallery-replay-locked.png"
+                    
+        
+screen image_folder(bundles, character=None):
+    tag gallery_folder
+
+    fixed:
+        style_group "gallery_folder"
+
+        frame:
+            style_group "gallery_folder_images"
+            
+            hbox:
+                for bundle in bundles:
+                    if bundle.is_unlocked():
+                        imagebutton:
+                            auto bundle.thumb
+                            action bundle.show()
+                    else:
+                        add "assets/ui/gallery-locked.png"
+                    
+
+screen gallery_view(images):
     modal True
     default current = 0
     default old_displayable = Null()
 
     python:
-        def next_image(b, x):
-            for index in xrange(x + 1, len(b.images)):
-                if not b.images[index].is_locked():
+        def next_image(images, x):
+            for index in xrange(x + 1, len(images)):
+                if images[index] is not None:
                     return index
 
-        def prev_image(b, x):
+        def prev_image(images, x):
             for index in xrange(x - 1, -1, -1):
-                if not b.images[index].is_locked():
+                if images[index] is not None:
                     return index
 
-        def go(bundle, current, x):
+        def go(images, current, x):
             return [
                 SetScreenVariable("current", x),
-                SetScreenVariable("old_displayable", bundle.images[current].image)
+                SetScreenVariable("old_displayable", images[current].get_displayable())
             ]
 
     window:
@@ -193,21 +300,21 @@ screen gallery_view(bundle):
         has fixed
 
         frame:
-            add bundle.images[current].image
+            add images[current].get_displayable()
 
-        text "{0} / {1}".format(current + 1, bundle.total) style "gallery_view_status"
+        text "{0} / {1}".format(current + 1, len(images)) style "gallery_view_status"
 
         key "game_menu" action Hide("gallery_view", transition=dissolve)
 
-        $ next = next_image(bundle, current)
-        $ prev = prev_image(bundle, current)
+        $ next = next_image(images, current)
+        $ prev = prev_image(images, current)
         if next is not None:
-            key "dismiss" action go(bundle, current, next)
+            key "dismiss" action go(images, current, next)
         else:
             key "dismiss" action Hide("gallery_view", transition=dissolve)
 
         if prev is not None:
-            key "rollback" action go(bundle, current, prev)
+            key "rollback" action go(images, current, prev)
 
 
 init:

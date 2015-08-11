@@ -234,6 +234,26 @@ init -1:
 
     style gallery_images_frame is slot_picker_screenshot
 
+    style gallery_folder_images_frame:
+        xpos 300
+        ypos 150
+        background "assets/ui/gallery-thumbs-base.png"
+        xpadding 0
+        ypadding 0
+
+    style gallery_folder_images_hbox:
+        box_wrap True
+        spacing 0
+        xoffset -2
+        xsize 600
+
+    style replay_folder_images_frame is gallery_folder_images_frame:
+        background None
+
+    style replay_folder_images_hbox is gallery_folder_images_hbox:
+        xsize 900
+        spacing 30
+        xoffset 0
 
     # -- Confirm popups ------------------------------------------------
     style confirm_popup_window:
