@@ -1249,6 +1249,7 @@ label mirari_epilogue:
     cl "..."
     $ claire.set_state(with_dissolve, eyes="happy", eyebrows="default", mouth="grin")
     cl "I might take up on that offer one day... Thanks, Mirari."
+    $ persistent.mirari_replay = True
     scene white with dissolve
     hide screen replay_controls
     $ renpy.end_replay()
@@ -1326,6 +1327,7 @@ label mirari_epilogue_long:
     $mirari.set_state(with_dissolve, eyes= "happy", mouth="smile", eyebrows="default", emotion="heart", emotion_base="small blush")
     $claire.set_state(eyes="happy", emotion="default", eyebrows="default", mouth="grin", emotion_base="small blush")
     cl "Sounds like a plan."
+    $ persistent.mirari_replay = True
     stop music fadeout 1
     scene white with dissolve
     hide screen replay_controls

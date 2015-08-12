@@ -1437,6 +1437,7 @@ label akki_epilogue:
     $ claire.set_state(eyes="semi open", eyebrows="default", mouth="grin")
     cl "Aw, I thought the aebleskiver were delicious."
     cl "Thanks, Akki."
+    $ persistent.akki_replay = True
     scene white with dissolve
     hide screen replay_controls
     $ renpy.end_replay()
@@ -1545,6 +1546,7 @@ label akki_epilogue_long:
     ak "You're better than pizza."
     $claire.set_state(eyes="tender", emotion="default", eyebrows="default", mouth="grin", emotion_base="small blush")
     cl "That's the most unsexy compliment I've ever heard. I'll take it."
+    $ persistent.akki_replay = True    
     stop music fadeout 1
     scene white with dissolve
     hide screen replay_controls

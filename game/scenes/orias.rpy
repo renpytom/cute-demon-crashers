@@ -1485,6 +1485,7 @@ label orias_epilogue:
     cl "Aw... how sweet."
     $ claire.set_state(with_dissolve,eyes="default", eyebrows="default", mouth="grin", emotion="default")
     cl "Thanks, Orias."
+    $ persistent.orias_replay = True
     scene white with dissolve
     hide screen replay_controls
     $ renpy.end_replay()
@@ -1593,6 +1594,7 @@ label orias_epilogue_long:
     "I smile and take his hand, content with his sincere attempt."
     $claire.set_state(eyes="tender", emotion="default", eyebrows="default", mouth="grin", emotion_base="small blush")
     cl "Yeah... No rush."
+    $ persistent.orias_replay = True
     stop music fadeout 1
     scene white with dissolve
     hide screen replay_controls

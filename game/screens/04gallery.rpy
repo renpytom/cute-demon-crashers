@@ -200,6 +200,7 @@ init python:
             "replay",
             ReplayBundle(
                 "akki_sex",
+                lambda: persistent.akki_replay,
                 lambda: { "akki_name": "Akki",
                           "claire_name": persistent.akki_claire_name,
                           "akki_scenes": persistent.akki_scenes,
@@ -208,6 +209,7 @@ init python:
                 ),
             ReplayBundle(
                 "mirari_sex",
+                lambda: persistent.mirari_replay,
                 lambda: { "mirari_name": "Mirari",
                           "claire_name": persistent.mirari_claire_name,
                           "mirari_scenes": persistent.mirari_scenes,
@@ -216,6 +218,7 @@ init python:
                 ),
             ReplayBundle(
                 "kael_sex",
+                lambda: persistent.kael_replay,
                 lambda: { "kael_name": "Kael",
                           "claire_name": persistent.kael_claire_name,
                           "kael_scenes": persistent.kael_scenes,
@@ -224,6 +227,7 @@ init python:
                 ),
             ReplayBundle(
                 "orias_sex",
+                lambda: persistent.orias_replay,
                 lambda: { "orias_name": "Orias",
                           "claire_name": persistent.orias_claire_name,
                           "orias_scenes": persistent.orias_scenes,

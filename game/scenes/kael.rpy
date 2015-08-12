@@ -1281,6 +1281,7 @@ label kael_epilogue:
     cl "Oh... Heh."
     $ claire.set_state(with_dissolve, eyes="closed", mouth="smile", eyebrows="default", emotion="default")
     cl "Thanks, Kael."
+    $ persistent.kael_replay = True
     scene white with dissolve
     hide screen replay_controls
     $ renpy.end_replay()
@@ -1375,6 +1376,7 @@ label kael_epilogue_long:
     voice "k_epi05" 
     ka "Sure. We can catch up this way. And I can get recipe ideas for our next date."
     hide kael with dissolve
+    $ persistent.kael_replay = True
     scene white with dissolve
     hide screen replay_controls
     $ renpy.end_replay()

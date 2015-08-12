@@ -224,17 +224,18 @@ init -100 python:
     # Represents replay items in the gallery.
     class ReplayBundle(GalleryBundle):
 
-        ##### method: __init__(self, label, initialiser, **kwargs)
+        ##### method: __init__(self, label, predicate, initialiser, **kwargs)
         # @type: str, (() -> dict(a, b)), **any -> ReplayBundle
-        def __init__(self, label, initialiser, **kwargs):
+        def __init__(self, label, predicate, initialiser, **kwargs):
             super(ReplayBundle, self).__init__(**kwargs)
             self.label = label
             self.initialiser = initialiser
+            self.predicate = predicate
 
         ##### method: is_unlocked(self)
         # @type: () -> bool
         def is_unlocked(self):
-            return renpy.seen_label(self.label)
+            return self.predicate()
 
         ##### method: show(self)
         # @type: () -> () -> unit
