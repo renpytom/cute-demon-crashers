@@ -521,7 +521,6 @@ init -1:
                     ak_sprite("emo_flowers4"), 0.1, None,
                     ak_sprite("emo_flowers5"), 0.1, None,
                     ak_sprite("emo_flowers6"), 0.1, None,
-                    ak_sprite("emo_flowers7"), 0.1, None,
                     ),
 
                 "heart"      : anim.TransitionAnimation(
