@@ -12,6 +12,7 @@ define lay_cface = "1"
 define lay_aface = "1"
 define cuddle_aface = "3"
 define cuddle_cface = "3"
+define akki_epilong = False
 
 
 label akki_hangout1:
@@ -260,6 +261,7 @@ label akki_hangout2:
     if current_day == 2:
         $akki.set_state(with_dissolve,eyes="bugteary", eyebrows="default", mouth="tiny", emotion="default")
         #akki =<
+        ak "..."
         $ claire.set_state(eyebrows="default", eyes="default", mouth="smile", emotion="heart")
         cl "And yours, too."
         $akki.set_state(with_dissolve,eyes="default", eyebrows="default", mouth="grin", emotion_base="small blush")
@@ -1123,6 +1125,7 @@ label akki_sex:
 #            $cuddle_aface = "3"
             "Exhaustion creeps in and I know Akki obtained nourishment from our experience. Satisfied, I allow myself to fall into a deep sleep."
             call credits from _call_credits_6
+            $akki_epilong = True
             jump akki_epilogue
                 
         "I'd like to stop now.":   
@@ -1409,7 +1412,7 @@ label akki_epilogue:
     # smaller epilogues you get if:
     #1) didn't see all three scenes from the same sex demon
     #2)didn't make it ALL the way with sex. 
-    if akki_scenes==3:
+    if akki_scenes==3 and akki_epilong == True:
         jump akki_epilogue_long
     else:
         pass
@@ -1427,10 +1430,10 @@ label akki_epilogue:
     cl "...Was it a dream?"
     "I sit up and reach for my phone as part of my routine. But there's something different about it. Next to my phone is a note. Curious, I pick it up."
     scene white with dissolve
-    voice "a_note1"
+    voice "a_note01"
     show text "{color=#000}'Thanks for everything, [claire_name].\n It was my first time in the human world, and I had a lot of fun.\n If you ever want to see me again, draw the symbol and repeat\n the words on the back of the note to summon me.\n I promise I'll make tastier aebleskiver next time.\n - Akki.'{/color}" with dissolve
     $renpy.pause()
-    voice "a_note2"
+    voice "a_note02"
     show text "{color=#000}'P.S. Uh, technically you'd be summoning Kael.\n I'm too weak to actually be summoned yet but I wanted to sound cool for a moment.'{/color}" with dissolve
     $renpy.pause()
     show bg bedroom_day with dissolve

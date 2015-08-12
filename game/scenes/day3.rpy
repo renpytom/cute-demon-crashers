@@ -615,6 +615,7 @@ label sex_choice:
                 ori "She'll treat you well, [claire_name]."
                 $akki.set_state(eyes="happy", mouth="grin")
                 show akki zorder 4 at bounce_up
+                voice "a_s11"
                 ak "Mirari can be surprisingly gentle when she's not punching things."
                 $mirari.set_state(emotion_base="dark",emotion="vein", mouth="fun smile", eyebrows="default")
                 show mirari at sway

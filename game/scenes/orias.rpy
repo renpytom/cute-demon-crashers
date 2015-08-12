@@ -8,6 +8,16 @@ define tickleattack = False
 define halfwayyay = False
 define chocolatemouth = False
 define oraltime = False
+define tied_n_blind = False
+
+
+define exp_cold = False
+define exp_warm = False
+define exp_tied = False
+define exp_blind = False
+define exp_tickle = False
+define exp_chocolate = False
+define exp_finish = False
 
 #CG variables
 define orilay_oriface = "smile"
@@ -22,6 +32,7 @@ define orias_cuddles_oriface = "1"
 
 define orias_cg = False
 define orias_cutin = False
+define orias_epilong = False
 
 
 
@@ -504,6 +515,7 @@ label orias_sex:
             cla "I'll keep that in mind."
         "Blindfolded.":
             $ blindfolded = True
+            $ exp_blind = True
             play music music_love fadein 3
             $claire.set_state(eyes="default", eyebrows="default", mouth="smile", emotion_base = "default", emotion = "default")    
             cl "I'll try blindfolds first."
@@ -511,7 +523,7 @@ label orias_sex:
             ori "Perfect. Also, it'd be ideal to remove your chemise. It looks beautiful on you and I'd hate for it to be stained. Your underwear can stay on."
             "He removes the items while I undress and instructs me to lie on my back. I close my eyes as I feel the soft fabric slide down my forehead and rest on the bridge of my nose." 
             $ orias_bed_sprite.set_state(blindfold=True)
-            #$orilay_blindfold = True
+            #$blindfolded = True
             $orias.set_state(base="jacketless")
             $ orias_cuddles_sprite.set_state(claire_naked=True)
             $orias_clnaked = True
@@ -523,10 +535,11 @@ label orias_sex:
             voice "o_sex25"
             ori "Good. I also recommend keeping your arms up and out of the way." 
         "Wrists tied.":
+            $ exp_tied = True
             $ tiedup = True
             play music music_love fadein 3
             $ orias_bed_sprite.set_state(tiedup=True)
-            #$ orilay_tiedup = True
+            #$ tiedup = True
             $claire.set_state(eyes="happy", eyebrows="default", mouth="ehh", emotion_base = "small blush", emotion = "sweat") 
             cl "This sounds so kinky but... tie me up."
             $claire.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="uh", emotion_base = "small blush", emotion = "default") 
@@ -594,7 +607,7 @@ label orias_sex:
             cla "Let's try cold." 
             voice "o_sex28"
             ori "Alright."
-            if orilay_blindfold == False:
+            if blindfolded == False:
                 voice "o_sex29"
                 ori "No peeking; that's half the fun."
                 $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
@@ -607,8 +620,9 @@ label orias_sex:
             $ orilay_clface = "shiver"
             cla "Ee-heh!"
             $ coldplay = True
+            $ exp_cold = True
             "A drop of cold liquid hits the center of my torso and slides down the side of my stomach, causing me to shiver and get goosebumps on my arms."
-            if orilay_tiedup == True:
+            if tiedup == True:
                 "My bound wrists prevent me from automatically wiping it away, letting the sensation linger even longer." 
             else:
                 "I resist wiping the liquid away."
@@ -688,7 +702,7 @@ label orias_sex:
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
             $ orilay_clface="content"
             ori "We'll start with your back since its not as sensitive as your front." 
-            if orilay_tiedup == True:
+            if tiedup == True:
                 "It feels a little silly with my restraints, but I roll over."
             else:
                 "I obey and roll over, making myself comfortable." 
@@ -715,6 +729,7 @@ label orias_sex:
             $orias_cutin = True
             "Vanilla invades my senses again and a spoonful of the mildly warm wax drips onto my skin." 
             $ warmplay = True
+            $ exp_warm = True
             cla "Ah... kinda hot but not... scalding..."
             show orias_play wax_rub with dissolve
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="pleasure")
@@ -820,6 +835,7 @@ label orias_sex:
             "The bed shifts under him, and I feel my body tense up, wondering where he'll start first."
             cla "Hehe..."
             $ tickleattack = True
+            $ exp_tickle = True
             show orias_play tickle with dissolve
             $orias_cutin = True
             "I feel something oh-so-subtle trail up my stomach above my navel. Unsurprisingly, it's ticklish."
@@ -914,8 +930,8 @@ label orias_sex:
         voice "o_sex27"
         ori "How do you feel so far?"
         $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
-        $orilay_clface = "content"
-        if orilay_blindfold == True and orilay_tiedup == False:
+        #$orilay_clface = "content"
+        if blindfolded == True:
             "He gently adjusts the blindfold, making sure it didn't become crooked during the session."
             voice "o_sex48"
             ori "Would you like me to tie up your wrists?"
@@ -923,7 +939,9 @@ label orias_sex:
                 "Yes.":
                     cla "Sure, let's try that."
                     $ orias_bed_sprite.set_state(with_dissolve, tiedup=True)
-                    $orilay_tiedup = True
+                    $tiedup = True
+                    $exp_tied = True
+                    $tied_n_blind = True
                     "I feel the smooth silk wrap around my wrists as he ties some kind of knot. He wriggles a finger between it to make sure there's enough room for circulation."
                     ori "How do you feel?"
                     cla "It's perfect. I got wiggle room." 
@@ -933,7 +951,7 @@ label orias_sex:
                     ori "I'm glad you're content with that."
                 "Red.":
                      jump orias_stoppingnow
-        if orilay_tiedup == True and orilay_blindfold == False:
+        elif tiedup == True:
             "He wriggles a finger between the knotted scarf, making sure it isn't cutting my circulation."
             voice "o_sex47"
             ori "Would you like your eyes covered?" 
@@ -943,7 +961,9 @@ label orias_sex:
                     voice "o_sex49"
                     ori "I love your enthusiasm."
                     $ orias_bed_sprite.set_state(with_dissolve, blindfold=True)
-                    $orilay_blindfold = True
+                    $blindfolded = True
+                    $exp_blind = True
+                    $tied_n_blind = True
                     "I close my eyes as I feel the sleep mask slide over my head."
                     voice "o_sex50"
                     ori "How is that?"
@@ -956,7 +976,7 @@ label orias_sex:
                     ori "I understand."
                 "Red.":
                     jump orias_stoppingnow
-        if nothanks == True:
+        elif nothanks == True:
             ori "Would you like to try being blindfolded or having your wrists bound?"
             menu:
                 "Blindfold.":
@@ -964,7 +984,8 @@ label orias_sex:
                     voice "o_sex27"
                     ori "I'm glad."
                     $ orias_bed_sprite.set_state(with_dissolve, blindfold=True)
-                    $ orilay_blindfold = True
+                    $blindfolded = True
+                    $exp_blind = True
                     "I close my eyes and I feel the sleep mask slip down my head."
                     ori "How does that feel?"
                     cla "Good, comfy, but not too tight."
@@ -973,7 +994,8 @@ label orias_sex:
                 "Wrists tied.":
                     cla "I'll be comfortable with my wrists tied up."
                     $ orias_bed_sprite.set_state(with_dissolve, tiedup=True)
-                    $ orilay_tiedup = True
+                    $exp_tied = True
+                    $tiedup = True
                     "The smooth silk wraps around my wrists as he ties some kind of knot. He wriggles a finger between it to make sure there's enough room for circulation."
                     voice "o_s01"
                     ori "How do you feel?"
@@ -989,7 +1011,7 @@ label orias_sex:
     menu:
         "Ask him to strip, too.":
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried")
-            $orilay_clface="worried"
+            #$orilay_clface="worried"
             cla "Wait."
             voice "o_s07"
             ori "Hm?"
@@ -1006,13 +1028,13 @@ label orias_sex:
             $orias.set_state(with_dissolve, eyes="closed", eyebrows="tender")
             voice "o_sex51"
             ori "I guess it's only fair..."
-            if orilay_blindfold == True:
+            if blindfolded == True:
                 "I feel the sleep mask lift up to my forehead before he steps back."
             show orias at center_group with dissolve
             $orias.set_state(with_dissolve, base="naked")
             $ orias_bed_sprite.set_state(naked=True)
             $ orias_cuddles_sprite.set_state(orias_naked=True)
-            $orias_naked = True
+            $ orias_naked = True
             "He starts by unbuckling the strap around his chest, letting it slide down his body before removing it completely. With one swift motion, he loosens the belt and removes his pants." 
             $orias.set_state(with_dissolve, eyes="default", mouth="smile")
             $claire.set_state(eyes="dots", emotion_base="large blush", eyebrows="up", emotion="steam", mouth="v")
@@ -1037,21 +1059,24 @@ label orias_sex:
             show orias at center_alone2 with dissolve
             voice "o_sex54"
             ori "I'm honored to be seen as cute in your eyes then." 
-            if orilay_blindfold == True:
+            if blindfolded == True:
                 $orias.set_state(with_dissolve, eyes= "default", eyebrows = "tender", mouth = "smile",emotion = "heart", emotion_base = "default")
                 voice "o_sex55"
                 ori "I hope you enjoyed the show."
                 "He winks then places the sleep mask over my eyes again."
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
-            $orilay_clface="content"
+            #$orilay_clface="content"
             scene orias_bed with dissolve
             $orias_cg = True
             show screen sex_stop_red("orias_stoppingnow")  
                 
         "Enjoy the next session.":
+            $ orias_bed_sprite.set_state(with_dissolve, claire_face="happy")
             "What is he planning...?"
+
        
-    if orilay_blindfold == False:
+    if blindfolded == False:
+        $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
         "Orias approaches a candle that was subtly hidden on the bookcase. I close my eyes again since I have a feeling it'll be more fun this way."
     else:
         "I hear footsteps away, followed by the sound of tin scraping against wood. Is he at my bookcase?"
@@ -1061,13 +1086,14 @@ label orias_sex:
     "I inhale, wondering what part of my body he'll touch next."
     $ halfwayyay = False
     $ chocolatemouth = True
+    $ exp_chocolate = True
     show orias_play hot with dissolve
     "I feel something... thick drizzle between my breasts, warm and gooey. A sweet scent fills the air, but before I can identify it, he starts licking me sensually."
     $ orias_bed_sprite.set_state(with_dissolve, claire_face="pleasure")
     $orilay_clface="pleasure"
     cla "Ng..."
     "I can sense his face hovering close before me, then his lips brush against mine."
-    if orilay_blindfold == True:
+    if blindfolded == True:
         show orias_play kiss_blind
     else:
         show orias_play kiss
@@ -1085,7 +1111,7 @@ label orias_sex:
             cla "Yes..."
             "He plants a firm kiss under my navel before resuming his destination. His fingers touch the lace of my panties, then gently pulls them down."
             $ orias_bed_sprite.set_state(with_dissolve, panties="off")
-            $orilay_panties = "off"
+            #$orilay_panties = "off"
             "My stomach coils from the closing distance, and his lips brush the tips of my pubic hair. After a deep breath, I widen my legs a little, and he begins massaging my inner thighs."
             voice "o_sex59"
             ori "I'm glad you enjoyed the sensation play..."
@@ -1096,7 +1122,7 @@ label orias_sex:
             hide screen sex_stop_red
 
             "I feel the lightest suction as his mouth brushes upward towards my clit, and I inhale in anticipation."
-            if orilay_tiedup == True:
+            if tiedup == True:
                 "Being binded only adds a sweet layer of pleasure – unable to adjust myself or clutch onto the sheets. Instead, my fingers tighten into fists in response."
             "Orias flattens his tongue and teases my clit with unhurried licks. I moan softly depending on his angles."
             cla "...Ah..."
@@ -1106,7 +1132,7 @@ label orias_sex:
             "Flashes of heat radiate from my core all the way to my trembling fingers and down to my curled toes. I moan, my head pushing against my raised arms."
             "I shudder and feel release, my body shivering and I take in a deep gulp of air. I can't tell if I'm sinking into the bed or if the bed vanished. I feel so light..."
             hide orias_finish with dissolve
-            if orilay_blindfold == True:
+            if blindfolded == True:
                 $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried")
                 $orilay_clface ="worried"
                 cla "Orias...?"
@@ -1118,11 +1144,11 @@ label orias_sex:
             voice "o_sex60"
             ori "Enjoyed yourself?"
             cla "Did I ever..."
-            if orilay_blindfold and orilay_tiedup == True:
+            if tied_n_blind == True:
                 "Chuckling, he carefully removes the bindings and blindfold, making sure my wrists are okay."
-            elif orilay_blindfold == True:
+            elif blindfolded == True:
                 "Chuckling, he carefully removes the blindfold. I open my eyes and blink until my vision clears."
-            elif orilay_tiedup == True:
+            elif tiedup == True:
                 "Chuckling, he carefully removes the silk knot, making sure my wrists are okay."
             scene bg bedroom_candles with dissolve
             $orias_cg = False
@@ -1137,14 +1163,15 @@ label orias_sex:
             cla "Um, is it okay if you use your fingers... once you get there?"
             voice "o_sex58"
             ori "I can do that."
+            $ orias_bed_sprite.set_state(with_dissolve, panties="off")
             "He plants one last firm kiss just above my pubic hair, and I can subtly feel his fingers replace where his mouth was. Wriggling under the lace, he then pulls down my underwear."
-            $orilay_panties = "off"
+            #$orilay_panties = "off"
             "His finger travels through my hair, then dips into the already moist parting. I widen my legs slightly to make it easier for him."
             show orias_finish fingers with dissolve
             voice "o_sex59"
             ori "I'm glad you enjoyed the sensation play."
             "One hand massages my inner thigh while the other begins stroking my outer lips. With each motion, his fingers explore deeper, tracing the sides and around my entrance." 
-            if orilay_blindfold == True:
+            if blindfolded == True:
                 "My eyes flutter under the mask and my breathing quickens from his touch."
             else:
                 "My eyes flutter, and my breathing quickens from his touch."    
@@ -1156,27 +1183,27 @@ label orias_sex:
 
             cla "Mm..."
             "My legs squirm as he increases his vigor, his fingers first making circular motions over my clit before settling on up and down movements." 
-            if orilay_tiedup == True:
+            if tiedup == True:
                 "Having my wrists bound adds a new layer of pleasure. I'm unable to balance myself or clutch the sheets beside me, instead my arms harmlessly quiver along with my body."
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="O")
-            $orilay_clface ="O"
+            #$orilay_clface ="O"
             "Soon I'm unable to distinguish Orias' movements, and I feel a pleasant sensation building and intensifying. Hot streaks radiate from my body, causing me to shudder and arch."
             "My muscles suddenly seize up, and I let out one final moan. I buck against his hand, then sink into the bed."
             "A calm feeling slowly takes over, although I still feel occasional tingles and the soft throbbing between my thighs."
             "Orias affectionately rubs my leg, bringing me back to reality."
             hide orias_finish with dissolve
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="happy")
-            $orilay_clface ="happy"
+            #$orilay_clface ="happy"
             voice "o_sex60"
             ori "Enjoyed yourself?"
             cla "Heh, you'd think so after that..."
             cla "Wow..."
-            if orilay_blindfold == True and orilay_tiedup == False:
-                "A light-headed sensation washes over me as Orias carefully removes the blindfold. I open my eyes, then blink, allowing my vision to return."
-            if orilay_tiedup == True and orilay_blindfold == False:
-                "A light-headed sensation washes over me as Orias removes the scarf, making sure my wrists are unharmed." 
-            if orilay_blindfold and orilay_tiedup == True:
+            if tied_n_blind == True:
                 "A light-headed sensation washes over me as Orias carefully removes the blindfold and scarf, making sure my wrists are alright."    
+            elif blindfolded == True :
+                "A light-headed sensation washes over me as Orias carefully removes the blindfold. I open my eyes, then blink, allowing my vision to return."
+            elif tiedup == True:
+                "A light-headed sensation washes over me as Orias removes the scarf, making sure my wrists are unharmed." 
             scene bg bedroom_candles with dissolve
             $orias.set_state(eyes= "default", mouth="smile", eyebrows="tender", emotion="default", emotion_base="default")
             show orias at center_alone2 with dissolve
@@ -1233,6 +1260,7 @@ label orias_sex:
     $orias_cuddles_oriface = "1"
     "My head finds a comfortable spot on his shoulder and I close my eyes..."
     "Before sleep overtakes me, I feel a hand wrap around me..."
+    $orias_epilong = True
     call credits
     jump orias_epilogue
             
@@ -1245,16 +1273,22 @@ label orias_stoppingnow:
             if orias_cutin == True:
                 hide orias_play with dissolve
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried", orias_face="neutral")
-            $orilay_clface= "worried"
-            $orilay_oriface = "neutral"
+            #$orilay_clface= "worried"
+            #$orilay_oriface = "neutral"
             cla "Red. I'd like to stop."
             voice "o_sex15"
             ori "I understand."
             scene bg bedroom_candles with dissolve
-            if orilay_blindfold == True:
+            if tied_n_blind == True:
                 "He gently touches the back of my head and removes the sleep mask."
-            if orilay_tiedup == True:
+                "Then he carefully unties my wrists and gives them a rub to make sure they're unharmed." 
+                pass
+            elif blindfolded == True:
+                "He gently touches the back of my head and removes the sleep mask."
+                pass
+            elif tiedup == True:
                 "He carefully unties my wrists and gives them a rub to make sure they're unharmed." 
+                pass
             if coldplay == True or warmplay == True:    
                 "Orias gently wipes my body down with a damp handcloth."
                 jump oriasstopearly 
@@ -1262,15 +1296,18 @@ label orias_stoppingnow:
             if orias_cutin == True:
                 hide orias_play with dissolve
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried", orias_face="neutral")
-            $orilay_clface= "worried"
-            $orilay_oriface = "neutral"
+            #$orilay_clface= "worried"
+            #$orilay_oriface = "neutral"
             cla "Red. I'm done."
             voice "o_sex15"
             ori "I understand."
             scene bg bedroom_candles with dissolve
-            if orilay_blindfold == True:
+            if tied_n_blind == True:
                 "He then gently touches the back of my head and removes the sleep mask."
-            if orilay_tiedup == True:
+                "Then carefully unties my wrists and gives them a rub to make sure they're unharmed."
+            elif blindfolded == True:
+                "He then gently touches the back of my head and removes the sleep mask."
+            elif tiedup == True:
                 "He then carefully unties my wrists and gives them a rub to make sure they're unharmed."
             "Orias gently wipes my body down with a damp handcloth, making sure nothing is missed from our sessions."
             $orias.set_state(eyes="default", eyebrows="tender", mouth="default", emotion="default", emotion_base="default")
@@ -1282,18 +1319,21 @@ label orias_stoppingnow:
         elif chocolatemouth == True:
             hide orias_play with dissolve
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried", orias_face="neutral")
-            $orilay_clface= "worried"
-            $orilay_oriface = "neutral"
+            #$orilay_clface= "worried"
+            #$orilay_oriface = "neutral"
             cla "Red. I'm done."
             voice "o_sex15"
             ori "I understand."
             scene bg bedroom_candles with dissolve
-            if orilay_blindfold == True and orilay_tiedup == False:
-                "He gently touches the back of my head and removes the sleep mask."
-            if orilay_tiedup == True and orilay_blindfold == False:
-                "He carefully unties my wrists and gives them a rub to make sure they're unharmed."
-            if orilay_tiedup == True and orilay_blindfold == True:   
+            if tied_n_blind == True:
                 "He carefully removes the sleep mask then unties my wrists, giving them a rub to make sure they're unharmed."
+                pass
+            elif blindfolded == True:
+                "He gently touches the back of my head and removes the sleep mask."
+                pass
+            elif tiedup == True:
+                "He carefully unties my wrists and gives them a rub to make sure they're unharmed."
+                pass
             if coldplay == True or warmplay == True:
                 "Orias gently wipes my body down with a damp handcloth, making sure nothing is missed from our sessions."
             $orias.set_state(eyes="default", eyebrows="tender", mouth="default", emotion="default", emotion_base="default")
@@ -1312,12 +1352,15 @@ label orias_stoppingnow:
             voice "o_sex22"
             ori "Of course."
             scene bg bedroom_candles with dissolve
-            if orilay_blindfold == True:
+            if blindfolded == True:
                 "He gently touches the back of my head and removes the sleep mask."
-            if orilay_tiedup == True:
+                pass
+            if tiedup == True:
                 "He carefully unties my wrists and gives them a rub to make sure they're unharmed."
+                pass
             if coldplay == True or warmplay == True:
                 "Orias then gently wipes my body down with a damp handcloth, making sure nothing is missed from our sessions."
+                pass
             else:
                 jump oriasstoplate
             $orias.set_state(eyes="default", eyebrows="tender", mouth="default", emotion="default", emotion_base="default")    
@@ -1365,24 +1408,31 @@ label oriasstopmiddle:
         ori "There you go. Do you feel better, [claire_name]?"
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="inwards", emotion="default", emotion_base="small blush")
         cl "Yes... Um, sorry for ending it after we had a good mood going... I felt I had enough."
-        if coldplay == True:
+        if exp_cold == True:
             $orias.set_state(with_dissolve, eyes="happy", eyebrows="tender", mouth="smile", emotion="note", emotion_base="default")
             ori "I'm proud of you. You got to experiment a bit with ice play."
-        elif warmplay == True:
+            pass
+        elif exp_warm == True:
             $orias.set_state(with_dissolve,eyes="wink", eyebrows="tender", mouth="smile", emotion="note", emotion_base="default")
             ori "I'm proud of you. Wax play is usually considered an advanced session... and you enjoyed yourself."
-        elif tickleattack == True:
+            pass
+        elif exp_tickle == True:
             $orias.set_state(with_dissolve,eyes="happy", eyebrows="tender", mouth="smile", emotion="note", emotion_base="default")
             ori "I'm proud of you. You got to experiment with the senses."
-        if orilay_tiedup == True:
-            $orias.set_state(with_dissolve,eyes="default", eyebrows="default", emotion="default")
-            ori "And you got to feel what it was like to be restrained."
-        if orilay_blindfold == True and orilay_tiedup == False:
+            pass
+        if  exp_blind == True and exp_tied == True:  
+            $orias.set_state(with_dissolve, mouth="grin", eyebrows="default", emotion="default")
+            "And you got to experience light BDSM."
+            pass
+        
+        elif exp_blind == True and exp_tied == False:
             $orias.set_state(with_dissolve,eyes="default", eyebrows="default", emotion="default")
             ori "And you got to feel what it was like to be deprived of your sight." 
-        if orilay_blindfold == True and orilay_tiedup == True:  
-            $orias.set_state(with_dissolve,mouth="grink", eyebrows="default", emotion="default")
-            "And you got to experience light BDSM."
+            pass
+        elif exp_tied == True:
+            $orias.set_state(with_dissolve,eyes="default", eyebrows="default", emotion="default")
+            ori "And you got to feel what it was like to be restrained."
+            pass
         $orias.set_state(with_dissolve,eyes="closed", eyebrows="tender", mouth="smile", emotion="default")
         ori "It's definitely not entry-level stuff, and you still gave it a chance." 
         $orias.set_state(with_dissolve,eyes="happy", eyebrows="tender", mouth="smile", emotion="heart")
@@ -1456,7 +1506,7 @@ label oriasstoplate:
 
 label orias_epilogue:
     #orias epilogue
-    if orias_scenes==3:
+    if orias_scenes==3 and orias_epilong == True:
         jump orias_epilogue_long
     else:
         pass

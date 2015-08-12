@@ -2073,7 +2073,7 @@ init -1:
         orias_bed_oriface = StateMachineDisplayable(
             "orias_bed_oriface", "smile",
             {
-                "laught": "assets/CGs/orias01_oriface_laugh.png",
+                "laugh": "assets/CGs/orias01_oriface_laugh.png",
                 "smile": "assets/CGs/orias01_oriface_smile.png",
                 "smile2": "assets/CGs/orias01_oriface_smile2.png",
                 "neutral": "assets/CGs/orias01_oriface_neutral.png",
