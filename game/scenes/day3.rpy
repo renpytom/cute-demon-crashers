@@ -38,11 +38,13 @@ label sex_choice:
     show kael zorder 0 at endspeak
     $orias.set_state(eyes="closed")
     show orias zorder 3 at speak
+    voice "o_s01"
     ori "Once the portal closes, it'll be as if we were never here."
     $orias.set_state(eyes="default")
     show orias zorder 0 at endspeak
     $akki.set_state(eyes="happy")
     show akki zorder 3 at speak
+    voice "a_s11"
     ak "We'll respect your decision, [claire_name], whatever it is."
     "My heart races a bit. After all, this isn't easy..."
     $claire.set_state(mouth="smile", emotion="default", eyebrows="default", emotion_base="small blush")
@@ -70,12 +72,14 @@ label sex_choice:
                 cl "You'd be okay settling for me, Akki?"
                 $akki.set_state(eyes="happy", mouth="grin", emotion="starry", emotion_base="small blush")
                 show akki at bounce_up
+                voice "a_w35"
                 ak "Settle? I'd be {i}thrilled{/i}, [claire_name]."
             else:
                 $claire.set_state(eyebrows="inwards", mouth="smile")
                 cl "Um, Akki, if it's okay with you..."
                 $akki.set_state(with_dissolve, eyebrows="up", mouth="happy", emotion="starry", emotion_base="small blush")
                 show akki at bounce_up
+                voice "a_w09"
                 ak "M-me? You mean it? Of course!"
                 if mirari_scenes >= 3:
                     $mirari.set_state(with_dissolve, eyebrows="inwards", eyes="closed")
@@ -87,13 +91,16 @@ label sex_choice:
                     ka "Treat her kindly, Akki, and don't get too excited."
                     show orias zorder 4
                     $orias.set_state(with_dissolve, eyes="closed", eyebrows="tender", mouth="smile")
+                    voice "o_w13"
                     ori "It's a good match."
                 elif kael_scenes >= 3:
                     $mirari.set_state(eyes="happy", emotion="note")
                     show mirari at bounce_up
+                    voice "m_epi06"
                     mi "How wonderful!"
                     show orias zorder 4
                     $orias.set_state(with_dissolve, eyes="closed", eyebrows="tender", mouth="smile")
+                    voice "o_w13"
                     ori "It's a good match."
                     $kael.set_state(with_dissolve, eyebrows="inwards", eyes="closed")
                     voice "k_s01"
@@ -101,28 +108,34 @@ label sex_choice:
                 elif orias_scenes >= 3:
                     $mirari.set_state(eyes="happy", emotion="note")
                     show mirari at bounce_up
+                    voice "m_epi06"
                     mi "How wonderful!"
                     show kael zorder 3
                     $kael.set_state(with_dissolve, eyes="closed")
                     voice "k_s03"
                     ka "Treat her kindly, Akki, and don't get too excited."
                     $orias.set_state(with_dissolve, eyebrows="inwards", eyes="closed")
+                    voice "o_s13"
                     ori "I guess Akki would be more suitable..."
                 else:
                     $mirari.set_state(eyes="happy", emotion="note")
                     show mirari at bounce_up
+                    voice "m_epi06"
                     mi "How wonderful!"
                     show kael zorder 3
                     $kael.set_state(with_dissolve,eyes="closed")
+                    voice "k_s03"
                     ka "Treat her kindly, Akki, and don't get too excited."
                     show orias zorder 4
                     $orias.set_state(with_dissolve, eyes="closed", eyebrows="tender", mouth="smile")
+                    voice "o_w13"
                     ori "It's a good match."
 
             show kael zorder 2
             show orias zorder 1
             show akki zorder 3 at speak
             $akki.set_state(eyebrows="frown",eyes="default", mouth="happy")
+            voice "a_w36"
             ak "Let's do this! Come on~"
             $claire.set_state(emotion_base="large blush", mouth="wah", eyes="big", emotion="panic", eyebrows="up")
             cl "Eep! Whoa, Akki!"
@@ -140,6 +153,7 @@ label sex_choice:
             voice "k_s03"
             ka "So much for not getting too excited."
             $orias.set_state(with_dissolve, mouth="smile", eyebrows="tender", eyes="default")
+            voice "o_s10"
             ori "Still, this will be a good experience. He would need to be nourished sooner or later, and it's ideal it's happening now."
             $kael.set_state(with_dissolve, **Emotion.normal())
             voice "k_s03"
@@ -153,6 +167,7 @@ label sex_choice:
             voice "k_w15"
             ka "I like that suggestion. Should we write something on it?"
             $orias.set_state(with_dissolve, mouth="happy", eyes="closed", emotion="note", eyebrows="up")
+            voice "o_w14"
             ori "Something like... 'Congratulations On Your Copulation' followed by three exclamation marks."
             $kael.set_state(with_dissolve, emotion="sweat", eyebrows="inwards", mouth="smile", eyes="happy")
             ka "How big a cake are we talking about...? We could shorten the writing to um... 'congrats on the sex'?"
@@ -181,9 +196,11 @@ label sex_choice:
                 mi "How wonderful! Kael's very gentle, [claire_name]."
                 show orias at bounce_up
                 $orias.set_state (with_dissolve, mouth="smile", eyes="closed")
+                voice "o_w13"
                 ori "It will be a good first-time experience."
                 show akki at bounce_up
                 $akki.set_state (with_dissolve, eyes="happy", mouth ="happy")
+                voice "a_s10"
                 ak "You'll learn a lot from him. (I still do...)"
             else:
                 $claire.set_state(eyebrows="inwards", mouth="smile")
@@ -206,15 +223,19 @@ label sex_choice:
                     mi "How wonderful! Kael's very gentle, [claire_name]."
                     show orias at bounce_up
                     $orias.set_state (with_dissolve, mouth="smile", eyes="closed")
+                    voice "o_w13"
                     ori "It will be a good first-time experience."
                     $akki.set_state(with_dissolve, eyes="closed",mouth="smile", eyebrows="inwards", emotion="sweat" )
+                    voice "a_s20"
                     ak "Can't beat experience..."
                 elif mirari_scenes >= 3:
                     show orias at bounce_up
                     $orias.set_state (with_dissolve, mouth="smile", eyes="closed")
+                    voice "o_w13"
                     ori "It will be a good first-time experience."
                     show akki at bounce_up
                     $akki.set_state (with_dissolve, eyes="happy", mouth ="happy")
+                    voice "a_s10"
                     ak "You'll learn a lot from him. (I still do...)"
                     $mirari.set_state (with_dissolve, eyebrows="inwards", emotion="sweat", eyes="closed", mouth="smile")
                     voice "m_s18"
@@ -226,8 +247,10 @@ label sex_choice:
                     mi "How wonderful! Kael's very gentle, [claire_name]."
                     show akki at bounce_up
                     $akki.set_state (with_dissolve, eyes="happy", mouth ="happy")
+                    voice "a_s10"
                     ak "You'll learn a lot from him. (I still do...)"
                     $orias.set_state(with_dissolve, eyes="closed", mouth="smile")
+                    voice "o_s13"
                     ori "He would be more compatible..."
                 else:    
                     show mirari at sway
@@ -236,9 +259,11 @@ label sex_choice:
                     mi "How wonderful! Kael's very gentle, [claire_name]."
                     show orias at bounce_up
                     $orias.set_state (with_dissolve, mouth="smile", eyes="closed")
+                    voice "o_w13"
                     ori "It will be a good first-time experience."
                     show akki at bounce_up
                     $akki.set_state (with_dissolve, eyes="happy", mouth ="happy")
+                    voice "a_s10"
                     ak "You'll learn a lot from him. (I still do...)"
             $mirari.set_state(with_dissolve, eyes="wink", emotion="default", mouth="smile", eyebrows="default")
             $akki.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="smile", emotion="default")
@@ -248,9 +273,11 @@ label sex_choice:
             show mirari at bounce_up
             mi "Then we'll let you two be~"
             show orias at bounce_up
+            voice "o_s01"
             ori "We'll take our leave, then."
             show akki at bounce_up
             $akki.set_state(with_dissolve, eyes="wink", mouth="grin")
+            voice "a_w15"
             ak "Later!"
             $claire.set_state(eyes="happy", mouth="happy", eyebrows="default")
             cl "Take care."
@@ -342,6 +369,7 @@ label sex_choice:
                 $mirari.set_state(with_dissolve, emotion="default", eyes="tender", mouth="default")
                 $orias.set_state(with_dissolve, eyes="closed", mouth="oh", emotion="sweat", eyebrows="frown")
                 show orias at bounce_up
+                voice "o_w40"
                 ori "A-anyway..."
             else:
                 $claire.set_state(eyebrows="flat", mouth="oh", emotion="default", eyes="closed")
@@ -351,12 +379,14 @@ label sex_choice:
                 $kael.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="ah", emotion="shock")
                 $mirari.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="oh", emotion="shock")
                 show orias at bounce_up
+                voice "o_w34"
                 ori "M-me?"
                 if akki_scenes >= 3:
                     $orias.set_state(with_dissolve, emotion="default",emotion_base="small blush", mouth="default")
                     $akki.set_state(with_dissolve, mouth="low", emotion="sweat", eyes="dots", eyebrows="inwards")
                     $kael.set_state(with_dissolve, emotion="default", mouth="neutral")
                     $mirari.set_state(with_dissolve, emotion="default",  mouth="neutral")
+                    voice "a_s20"
                     ak "She picked expert mode..."
                     $mirari.set_state(with_dissolve, eyebrows="inwards", mouth="smile", eyes="happy", emotion="sweat")
                     voice "m_s05"
@@ -374,6 +404,7 @@ label sex_choice:
                     $kael.set_state(with_dissolve, emotion="default",  mouth="neutral")
                     $mirari.set_state(with_dissolve, emotion="default", mouth="neutral")
                     $akki.set_state(with_dissolve, eyebrows="default", eyes="default", emotion="sweat", mouth="uhh")
+                    voice "a_s13"
                     ak "You sure?"
                     $kael.set_state(with_dissolve, eyes="default", mouth="smile", eyebrows="inwards", emotion="sweat")
                     voice "k_s12"
@@ -391,6 +422,7 @@ label sex_choice:
                     $kael.set_state(with_dissolve, emotion="default",  mouth="neutral")
                     $mirari.set_state(with_dissolve, emotion="default",  mouth="neutral")
                     $akki.set_state(with_dissolve, eyebrows="default", eyes="default", emotion="sweat",mouth="uhh")
+                    voice "a_s13"
                     ak "You sure?"
                     $mirari.set_state(with_dissolve, eyebrows="inwards", mouth="smile", eyes="happy", emotion="sweat")
                     voice "m_s05"
@@ -408,6 +440,7 @@ label sex_choice:
                     $kael.set_state(with_dissolve, emotion="default", mouth="neutral")
                     $mirari.set_state(with_dissolve, emotion="default", mouth="neutral")
                     $akki.set_state(with_dissolve, eyebrows="default", eyes="default", emotion="sweat", mouth="uhh")
+                    voice "a_s13"
                     ak "You sure?"
                     $mirari.set_state(with_dissolve, eyebrows="inwards", mouth="smile", eyes="happy", emotion="sweat")
                     voice "m_s05"
@@ -423,10 +456,12 @@ label sex_choice:
                     mi "Oh, it's not that, it's more um... a pleasant surprise."
             $mirari.set_state(with_dissolve, **Emotion.normal())
             $orias.set_state(with_dissolve, eyes="side", mouth="oh", eyebrows="tender")
+            voice "o_w41"
             ori "To be honest, I didn't expect to be a potential suitor, let alone picked."
             $kael.set_state(with_dissolve, **Emotion.normal())
             $akki.set_state(with_dissolve, **Emotion.normal())
             $orias.set_state(with_dissolve, mouth="smile", eyes="default", emotion="default")
+            voice "o_w08"
             ori "However, thank you. I promise to give you a memorable experience."
             $mirari.set_state(with_dissolve, eyes="happy", mouth="happy")
             voice "m_s12"
@@ -435,6 +470,7 @@ label sex_choice:
             voice "k_s04"
             ka "I guess it's time to let you two be, then."
             $akki.set_state(with_dissolve, mouth="happy")
+            voice "a_w15"
             ak "Later, [claire_name]."
             $akki.set_state(with_dissolve, mouth="uh")
             show akki zorder 3 at speak
@@ -443,6 +479,7 @@ label sex_choice:
             cl "Huh, what?"
             $orias.set_state(with_dissolve, eyebrows="frown", mouth="wavy", eyes="closed")
             show orias at bounce_up
+            voice "o_w42"
             ori "Please don't say things like that so suddenly. I'll explain later."
             hide mirari
             hide kael
@@ -456,6 +493,7 @@ label sex_choice:
             cl "So..."
             show orias at center_alone2 with dissolve
             $orias.set_state(with_dissolve, eyebrows="default", mouth="smile", eyes="default")
+            voice "o_s01"
             ori "Foremost, this would be an opportune time for you to relax and prepare. I highly suggest a bath, considering what I already have planned for tonight."
             $claire.set_state(eyes="happy", emotion_base="small blush", mouth="grin")
             cl "You sure thought this out thoroughly for someone who didn't expect to be picked."
@@ -463,9 +501,11 @@ label sex_choice:
                 $orias.set_state(with_dissolve, eyebrows="up", mouth="default", eyes="wide")
                 ori "..."
                 $orias.set_state(with_dissolve, eyebrows="default", mouth="oh", eyes="side", emotion_base = "small blush")
+                voice "o_w43"
                 ori "I had a slim hope you would..."
             else:
                 $orias.set_state(with_dissolve, eyebrows="default", mouth="grin", eyes="wink")
+                voice "o_s11"
                 ori "I like being prepared."
             $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="closed", emotion_base = "default")    
             ori "Since you're new to this, everything we'll do will be extremely tame under my usual standards." 
@@ -474,11 +514,13 @@ label sex_choice:
             $claire.set_state(eyes="default", emotion_base="default", mouth="smile")
             cl "Thank you, Orias. I'll take your advice, then. See you in a bit."
             $orias.set_state(with_dissolve, eyebrows="default", mouth="oh", eyes="default", emotion="default")    
+            voice "o_s15"
             ori "Oh, before I forget... Any allergies I should be aware of?"
             $orias.set_state(with_dissolve, eyebrows="up", mouth="neutral", eyes="wide", emotion="default")    
             $claire.set_state(eyes="happy", emotion="sweat", mouth="ehh")
             cl "Unless you plan to bring bees into the bedroom, I should be okay."
             $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="closed", emotion="default")    
+            voice "o_s11"
             ori "Heh, duly noted."
 
             jump orias_sex
@@ -508,33 +550,40 @@ label sex_choice:
                 ka "This is a good arrangement."
                 show orias zorder 4
                 $orias.set_state(with_dissolve, eyes="closed", mouth="smile", eyebrows="tender")
+                voice "o_w11"
                 ori "She'll treat you well, [claire_name]."
                 $akki.set_state(with_dissolve, eyes="tender side", eyebrows="inwards")
+                voice "a_s20"
                 ak "She does have experience..."
                 $akki.set_state(with_dissolve, eyes="happy", mouth="default", eyebrows="default")
                 show akki zorder 4 at bounce_up
+                voice "a_s11"
                 ak "Mirari can be surprisingly gentle when she's not punching things."
                 $mirari.set_state(emotion_base="dark",emotion="vein", mouth="fun smile", eyebrows="default")
                 show mirari at sway
                 voice "m_s07"
                 mi "I heard that, Akki~"
                 $akki.set_state(with_dissolve, emotion="panic", eyes="wide", mouth="ehh", eyebrows="up")
+                voice "a_s03"
                 ak "T-that's our cue to give you two privacy now."
             elif kael_scenes >= 3:
                 show orias zorder 4
                 $orias.set_state(with_dissolve, eyes="closed", mouth="smile", eyebrows="tender")
+                voice "o_w11"
                 ori "She'll treat you well, [claire_name]."
                 $kael.set_state(with_dissolve, eyebrows="inwards", eyes="closed")
                 voice "k_s01"
                 ka "So that's your preference..."
                 $akki.set_state(eyes="happy", mouth="grin")
                 show akki zorder 4 at bounce_up
+                voice "a_s11"
                 ak "Mirari can be surprisingly gentle when she's not punching things."
                 $mirari.set_state(emotion_base="dark",emotion="vein", mouth="fun smile", eyebrows="default")
                 show mirari at sway
                 voice "m_s07"
                 mi "I heard that, Akki~"
                 $akki.set_state(with_dissolve, emotion="panic", eyes="wide", mouth="ehh", eyebrows="up")
+                voice "a_s03"
                 ak "T-that's our cue to give you two privacy now."
             elif orias_scenes >= 3:
                 $kael.set_state(with_dissolve,eyes="happy")
@@ -542,15 +591,18 @@ label sex_choice:
                 voice "k_w13"
                 ka "This is a good arrangement."
                 $orias.set_state(with_dissolve, eyebrows="inwards", eyes="closed")
+                voice "o_s04"
                 ori "It'd be more relaxing with Mirari, I admit..."
                 $akki.set_state(eyes="happy", mouth="grin")
                 show akki zorder 4 at bounce_up
+                voice "a_s11"
                 ak "Mirari can be surprisingly gentle when she's not punching things."
                 $mirari.set_state(emotion_base="dark",emotion="vein", mouth="fun smile", eyebrows="default")
                 show mirari at sway
                 voice "m_s07"
                 mi "I heard that, Akki~"
                 $akki.set_state(with_dissolve, emotion="panic", eyes="wide", mouth="ehh", eyebrows="up")
+                voice "a_s03"
                 ak "T-that's our cue to give you two privacy now."
             else:
                 $kael.set_state(eyes="happy")
@@ -559,6 +611,7 @@ label sex_choice:
                 ka "This is a good arrangement."
                 show orias zorder 4
                 $orias.set_state(with_dissolve, eyes="closed", mouth="smile", eyebrows="tender")
+                voice "o_s01"
                 ori "She'll treat you well, [claire_name]."
                 $akki.set_state(eyes="happy", mouth="grin")
                 show akki zorder 4 at bounce_up
@@ -568,13 +621,16 @@ label sex_choice:
                 voice "m_s07"
                 mi "I heard that, Akki~"
                 $akki.set_state(with_dissolve, emotion="panic", eyes="wide", mouth="ehh", eyebrows="up")
+                voice "a_s03"
                 ak "T-that's our cue to give you two privacy now."
             $orias.set_state(with_dissolve, eyes="default", eyebrows="tender", mouth="smile")
+            voice "o_w12"
             ori "Then excuse us."
             $kael.set_state(with_dissolve, **Emotion.normal())
             voice "k_w14"
             ka "Take care, [claire_name]."
             $akki.set_state(with_dissolve, eyes="happy", emotion="default", mouth="default", eyebrows="default")
+            voice "a_w15"
             ak "Later!"
             # 3 gone
             hide orias
@@ -630,7 +686,7 @@ label sex_choice:
             mi "Aw, sweetie, it's okay. This is your body and wellbeing we're talking about here."
             "She steps in and gives me a hug."
             $mirari.set_state(with_dissolve, eyes="closed", mouth="default")
-            voice "m_s07"
+            voice "m_s09"
             mi "Thank you for your honesty; that's all we can ask for."
             $mirari.set_state(eyes="default")
             show mirari zorder 0 at endspeak
@@ -644,6 +700,7 @@ label sex_choice:
             show kael zorder 0 at endspeak
             $orias.set_state(eyes="side", eyebrows="up")
             show orias zorder 3 at speak
+            voice "o_s02"
             ori "Although it does beg the question... What should we do in the meantime? Should we simply leave?"
             $orias.set_state(**Emotion.normal())
             show orias zorder 0 at endspeak
@@ -652,6 +709,7 @@ label sex_choice:
             ak "..."
             $akki.set_state(with_dissolve, emotion="starry", eyes="wink", eyebrows="default", mouth="happy")
             stop music fadeout 2
+            voice "a_s05"
             ak "I have an idea." 
             #transition to Mario Kart chibi
             scene black with dissolve
@@ -660,9 +718,11 @@ label sex_choice:
             scene nosex01 with dissolve
             $ gallery.unlock("chibi_nosex01")
             play music music_silly fadein 2
+            voice "a_s06"
             ak "AW YEA FIRST PLACE! Last lap here I come!"
             cla "Ugh, how did you improve so fast? I'm right behind you, Akki."
             play sound "assets/sfx/race_start.ogg"
+            voice "o_s04"
             ori "Mirari, you're going the wrong way again."
             voice "m_s13"
             mi "I-I knew that! I was taking a shortcut!"
@@ -677,24 +737,27 @@ label sex_choice:
             voice "m_w31"
             mi "Yaaay, I finally hit one of those item thingies!"
             mi "What does this blue shell do?"
+            voice "a_s03"
             ak "It does nothing, don't use it."
             cla "LAUNCH IT, LAUNCH IT NOW."
             voice "m_s11"
             mi "How do I do that? I'm hitting every—"
+            voice "o_s05"
             ori "This one."
+            voice "m_s15"
             mi "Oh!"
             scene nosex02 with dissolve
             $ gallery.unlock("chibi_nosex02")
             play sound "assets/sfx/ded.ogg"
             ak "NOOOOOOO!"
             cla "First place is mine! Hahaha!"
+            voice "a_s03"
             ak "Best two out of three!"
             "I ended up not having sex after all, but I still had a memorable spring break..."
             jump credits
                 
         "All of them." if everybody_sex :
-            #[TODO]
-            #---------- ADD SPRITE MOVEMENT-------------------------
+           
             $claire.set_state(emotion="sweat", eyes="happy", mouth="grin", emotion_base="default", eyebrows ="inwards")
             cl "This is going to sound crazy but I pick all of you."
             stop music
@@ -711,6 +774,7 @@ label sex_choice:
             $kael.set_state(with_dissolve,emotion="default", eyes="default", mouth="low", emotion_base="default", eyebrows ="default")
             $akki.set_state(with_dissolve,emotion="default", eyes="tender side", mouth="wavy", emotion_base="small blush", eyebrows ="tender")
             $orias.set_state(with_dissolve,emotion="default", eyes="side", mouth="oh", emotion_base="default", eyebrows ="default")
+            voice "o_s06"
             ori "This is quite the request..." 
             $akki.set_state(with_dissolve,emotion="default", eyes="default", mouth="oh", emotion_base="small blush", eyebrows ="up")
             $orias.set_state(with_dissolve, mouth="default")
@@ -731,6 +795,7 @@ label sex_choice:
             $orias.set_state(with_dissolve,emotion="default", eyes="closed", mouth="smile", emotion_base="default", eyebrows ="tender")
             show kael zorder 0
             show orias zorder 3 at bounce_up
+            voice "o_s12"
             ori "It has been ages..."
             $orias.set_state(with_dissolve,emotion="default", eyes="default", mouth="default", emotion_base="default", eyebrows ="default")
             $mirari.set_state(with_dissolve,emotion="default", eyes="default", mouth="uh", emotion_base="default", eyebrows ="inwards")

@@ -43,12 +43,15 @@ label orias_hangout1:
     if current_day == 1:
         cl "Is that the tea you served me earlier?"
         $orias.set_state(mouth="oh", eyes="default")
+        voice "o_s07"
         ori "Hm? Ah, this is something entirely different. It's ginger peach with vanilla."
     else:
         cl "Preparing tea bags? What blend is it?"
         $orias.set_state(mouth="oh", eyes="default")
+        voice "o_s01"
         ori "Yes, and it's ginger peach with vanilla."
     $orias.set_state(with_dissolve,eyebrows="up", mouth="oh",  eyes="default")    
+    voice "o_w15"
     ori "Would you like to try one?"
     $claire.set_state(eyebrows="default", mouth="smile")
     cl "Sure."
@@ -58,12 +61,14 @@ label orias_hangout1:
     $claire.set_state(eyes="happy")
     cl "When did you pick up your tea hobby?"
     $orias.set_state(with_dissolve,eyebrows="default", mouth="oh",  eyes="side") 
+    voice "o_w16"
     ori "When did I... Ah, Paris. Tea was becoming popular in Paris centuries ago. Many of the nobles I had trysts with drank it."
     $orias.set_state(with_dissolve, mouth="smile",  eyes="default") 
     ori "Once its popularity spread to England, that was when I became interested in its different preparations and flavors." 
     $orias.set_state(with_dissolve,eyebrows="tender", mouth="smile",  eyes="happy") 
     ori "Many of those tea bags are gifts and souvenirs from my travels."
     $orias.set_state(with_dissolve,eyebrows="tender", mouth="smile",  eyes="default") 
+    voice "o_w17"
     ori "Here you go."
     show item tea at chibi_scene with dissolve
     "He blows gently on a dainty cup, then offers it to me. I take it, and bring it up to my nose, inhaling softly."
@@ -75,11 +80,13 @@ label orias_hangout1:
     cl "Ah, I can taste the peach with the hint of spicy ginger but... I can't taste the vanilla?"
     
     $orias.set_state(with_dissolve,eyes="closed")
+    voice "o_w18"
     ori "Try closing your eyes." 
     "I do so and continue to drink. It's then I detect the creamy smoothness that lingers."
     $claire.set_state(emotion="flowers", eyes="closed", mouth="happy")
     cl "Oh, I can taste it now! It's very subtle, but it's there."
     $orias.set_state(with_dissolve,eyes="default")
+    voice "o_s09"
     ori "When you block out one sense, the others heighten."
     $orias.set_state(with_dissolve,eyebrows="default", eyes="closed") 
     ori "I'm still balancing out the proportions; thank you for your feedback."
@@ -91,6 +98,7 @@ label orias_hangout1:
     $orias.set_state(with_dissolve,eyebrows="up",  eyes="wink") 
     stop music
     play sound "assets/sfx/scratch.ogg"
+    voice "o_w08"
     ori "Thank you. It's probably from all the experience of binding my lovers."
     hide orias at center with dissolve
     show chibi_orias01 at chibi_scene with dissolve
@@ -102,23 +110,31 @@ label orias_hangout1:
     hide chibi_orias01 with dissolve
     $orias.set_state(with_dissolve,eyebrows="inwards", eyes="flat",mouth="low", emotion="lll", base="tea")
     show orias at center_alone2 with dissolve 
+    voice "o_w19"
     ori "It's quite all right. My timing was off."
     $orias.set_state(with_dissolve, eyes="side", mouth="neutral")
     ori "I wanted to find a way to be upfront about my sexual interests, in case you were considering me."
     $orias.set_state(with_dissolve,eyebrows="tender",emotion="default", eyes="default")
+    voice "o_w21"
     ori "I'm not trying to... dissuade you, but it's something to be mindful of when weighing your options."
     $orias.set_state(with_dissolve,eyes="closed")
+    voice "o_w22"
     ori "Excuse me, I'll go wash myself off now."
     $claire.set_state(mouth="wavy", eyes="clench") 
     cl "O-of course. Sorry about that..."
     hide orias with moveoutright
+    
     "He gets up and leaves, and I sip my tea with a guilty conscience. A few moments later I hear a roar in the other room."
+    $renpy.music.set_volume(0.5, delay=0, channel='voice')
+    voice "a_s22"
     ak "HAHAHAHA, what happened to you? New technique?"
     voice "k_s08"
     ka "Akki, stop making a ruckus - oh - pffffft, I'm sorry, Orias. This is a rare sight. Mirari, Mirari, you need to see this."
     voice "m_s10"
     mi "What is everyone babbling about-  teehee, that's a whole new look for you!"
+    voice "o_s13"
     ori "I'm delighted that you're all highly amused by this."
+    $renpy.music.set_volume(1.0, delay=0, channel='voice')
     $claire.set_state(emotion="lll", eyes="dots")
     cl "..."
     "Face beet-red, I gulp my tea down."
@@ -149,6 +165,7 @@ label orias_hangout2:
     cl "Yes? Come in."
     $orias.set_state(with_dissolve,mouth="smile",emotion="default", eyes="default")
     show orias at center_alone2 with dissolve
+    voice "o_w23"
     ori "We've noticed that you've been absorbed for quite some time. I thought you'd appreciate a pick-me-up."
     $orias.set_state(with_dissolve, eyes="side", eyebrows="default", mouth="low", emotion="sweat")
     show orias at center_group with dissolve
@@ -158,12 +175,14 @@ label orias_hangout2:
     hide item with dissolve
     cl "I promise I won't spray you in the face this time."
     $orias.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="smile", emotion="default")
+    voice "o_s11"
     ori "And I won't speak while you're drinking." 
     $orias.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="smile", emotion="default")
     $claire.set_state(eyes="default", eyebrows="default", mouth="happy", emotion="default")
     cl "Deal."
     $orias.set_state(with_dissolve, eyes="default", eyebrows="up", mouth="oh")
     show orias at center_alone2 with dissolve
+    voice "o_s07"
     ori "What are you studying? Is it related to your education?"
     $claire.set_state(eyes="semi open", eyebrows="default", mouth="smile", emotion="default")
     cl "History. I haven't declared a major yet, so I'm picking courses that sound interesting and then go from there."
@@ -171,20 +190,24 @@ label orias_hangout2:
     $claire.set_state(eyes="happy", mouth="grin", emotion="note")
     cl "I find I like factual stuff. Right now I'm studying the French Revolution."
     $orias.set_state(with_dissolve, eyes="side", eyebrows="tender",mouth="oh")
+    voice "o_w24"
     ori "Has it really been that long...? How nostalgic."
     $claire.set_state(eyes="default", eyebrows="up", mouth="uhh", emotion="default")
     cl "Wait, were you there during that time?"
     $orias.set_state(with_dissolve, eyes="default", eyebrows="default",mouth="neutral")
+    voice "o_s02"
     ori "I left prior to the events and stayed in London. However, news did spread."
     $orias.set_state(with_dissolve, eyes="happy", eyebrows="tender", mouth="smile")
     ori "We incubi and succubi try to avoid getting entangled in human affairs. Although Mirari likes to claim she had nothing to do with the free love movement during the Victorian Era." 
     $claire.set_state(eyes="default", eyebrows="up", mouth="vhappy", emotion="flowers")
     cl "What was France like while you stayed there? What did you do there?"
     $orias.set_state(with_dissolve, eyes="side", eyebrows="tender", mouth="oh", emotion="sweat")
+    voice "o_w25"
     ori "Well... I set a bedroom on fire to help a noblewoman fake her death and escape her arranged marriage."
     $claire.set_state(eyes="fun front", eyebrows="default", mouth="kitty", emotion="default")
     cl "And I thought you avoided human affairs."
     $orias.set_state(with_dissolve, eyes="wink", eyebrows="default", mouth="smile", emotion="default")
+    voice "o_w26"
     ori "'Try' is the keyword."
     $orias.set_state(with_dissolve, eyes="closed", eyebrows="default", mouth="smile")
     "Orias sits on the edge of my bed, recalling events and memories. I scribble down the tidbits related to the pre-Revolution." 
@@ -192,10 +215,12 @@ label orias_hangout2:
     $orias.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="smile")
     cl "Thanks for that. It's pretty surreal to talk to someone who lived during that time." 
     $orias.set_state(with_dissolve, eyes="happy", eyebrows="tender", mouth="smile")
+    voice "o_w27"
     ori "I'm glad to be of assistance. It's been a while since I remembered the past; I hope my stories made sense." 
     $claire.set_state(eyes="semi open", eyebrows="inwards", mouth="oh", emotion="sweat")
     cl "Also..."
     $orias.set_state(with_dissolve, eyes="default", eyebrows="up", mouth="default")
+    voice "o_s07"
     ori "Hm?"
     $claire.set_state(eyes="semi open", eyebrows="default", mouth="wavy", emotion="default")
     cl "Er, I want to apologize. Not just for the tea incident, but for getting the wrong idea about your interests."
@@ -205,24 +230,29 @@ label orias_hangout2:
     ori "..."
     #thought bubble with a little chibi of evil looking Orias cackling and holding a whip? XD
     $orias.set_state(with_dissolve, eyes="flat", eyebrows="default", mouth="ehh", emotion="sweat", emotion_base="dark")
+    voice "o_w28"
     ori "Ah... no, it's nothing like that."
     $orias.set_state(with_dissolve,eyes="closed", eyebrows="default", mouth="oh", emotion="default", emotion_base="default")
     ori "There are misconceptions surrounding my practices, yes, but I assure you that is completely untrue." 
     $orias.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="smile")
     ori "My role as a Dominant includes responsibility and being considerate of my partners. Nothing pleases me more than fulfilling their needs." 
     $orias.set_state(with_dissolve, eyes="wink", eyebrows="up", emotion="note")
+    voice "o_s09"
     ori "My partners have the real power. If they request dungeons and whips, I'd be happy to provide, though."
     $claire.set_state(eyes="dots", eyebrows="up", mouth="oh", emotion="default")
     cl "I can't believe you have a dungeon on standby."
     $orias.set_state(with_dissolve, eyes="fun side", eyebrows="up", mouth="smile", emotion="default")
+    voice "o_w29"
     ori "What can I say, my partners' desires can be... unconventional." 
     $orias.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="smile", emotion="default")
     $claire.set_state(eyes="happy", eyebrows="default", mouth="grin", emotion="default")
     cl "Haha. Thanks for clearing things up."
     $orias.set_state(with_dissolve, eyes="happy", eyebrows="tender", mouth="smile", emotion="default")
+    voice "o_w30"
     ori "My pleasure. I don't want people to be repulsed due to a misunderstanding." 
     "He takes the empty plate and drained teacup."
     $orias.set_state(with_dissolve, eyes="default", mouth="smile")
+    voice "o_w31"
     ori "I'll leave you to your studies."
     $claire.set_state(eyes="default", eyebrows="default", mouth="smile")
     cl "Thank you."
@@ -242,6 +272,7 @@ label orias_hangout3:
     $orias.set_state(glasses="default")
     $orias.set_state(with_dissolve, eyes="default", eyebrows="up", mouth="oh")
     show orias at center_alone2 with dissolve
+    voice "o_w32"
     ori "Studying again?"
     $claire.set_state(eyes="happy", eyebrows="default", mouth="smile")
     cl "Finishing up. Thanks for the coffee earlier. I know it's not your forte, but I really needed it."
@@ -250,16 +281,19 @@ label orias_hangout3:
     $claire.set_state(eyes="default", eyebrows="up", mouth="oh")
     cl "Reading as well?"
     $orias.set_state(with_dissolve, eyes="happy", eyebrows="up", mouth="smile", emotion="sweat")
+    voice "o_w33"
     ori "Yes. As much as I enjoy reading through your father's miniature library, the subjects are becoming a little monotonous."
     $orias.set_state(with_dissolve, eyes="side", eyebrows="default", mouth="oh", emotion="default")
     ori "I noticed your bookshelf here earlier... May I browse?"
     $claire.set_state(eyes="happy", eyebrows="default", mouth="wavy", emotion="sweat")
     cl "Of course. Uh, just keep in mind I rarely read so..."
     $orias.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="ah", emotion="bars")
+    voice "o_s06"
     ori "They're all children's books!"
     $claire.set_state(eyes="flat", eyebrows="default", mouth="wavy", emotion="sweat")
     cl "...the selection hasn't changed in years."
     $orias.set_state(with_dissolve, eyes="happy", eyebrows="tender", mouth="smile", emotion="note")
+    voice "o_s12"
     ori "I remember when many of these were first released. {i}The Wonderful Wizard of Oz{/i}, {i}Heidi{/i}, {i}Treasure Island{/i}..." 
     $claire.set_state(eyes="default", eyebrows="default", mouth="smile", emotion="sweat")
     cl "My parents love classical literature and would buy those for me every year."
@@ -267,12 +301,14 @@ label orias_hangout3:
     $claire.set_state(eyes="happy", eyebrows="inwards", mouth="grin", emotion="default")
     cl "I'd remember asking 'Why couldn't Dorothy just use the GPS on her cell phone to find Emerald City?' and mom declared modern technology ruined everything." 
     $orias.set_state(with_dissolve, eyes="default", eyebrows="up", mouth="oh")
+    voice "o_s03"
     ori "Did they read to you a lot?"
     $claire.set_state(eyes="default", eyebrows="up", mouth="oh")
     cl "Not really, I preferred video games. Yourself? Did you always love reading?"
     $orias.set_state(with_dissolve, eyes="squint", eyebrows="tender", mouth="smile", emotion="heart")
     "He pulls out {i}The Wonderful Wizard of Oz{/i} and looks over it fondly."
     $orias.set_state(with_dissolve, eyes="side", eyebrows="tender", mouth="smile", emotion="default")
+    voice "o_s05"
     ori "One of my previous partners was an actor in a playing company back in London. Before we made love, he'd practice reciting lines for me."
     $orias.set_state(with_dissolve, eyes="closed")
     ori "His voice was soothing but captivating and you'd hang onto every word. He'd also read books out loud." 
@@ -281,10 +317,12 @@ label orias_hangout3:
     $claire.set_state(eyes="happy", eyebrows="up", mouth="happy", emotion="flowers")
     cl "Since I'm done studying, would you like to read to me?"
     $orias.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="uhh", emotion="bars")
+    voice "o_w34"
     ori "Me?"
     $claire.set_state(eyes="default", eyebrows="default", mouth="smile", emotion="note")
     cl "Of course you. I think you have a lovely voice, and you have a relaxing presence." 
     $orias.set_state(with_dissolve, eyes="closed", eyebrows="tender", mouth="smile", emotion="default")
+    voice "o_w35"
     ori "I may not have the acting talent, but I'll do my best."
     "I climb into bed, then pat the spot next to me."
     $orias.set_state(with_dissolve, eyes="wide", eyebrows="up", mouth="oh", emotion="default")
@@ -293,29 +331,36 @@ label orias_hangout3:
     cl "There's illustrations in the book, after all."
     $orias.set_state(with_dissolve, eyes="wink", eyebrows="up", mouth="happy", emotion="default")
     stop music fadeout 2
+    voice "o_w36"
     ori "So that's your excuse."
     $orias.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="smile")
     play music music_romance fadein 2
     "However, he acquiesces and climbs into bed. Once we make ourselves cozy, Orias opens to the first page."
     $orias.set_state(with_dissolve, eyes="side", eyebrows="tender", mouth="oh", emotion_base="small blush")
+    voice "o_s03"
     ori "Are you okay with this arrangement?" 
     $orias.set_state(with_dissolve, eyes="happy", eyebrows="tender", mouth="smile", emotion="default")
     "I lean in as an answer, and he chuckles."
     $orias.set_state(with_dissolve, eyes="happy", eyebrows="tender", mouth="smile", emotion_base="default")
+    voice "o_s09"
     ori "I'm glad you're comfortable around me."
     $orias.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="smile", emotion="sweat")
+    voice "o_w37"
     ori "It's rare that I interact with humans outside of copulation nowadays. Forgive me if I seem rusty or aloof."
     $claire.set_state(eyes="default", eyebrows="up", mouth="oh", emotion="default")
     cl "Why is that? Er, the whole interaction thing. From what you've told me, you sound very involved with your past lovers."
     $orias.set_state(with_dissolve, eyes="side", eyebrows="tender", mouth="neutral", emotion="default")
     ori "I was, until I left someone brokenhearted. We possess feelings, but as incubi, we're unable to experience love in the romantic sense."
     $orias.set_state(with_dissolve, eyes="closed", eyebrows="inwards", mouth="wavy")
+    voice "o_s13"
     ori "Therefore, when someone starts getting too attached, I stop seeing them. I don't want them to end up hurt."
     $claire.set_state(eyes="semi open", eyebrows="default", mouth="smile", emotion_base="small blush")
     cl "I understand. If it helps, I respect your wishes. Um, would it be too much to consider you a friend?"
     $orias.set_state(with_dissolve, eyes="side", eyebrows="tender", mouth="oh", emotion_base="small blush")
+    voice "o_w38"
     ori "No, I quite like that. I've enjoyed spending time with you."
     $orias.set_state(with_dissolve, eyes="default", eyebrows="tender", mouth="smile", emotion_base="small blush")
+    voice "o_w39"
     ori "If you decide to... pick me tonight, I promise I'll give you a wonderful experience. You can trust me." 
     $claire.set_state(eyes="happy", eyebrows="default", mouth="grin")
     cl "...Aw, thank you..."
@@ -323,6 +368,7 @@ label orias_hangout3:
     "I shyly glance down at the book and he does the same."
     hide orias with dissolve
     show chibi_orias02 at chibi_scene with dissolve
+    voice "o_s14"
     ori "I apologize for going off topic. Ahem. 'Dorothy lived in the midst...'"
     stop music fadeout 1
     jump next_day
@@ -353,6 +399,7 @@ label orias_sex:
     play sound "assets/sfx/knock.ogg"
     "I knock on the door."
     cl "Can I come in?"
+    voice "o_sex01"
     ori "Everything is ready."
     scene bg bedroom_candles with dissolve
     "I open and step into the dim bedroom. Yellow candles are scattered around, their flicking seemingly off."
@@ -372,6 +419,7 @@ label orias_sex:
     $claire.set_state(eyes="down", eyebrows="default", mouth="wavy", emotion_base = "large blush", emotion="default")
     cl "Do I look okay...?"
     $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="squint", emotion="default")    
+    voice "o_sex02"
     ori "Exquisite." 
     $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="happy")
     "I feel my face heat up. I never been described as exquisite before..." 
@@ -380,11 +428,13 @@ label orias_sex:
     $claire.set_state(eyes="tender side", eyebrows="default", mouth="wavy", emotion_base = "small blush")
     cl "Um, when Akki mentioned 'red' earlier..."
     $orias.set_state(with_dissolve, eyebrows="default", mouth="oh", eyes="default")
+    voice "o_sex03"
     ori "Ah, yes... I was about to go over what I have planned for you, and the use of a safeword. A safeword is basically something you say to stop completely."
     $orias.set_state(with_dissolve, mouth = "neutral")
     $claire.set_state(eyes="default", eyebrows="default", mouth="uh", emotion_base = "default")
     cl "Wouldn't just saying stop work in this situation?"
     $orias.set_state(with_dissolve, eyebrows="default", mouth="oh", eyes="side")
+    voice "o_sex04"
     ori "How to say this... In my line of practices, 'stop' doesn't always mean what it should." 
     $orias.set_state(with_dissolve, eyes="closed")
     ori "To avoid confusion, we agree on a word that normally wouldn't be said during sex."
@@ -392,30 +442,37 @@ label orias_sex:
     $claire.set_state(eyes="happy", eyebrows="default", mouth="happy", emotion_base = "default")
     cl "Oh! So like, uh... cucumber!" 
     $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="fun side")
+    voice "o_sex06"
     ori "You'll be surprised..."
     $claire.set_state(eyes="mortified", eyebrows="default", mouth="uhh", emotion = "lll")
     cl "..."
     #empty eye claire expression all =_=
     $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="default")
+    voice "o_s11"
     ori "Heh, I was kidding. I found in recent decades 'red' is commonly used. When I hear it, all activity will cease. Is that agreeable?"
     $claire.set_state(eyes="happy", eyebrows="default", mouth="wavy", emotion_base = "small blush", emotion = "sweat")
     cl "Sounds good to me, but now I'm a little nervous... What are you planning?"
     $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="happy", emotion="heart")
+    voice "o_sex07"
     ori "Nothing advanced. Sensation play. I'll tease your senses using temperatures or textures. Possibly with some light restraints."
     if orias_scenes >= 1:
         $orias.set_state(with_dissolve, eyebrows="tender", mouth="oh", eyes="side", emotion="default")
+        voice "o_sex08"
         ori "Remember when you closed your eyes to detect the vanilla in the tea?"
         $claire.set_state(eyes="happy", eyebrows="default", mouth="happy", emotion_base = "default", emotion = "flowers")
         $orias.set_state(with_dissolve, mouth="neutral")
         cl "O-oh! Yes." 
         $orias.set_state(with_dissolve, eyebrows="tender", mouth="grin", eyes="wink", emotion="note")
+        voice "o_sex09"
         ori "It's the same idea."
     else:
         $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="happy", emotion="note")
+        voice "o_s02"
         ori "When you close your eyes, or are subject to certain sensations, your senses heighten and you become more aware." 
     $claire.set_state(eyes="default", eyebrows="default", mouth="uh", emotion_base = "default", emotion = "default")    
     cl "And is there anything I have to do?"
     $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="default", emotion="default")
+    voice "o_sex10"
     ori "Since this is your first time... You can relax. Everything will be carefully controlled."
     $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="side")
     "He glances at the bed, and my eyes follow. There's a large towel spread out, and in its center lies a silk scarf and a sleep mask." 
@@ -425,6 +482,7 @@ label orias_sex:
     $ orias_cuddles_sprite.set_state(**orias_cuddles_initial)
     $ orias_bed_sprite.set_state(**orias_bed_initial)
     $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="default")
+    voice "o_sex11"
     ori "How would you like to start? Blindfolded or with bound wrists?"
     stop music fadeout 2
     menu:
@@ -433,12 +491,14 @@ label orias_sex:
             $ nothanks = True
             $claire.set_state(eyes="down", eyebrows="default", mouth="uh", emotion_base = "small blush", emotion = "default")    
             cl "Can I see how it plays out first before we go ahead with that?"
+            voice "o_sex22"
             ori "Of course. Make yourself comfortable."
             ori "Also, it'd be best to remove your chemise. It looks beautiful on you and I'd hate for it to be stained. Your underwear can stay on."
             "He removes the items while I undress, then I crawl over the towel to lie on my back. Sensing some of the techniques might be a little messy, I decide to raise my arms out of the way." 
             scene orias_bed with dissolve
             $ orias_cuddles_sprite.set_state(claire_naked=True)
             $orias_clnaked = True
+            voice "o_sex20"
             ori "If possible, closing your eyes at certain times might make the activity more fun."
             $claire.set_state(base="naked")
             cla "I'll keep that in mind."
@@ -447,30 +507,35 @@ label orias_sex:
             play music music_love fadein 3
             $claire.set_state(eyes="default", eyebrows="default", mouth="smile", emotion_base = "default", emotion = "default")    
             cl "I'll try blindfolds first."
+            voice "o_sex23"
             ori "Perfect. Also, it'd be ideal to remove your chemise. It looks beautiful on you and I'd hate for it to be stained. Your underwear can stay on."
             "He removes the items while I undress and instructs me to lie on my back. I close my eyes as I feel the soft fabric slide down my forehead and rest on the bridge of my nose." 
             $ orias_bed_sprite.set_state(blindfold=True)
-#            $orilay_blindfold = True
+            #$orilay_blindfold = True
             $orias.set_state(base="jacketless")
             $ orias_cuddles_sprite.set_state(claire_naked=True)
             $orias_clnaked = True
             scene orias_bed with dissolve
+            voice "o_sex24"
             ori "Not too tight?"
             $claire.set_state(base="naked")
             cla "No, and it won't fall off either."
+            voice "o_sex25"
             ori "Good. I also recommend keeping your arms up and out of the way." 
         "Wrists tied.":
             $ tiedup = True
             play music music_love fadein 3
             $ orias_bed_sprite.set_state(tiedup=True)
-#            $ orilay_tiedup = True
+            #$ orilay_tiedup = True
             $claire.set_state(eyes="happy", eyebrows="default", mouth="ehh", emotion_base = "small blush", emotion = "sweat") 
             cl "This sounds so kinky but... tie me up."
             $claire.set_state(with_dissolve, eyes="default", eyebrows="default", mouth="uh", emotion_base = "small blush", emotion = "default") 
             cl "Will you chain me to something?"
+            voice "o_sex26"
             ori "No, not for the first session. I'm simply restricting your arm movements, but I'll keep the knot loose."
             $claire.set_state(eyes="default", eyebrows="default", mouth="smile", emotion_base = "small blush", emotion = "default") 
             cl "Thank you."
+            voice "o_s02"
             ori "Also, it'd be best to remove your chemise now since we won't be able to remove it once you're bound."
             $orias.set_state(base="jacketless")
             $ orias_cuddles_sprite.set_state(claire_naked=True)
@@ -479,7 +544,8 @@ label orias_sex:
             "After I'm exposed, he instructs me to lie on my back, and I lift my arms above my head. He leans over and ties my wrists deftly with the silk scarf, the sensation cool against my skin."
             "After wriggling a finger into the knot, he tugs it slightly."
             $claire.set_state(base="naked")
-            ori "How does this feel?"
+            voice "o_sex27"
+            ori "How does it feel?"
             cla "Perfect."
             "I rub my wrists together to demonstrate I have a healthy circulation and he nods in approval."
         "Red.":
@@ -487,6 +553,7 @@ label orias_sex:
             $claire.set_state(eyes="dots", eyebrows="default", mouth="ehh", emotion_base = "small blush", emotion = "default")   
             cl "Um... Red..."
             $orias.set_state(with_dissolve, eyebrows="inwards", mouth="low", eyes="side")
+            voice "o_sex12"
             ori "I apologize if I came off as too intimidating."
             $orias.set_state(with_dissolve, eyebrows="inwards", mouth="low", eyes="default")
             $claire.set_state(eyes="clench", eyebrows="inwards", mouth="oh", emotion_base = "default", emotion = "panic")   
@@ -499,10 +566,12 @@ label orias_sex:
             $orias.set_state(with_dissolve, eyebrows="inwards", mouth="neutral", eyes="closed")
             "He shakes his head."
             $orias.set_state(with_dissolve, eyebrows="tender", mouth="smile", eyes="default")
+            voice "o_sex13"
             ori "No, however, I enjoy aftercare."
             $claire.set_state(eyes="default", eyebrows="up", mouth="uhh", emotion_base = "default", emotion = "default") 
             cl "Aftercare?"
             $orias.set_state(with_dissolve, eyebrows="tender", mouth="grin", eyes="wink", emotion="heart")
+            voice "o_sex14"
             ori "Cuddling, serving tea, making sure my partner is alright after the session, no matter how intense or... non-existent." 
             stop music fadeout 2
             $claire.set_state(eyes="tender", eyebrows="default", mouth="smile", emotion_base = "small blush", emotion = "heart") 
@@ -517,22 +586,25 @@ label orias_sex:
     cla "Now what?"  
     show screen sex_stop_red("orias_stoppingnow")  
     $ firsthalf = True
+    voice "o_sex21"
     ori "Your choice. What would you like to experience first? Something cold, something warm, or something ticklish?" 
     cla "I..."
     menu:
         "Cold":
             cla "Let's try cold." 
+            voice "o_sex28"
             ori "Alright."
             if orilay_blindfold == False:
+                voice "o_sex29"
                 ori "No peeking; that's half the fun."
                 $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
-                $orilay_clface = "content"
+                $ orilay_clface = "content"
             "I hear something clink together as it's brought over, something like glass. The bed shifts from Orias' weight, and I inhale in anticipation."
             "He's nearby but I don't sense anything. What is he planning...?"
             show orias_play cold with dissolve
             $orias_cutin = True
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="shiver")
-            $orilay_clface = "shiver"
+            $ orilay_clface = "shiver"
             cla "Ee-heh!"
             $ coldplay = True
             "A drop of cold liquid hits the center of my torso and slides down the side of my stomach, causing me to shiver and get goosebumps on my arms."
@@ -541,6 +613,7 @@ label orias_sex:
             else:
                 "I resist wiping the liquid away."
             "Another drop follows, thicker than the previous one. Before it trails down my body, a few more follow suit. The pattern is unpredictable and I find myself wondering when the next drop will come."
+            voice "o_sex30"
             ori "How is it?"
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
             $orilay_clface = "content"
@@ -550,10 +623,12 @@ label orias_sex:
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="pleasure")
             $orilay_clface = "pleasure"
             "I sense his body heat as he leans down, and his breath tickles my stomach. Something moist glides along, lapping up the liquid paths and warming my skin. It's just his body temperature but it feels unusually hot thanks to the initial coldness."
+            voice "o_sex31"
             ori "There, to balance it out."
             "I shiver, but not from the temperature play." 
             hide orias_play with dissolve
             $orias_cutin = False
+            voice "o_s03"
             ori "Would you like it if my mouth explored more as well?"
             "His fingers brush just below my breast to clarify."
             menu:
@@ -576,12 +651,14 @@ label orias_sex:
                     hide orias_play with dissolve
                     $orias_cutin = False
                     "When he's done, I hear him wipe his mouth."
+                    voice "o_sex32"
                     ori "Not so cold anymore?"
                     cla "No..."
                     $ coldplay = False
                 "It's fine as it is.":
                     $orilay_clface = "content"
                     cla "I like what you're doing now."
+                    voice "o_sex15"
                     ori "I understand."
                     cla "Eee."
                     "I feel something cold brush above my navel, and I squirm a bit from the sensation. All I feel is wetness, cold, and a bit of sharpness." 
@@ -592,6 +669,7 @@ label orias_sex:
                     "The shock wears off as quickly as Orias' tongue slides where the ice cube touched, then descends to my navel. He drinks up the water, creating a wet and sensual suction against my skin." 
                     hide orias_play with dissolve
                     $orias_cutin = False
+                    voice "o_sex32"
                     ori "Not so cold anymore?"
                     cla "No..."
                     $ coldplay = False
@@ -599,14 +677,16 @@ label orias_sex:
                     jump orias_stoppingnow
         "Warm.":
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried")
-            $orilay_clface="worried"
+            $ orilay_clface="worried"
             cla "Warm... Is it like warm-warm or hot-warm?"
+            voice "o_sex33"
             ori "Just above your body temperature warm. Don't worry, I always test on myself before I pour the candle wax on someone else."
             $ orias_bed_sprite.set_state(with_dissolve, orias_face="smile2")
-            $orilay_oriface ="smile2"
+            $ orilay_oriface ="smile2"
+            voice "o_s01"
             ori "Everything about the product is organic, but I'd like to also test a small area to make sure your skin doesn't have a bad reaction."
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
-            $orilay_clface="content"
+            $ orilay_clface="content"
             ori "We'll start with your back since its not as sensitive as your front." 
             if orilay_tiedup == True:
                 "It feels a little silly with my restraints, but I roll over."
@@ -616,14 +696,20 @@ label orias_sex:
             cla "Is that the wax? It smells lovely."
             $ orias_bed_sprite.set_state(with_dissolve, orias_face="smile")
             $orilay_oriface ="smile"
+            voice "o_s02"
             ori "Yes, I thought it'd delight your senses. Even if I'm far from vanilla myself."
             cla "Heh, this has been a relaxing, uh, BDSM session so far." 
+            voice "o_sex34"
             ori "You're new to this, so I'm doing my best to make this an inviting experience for you."
+            voice "o_sex23"
             ori "Ah, perfect temperature."
             if blindfolded == True:
+                voice "o_sex35"
                 ori "However, your sight is restricted so you might be more sensitive to the heat than I am. Please let me know if it's too hot or uncomfortable."
             else:
+                voice "o_sex35"
                 ori "However, your sensitivity will be different from mine. Please let me know if it's too hot or uncomfortable."
+            voice "o_sex36"    
             ori "This is the test, so no surprises from me just yet. I'll pour a bit on your shoulder."    
             show orias_play hot with dissolve
             $orias_cutin = True
@@ -637,13 +723,16 @@ label orias_sex:
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
             $orilay_clface="content"
             cla "Oh... I like that. It starts hot then spreads out juuust in time so it doesn't hurt." 
+            voice "o_s02"
             ori "I'll let it cool a bit more than so I can let the drops linger too." 
             ori "It doesn't itch or anything?"
             cla "Nope!"
+            voice "o_s01"
             ori "And your skin doesn't appear irritated. We'll go with this then." 
             cla "You're... very thorough and caring."
             $ orias_bed_sprite.set_state(with_dissolve, orias_face="neutral")
             $orilay_oriface ="neutral"
+            voice "o_s09"
             ori "I wouldn't do anything to a submissive I wouldn't perform on myself." 
             show orias_play hot with dissolve
             $ orias_bed_sprite.set_state(with_dissolve, orias_face="smile")
@@ -652,6 +741,7 @@ label orias_sex:
             "Whenever I think I have the pattern down, Orias changes it up."
             hide orias_play hot with dissolve
             $orias_cutin = False
+            voice "o_sex37"
             ori "Would you like to turn over? It'll be a bit more sensitive on your stomach and chest."
             menu:
                 "Yes.":
@@ -665,6 +755,7 @@ label orias_sex:
                         "I open my eyes briefly, seeing Orias holding a small tin, with a little spoon sticking out. Ah, that's how he did it... I close my eyes again."
                         $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
                         $orilay_clface = "content"
+                    voice "o_sex38"    
                     ori "I'll keep this part short, since your skin is probably very sensitive now..." 
                     show orias_play hot with dissolve
                     $orias_cutin = True
@@ -672,6 +763,7 @@ label orias_sex:
                     $ orias_bed_sprite.set_state(with_dissolve, claire_face="pleasure")
                     $orilay_clface="pleasure"
                     "The 'burning' sensation only lasts a second, like sticking your toe in a hot tub before you submerge completely. My muscles tighten only briefly, then relax once the wax cools against my skin, and Orias occasionally dilutes the wax with his rubs." 
+                    voice "o_sex31"
                     ori "There, done. Anymore and this would take longer to do..."
                     cla "What would take— Oh."
                     show orias_play wax_scratch with dissolve
@@ -682,12 +774,14 @@ label orias_sex:
                     
                 "I'm happy like this.":
                     cla "I like what you're doing right now..."
+                    voice "o_sex22"
                     ori "Of course."
                     show orias_play hot with dissolve
                     $orias_cutin = True
                     "He continues dripping the wax, going up and down my spine, making sure not to get too close to my hair, which he brushes aside." 
                     show orias_play wax_rub with dissolve
                     "With each drop, I feel my senses heightened and... more aware of the touch? I can feel the wax slide down, or when it starts to pool, which Orias rubs down." 
+                    voice "o_sex31"
                     ori "There. I'm going to remove it."
                     show orias_play wax_scratch with dissolve
                     "Nails dig into my skin and gently travel up and down as pieces of wax fall beside me."
@@ -700,6 +794,7 @@ label orias_sex:
                     "He teasingly pinches my spine, causing me to giggle, before he continues. When he's done, I can feel his hands stroke up and down my back to show it's completely wax-free. My skin also feels silkier under his touch." 
                     hide orias_play with dissolve
                     $orias_cutin = False
+                    voice "o_sex31"
                     ori "There, done. You can turn over again." 
                     $ warmplay = False
                       
@@ -710,10 +805,12 @@ label orias_sex:
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried")
             $orilay_clface="worried"
             cla "I guess ticklish... Is it like tickle torture?"
+            voice "o_sex39"
             ori "Not that extreme, but I'll make featherlight movements on your body, seeing what you like." 
             if blindfolded == False:
                 $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
                 $orilay_clface="content"
+                voice "o_sex29"
                 ori "No peeking; that's half the fun."
                 "I close my eyes, and the weight on the bed disappears briefly before returning."
             else: 
@@ -727,18 +824,22 @@ label orias_sex:
             $orias_cutin = True
             "I feel something oh-so-subtle trail up my stomach above my navel. Unsurprisingly, it's ticklish."
             ori "Your reactions are cute."
+            voice "o_sex40"
             cla "Eee."
             show orias_play tickle_foot with dissolve
             "The feather(?) attacks the sole of my foot, and I automatically bend my leg, trying to get away."
             cla "I guess I could give you an uncute reaction if you wanted."
+            voice "o_s10"
             ori "I doubt it's possible from you."
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="laughing")
             $orilay_clface = "laughing"
             cla "WAHHAHA."
             $ orias_bed_sprite.set_state(with_dissolve, orias_face="laugh")
             $orilay_oriface = "laugh"
+            voice "o_sex41"
             ori " What... Hahaha."
             "His voice cracks and, for once, I hear a genuine laugh from him."
+            voice "o_sex42"
             ori "It was a manner of speech, I wasn't putting forth a challenge..." 
             show orias_play tickle_armpit with dissolve
             "My giggles are uncontrollable as he brushes against my armpits."
@@ -753,6 +854,7 @@ label orias_sex:
             $orias_cutin = False
             $ orias_bed_sprite.set_state(with_dissolve, orias_face="smile")
             $orilay_oriface = "smile"
+            voice "o_sex44"
             ori "If you like, I could make it more sensual than ticklish now..."
             menu:
                 "Sure.":
@@ -769,12 +871,14 @@ label orias_sex:
                     show orias_play tickle_thighs with dissolve
                     "I feel something tickle my inner thighs, and the pit of my stomach plummets."
                     cla "Ah..."
+                    voice "o_sex45"
                     ori "Feel surprisingly good?"
                     cla "I didn't expect that..."
                     "The feather darts against the lace of my panties, then travels upward to my navel then glides back down with more pressure." 
                     "The feather vanishes, leaving me with a lingering desire."
                     hide orias_play with dissolve
                     $orias_cutin = False
+                    voice "o_sex46"
                     ori "That should do. I don't want to warm you up too much yet."
                     $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
                     $orilay_clface = "content"
@@ -784,6 +888,7 @@ label orias_sex:
                     cla "This is good... I'm really enjoying this."
                     $ orias_cuddles_sprite.set_state(orias_face=1)
                     $orias_cuddles_oriface = "1"
+                    voice "o_sex43"
                     ori "Oh, really now?"
                     show orias_play tickle with dissolve
                     $orias_cutin = True
@@ -797,6 +902,7 @@ label orias_sex:
                     $orilay_oriface = "smile2"
                     hide orias_play with dissolve
                     $orias_cutin = False
+                    voice "o_sex31"
                     ori "There, I think I found most of your sensitive spots." 
                 "Red.":
                     $ tickleattack = False
@@ -805,11 +911,13 @@ label orias_sex:
     label halfwaypoint:
         $ firsthalf = False
         $ halfwayyay = True
+        voice "o_sex27"
         ori "How do you feel so far?"
         $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
         $orilay_clface = "content"
         if orilay_blindfold == True and orilay_tiedup == False:
             "He gently adjusts the blindfold, making sure it didn't become crooked during the session."
+            voice "o_sex48"
             ori "Would you like me to tie up your wrists?"
             menu:
                 "Yes.":
@@ -821,24 +929,30 @@ label orias_sex:
                     cla "It's perfect. I got wiggle room." 
                 "No.":
                     cla "I'm good. I'm happy having the blindfold."
+                    voice "o_w27"
                     ori "I'm glad you're content with that."
                 "Red.":
                      jump orias_stoppingnow
         if orilay_tiedup == True and orilay_blindfold == False:
             "He wriggles a finger between the knotted scarf, making sure it isn't cutting my circulation."
+            voice "o_sex47"
             ori "Would you like your eyes covered?" 
             menu:
                 "Yes.":
                     cla "Let's go the whole way."
+                    voice "o_sex49"
                     ori "I love your enthusiasm."
                     $ orias_bed_sprite.set_state(with_dissolve, blindfold=True)
                     $orilay_blindfold = True
                     "I close my eyes as I feel the sleep mask slide over my head."
+                    voice "o_sex50"
                     ori "How is that?"
                     cla "Comfortable and not too tight, but it won't fall off either."
+                    voice "o_sex25"
                     ori "Good."
                 "No.":
                     cla "I'm good with this."
+                    voice "o_sex15"
                     ori "I understand."
                 "Red.":
                     jump orias_stoppingnow
@@ -847,22 +961,26 @@ label orias_sex:
             menu:
                 "Blindfold.":
                     cla "I'll try being blindfolded. I feel more comfortable with the idea now."
+                    voice "o_sex27"
                     ori "I'm glad."
                     $ orias_bed_sprite.set_state(with_dissolve, blindfold=True)
                     $ orilay_blindfold = True
                     "I close my eyes and I feel the sleep mask slip down my head."
                     ori "How does that feel?"
                     cla "Good, comfy, but not too tight."
+                    voice "o_s09"
                     ori "Excellent."
                 "Wrists tied.":
                     cla "I'll be comfortable with my wrists tied up."
                     $ orias_bed_sprite.set_state(with_dissolve, tiedup=True)
                     $ orilay_tiedup = True
                     "The smooth silk wraps around my wrists as he ties some kind of knot. He wriggles a finger between it to make sure there's enough room for circulation."
+                    voice "o_s01"
                     ori "How do you feel?"
                     cla "It's perfect. I got wiggle room." 
                 "I'm good.":
                     cla "I don't think I'm ready for those steps quite yet."
+                    voice "o_sex15"
                     ori "I understand."
                 "Red.":
                     jump orias_stoppingnow
@@ -873,8 +991,10 @@ label orias_sex:
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried")
             $orilay_clface="worried"
             cla "Wait."
+            voice "o_s07"
             ori "Hm?"
             cla "I've been practically naked the whole time and... well, you're still in your window-pants."
+            voice "o_s11"
             ori "Heh, that's a new term..."
             ori "I'm guessing you'll feel better if I took them off?"
             "I nod."
@@ -884,6 +1004,7 @@ label orias_sex:
             $orias.set_state(mouth="default")
             show orias at center_alone2 with dissolve
             $orias.set_state(with_dissolve, eyes="closed", eyebrows="tender")
+            voice "o_sex51"
             ori "I guess it's only fair..."
             if orilay_blindfold == True:
                 "I feel the sleep mask lift up to my forehead before he steps back."
@@ -899,6 +1020,7 @@ label orias_sex:
             $claire.set_state(with_dissolve, eyes="down", eyebrows="up", mouth="low", emotion_base = "small blush", emotion = "default") 
             cl "That piercing must've hurt."
             $orias.set_state(with_dissolve, eyes= "fun front", mouth = "grin")
+            voice "o_sex52"
             ori "Which one?"
             $orias.set_state(with_dissolve, eyes= "happy", mouth = "smile")
             "He smirks and I chuckle while my eyes travel over his frame."
@@ -906,15 +1028,19 @@ label orias_sex:
             $orias.set_state(with_dissolve, eyes= "wide", eyebrows = "up", mouth = "uhh", emotion_base = "small blush")
             cl "And... you're cute...."
             $orias.set_state(with_dissolve, eyes="side", mouth="default", emotion_base="small blush", eyebrows="tender")
+            voice "o_sex53"
             ori "Cute? I admit I've been described as many things but 'cute' wasn't one of them."
             $orias.set_state(with_dissolve, eyes= "wide", eyebrows = "up", mouth = "low", emotion_base = "small blush")
             $claire.set_state(eyes="happy", eyebrows="default", mouth="happy", emotion_base = "small blush", emotion = "flowers")
             cl "Well, you're cute now. If you can call me exquisite, I can call you cute."
             $orias.set_state(with_dissolve, eyes= "default", eyebrows = "tender", mouth = "smile", emotion_base = "small blush")
             show orias at center_alone2 with dissolve
+            voice "o_sex54"
             ori "I'm honored to be seen as cute in your eyes then." 
             if orilay_blindfold == True:
                 $orias.set_state(with_dissolve, eyes= "default", eyebrows = "tender", mouth = "smile",emotion = "heart", emotion_base = "default")
+                voice "o_sex55"
+                ori "I hope you enjoyed the show."
                 "He winks then places the sleep mask over my eyes again."
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="content")
             $orilay_clface="content"
@@ -930,6 +1056,7 @@ label orias_sex:
     else:
         "I hear footsteps away, followed by the sound of tin scraping against wood. Is he at my bookcase?"
     "He returns, and the bed shifts under his weight again."
+    voice "o_sex56"
     ori "Ready? It's a surprise this time."
     "I inhale, wondering what part of my body he'll touch next."
     $ halfwayyay = False
@@ -951,6 +1078,7 @@ label orias_sex:
     $ oraltime = True
     "Once all of the chocolate has been removed, he flutters downward, alternating between warm kisses and hot breaths."
     "When he reaches my navel, his lips close around it and I feel an incredible suction and nothing else. It's then I know what he's trying to hint..."
+    voice "o_sex57"
     ori "Should I keep going...?"
     menu:
         "Let him continue.":
@@ -959,7 +1087,8 @@ label orias_sex:
             $ orias_bed_sprite.set_state(with_dissolve, panties="off")
             $orilay_panties = "off"
             "My stomach coils from the closing distance, and his lips brush the tips of my pubic hair. After a deep breath, I widen my legs a little, and he begins massaging my inner thighs."
-            ori "I'm glad you enjoyed the sensational play..."
+            voice "o_sex59"
+            ori "I'm glad you enjoyed the sensation play..."
             show orias_finish oral with dissolve
             "With long broad strokes, he parts my lower lips, licking each side tenderly. I turn my head to the side, my body highly sensitive to every movement." 
             "The coiling sensation tightens like a spring, and every stroke and lick sends jolts up and down my body. His tongue narrows and traces along my entrance, and I start to squirm, my hips unable to keep still."
@@ -981,10 +1110,12 @@ label orias_sex:
                 $ orias_bed_sprite.set_state(with_dissolve, claire_face="worried")
                 $orilay_clface ="worried"
                 cla "Orias...?"
+                voice "o_s01"
                 ori "I'm here, and I'll remove everything."
             "I feel a hand caress my forehead, wiping away the sweat."
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="happy")
             $orilay_clface ="happy"
+            voice "o_sex60"
             ori "Enjoyed yourself?"
             cla "Did I ever..."
             if orilay_blindfold and orilay_tiedup == True:
@@ -1004,11 +1135,13 @@ label orias_sex:
             
         "Request fingers instead.":
             cla "Um, is it okay if you use your fingers... once you get there?"
+            voice "o_sex58"
             ori "I can do that."
             "He plants one last firm kiss just above my pubic hair, and I can subtly feel his fingers replace where his mouth was. Wriggling under the lace, he then pulls down my underwear."
             $orilay_panties = "off"
             "His finger travels through my hair, then dips into the already moist parting. I widen my legs slightly to make it easier for him."
             show orias_finish fingers with dissolve
+            voice "o_sex59"
             ori "I'm glad you enjoyed the sensation play."
             "One hand massages my inner thigh while the other begins stroking my outer lips. With each motion, his fingers explore deeper, tracing the sides and around my entrance." 
             if orilay_blindfold == True:
@@ -1034,6 +1167,7 @@ label orias_sex:
             hide orias_finish with dissolve
             $ orias_bed_sprite.set_state(with_dissolve, claire_face="happy")
             $orilay_clface ="happy"
+            voice "o_sex60"
             ori "Enjoyed yourself?"
             cla "Heh, you'd think so after that..."
             cla "Wow..."
@@ -1046,6 +1180,7 @@ label orias_sex:
             scene bg bedroom_candles with dissolve
             $orias.set_state(eyes= "default", mouth="smile", eyebrows="tender", emotion="default", emotion_base="default")
             show orias at center_alone2 with dissolve
+            voice "o_sex61"
             ori "I'll clean you up now, so you can relax."
             stop music fadeout 2
             $claire.set_state(eyes="happy", eyebrows="inwards", mouth="wavy", emotion_base = "small blush", emotion = "default")
@@ -1060,6 +1195,7 @@ label orias_sex:
     $ orias_cuddles_sprite.set_state(with_dissolve, claire_face=1)
     $orias_cuddles_clface = "1"
     cla "Was all this really sex?"
+    voice "o_sex62"
     ori "Well, what do you think we did?"
     $ orias_cuddles_sprite.set_state(with_dissolve, claire_face=2, orias_face=2)
     $orias_cuddles_clface = "2"
@@ -1067,6 +1203,7 @@ label orias_sex:
     "I think about it, then feel my face heat up, reflecting over the activities. I sip my water, and Orias chuckles softly at my reaction."
     $ orias_cuddles_sprite.set_state(with_dissolve, orias_face=1)
     $orias_cuddles_oriface = "1"
+    voice "o_w08"
     ori "Moreover, I got well nourished from you."
     if orias_scenes >= 3:
         ori "Also, was there anything I could do better? If there's ever a next time..."
@@ -1080,10 +1217,12 @@ label orias_sex:
     cla "You were great but at the same time... it felt distant."
     $ orias_cuddles_sprite.set_state(with_dissolve, orias_face=3)
     $orias_cuddles_oriface = "3"
+    voice "o_sex63"
     ori "Distant? For me, the ultimate form of pleasure is being able to satisfy my partner." 
     cla "..."
     $ orias_cuddles_sprite.set_state(with_dissolve, orias_face=4)
     $orias_cuddles_oriface = "4"
+    voice "o_sex64"
     ori "Ah, then..."
     "He places a hesitant kiss on my forehead, then pulls away. I wonder if he's not used to affection outside of sex..."
     $ orias_cuddles_sprite.set_state(with_dissolve, claire_face=3)
@@ -1109,6 +1248,7 @@ label orias_stoppingnow:
             $orilay_clface= "worried"
             $orilay_oriface = "neutral"
             cla "Red. I'd like to stop."
+            voice "o_sex15"
             ori "I understand."
             scene bg bedroom_candles with dissolve
             if orilay_blindfold == True:
@@ -1125,6 +1265,7 @@ label orias_stoppingnow:
             $orilay_clface= "worried"
             $orilay_oriface = "neutral"
             cla "Red. I'm done."
+            voice "o_sex15"
             ori "I understand."
             scene bg bedroom_candles with dissolve
             if orilay_blindfold == True:
@@ -1134,6 +1275,7 @@ label orias_stoppingnow:
             "Orias gently wipes my body down with a damp handcloth, making sure nothing is missed from our sessions."
             $orias.set_state(eyes="default", eyebrows="tender", mouth="default", emotion="default", emotion_base="default")
             show orias at center_alone2 with dissolve
+            voice "o_sex31"
             ori "There."
             jump oriasstopmiddle
             
@@ -1143,6 +1285,7 @@ label orias_stoppingnow:
             $orilay_clface= "worried"
             $orilay_oriface = "neutral"
             cla "Red. I'm done."
+            voice "o_sex15"
             ori "I understand."
             scene bg bedroom_candles with dissolve
             if orilay_blindfold == True and orilay_tiedup == False:
@@ -1155,6 +1298,7 @@ label orias_stoppingnow:
                 "Orias gently wipes my body down with a damp handcloth, making sure nothing is missed from our sessions."
             $orias.set_state(eyes="default", eyebrows="tender", mouth="default", emotion="default", emotion_base="default")
             show orias at center_alone2 with dissolve
+            voice "o_sex31"
             ori "There."    
             jump oriasstoplate
             
@@ -1165,6 +1309,7 @@ label orias_stoppingnow:
             cla "Red. Red."
             hide orias_finish with dissolve
             "He halts, then removes himself from my body."
+            voice "o_sex22"
             ori "Of course."
             scene bg bedroom_candles with dissolve
             if orilay_blindfold == True:
@@ -1177,6 +1322,7 @@ label orias_stoppingnow:
                 jump oriasstoplate
             $orias.set_state(eyes="default", eyebrows="tender", mouth="default", emotion="default", emotion_base="default")    
             show orias at center_alone2 with dissolve
+            voice "o_sex31"
             ori "There."  
             jump oriasstoplate
 
@@ -1187,6 +1333,7 @@ label oriasstopearly:
         $claire.set_state(eyes="down", mouth="low", eyebrows="inwards", emotion="default", emotion_base="small blush")
         cl "I'm sorry for stopping the session so soon..."
         $orias.set_state(with_dissolve, eyes="closed", eyebrows="inwards", mouth="smile")
+        voice "o_sex16"
         ori "No, don't be. You don't need to force yourself to do anything you're not comfortable with."
         $claire.set_state(eyes="tender", mouth="smile")
         $orias.set_state(with_dissolve, eyes="default", eyebrows="tender" )
@@ -1194,11 +1341,13 @@ label oriasstopearly:
         $claire.set_state(eyes="tender side", mouth="low")
         cl "Um, would it be too vanilla to ask for a cuddle at least?"
         $orias.set_state(with_dissolve, mouth="happy", eyebrows="up")
+        voice "o_sex17"
         ori "Oh, I enjoy aftercare."
         $claire.set_state(mouth="oh", eyebrows="up", eyes="default")
         $orias.set_state(with_dissolve, mouth="smile", eyebrows="tender" )
         cl "Aftercare?"
         $orias.set_state(with_dissolve, eyes="wink", mouth="smile", eyebrows="tender", emotion="heart")
+        voice "o_sex14"
         ori "Cuddling, serving tea, making sure my partner is alright after the session, no matter how intense or... short." 
         stop music fadeout 2
         $claire.set_state(mouth="grin", eyebrows="default", eyes="happy")
@@ -1212,6 +1361,7 @@ label oriasstopearly:
         
 label oriasstopmiddle:
         $orias.set_state(eyes="default", eyebrows="inwards", mouth="smile", emotion="default", emotion_base="default")
+        voice "o_sex31"
         ori "There you go. Do you feel better, [claire_name]?"
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="inwards", emotion="default", emotion_base="small blush")
         cl "Yes... Um, sorry for ending it after we had a good mood going... I felt I had enough."
@@ -1236,6 +1386,7 @@ label oriasstopmiddle:
         $orias.set_state(with_dissolve,eyes="closed", eyebrows="tender", mouth="smile", emotion="default")
         ori "It's definitely not entry-level stuff, and you still gave it a chance." 
         $orias.set_state(with_dissolve,eyes="happy", eyebrows="tender", mouth="smile", emotion="heart")
+        voice "o_sex19"
         ori "You did well on your first session. I even got nourished during it."
         $claire.set_state(eyes="dots", eyebrows="default", mouth="smile", emotion="default")
         cl "Ah... then I'm glad it worked out..."
@@ -1243,11 +1394,13 @@ label oriasstopmiddle:
         $claire.set_state(eyes="tender side", mouth="low")
         cl "Um... would it be too vanilla if I asked for a cuddle now...?"
         $orias.set_state(with_dissolve, mouth="happy", eyebrows="up", eyes="closed")
+        voice "o_sex18"
         ori "Of course not. Aftercare is extremely important, no matter how intense or light the session is."
         $claire.set_state(mouth="oh", eyebrows="up", eyes="default")
         $orias.set_state(with_dissolve, mouth="smile", eyebrows="tender", eyes="default" )
         cl "Aftercare?"
         $orias.set_state(with_dissolve, eyes="wink", mouth="smile", eyebrows="tender", emotion="heart")
+        voice "o_s01"
         ori "Where I get to spoil you with cuddles and tea and make sure you're alright."
         stop music fadeout 2
         $claire.set_state(mouth="grin", eyebrows="default", eyes="happy")
@@ -1258,8 +1411,7 @@ label oriasstopmiddle:
         "My head finds a comfortable spot on his shoulder, and I close my eyes..."
         call credits
         jump orias_epilogue 
-        
-#TODO -> Faces    
+          
 label oriasstoplate:
         $orias.set_state(eyes="default", eyebrows="tender", mouth="default", emotion="default", emotion_base="default")
         $claire.set_state(eyes="down", eyebrows="inwards", mouth="low", emotion="sweat", emotion_base="small blush")
@@ -1270,22 +1422,26 @@ label oriasstoplate:
         $claire.set_state(eyes="closed", eyebrows="inwards", mouth="low", emotion="sweat", emotion_base="small blush")
         cl "Yeah... I'm sorry. We were pretty far, and I suddenly felt like I had to stop."
         $orias.set_state(with_dissolve, eyes="closed", eyebrows="tender", mouth="neutral")
+        voice "o_sex15"
         ori "I understand. It's not always easy having someone in control for that long."
         $claire.set_state(eyes="bug cry", eyebrows="inwards", mouth="low", emotion_base="small blush")
         $orias.set_state(with_dissolve, eyes="default", eyebrows="up", mouth="default")
         cl "I apologize for ruining everything..."
         $orias.set_state(with_dissolve, eyes="happy", eyebrows="tender", mouth="smile")
+        voice "o_s09"
         ori "You didn't ruin anything. If anything, I'm proud of you. You got to experiment in something that's... not exactly easy for beginners."
         $claire.set_state(eyes="happy", eyebrows="inwards", mouth="smile", emotion="sweat", emotion_base="small blush")
         cl "Yeah... Maybe I went over my head a bit... but I'm glad I got to try it with you, Orias."
         $claire.set_state(eyes="tender", emotion="default")
         cl "Can we do something more, uh, tame? Like a cuddle?"
         $orias.set_state(with_dissolve, mouth="happy", eyebrows="up", eyes="closed")
+        voice "o_sex22"
         ori "Of course. Aftercare is extremely important, no matter how intense or light the session is."
         $claire.set_state(mouth="oh", eyebrows="up", eyes="default")
         $orias.set_state(with_dissolve, mouth="smile", eyebrows="tender", eyes="default" )
         cl "Aftercare?"
         $orias.set_state(with_dissolve, eyes="wink", mouth="smile", eyebrows="tender", emotion="heart")
+        voice "o_s01"
         ori "Where I get to spoil you with cuddles and tea and make sure you're alright."
         stop music fadeout 2
         $claire.set_state(mouth="grin", eyebrows="default", eyes="happy")
@@ -1318,8 +1474,10 @@ label orias_epilogue:
     cl "...Was it a dream?"
     "I sit up and reach for my phone as part of my routine. But there's something different about it. Next to my phone is a note. Curious, I pick it up."
     scene white with dissolve
+    voice "oriasnote1"
     show text "{color=#000} 'Salutations, I hope you had a good night's sleep.\n I want to thank you for accommodating us; it was a delight browsing the miniature library.\n If, on the off chance, you would like to see me again, I provided my symbol and incantation on the back of this note.\n Sincerely, Orias.'{/color}" with dissolve
     $renpy.pause()
+    voice "oriasnote2"
     show text "{color=#000}'P.S. I left a chai tea blend for you. Please enjoy.'{/color}" with dissolve
     $renpy.pause()
     show bg bedroom_day with dissolve
@@ -1348,6 +1506,7 @@ label orias_epilogue_long:
     "I drag my feet as I walk home from university."
     "Even a week after my spring break, I find myself thinking of Orias." 
     "If I close my eyes, I can almost hear his voice..."
+    voice "o_s08"
     "???" "[claire_name]?"
     $claire.set_state(eyes="default", emotion="default", eyebrows="default", mouth="uh", emotion_base="default")
     cl "Huh?"
@@ -1357,10 +1516,12 @@ label orias_epilogue_long:
     $claire.set_state(eyes="happy", emotion="flowers", eyebrows="default", mouth="happy", emotion_base="default")
     cl "Orias! How did you find me?" 
     $orias.set_state(with_dissolve,eyes= "side", mouth="oh", eyebrows="default", emotion="default", emotion_base="default")
+    voice "o_s04"
     ori "Considering your house and education, I had a faint idea but I didn't know your schedule. However, I'm glad I was able to see you."
     $orias.set_state(with_dissolve,eyes= "default", mouth="smile", eyebrows="default", emotion="default", emotion_base="default")
     "He holds up a small container tied with a pretty ribbon on top."
     $orias.set_state(with_dissolve,eyes= "wink", mouth="grin", eyebrows="tender", emotion="note", emotion_base="default")
+    voice "o_s02"
     ori "I thought that you might have missed my specialty tea, so I brought some..." 
     $orias.set_state(with_dissolve,eyes= "happy", mouth="grin", eyebrows="tender", emotion="default", emotion_base="default")
     $claire.set_state(eyes="happy", emotion="flowers", eyebrows="default", mouth="grin", emotion_base="default")
@@ -1376,6 +1537,7 @@ label orias_epilogue_long:
     $orias.set_state(with_dissolve,eyes= "side", mouth="default", eyebrows="tender", emotion="default", emotion_base="default")
     "After putting his gift into my bag, I present a small item bundled in tissue paper. He takes it and carefully unwraps it, revealing the silicone leaf lid attached to a tiny steel basket ."
     $orias.set_state(with_dissolve,eyes= "wide", mouth="oh", eyebrows="up", emotion="default", emotion_base="default")
+    voice "o_epi01"
     ori "And this is...?"
     $orias.set_state(with_dissolve,eyes= "wide", mouth="default", eyebrows="up", emotion="default", emotion_base="default")
     $claire.set_state(eyes="happy", emotion="note", eyebrows="default", mouth="happy", emotion_base="default")
@@ -1383,24 +1545,28 @@ label orias_epilogue_long:
     $orias.set_state(with_dissolve,eyes= "squint", mouth="neutral", eyebrows="tender", emotion="default", emotion_base="default")
     "He holds it up, scrutinizing it as if he has a profound comment to say, then lowers his hand."
     $orias.set_state(eyes= "happy", mouth="grin", eyebrows="tender", emotion="note", emotion_base="default")
+    voice "o_epi02"
     ori "It's... cute. Thank you."
     $orias.set_state(with_dissolve,eyes= "side", mouth="oh", eyebrows="tender", emotion="default", emotion_base="small blush")
     ori "It appears you... missed something other than my tea." 
     $claire.set_state(eyes="down", emotion="default", eyebrows="default", mouth="smile", emotion_base="small blush")
     cl "Yeah."
     $orias.set_state(with_dissolve,eyes= "default", mouth="smile", eyebrows="tender", emotion="default", emotion_base="small blush")
+    voice "o_epi03"
     ori "I promise that the feeling's mutual."
     $orias.set_state(with_dissolve,eyes= "happy", mouth="smile", eyebrows="tender", emotion="heart", emotion_base="default")
     ori "If you wish... I could visit you more often."
     $claire.set_state(eyes="fun front", emotion="heart", eyebrows="default", mouth="kitty", emotion_base="default")
     cl "I'd like that. However, I have two requests."
     $orias.set_state(with_dissolve,eyes= "default", mouth="oh", eyebrows="up", emotion="default", emotion_base="default")
+    voice "o_epi04"
     ori "And they are...?"
     $orias.set_state(with_dissolve,eyes= "wide", mouth="low", eyebrows="up", emotion="default", emotion_base="small blush")
     "I stand on my tippy toes and deliver a light peck to his cheek."
     $claire.set_state(eyes="default", emotion="default", eyebrows="default", mouth="grin", emotion_base="default")
     cl "I'd like to see a little more affection from you."
     $orias.set_state(with_dissolve,eyes= "side", mouth="smile", eyebrows="tender", emotion="default", emotion_base="default")
+    voice "o_epi05"
     ori "I'm satisfied with that arrangement."
     $claire.set_state(eyes="tender side", emotion="default", eyebrows="default", mouth="uh", emotion_base="small blush")
     cl "Aaaand..."
@@ -1408,6 +1574,7 @@ label orias_epilogue_long:
     $claire.set_state(eyes="down", emotion="steam", eyebrows="default", mouth="low", emotion_base="large blush")
     cl "Can I do things for you in bed?"
     $orias.set_state(with_dissolve,eyes= "wide", mouth="oh", eyebrows="up", emotion="default", emotion_base="default")
+    voice "o_epi06"
     ori "You'd like to? I admit my preferences are... a little unusual so I rarely disclose it to my new partners."
     $claire.set_state(eyes="clench", emotion="panic", eyebrows="default", mouth="oh", emotion_base="large blush")
     cl "Try me."
@@ -1416,6 +1583,7 @@ label orias_epilogue_long:
     $claire.set_state(eyes="dots", emotion="sweat lots", eyebrows="flat", mouth="ehh", emotion_base="large blush")
     cl "W-well, I could always start off with a few simple things..."
     $orias.set_state(with_dissolve,eyes= "wink", mouth="smile", eyebrows="tender", emotion="default", emotion_base="default")
+    voice "o_s10"
     ori "Remember, there's no rush. We can take our time with these arrangements."
     $orias.set_state(with_dissolve,eyes= "side", mouth="oh", eyebrows="tender", emotion="default", emotion_base="small blush")
     ori "Now regarding the first request..."

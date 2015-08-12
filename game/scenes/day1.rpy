@@ -12,8 +12,8 @@ label day1_morning:
     cl "..."
     $claire.set_state(with_dissolve, mouth="uhh", emotion="sweat lots")
     cl "It's still here."
-    play sound "assets/sfx/portal_whoop.ogg"
     show item sock at chibi_scene with dissolve
+    play sound "assets/sfx/portal_whoop.ogg"
     "Hesitantly, I pick up a dirty, discarded sock and toss it into the purple portal. It vanishes into the void." 
     hide item with dissolve
     $claire.set_state(mouth="wavy", emotion="lll", eyebrows="inwards")
@@ -102,7 +102,7 @@ label day1_morning:
     show kael at mleft4 with move
     $orias.set_state(**Emotion.normal())
     show orias at right with moveinright
-    
+    voice "o_w04"
     ori "Feeling better? Here, some tea that'll help calm your nerves." 
     show item tea at chibi_scene with dissolve
     "Orias appears and gently sets down a fancy, unfamiliar tea cup and a flowery aroma fills the air. With slightly trembling hands, I take it."
@@ -111,10 +111,12 @@ label day1_morning:
     hide item with dissolve
     $orias.set_state(with_dissolve, mouth="oh", eyebrows="tender")
     show orias at speak
+    voice "o_w05"
     ori "It's similar to your earth passionflower. I promise it's safe for humans; I've been brewing this type for centuries." 
     $claire.set_state(eyes="closed", mouth="smile", emotion="flowers")
     cl "Mm, smells like a meadow after the rain... It tastes amazing, too."
     $orias.set_state(with_dissolve, eyes="closed", mouth="default", eyebrows="inwards", emotion="sweat")
+    voice "o_s02"
     ori "I'm glad to be of assistance. Your crying was, uh, quite alarming. I hope Kael didn't upset you."
     #kael =< =< =<
     $kael.set_state(emotion="panic", eyebrows="inwards", mouth="ah", eyes="clench", emotion_base="no nose")
@@ -127,18 +129,25 @@ label day1_morning:
     $kael.set_state(with_dissolve,  eyes="happy", emotion="sweat", mouth="default", emotion_base="default")
     stop music
     with hpunch
+    voice "a_w06"
+    $renpy.music.set_volume(0.5, delay=0, channel='voice')
     "???" "THESE GODDAMN BLUE SHELLS!"
+    $renpy.music.set_volume(1.0, delay=0, channel='voice')
     play music music_daily
+    voice "k_s03"
     ka "Akki's in the living room, Mirari's in the garden." 
     $orias.set_state(with_dissolve, emotion="default", eyes="default", mouth="smile")
+    voice "o_w06"
     ori "And I'll be returning to the miniature library. I've never seen so many books on modern human law before, it's fascinating."
     $claire.set_state(mouth="smile")
     cl "Oh, my dad's a lawyer so... And that's his office..."
     $orias.set_state(with_dissolve, eyebrows="inwards", mouth="default")
+    voice "o_s04"
     ori "Would it be rude to continue browsing?"
     $claire.set_state(eyes="happy")
     cl "Nah, it's okay. He probably hasn't touched those books in years anyway. Just put it back when you're finished."
     $orias.set_state(eyes="closed", eyebrows="default", mouth="smile")
+    voice "o_w08"
     ori "I will. Thank you."
     
     #orias leaves

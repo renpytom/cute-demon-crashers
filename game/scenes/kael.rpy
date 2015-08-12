@@ -468,6 +468,7 @@ label kael_sex:
             "Kael leans in and nuzzles my nose, his hand seeking my own. Our fingers intertwine, and he gives my forehead a gentle kiss."     
             jump kissingpermission
         "Maybe I'm not ready...":
+            hide screen sex_stop
             cla "Um, I don't think I'm ready after all.."
             cla "Sorry."
             hide kael_start with dissolve
@@ -586,6 +587,7 @@ label kissingpermission:
                     $kael_claire_naked = True
                     jump oralactivity
                 "I'd like to stop now.":
+                    hide screen sex_stop
                     $claire.set_state(emotion_base="large blush", eyes="tender", eyebrows="inwards", mouth="low")
                     cl "Um... Wait..."
                     $kael.set_state (with_dissolve, eyebrows="up", eyes ="default", mouth="low")
@@ -681,6 +683,7 @@ label kissingpermission:
                     "I pull up my chemise, and his fingers slip under the lace of my panties, giving it a teasing tug."
                     $kael_claire_naked = True
                 "I'd like to stop now.":
+                    hide screen sex_stop
                     $kael.set_state(with_dissolve, eyebrows="up", mouth="low", eyes="default", emotion="default")
                     $claire.set_state(eyes="default", eyebrows="inwards", mouth="low", emotion="default", emotion_base="small blush")
                     cl "Um... Wait..."
@@ -703,6 +706,7 @@ label kissingpermission:
                     jump kaelearlystop
             
         "I'd like to stop now.":
+            hide screen sex_stop
             jump kaelstoppingnow 
         
 label oralactivity:

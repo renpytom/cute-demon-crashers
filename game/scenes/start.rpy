@@ -278,7 +278,7 @@ label start:
         "Listen to them at the door first." :
             #[TODO]
             #Figure out what to do with the music for the rest of the scene
-            $renpy.music.set_volume(0.5, delay=0, channel='voice')
+            $renpy.music.set_volume(0.3, delay=0, channel='voice')
             "I approach the door and hold my ear close to the frame. They're not even trying to lower their voices, making it easy to catch every word." 
             ka "...We completely scared that poor girl, Mirari."
             voice "a_s03"
