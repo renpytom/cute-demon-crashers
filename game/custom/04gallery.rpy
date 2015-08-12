@@ -121,18 +121,19 @@ init -100 python:
     class SpriteImageSet(GalleryItem):
         ##### method: __init__(self, id, sprite, initial_state, *states)
         # @type: str, ComposedSprite, dict(a, b), dict(a, b)... -> SpriteImageSet
-        def __init__(self, id, sprite, initial_state, *states):
+        def __init__(self, id, sprite, initial_state, *states, **kwargs):
             self.id = id
             self.sprite = sprite
             self.initial_state = initial_state
             self.states = states
+            self.state_filter = kwargs.get('state_filter', identity)
 
         ##### method: get_items(self)
         # @type: () -> [GalleryItem]
         def get_items(self):
             def to_item(st):
                 return SpriteImage(
-                    (self.id, self.sprite.dict_to_state_tuple(st)),
+                    (self.id, self.state_filter(self.sprite.dict_to_state_tuple(st))),
                     self.sprite.snapshot(**st)
                 )
 
@@ -328,17 +329,17 @@ init -100 python:
                     return folder
             return None
 
-        ##### method: add_unlockable_sprite(self, sprite, name)
-        # @type: ComposedSprite, str -> unit
+        ##### method: add_unlockable_sprite(self, sprite, name, state_filter)
+        # @type: ComposedSprite, str, (state -> state) -> unit
         #
         # Modifies a ComposedSprite such that for each state transition
         # the relevant state ID is unlocked in the gallery
         # automatically.
-        def add_unlockable_sprite(self, sprite, name):
+        def add_unlockable_sprite(self, sprite, name, state_filter=identity):
             def wrap_unlock(f):
                 def apply(*args, **kwargs):
                     result = f(*args, **kwargs)
-                    self.unlock_sprite(sprite)
+                    self.unlock_sprite(sprite, state_filter=state_filter)
                     return result
                 return apply
             
@@ -346,13 +347,13 @@ init -100 python:
             self.sprite_map[sprite] = name
 
 
-        ##### method: unlock_sprite(self, sprite)
-        # @type: ComposedSprite -> unit
+        ##### method: unlock_sprite(self, sprite, state_filter)
+        # @type: ComposedSprite, (state -> state) -> unit
         #
         # Unlocks the current state of a previously registered
         # ComposedSprite.
-        def unlock_sprite(self, sprite):
-            self.unlock((self.sprite_map[sprite], sprite.state()))
+        def unlock_sprite(self, sprite, state_filter=identity):
+            self.unlock((self.sprite_map[sprite], state_filter(sprite.state())))
 
 
         ##### method: unlock(self, id)

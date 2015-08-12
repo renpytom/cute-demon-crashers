@@ -159,6 +159,23 @@ init -100 python:
             return (y, ys + [y])
         
         return reduce(go, xs, (initial, [initial]))[1]
+
+
+    #### function: identity(a)
+    # @type: a -> a
+    #
+    # The identity function just returns its argument. We can use it for
+    # transformations we don't really care about doing anything special.
+    def identity(a):
+        return a
+
+
+    #### function: first(xs)
+    # @type: list(a) -> a
+    #
+    # Returns the first item of the list.
+    def first(xs):
+        return xs[0]
     
 
     #### function: merge(a, b)

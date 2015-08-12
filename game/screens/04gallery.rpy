@@ -1,6 +1,6 @@
 init python:
     gallery_folder = None
-    gallery_all_unlocked = True
+    gallery_all_unlocked = False
     gallery = Gallery(
         TutorialFolder(
             "tutorial",
@@ -20,7 +20,8 @@ init python:
                     "emotion": "default"
                 },
                 { "base": "human" },
-                { "base": "naked" }
+                { "base": "naked" },
+                state_filter=first
             ).get_items(),
             ImageBundle(
                 RenpyImage("chibi_akki01"),
@@ -50,7 +51,8 @@ init python:
                 { "base": "human" },
                 { "base": "baby doll" },
                 { "base": "panties" },
-                { "base": "naked" }
+                { "base": "naked" },
+                state_filter=first
             ).get_items(),
             ImageBundle(
                 RenpyImage("chibi_mira02"),
@@ -89,7 +91,8 @@ init python:
                 },
                 { "base": "apron" },
                 { "base": "human" },
-                { "base": "naked" }
+                { "base": "naked" },
+                state_filter=first
             ).get_items(),
             ImageBundle(
                 RenpyImage("chibi_kael01"),
@@ -135,7 +138,8 @@ init python:
                 { "base": "jacketless" },
                 { "base": "tea" },
                 { "base": "human" },
-                { "base": "naked" }
+                { "base": "naked" },
+                state_filter=first
             ).get_items(),
             ImageBundle(
                 RenpyImage("chibi_orias01"),
@@ -230,10 +234,10 @@ init python:
         )
     )
 
-    gallery.add_unlockable_sprite(akki, "akki_sprite")
-    gallery.add_unlockable_sprite(mirari, "mirari_sprite")
-    gallery.add_unlockable_sprite(kael, "kael_sprite")
-    gallery.add_unlockable_sprite(orias, "orias_sprite")
+    gallery.add_unlockable_sprite(akki, "akki_sprite", state_filter=first)
+    gallery.add_unlockable_sprite(mirari, "mirari_sprite", state_filter=first)
+    gallery.add_unlockable_sprite(kael, "kael_sprite", state_filter=first)
+    gallery.add_unlockable_sprite(orias, "orias_sprite", state_filter=first)
     
     gallery.add_unlockable_sprite(akki_foreplay, "akki_foreplay")
     gallery.add_unlockable_sprite(akki_missionary_sprite, "akki_missionary")
@@ -323,20 +327,20 @@ screen image_folder(bundles, character=None):
             
             hbox:
                 for bundle in bundles:
-                    fixed:
-                        style_group "gallery_folder_bundle"
+                    if bundle.is_unlocked():
+                        fixed:
+                            style_group "gallery_folder_bundle"
 
-                        if bundle.is_unlocked():
                             imagebutton:
                                 auto bundle.thumb
                                 action bundle.show()
-                        else:
-                            add "assets/ui/gallery-locked.png"
+                            window:
+                                $ total = bundle.get_total()
+                                $ unlocked = len(bundle.get_unlocked())
+                                text "{0} / {1}".format(unlocked, total)
+                    else:
+                        add "assets/ui/gallery-locked.png"
 
-                        window:
-                            $ total = bundle.get_total()
-                            $ unlocked = len(bundle.get_unlocked())
-                            text "{0} / {1}".format(unlocked, total)
                         
 
         if character is not None:
@@ -418,8 +422,10 @@ init:
     style gallery_view_window:
         xpadding 0
         ypadding 0
+        xfill True
+        yfill True
     
-    style gallery_view_frame:
+    style gallery_view_displayable_frame:
         background None
         xalign 0.5
         yalign 0.5
