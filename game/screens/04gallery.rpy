@@ -257,10 +257,15 @@ screen gallery():
 
     # Character folders can't be shown on top of the other screens
     # because we need the character's sprite to show behind the
-    # main menu. Ugly hack ensues!
+    # main menu. Also, tracking shown screens everywhere is hell.
+    # Ugly hack ensues!
     $ cur_folder = gallery[gallery_folder]
     if isinstance(cur_folder, CharacterFolder):
         use image_folder(cur_folder.bundles, character=cur_folder.sprite)
+    elif isinstance(cur_folder, ReplayFolder):
+        use replay_folder(cur_folder.bundles)
+    elif isinstance(cur_folder, ImageFolder):
+        use image_folder(cur_folder.bundles)
         
 
 screen replay_folder(bundles):

@@ -256,7 +256,7 @@ init -100 python:
             self.bundles = bundles
 
         def select(self):
-            return Show("image_folder", None, self.bundles)
+            return lambda: None
 
     #### class: CharacterFolder(ImageFolder)
     #
@@ -268,12 +268,10 @@ init -100 python:
             self.sprite = sprite
 
         def select(self):
-            def hide_all():
+            def reset_vars():
                 renpy.store.gallery_charidx = 0
-                renpy.hide_screen("image_folder")
-                renpy.hide_screen("replay_folder")
 
-            return hide_all
+            return reset_vars
 
 
     #### class: ReplayFolder(ImageFolder)
@@ -285,7 +283,7 @@ init -100 python:
             self.bundles = bundles
 
         def select(self):
-            return Show("replay_folder", None, self.bundles)
+            return lambda: None
     
 
         
