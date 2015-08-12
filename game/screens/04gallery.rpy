@@ -1,5 +1,6 @@
 init python:
     gallery_folder = None
+    gallery_all_unlocked = True
     gallery = Gallery(
         TutorialFolder(
             "tutorial",
@@ -7,7 +8,20 @@ init python:
         ),
         CharacterFolder(
             "akki",
-            akki,
+            SpriteImageSet(
+                "akki_sprite",
+                akki,
+                {
+                    "base": "default",
+                    "emotion_base": "default",
+                    "eyes": "default",
+                    "eyebrows": "default",
+                    "mouth": "default",
+                    "emotion": "default"
+                },
+                { "base": "human" },
+                { "base": "naked" }
+            ).get_items(),
             ImageBundle(
                 RenpyImage("chibi_akki01"),
                 thumb="assets/ui/gallery-akki-1-%s.png"),
@@ -22,24 +36,82 @@ init python:
         ),
         CharacterFolder(
             "mirari",
-            mirari,
-            ImageBundle(thumb="assets/ui/gallery-mirari-1-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-mirari-2-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-mirari-3-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-mirari-4-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-mirari-5-%s.png"),
+            SpriteImageSet(
+                "mirari_sprite",
+                mirari,
+                {
+                    "base": "default",
+                    "emotion_base": "default",
+                    "eyes": "default",
+                    "eyebrows": "default",
+                    "mouth": "default",
+                    "emotion": "default"
+                },
+                { "base": "human" },
+                { "base": "baby doll" },
+                { "base": "panties" },
+                { "base": "naked" }
+            ).get_items(),
+            ImageBundle(
+                RenpyImage("chibi_mira02"),
+                thumb="assets/ui/gallery-mirari-1-%s.png"),
+            ImageBundle(
+                RenpyImage("chibi_mira01"),
+                thumb="assets/ui/gallery-mirari-2-%s.png"),
+            ImageBundle(
+                RenpyImage("mira_back"),
+                RenpyImage("mira_back nibble"),
+                thumb="assets/ui/gallery-mirari-3-%s.png"),
+            ImageBundle(
+                RenpyImage("mira_foot"),
+                RenpyImage("mira_foot nibble"),
+                thumb="assets/ui/gallery-mirari-4-%s.png"),
+            ImageBundle(
+                RenpyImage("mira_breast"),
+                thumb="assets/ui/gallery-mirari-5-%s.png"),
             ImageBundle(thumb="assets/ui/gallery-mirari-6-%s.png"),
             ImageBundle(thumb="assets/ui/gallery-mirari-7-%s.png"),
             thumb="assets/ui/gallerybtn-mirari-%s.png"
         ),
         CharacterFolder(
             "kael",
-            kael,
-            ImageBundle(thumb="assets/ui/gallery-kael-1-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-kael-2-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-kael-3-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-kael-4-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-kael-5-%s.png"),
+            SpriteImageSet(
+                "kael_sprite",
+                kael,
+                {
+                    "base": "default",
+                    "emotion_base": "default",
+                    "eyes": "default",
+                    "eyebrows": "default",
+                    "mouth": "default",
+                    "emotion": "default",
+                    "glasses": "default"
+                },
+                { "base": "apron" },
+                { "base": "human" },
+                { "base": "naked" }
+            ).get_items(),
+            ImageBundle(
+                RenpyImage("chibi_kael01"),
+                thumb="assets/ui/gallery-kael-1-%s.png"),
+            ImageBundle(
+                RenpyImage("chibi_kael02"),
+                thumb="assets/ui/gallery-kael-2-%s.png"),
+            ImageBundle(
+                RenpyImage("kael_start"),
+                RenpyImage("kael_start hand"),
+                RenpyImage("kael_start kiss"),
+                RenpyImage("kael_start pillow"),
+                thumb="assets/ui/gallery-kael-3-%s.png"),
+            ImageBundle(
+                RenpyImage("kael_leaning"),
+                RenpyImage("kael_leanring b"),
+                thumb="assets/ui/gallery-kael-4-%s.png"),
+            ImageBundle(
+                RenpyImage("kael_kissing A1"),
+                RenpyImage("kael_kissing A2"),
+                RenpyImage("kael_kissing B"),
+                thumb="assets/ui/gallery-kael-5-%s.png"),
             ImageBundle(thumb="assets/ui/gallery-kael-6-%s.png"),
             ImageBundle(thumb="assets/ui/gallery-kael-7-%s.png"),
             ImageBundle(thumb="assets/ui/gallery-kael-8-%s.png"),
@@ -48,13 +120,53 @@ init python:
         ),
         CharacterFolder(
             "orias",
-            orias,
-            ImageBundle(thumb="assets/ui/gallery-orias-1-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-orias-2-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-orias-3-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-orias-4-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-orias-5-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-orias-6-%s.png"),
+            SpriteImageSet(
+                "orias_sprite",
+                orias,
+                {
+                    "base": "default",
+                    "emotion_base": "default",
+                    "eyes": "default",
+                    "eyebrows": "default",
+                    "mouth": "default",
+                    "emotion": "default",
+                    "glasses": "default"
+                },
+                { "base": "jacketless" },
+                { "base": "tea" },
+                { "base": "human" },
+                { "base": "naked" }
+            ).get_items(),
+            ImageBundle(
+                RenpyImage("chibi_orias01"),
+                thumb="assets/ui/gallery-orias-1-%s.png"),
+            ImageBundle(
+                RenpyImage("chibi_orias02"),
+                thumb="assets/ui/gallery-orias-2-%s.png"),
+            ImageBundle(
+                RenpyImage("orias_play cold"),
+                RenpyImage("orias_play nipple"),
+                RenpyImage("orias_play nipple_ice"),
+                RenpyImage("orias_play nipple_suck"),
+                thumb="assets/ui/gallery-orias-3-%s.png"),
+            ImageBundle(
+                RenpyImage("orias_play hot"),
+                RenpyImage("orias_play wax_pour"),
+                RenpyImage("orias_play wax_scratch"),
+                thumb="assets/ui/gallery-orias-4-%s.png"),
+            ImageBundle(
+                RenpyImage("orias_play lick"),
+                RenpyImage("orias_play kiss"),
+                RenpyImage("orias_play kiss_blind"),
+                thumb="assets/ui/gallery-orias-5-%s.png"),
+            ImageBundle(
+                RenpyImage("orias_play tickle"),
+                RenpyImage("orias_play nipple_tickle"),
+                RenpyImage("orias_play tickle_armpit"),
+                RenpyImage("orias_play tickle_body"),
+                RenpyImage("orias_play tickle_foot"),
+                RenpyImage("orias_play tickle_thighs"),
+                thumb="assets/ui/gallery-orias-6-%s.png"),
             ImageBundle(thumb="assets/ui/gallery-orias-7-%s.png"),
             ImageBundle(thumb="assets/ui/gallery-orias-8-%s.png"),
             ImageBundle(thumb="assets/ui/gallery-orias-9-%s.png"),            
@@ -62,9 +174,22 @@ init python:
         ),
         ImageFolder(
             "other",
-            ImageBundle(thumb="assets/ui/gallery-other-1-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-other-2-%s.png"),
-            ImageBundle(thumb="assets/ui/gallery-other-3-%s.png"),            
+            ImageBundle(
+                RenpyImage("item sock"),
+                RenpyImage("item parfait"),
+                RenpyImage("item bacon"),
+                RenpyImage("item pizza"),
+                RenpyImage("item tea"),
+                RenpyImage("item toast"),
+                RenpyImage("item pancakes"),
+                thumb="assets/ui/gallery-other-1-%s.png"),
+            ImageBundle(
+                RenpyImage("nosex01"),
+                RenpyImage("nosex02"),
+                thumb="assets/ui/gallery-other-2-%s.png"),
+            ImageBundle(
+                RenpyImage("group"),
+                thumb="assets/ui/gallery-other-3-%s.png"),
             thumb="assets/ui/gallerybtn-other-%s.png"
         ),
         ReplayFolder(
@@ -103,105 +228,13 @@ init python:
                 ),
             thumb="assets/ui/gallerybtn-scenereplay-%s.png"
         )
-
-#        GalleryFolder(
-#            "Akki",
-#            ImageSet(RenpyImage("chibi_akki01")),
-#            ImageSet(RenpyImage("chibi_akki02")),
-#            ReplayBundle("akki_sex",
-#                         akki_foreplay.snapshot( akki_bottom="on",
-#                                                 claire_arm="down",
-#                                                 claire_bottom="on",
-#                                                 claire_top="on",
-#                                                 akki_arm="down",
-#                                                 heads="kiss",
-#                                                 claire_face="default",
-#                                                 akki_face="default" ),
-#                         lambda: { "akki_name": "Akki",
-#                                   "claire_name": persistent.akki_claire_name,
-#                                   "akki_scenes": persistent.akki_scenes,
-#                                   "sex_stop_statement": persistent.akki_sex_stop }
-#                )
-#        ),
-#        GalleryFolder(
-#            "Orias",
-#            ImageSet(RenpyImage("chibi_orias01")),
-#            ImageSet(RenpyImage("chibi_orias02")),
-#            ImageSet(RenpyImage("orias_play cold"),
-#                     RenpyImage("orias_play nipple"),
-#                     RenpyImage("orias_play nipple_ice"),
-#                     RenpyImage("orias_play nipple_suck"),
-#                     RenpyImage("orias_play lick")),
-#            ImageSet(RenpyImage("orias_play hot"),
-#                     RenpyImage("orias_play wax_pour"),
-#                     RenpyImage("orias_play wax_rub"),
-#                     RenpyImage("orias_play wax_scratch"),
-#                     RenpyImage("orias_play kiss"),
-#                     RenpyImage("orias_play kiss_blind")),
-#            ImageSet(RenpyImage("orias_play tickle"),
-#                     RenpyImage("orias_play nipple_tickle"),
-#                     RenpyImage("orias_play tickle_armpit"),
-#                     RenpyImage("orias_play tickle_body"),
-#                     RenpyImage("orias_play tickle_foot"),
-#                     RenpyImage("orias_play tickle_thighs")),
-#            ReplayBundle("orias_sex",
-#                         orias_bed_sprite.snapshot(**orias_bed_initial),
-#                         lambda: { "orias_name": "Orias",
-#                                   "claire_name": persistent.orias_claire_name,
-#                                   "orias_scenes": persistent.orias_scenes,
-#                                   "sex_stop_statement": persistent.orias_sex_stop })
-#        ),
-#        GalleryFolder(
-#            "Kael",
-#            ImageSet(RenpyImage("chibi_kael01")),
-#            ImageSet(RenpyImage("chibi_kael02")),
-#            ImageSet(RenpyImage("kael_start"),
-#                     RenpyImage("kael_start hand"),
-#                     RenpyImage("kael_start kiss"),
-#                     RenpyImage("kael_start pillow")),
-#            ImageSet(RenpyImage("kael_leaning"),
-#                     RenpyImage("kael_leaning b")),
-#            ImageSet(RenpyImage("kael_kissing A1"),
-#                     RenpyImage("kael_kissing A2"),
-#                     RenpyImage("kael_kissing B")),
-#            ReplayBundle("kael_sex",
-#                         kael_warmup_sprite.snapshot(**kael_warmup_initial),
-#                         lambda: { "kael_name": "Kael",
-#                                   "claire_name": persistent.kael_claire_name,
-#                                   "kael_scenes": persistent.kael_scenes,
-#                                   "sex_stop_statement": persistent.kael_sex_stop })
-#        ),
-#        GalleryFolder(
-#            "Mirari",
-#            ImageSet(RenpyImage("chibi_mira01")),
-#            ImageSet(RenpyImage("chibi_mira02")),
-#            ImageSet(CG("mira_foot", "assets/CGs/mirari_massage_leg.jpg"),
-#                     CG("mira_foot nibble", "assets/CGs/mirari_nibble_foot.png")),
-#            ImageSet(CG("mira_back", "assets/CGs/mirari_massage_back.jpg"),
-#                     CG("mira_back nibble", "assets/CGs/mirari_nibble_ear.png")),
-#            ImageSet(CG("mira_breast", naked("assets/CGs/mirari_breasts{0}.jpg"))),
-#            ReplayBundle("mirari_sex",
-#                         mirari_lying_sprite.snapshot(**mirari_lying_initial),
-#                         lambda: { "mirari_name": "Mirari",
-#                                   "claire_name": persistent.mirari_claire_name,
-#                                   "mirari_scenes": persistent.mirari_scenes,
-#                                   "sex_stop_statement": persistent.mirari_sex_stop })
-#        ),
-#        GalleryFolder(
-#            "Others",
-#            ImageSet(RenpyImage("nosex01"),
-#                     RenpyImage("nosex02")),
-#            ImageSet(RenpyImage("item sock")),
-#            ImageSet(RenpyImage("item parfait"),
-#                     RenpyImage("item bacon"),
-#                     RenpyImage("item pizza"),
-#                     RenpyImage("item tea"),
-#                     RenpyImage("item toast"),
-#                     RenpyImage("item pancakes")),
-#            ImageSet(RenpyImage("group"))
-#        )
     )
 
+    gallery.add_unlockable_sprite(akki, "akki_sprite")
+    gallery.add_unlockable_sprite(mirari, "mirari_sprite")
+    gallery.add_unlockable_sprite(kael, "kael_sprite")
+    gallery.add_unlockable_sprite(orias, "orias_sprite")
+    
     gallery.add_unlockable_sprite(akki_foreplay, "akki_foreplay")
     gallery.add_unlockable_sprite(akki_missionary_sprite, "akki_missionary")
     gallery.add_unlockable_sprite(akki_cuddle_sprite, "akki_cuddle")
@@ -222,17 +255,13 @@ screen gallery():
                     auto folder.thumb
                     action [folder.select(), SetVariable("gallery_folder", folder.name)]
 
-#        hbox:
-#            style_group "gallery_images"
-#
-#            for bundle in gallery[gallery_folder]:
-#                button:
-#                    if bundle.is_unlocked():
-#                        action bundle.display()
-#
-#                    vbox:
-#                        frame:
-#                            add bundle.thumbnail at slot_screenshot
+    # Character folders can't be shown on top of the other screens
+    # because we need the character's sprite to show behind the
+    # main menu. Ugly hack ensues!
+    $ cur_folder = gallery[gallery_folder]
+    if isinstance(cur_folder, CharacterFolder):
+        use image_folder(cur_folder.bundles, character=cur_folder.sprite)
+        
 
 screen replay_folder(bundles):
     tag gallery_folder
@@ -251,11 +280,36 @@ screen replay_folder(bundles):
                             action bundle.show()
                     else:
                         add "assets/ui/gallery-replay-locked.png"
-                    
-        
+
+
+transform gallery_sprite:
+    zoom 0.5
+    xalign 1.0
+    yalign 1.3
+
+init python:
+    gallery_charidx = 0
+    
 screen image_folder(bundles, character=None):
     tag gallery_folder
 
+    python:
+        def get_image(images, index):
+            if index == 0 or images[index].is_unlocked():
+                return images[index].get_displayable()
+            else:
+                return Null()
+
+        def get_next(images, index):
+            for i in xrange(index + 1, len(images)):
+                if images[i].is_unlocked():
+                    return i
+
+        def get_prev(images, index):
+            for i in xrange(index - 1, -1, -1):
+                if i == 0 or images[i].is_unlocked():
+                    return i
+    
     fixed:
         style_group "gallery_folder"
 
@@ -270,6 +324,33 @@ screen image_folder(bundles, character=None):
                             action bundle.show()
                     else:
                         add "assets/ui/gallery-locked.png"
+
+        if character is not None:
+            add get_image(character, gallery_charidx) at gallery_sprite
+
+            hbox:
+                style_group "gallery_character_select_outfit"
+
+                $ prev_image = get_prev(character, gallery_charidx)
+                $ next_image = get_next(character, gallery_charidx)
+
+                if prev_image is not None:
+                    imagebutton:
+                        auto "assets/ui/gallery-outfitselect-left-%s.png"
+                        action SetVariable("gallery_charidx", prev_image)
+                else:
+                    null width 21
+
+                text "{0} / {1}".format(gallery_charidx + 1, len(character))
+
+                if next_image is not None:
+                    imagebutton:
+                        auto "assets/ui/gallery-outfitselect-right-%s.png"
+                        action SetVariable("gallery_charidx", next_image)
+                else:
+                    null width 21
+
+                
                     
 
 screen gallery_view(images):

@@ -62,7 +62,7 @@ screen tutorial(action_=Return()):
         ypos 680
     imagebutton:
         auto "assets/ui/tut/tips_next_%s.png"
-        action If(cur_screen_num == 6, None, SetScreenVariable("cur_screen_num", cur_screen_num+1))    
+        action If(cur_screen_num == 8, None, SetScreenVariable("cur_screen_num", cur_screen_num+1))    
         hovered Play("sound", "assets/sfx/menu_hover3.ogg")
         insensitive Null(width=1)
         xpos 1040

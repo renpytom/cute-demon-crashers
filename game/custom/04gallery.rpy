@@ -76,7 +76,7 @@ init -100 python:
         ##### method: is_unlocked(self)
         # @type: () -> bool
         def is_unlocked(self):
-            return renpy.seen_image(self.id)
+            return gallery_all_unlocked or renpy.seen_image(self.id)
 
         ##### method: get_displayable(self)
         # @type: () -> Displayable
@@ -88,7 +88,7 @@ init -100 python:
     # 
     # Sprite images are single objects that represent a snapshot of a
     # particular `ComposedSprite`.
-    def SpriteImage(GalleryItem):
+    class SpriteImage(GalleryItem):
 
         ##### method: __init__(self, id, image)
         # @type: any, Displayable -> SpriteImage
@@ -113,7 +113,7 @@ init -100 python:
     # of state transformations over a `ComposedSprite` object. They
     # particularly make it simpler for us to define image galleries by
     # just providing states, rather than getting a complete snapshot.
-    def SpriteImageSet(GalleryItem):
+    class SpriteImageSet(GalleryItem):
         ##### method: __init__(self, id, sprite, initial_state, *states)
         # @type: str, ComposedSprite, dict(a, b), dict(a, b)... -> SpriteImageSet
         def __init__(self, id, sprite, initial_state, *states):
@@ -157,7 +157,7 @@ init -100 python:
         #
         # True if at least one of the images are unlocked.
         def is_unlocked(self):
-            return len(self.get_unlocked()) > 0
+            return gallery_all_unlocked or len(self.get_unlocked()) > 0
             
         ##### method: get_unlocked(self)
         # @type: () -> [GalleryItem]
@@ -256,7 +256,7 @@ init -100 python:
             self.bundles = bundles
 
         def select(self):
-            return Show("image_folder", dissolve, self.bundles)
+            return Show("image_folder", None, self.bundles)
 
     #### class: CharacterFolder(ImageFolder)
     #
@@ -268,7 +268,12 @@ init -100 python:
             self.sprite = sprite
 
         def select(self):
-            return Show("image_folder", dissolve, self.bundles, character=self.sprite)
+            def hide_all():
+                renpy.store.gallery_charidx = 0
+                renpy.hide_screen("image_folder")
+                renpy.hide_screen("replay_folder")
+
+            return hide_all
 
 
     #### class: ReplayFolder(ImageFolder)
@@ -280,7 +285,7 @@ init -100 python:
             self.bundles = bundles
 
         def select(self):
-            return Show("replay_folder", dissolve, self.bundles)
+            return Show("replay_folder", None, self.bundles)
     
 
         
@@ -305,7 +310,7 @@ init -100 python:
             for folder in self.folders:
                 if folder.name == key:
                     return folder
-            raise KeyError(key)
+            return None
 
         ##### method: add_unlockable_sprite(self, sprite, name)
         # @type: ComposedSprite, str -> unit

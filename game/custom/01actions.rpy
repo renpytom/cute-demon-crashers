@@ -52,3 +52,4 @@ init -100 python:
         def get_selected(self):
             return getattr(persistent, self.name) == self.value
 
+ 

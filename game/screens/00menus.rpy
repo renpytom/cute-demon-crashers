@@ -1,8 +1,9 @@
+screen menu_logo():
+    add "assets/ui/logo.png" yalign 1.0 xalign 0.5    
+
 # Navigation included in main menus
 screen menu_navigation(current):
     $ if current != "main-menu": renpy.hide_screen("start_popup")
-
-    add "assets/ui/logo.png" yalign 1.0 xalign 0.5
 
     hbox:
         yalign 1.0
@@ -93,6 +94,7 @@ screen main_menu():
     add "assets/ui/mm-white-border.png"
     add "assets/ui/mm-group-logo.png" xpos 1072
 
+    use menu_logo()
     use menu_navigation("main-menu")
 
 
@@ -124,6 +126,7 @@ screen options_menu():
         style "mm_root"
 
     add "assets/ui/options-title.png"
+    use menu_logo()
     use menu_navigation("options")
     
     hbox:
@@ -228,7 +231,7 @@ screen extras_menu():
         style "mm_root"
 
     add "assets/ui/extra-title.png"
-    use menu_navigation("extras")
+    use menu_logo()
 
     hbox:
         style_group "tabbar"
@@ -250,6 +253,7 @@ screen extras_menu():
     else:
         use gallery()
     
+    use menu_navigation("extras")
         
 
 # Load screen
@@ -261,6 +265,7 @@ screen load():
 
     add "assets/ui/load-title.png"
 
+    use menu_logo()
     use menu_navigation("load")
     use slot_picker()
 
@@ -274,6 +279,7 @@ screen save():
 
     add "assets/ui/save-title.png"
 
+    use menu_logo()
     use menu_navigation("load")
     use slot_picker()
 

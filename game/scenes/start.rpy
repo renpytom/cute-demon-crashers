@@ -176,6 +176,7 @@ label start:
     "???" "I could help with that!"
     $mirari.set_state(with_dissolve, eyes="default", emotion="flowers")
     show mirari at center_alone with dissolve
+    voice "m_w01"
 
     # [TODO] could have transforms applied to Claire's side sprite
     #        might require making ComposedSprite a displayable or something
@@ -186,6 +187,7 @@ label start:
     $mirari.set_state(with_dissolve, mouth="low", eyebrows="inwards", eyes="dots", emotion="sweat")
     show mirari at center_group with dissolve
     "I jolt upward, causing the speaker to jump back."
+    voice "m_s02"
     "???" "I guess that's a no?"
     $ claire.set_state(mouth="fun ah2", eyes="shock", emotion_base="no nose", eyebrows="frown", emotion="shiver")
     cl "M-more like what are you doing here in my house!?"
@@ -205,14 +207,18 @@ label start:
 
     $akki.set_state(with_dissolve,emotion="sweat", mouth="low", eyes="dots")
     show akki at sway
+    voice "a_s01"
     ak "Huh? What {i}is{/i} going on?"
     $orias.set_state(with_dissolve,eyebrows="inwards", eyes="closed", emotion="sweat")
+    voice "o_w01"
     ori "Oh, dear... Mirari, you didn't..."
     $mirari.set_state(with_dissolve, mouth="wah", eyes="clench", emotion="panic")
     show mirari at sway
+    voice "m_s03"
     mi "I-I was going to explain in a bit! You guys arrived too fast!"
     $akki.set_state(mouth="ehh", eyebrows="frown", eyes="shock")
     show akki at bounce_up
+    voice "a_w01"
     ak "How could we not when you conjured a portal RIGHT IN THE HALLWAY?" 
     voice "k_s01"
     $kael.set_state(with_dissolve, emotion="sweat", mouth="ah")
@@ -222,6 +228,7 @@ label start:
     $mirari.set_state(emotion="sweat", mouth="low", eyes="default")
     $akki.set_state(emotion="bars", eyes="default", mouth="happy", eyebrows="up")
     show akki at bounce_up
+    voice "a_w13"
     ak "I like your panda shirt."
     $ claire.set_state(**Emotion.normal())
     $claire.set_state(eyes="happy", mouth="happy")
@@ -271,20 +278,23 @@ label start:
         "Listen to them at the door first." :
             #[TODO]
             #Figure out what to do with the music for the rest of the scene
+            $renpy.music.set_volume(0.5, delay=0, channel='voice')
             "I approach the door and hold my ear close to the frame. They're not even trying to lower their voices, making it easy to catch every word." 
             ka "...We completely scared that poor girl, Mirari."
-            voice "m_s18"
+            voice "a_s03"
             ak "Ah, Kael's mad... he's never mad..."
+            voice "o_s13"
             ori "This is why it's important to plan in advance..."
             voice "m_w02"
             mi "I know! I'm sorry! I just... took action without really thinking... I only wanted to help her... I feel awful now..."
-            voice "k_s18"
+            voice "k_s12"
             ka "Should we try talking to her once she calms down? We can at least apologize."
             "It truly does sound like there's a misunderstanding going on... Maybe they aren't that bad...?"
             $claire.set_state(eyebrows="inwards", eyes="closed", emotion="sweat", mouth="wavy")
             cl "I... can't believe I'm doing this, but I'll talk to them. Maybe there's a logical explanation behind all this..."
             $claire.set_state(with_dissolve, eyes="fun side", eyebrows="flat")
             cl "Yeah right."
+            $renpy.music.set_volume(1.0, delay=0, channel='voice')
             stop music fadeout 1
             jump start_hallway
     
@@ -309,6 +319,7 @@ label start_hallway:
     cl "..."
     "Everyone" "..."
     show mirari zorder 3 at speak
+    voice "m_s13"
     mi "Have you calmed yourself down?"
     $ claire.set_state(mouth="low")
 
@@ -339,12 +350,14 @@ label start_hallway:
     show mirari zorder 0 at endspeak
     $akki.set_state(eyebrows="tender", mouth="ah")
     show akki zorder 3 at speak
+    voice "a_w04"
     ak "Akki. Sorry about surprising you earlier... I guess we were all a little surprised."
 
     $ akki_name = 'Akki'
     show akki zorder 0 at endspeak
     $orias.set_state(eyebrows="tender", eyes="default",mouth="neutral")
     show orias zorder 3 at speak
+    voice "o_w02"
     ori "...Orias. Pleased to make your acquaintance. And you are...?"
 
     $ orias_name = 'Orias'
@@ -355,6 +368,7 @@ label start_hallway:
     show orias zorder 0 at endspeak
     $ akki.set_state(with_dissolve, mouth="grin", eyebrows="default")
     show akki zorder 3 at speak
+    voice "a_s05"
     ak "You don't recognize us? We're incubi!"
     $mirari.set_state(eyebrows="default", eyes="default")
     show mirari at bounce_up
@@ -388,6 +402,7 @@ label start_hallway:
     show orias at right4
     with dissolve
     show akki zorder 3 at speak
+    voice "a_s04"
     ak "Whoa whoa, we'd never think of anything like that!" 
     $akki.set_state(emotion="default", eyes="default", mouth="neutral")
     show akki zorder 0 at endspeak
@@ -405,6 +420,7 @@ label start_hallway:
     show mirari zorder 0 at endspeak
     $orias.set_state(eyes= "closed", mouth="oh", eyebrows="up")
     show orias zorder 3 at speak
+    voice "o_s01"
     ori "You were right about calling us 'demons' though. We feed off the sexual pleasure from humans."
     $mirari.set_state(emotion="flowers", eyes="happy", mouth="happy")
     show mirari at bounce_up
@@ -417,6 +433,7 @@ label start_hallway:
     cl "B-but I don't even know you!? I-I can't just... accept an offer like that out of the blue!"
     $orias.set_state(mouth="oh", eyes="default")
     show orias at speak
+    voice "o_s15"
     ori "Purple portal."
     $claire.set_state(emotion="sweat", mouth="ehh", eyes="flat", emotion_base="dark")
     cl "Or that." 
@@ -429,9 +446,11 @@ label start_hallway:
     $orias.set_state(with_dissolve, eyes="closed", mouth="oh")
     show kael zorder 0
     show orias zorder 3 at bounce_up
+    voice "o_s04"
     ori "Not every human feels comfortable copulating with a stranger. It needs to be a positive experience for her to obtain this 'win-win situation', as Mirari puts it." 
     show akki zorder 3
     $akki.set_state(eyebrows="inwards", emotion="sweat", mouth="low")
+    voice "a_s13"
     ak "So what do we do now?"
     $claire.set_state(emotion_base="small blush", mouth="low", eyes="semi open", emotion="default", eyebrows="inwards")
     cl "..."
@@ -452,6 +471,7 @@ label start_hallway:
     show kael zorder 0 at endspeak
     $orias.set_state(eyebrows="tender", eyes="default", mouth="oh")
     show orias zorder 3 at speak
+    voice "o_s03"
     ori "Does that sound acceptable?"
     $orias.set_state(mouth="neutral")
     $claire.set_state(eyes="tender side")
@@ -466,6 +486,7 @@ label start_hallway:
     $akki.set_state(eyes="happy", mouth="grin", eyebrows="default", emotion="starry")
     show mirari zorder 0 at endspeak
     show akki zorder 3 at speak
+    voice "a_s05"
     ak "Don't worry, we'll go easy on you since you're a virgin."
     $mirari.set_state(eyes="fun side", mouth="v", eyebrows="up", emotion="note")
     show mirari at bounce_up
@@ -475,6 +496,7 @@ label start_hallway:
     $kael.set_state(eyes="happy", eyebrows="inwards")
     $orias.set_state(eyes="closed", mouth="smile")
     show akki at bounce_up
+    voice "a_s04"
     ak "W-what, you don't just tell people that!" 
     $claire.set_state(eyes="happy", emotion="sweat", eyebrows="inwards", mouth="smile")
     cl "Hehe."
@@ -503,8 +525,10 @@ label start_hallway:
     ka "Thank you."
     $akki.set_state(eyes="happy", emotion_base="default", mouth="grin")
     show akki at bounce_up
+    voice "a_w05"
     ak "Great! I'm starving."
     $orias.set_state(with_dissolve, eyes="side")
+    voice "o_s10"
     ori "I think I'll brew a nice cup of tea, too..." 
 
     hide akki
@@ -514,11 +538,15 @@ label start_hallway:
 
 
     #off-screen
+    $renpy.music.set_volume(0.5, delay=0, channel='voice')
+    voice "a_w13"
     ak "Hey, I found the video games! Wow, check out this collection!"
     voice "k_w07"
     ka "Akki, don't raid her house!"
+    voice "o_s05"
     ori "Be sure to return everything to its proper place."
     $claire.set_state(eyes="flat", emotion="sweat", emotion_base="dark", eyebrows="flat", mouth="uhh")
     cl "...I'm going back to bed. No more romance novels for a LONG while." 
     stop music fadeout 1
+    $renpy.music.set_volume(1.0, delay=0, channel='voice')
     jump day1_morning

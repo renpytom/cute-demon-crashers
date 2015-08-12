@@ -255,6 +255,19 @@ init -1:
         spacing 30
         xoffset 0
 
+    style gallery_character_select_outfit_hbox:
+        ypos 110
+        spacing 5
+        xalign 1.0
+        xoffset -10
+
+    style gallery_character_select_outfit_text:
+        color "#ffffff"
+        size 28
+        yoffset -4
+        outlines [(3, "#ff63a1", 0, 0)]
+        
+
     # -- Confirm popups ------------------------------------------------
     style confirm_popup_window:
         xfill True

@@ -259,7 +259,7 @@ init -1:
                     "assets/sprites/claire/cl_emo_lll3.png", 0.1, None,
                     "assets/sprites/claire/cl_emo_lll4.png", 0.1, None,
                     "assets/sprites/claire/cl_emo_lll5.png", 0.1, None,
-                    "assets/sprites/claire/cl_emo_lll6.png", 1.5 , None,
+                    "assets/sprites/claire/cl_emo_lll6.png", 3.0 , None,
                 ),
                 "note": anim.TransitionAnimation(
                     "assets/sprites/claire/cl_emo_note1.png", 0.1, with_dissolve,
@@ -542,7 +542,7 @@ init -1:
                     ak_sprite("emo_lll3"), 0.1, None,
                     ak_sprite("emo_lll4"), 0.1, None,
                     ak_sprite("emo_lll5"), 0.1, None,
-                    ak_sprite("emo_lll6"), 1.5 , None,
+                    ak_sprite("emo_lll6"), 3.0 , None,
                     ),
                 "note"       : anim.TransitionAnimation(
                     ak_sprite("emo_note1"), 0.1, with_dissolve,
@@ -1058,7 +1058,7 @@ init -1:
                     ka_sprite("emo_lll3"), 0.1, None,
                     ka_sprite("emo_lll4"), 0.1, None,
                     ka_sprite("emo_lll5"), 0.1, None,
-                    ka_sprite("emo_lll6"), 1.5 , None,
+                    ka_sprite("emo_lll6"), 3.0 , None,
                 ),
                 "note"       : anim.TransitionAnimation(
                     ka_sprite("emo_note1"), 0.1, with_dissolve,
@@ -1326,7 +1326,7 @@ init -1:
                     ori_sprite("emo_lll3"), 0.1, None,
                     ori_sprite("emo_lll4"), 0.1, None,
                     ori_sprite("emo_lll5"), 0.1, None,
-                    ori_sprite("emo_lll6"), 1.5 , None,
+                    ori_sprite("emo_lll6"), 3.0 , None,
                 ),
                 "note"       : anim.TransitionAnimation(
                     ori_sprite("emo_note1"), 0.1, with_dissolve,
