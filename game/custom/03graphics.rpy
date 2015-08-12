@@ -481,3 +481,93 @@ init -100 python:
                                             "mouth": "fun ah",
                                             "emotion": "shock"
                                           }, kwargs))
+
+    #### class: PannableDisplayable()
+    # 
+    # Wrapping an object in a Pannable allows one to create a viewport-like
+    # displayable that's controlled by keyboard and mouse position.
+    class PannableDisplayable(renpy.Displayable):
+
+        def __init__(self, displayable, **properties):
+            super(PannableDisplayable, self).__init__(**properties)
+ 
+            self.displayable = renpy.displayable(displayable)
+            self.arrow_up = renpy.displayable("assets/ui/pan-up-idle.png")
+            self.arrow_up_hover = renpy.displayable("assets/ui/pan-up-hover.png")
+            self.arrow_down = renpy.displayable("assets/ui/pan-down-idle.png")
+            self.arrow_down_hover = renpy.displayable("assets/ui/pan-down-hover.png")
+
+            self.offset = 0
+            self.height = 0
+            self.speed = 10
+            self.child_height = 0
+            self.shown_time = 0
+            self.anim_time = 0
+            self.dir = None
+
+
+        def get_render(self, is_hovered, idle, hover, w, h, st, at):
+            if is_hovered:
+                return renpy.render(hover, w, h, st, at)
+            else:
+                return renpy.render(idle, w, h, st, at)
+
+        def clamped(self, offset):
+            print offset, self.height, self.child_height
+            return max(0, min(offset, self.child_height - self.height))
+            
+        def render(self, width, height, st, at):
+            self.height = height
+            
+            child = renpy.render(self.displayable, width, height, st, at)
+            (cw, ch) = child.get_size()
+
+            self.child_height = ch
+
+            render = renpy.Render(width, height)
+            render.blit(child, (0, -int(self.offset)))
+
+            arrow_up = self.get_render(self.dir == "up",
+                                       self.arrow_up,
+                                       self.arrow_up_hover,
+                                       width, height, st, at)
+            arrow_down = self.get_render(self.dir == "down",
+                                         self.arrow_down,
+                                         self.arrow_down_hover,
+                                         width, height, st, at)
+
+            if self.dir == "up":
+                self.offset = self.clamped(self.offset + self.speed)
+            if self.dir == "down":
+                self.offset = self.clamped(self.offset - self.speed)
+                
+            
+            (aw, ah) = arrow_up.get_size()
+            mid = height / 2
+            render.blit(arrow_up, (width - aw - 20, mid - ah - 200))
+            render.blit(arrow_down, (width - aw - 20, mid + 200))
+
+            renpy.redraw(self, 0.025)
+            
+            return render
+
+        def event(self, ev, x, y, st):
+            mid = self.height / 2
+            
+            if renpy.display.behavior.map_event(ev, "focus_up"):
+                self.dir = "up"
+            elif renpy.display.behavior.map_event(ev, "focus_down"):
+                self.dir = "down"
+            elif y < mid - 200:
+                self.dir = "up"
+            elif y > mid + 200:
+                self.dir = "down"
+            elif self.dir is not None:
+                self.dir = None
+
+            renpy.redraw(self, 0)
+            return super(PannableDisplayable, self).event(ev, x, y, st)
+            
+
+        def visit(self):
+            return [self.displayable]

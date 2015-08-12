@@ -70,8 +70,9 @@ init -100 python:
         #
         # Initialises a Ren'Py image. `id` should be the full name of
         # the image, e.g.: "RenpyImage('akki kiss')"
-        def __init__(self, id):
+        def __init__(self, id, transformation=None):
             self.id = id
+            self.transformation = transformation
 
         ##### method: is_unlocked(self)
         # @type: () -> bool
@@ -81,7 +82,11 @@ init -100 python:
         ##### method: get_displayable(self)
         # @type: () -> Displayable
         def get_displayable(self):
-            return renpy.display.image.ImageReference(self.id)
+            d = renpy.display.image.ImageReference(self.id)
+            if self.transformation is not None:
+                d = self.transformation(d)
+            return d
+
 
 
     #### class: SpriteImage(GalleryItem)
@@ -99,7 +104,7 @@ init -100 python:
         ##### method: is_unlocked(self)
         # @type: () -> bool
         def is_unlocked(self):
-            return self.id in persistent.unlocked_gallery
+            return gallery_all_unlocked or self.id in persistent.unlocked_gallery
 
         ##### method: get_displayable(self)
         # @type: () -> Displayable

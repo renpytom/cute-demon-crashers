@@ -188,7 +188,7 @@ init python:
                 RenpyImage("nosex02"),
                 thumb="assets/ui/gallery-other-2-%s.png"),
             ImageBundle(
-                RenpyImage("group"),
+                RenpyImage("group", PannableDisplayable),
                 thumb="assets/ui/gallery-other-3-%s.png"),
             thumb="assets/ui/gallerybtn-other-%s.png"
         ),
@@ -386,6 +386,8 @@ screen gallery_view(images):
         has fixed
 
         frame:
+            style "gallery_view_displayable_frame"
+            
             add images[current].get_displayable()
 
         text "{0} / {1}".format(current + 1, len(images)) style "gallery_view_status"
@@ -404,11 +406,19 @@ screen gallery_view(images):
 
 
 init:
+    style gallery_view_window:
+        xpadding 0
+        ypadding 0
+    
     style gallery_view_frame:
         background None
         xalign 0.5
         yalign 0.5
 
+    style gallery_view_displayable_frame:
+        xpadding 0
+        ypadding 0
+        
     style gallery_view_status:
         xalign 0.95
         yalign 0.95
