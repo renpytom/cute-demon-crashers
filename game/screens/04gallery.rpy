@@ -108,7 +108,7 @@ init python:
                 thumb="assets/ui/gallery-kael-3-%s.png"),
             ImageBundle(
                 RenpyImage("kael_leaning"),
-                RenpyImage("kael_leanring b"),
+                RenpyImage("kael_leaning b"),
                 thumb="assets/ui/gallery-kael-4-%s.png"),
             ImageBundle(
                 RenpyImage("kael_kissing A1"),
