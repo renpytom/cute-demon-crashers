@@ -171,6 +171,14 @@ init -100 python:
         def get_unlocked(self):
             return []
 
+        ##### method: get_total(self)
+        # @type: () -> int
+        #
+        # Returns the total of images in this bundle.
+        def get_total(self):
+            return 0
+        
+
         ##### method: show(self)
         # @type: () -> () -> unit
         #
@@ -195,6 +203,11 @@ init -100 python:
         def get_unlocked(self):
             return filter(lambda x: x.is_unlocked(), self.images)
 
+        ##### method: get_total(self)
+        # @type: () -> int
+        def get_total(self):
+            return len(self.images)
+        
         ##### method: show(self)
         # @type: () -> () -> unit
         def show(self):

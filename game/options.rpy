@@ -255,6 +255,24 @@ init -1:
         spacing 30
         xoffset 0
 
+    style gallery_folder_bundle_fixed:
+        xsize 199
+        ysize 144
+
+    style gallery_folder_bundle_window:
+        yalign 0.9
+        xpadding 20
+        ypadding 10
+        yfill True
+        background None
+        
+    style gallery_folder_bundle_text:
+        xalign 1.0
+        yalign 1.0
+        color "#ffffff"
+        size 24
+        outlines [(2, "#ff63a1", 0, 0)]
+
     style gallery_character_select_outfit_hbox:
         ypos 110
         spacing 5

@@ -323,12 +323,21 @@ screen image_folder(bundles, character=None):
             
             hbox:
                 for bundle in bundles:
-                    if bundle.is_unlocked():
-                        imagebutton:
-                            auto bundle.thumb
-                            action bundle.show()
-                    else:
-                        add "assets/ui/gallery-locked.png"
+                    fixed:
+                        style_group "gallery_folder_bundle"
+
+                        if bundle.is_unlocked():
+                            imagebutton:
+                                auto bundle.thumb
+                                action bundle.show()
+                        else:
+                            add "assets/ui/gallery-locked.png"
+
+                        window:
+                            $ total = bundle.get_total()
+                            $ unlocked = len(bundle.get_unlocked())
+                            text "{0} / {1}".format(unlocked, total)
+                        
 
         if character is not None:
             add get_image(character, gallery_charidx) at gallery_sprite
