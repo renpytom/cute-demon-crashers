@@ -319,7 +319,7 @@ label start_hallway:
     cl "..."
     "Everyone" "..."
     show mirari zorder 3 at speak
-    voice "m_s13"
+    voice "m_s03"
     mi "Have you calmed yourself down?"
     $ claire.set_state(mouth="low")
 

@@ -604,8 +604,8 @@ label kissingpermission:
                     $kael.set_state(with_dissolve, eyes="wink", eyebrows="up")
                     ka "We can do something else, like cuddle." 
                     $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
-                    cl "I'd like that..."
                     stop music fadeout 2
+                    cl "I'd like that..."
                     jump kaelearlystop
             
         "How about {i}I{/i} kiss you all over?":
@@ -701,8 +701,8 @@ label kissingpermission:
                     $kael.set_state(with_dissolve, eyes="wink", eyebrows="up")
                     ka "We can do something else, like cuddle." 
                     $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
-                    cl "I'd like that..."
                     stop music fadeout 2
+                    cl "I'd like that..."
                     jump kaelearlystop
             
         "I'd like to stop now.":
@@ -841,6 +841,7 @@ label oralactivity:
 #    $kael_mis_kface="1"
     "He kisses my forehead and increases the pressure just a little bit more, stopping to gauge my reaction. After a sharp inhale, I relax, letting my body get used to the sensation."
     "Each movement becomes slicker from how wet I've become, and I sense him take a deep breath before continuing."
+    voice "k_s21"
     "We both gasp as I feel the expansion within me massaging me from the inside." 
     "Our bodies join, and his chest lightly rests against mine as I embrace him. For a moment we say nothing and I wonder what I can say regarding this physical milestone."
     $ kael_missionary_sprite.set_state(with_dissolve, kael=2, claire=2)
@@ -997,9 +998,8 @@ label kaelstoppingnow:
         ka "Would a cuddle suffice, instead?"
         "He gives my hand a reassuring squeeze and I give a grateful nod."
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="default", emotion="default")
-        cl "I'd like that... Thanks, Kael." 
         stop music fadeout 2
-        jump kaelearlystop
+        cl "I'd like that... Thanks, Kael." 
     if sillyactivity==True:
         $claire.set_state(**Emotion.normal())
         cla "Um, I'd like to stop..."
@@ -1019,8 +1019,8 @@ label kaelstoppingnow:
         voice "k_s12"
         ka "We can do something less intense. Like cuddling."
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
-        cl "I'd like that..."     
         stop music fadeout 2
+        cl "I'd like that..."     
         jump kaelearlystop
     if kissingactivity==True:
         $claire.set_state(**Emotion.normal())
@@ -1043,8 +1043,8 @@ label kaelstoppingnow:
         $kael.set_state(with_dissolve, eyebrows="up",eyes="wink")
         ka "Would you like to cuddle instead?" 
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
-        cl "I'd like that..."
         stop music fadeout 2
+        cl "I'd like that..."
         jump kaelearlystop
     if kissinghimactivity==True:
         $claire.set_state(**Emotion.normal())
@@ -1066,8 +1066,8 @@ label kaelstoppingnow:
         voice "k_s04"
         ka "I'd be more than happy to cuddle with you, too."
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
-        cl "Thank you..." 
         stop music fadeout 2
+        cl "Thank you..." 
         jump kaelearlystop
     if undressingtime == True:
         $claire.set_state(**Emotion.normal())
@@ -1091,8 +1091,8 @@ label kaelstoppingnow:
         voice "k_s03"
         ka "You didn't, promise. I want you to feel comfortable. Would you like to cuddle, instead?"
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
-        cl "I would..."
         stop music fadeout 2
+        cl "I would..."
         jump kaelearlystop
     if oral2==True or fingers2==True:
         $claire.set_state(**Emotion.normal())
@@ -1125,8 +1125,8 @@ label kaelstoppingnow:
         $kael.set_state(with_dissolve, eyes="wink")
         ka "I'd be more than happy to cuddle if you'd like that."
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
-        cl "Thank you... and that sounds nice."
         stop music fadeout 2
+        cl "Thank you... and that sounds nice."
         jump kaelmiddlestop
     if kaelontop==True:
         cla "I'd like to stop."
@@ -1153,8 +1153,8 @@ label kaelstoppingnow:
         $kael.set_state(with_dissolve, eyes="wink", mouth="smile", emotion="note")
         ka "If you'd like, we can cuddle instead."
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="default", emotion_base="small blush")
-        cl "I'd like that, thanks." 
         stop music fadeout 2
+        cl "I'd like that, thanks." 
         jump kaelmiddlestop
     if kaelinside==True:
         cla "I'd like to stop now."
@@ -1185,8 +1185,8 @@ label kaelstoppingnow:
         $kael.set_state(with_dissolve, eyes="wink", mouth="smile", emotion="note")
         ka "If you're up for it, we can cuddle for a while."
         $claire.set_state(eyes="happy", mouth="smile", eyebrows="default")
-        cl "Thank you. That sounds nice." 
         stop music fadeout 2
+        cl "Thank you. That sounds nice." 
         jump kaelmiddlestop
         
     else:
@@ -1196,13 +1196,14 @@ label kaelstoppingnow:
         cl "Um, I'd like to stop."
         $kael.set_state(eyebrows="inwards", mouth="smile", eyes="tender", emotion="default", emotion_base="default")
         show kael at center_alone2 with dissolve
+        voice "k_sex46"
         ka "I understand. You know yourself best."
         "He gives me a platonic kiss on the forehead."
         $kael.set_state(eyebrows="default")
         ka "We can do something else, like cuddling."
         $claire.set_state(eyes="tender", mouth="smile", eyebrows="default")
-        cl "I'd like that..." 
         stop music fadeout 2
+        cl "I'd like that..." 
         jump kaelearlystop
         
 label kaelearlystop:
@@ -1268,7 +1269,7 @@ label kael_epilogue:
     cl "...Was it a dream?"
     "I sit up and reach for my phone as part of my routine. But there's something different. Next to my phone is a note. Curious, I pick it up."
     scene white with dissolve
-    voice "kaelnote"
+    voice "k_note01"
     show text "{color=#000} 'Sorry for leaving on short notice.\n I enjoyed my time with you and I hope you have a wonderful spring break.\n If you ever want to see me again, draw the symbol enclosed at the bottom and repeat the chant on the back of the note.\n Even if you simply want company, or a nice home-cooked meal, I'd be glad to.\n - Kael.'{/color}" with dissolve
     $renpy.pause()
     voice "k_note05"
