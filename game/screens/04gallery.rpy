@@ -1,3 +1,19 @@
+transform gallery_sprite:
+    zoom 0.5
+    xalign 1.0
+
+transform kael_sprite_pos:
+    yalign 1.2
+
+transform akki_sprite_pos:
+    yalign 1.2
+    
+transform mirari_sprite_pos:
+    yalign 1.1
+    
+transform orias_sprite_pos:
+    yalign 1.5
+
 init python:
     gallery_folder = None
     gallery_all_unlocked = False
@@ -21,7 +37,8 @@ init python:
                 },
                 { "base": "human" },
                 { "base": "naked" },
-                state_filter=first
+                state_filter=first,
+                transform_=akki_sprite_pos
             ).get_items(),
             ImageBundle(
                 RenpyImage("chibi_akki01"),
@@ -52,7 +69,8 @@ init python:
                 { "base": "baby doll" },
                 { "base": "panties" },
                 { "base": "naked" },
-                state_filter=first
+                state_filter=first,
+                transform_=mirari_sprite_pos                
             ).get_items(),
             ImageBundle(
                 RenpyImage("chibi_mira02"),
@@ -92,7 +110,8 @@ init python:
                 { "base": "apron" },
                 { "base": "human" },
                 { "base": "naked" },
-                state_filter=first
+                state_filter=first,
+                transform_=kael_sprite_pos                
             ).get_items(),
             ImageBundle(
                 RenpyImage("chibi_kael01"),
@@ -139,7 +158,8 @@ init python:
                 { "base": "tea" },
                 { "base": "human" },
                 { "base": "naked" },
-                state_filter=first
+                state_filter=first,
+                transform_=orias_sprite_pos
             ).get_items(),
             ImageBundle(
                 RenpyImage("chibi_orias01"),
@@ -295,14 +315,9 @@ screen replay_folder(bundles):
                         add "assets/ui/gallery-replay-locked.png"
 
 
-transform gallery_sprite:
-    zoom 0.5
-    xalign 1.0
-    yalign 1.3
-
 init python:
     gallery_charidx = 0
-    
+
 screen image_folder(bundles, character=None):
     tag gallery_folder
 

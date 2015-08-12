@@ -127,14 +127,19 @@ init -100 python:
             self.initial_state = initial_state
             self.states = states
             self.state_filter = kwargs.get('state_filter', identity)
+            self.transform_ = kwargs.get('transform_', None)
 
         ##### method: get_items(self)
         # @type: () -> [GalleryItem]
         def get_items(self):
             def to_item(st):
+                d = self.sprite.snapshot(**st)
+                if self.transform_ is not None:
+                    d = At(d, self.transform_)
+                    
                 return SpriteImage(
                     (self.id, self.state_filter(self.sprite.dict_to_state_tuple(st))),
-                    self.sprite.snapshot(**st)
+                    d
                 )
 
             return map(to_item, scan(merge, self.initial_state, self.states))
