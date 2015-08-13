@@ -72,6 +72,10 @@ label credits:
     $renpy.pause(2.0, hard=True)
     show text "{color=#ff70b0}Scene directing and additional Programming{/color}\n \n{color=#000}Pudding Fluff{/color}" with dissolve
     $renpy.pause(2.0, hard=True)
+    show text "{color=#ff70b0}Voices{/color}\n \n{color=#000}Akki: Red Velvet\nMirari: Anairis Quinones\nOrias: EdwardVapid\nKael: Three Berry Scone{/color}" with dissolve
+    $renpy.pause(2.0, hard=True)
+    show text "{color=#ff70b0}Voice equalizing{/color}\n \n{color=#000}Ziassan{/color}" with dissolve
+    $renpy.pause(2.0, hard=True)
     show text "{color=#ff70b0}Special Thanks to{/color}\n \n{color=#000}PyTom\n Other friends that would rather not be named :P{/color}" with dissolve
     $renpy.pause(2.0, hard=True)
     show text "{color=#000}Made with{/color}{color=#ff70b0} Ren'Py{/color}" with dissolve
