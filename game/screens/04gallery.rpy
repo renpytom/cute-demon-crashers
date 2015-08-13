@@ -875,8 +875,6 @@ screen image_folder(bundles, character=None):
 
 screen gallery_view(images):
     modal True
-    default current = 0
-    default old_displayable = Null()
 
     python:
         def next_image(images, x):
@@ -895,6 +893,9 @@ screen gallery_view(images):
                 SetScreenVariable("old_displayable", images[current].get_displayable())
             ]
 
+    default current = next_image(images, -1)
+    default old_displayable = Null()
+    
     window:
         style_group "gallery_view"
 
