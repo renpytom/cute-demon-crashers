@@ -510,7 +510,7 @@ init python:
                         "claire_face": 2,
                         "kael_face": 2
                         }
-                    )
+                    ),
                 thumb="assets/ui/gallery-kael-9-%s.png"),            
             thumb="assets/ui/gallerybtn-kael-%s.png"
         ),
@@ -613,7 +613,7 @@ init python:
             ImageBundle(
                 RenpyImage("orias_play hot"),
                 RenpyImage("orias_play wax_pour"),
-                RenpyImage("orias_play wax_rub").
+                RenpyImage("orias_play wax_rub"),
                 RenpyImage("orias_play wax_scratch"),
                 thumb="assets/ui/gallery-orias-5-%s.png"),
             ImageBundle(
