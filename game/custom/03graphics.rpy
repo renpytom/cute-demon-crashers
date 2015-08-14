@@ -182,7 +182,9 @@ init -100 python:
         # provided, and finally to the `Null` displayable if we can't
         # find any displayable in the state mapping.
         def snapshot(self, state=None):
-            return self.states.get(state or self.current_state) or Null()
+            if state is None:
+                state = self.current_state
+            return self.states.get(state) or Null()
 
 
         #### method: redraw()
