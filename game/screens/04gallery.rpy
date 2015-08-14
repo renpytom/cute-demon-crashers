@@ -16,7 +16,7 @@ transform orias_sprite_pos:
 
 init python:
     gallery_folder = None
-    gallery_all_unlocked = False
+    gallery_all_unlocked = True
     gallery = Gallery(
         TutorialFolder(
             "tutorial",
