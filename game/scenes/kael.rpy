@@ -346,7 +346,6 @@ label kael_sex:
     pause(0.5)
     play music music_tension
     scene bg hallway_night with dissolve
-    $ kael_cuddles_sprite.set_state(**kael_cuddles_initial)
     $ kael_warmup_sprite.set_state(**kael_warmup_initial)
     $ kael_missionary_sprite.set_state(**kael_missionary_initial)
     $kael.set_state(**Emotion.normal())
@@ -483,6 +482,7 @@ label kael_sex:
             ka "Would a cuddle suffice?"
             stop music fadeout 2
             cl "Yeah... I'd like that."
+            $ kael_cuddles_sprite.set_state(**kael_cuddles_initial)
             scene kael_cuddles with dissolve
             play music music_lullaby fadein 2
             "I roll over and Kael hugs me from behind, his body pressing against mine. His breath warms the base of my neck, and the soft music drifts through the room." 
@@ -712,9 +712,9 @@ label kissingpermission:
         
 label oralactivity:
     $claire.set_state(base="naked", eyes="down", mouth="low")
-    $ kael_cuddles_sprite.set_state(claire_naked=True)
+    #$ kael_cuddles_sprite.set_state(claire_naked=True)
     cl "Um, sorry, I didn't really... shave down there... only trimmed..."
-    $ claireundressed = True
+    $ kael_claire_naked = True
     "I curl up my legs so he can remove my panties, and he sets them aside."
     $kael.set_state(with_dissolve, eyes="closed")
     voice "k_s18"
@@ -722,7 +722,6 @@ label oralactivity:
     $kael.set_state(with_dissolve, eyes="up", eyebrows="up")
     ka "Besides, I'm not one to judge."
     $kael.set_state(base="naked", eyes="wink", mouth="grin", eyebrows="default")
-    $ kael_cuddles_sprite.set_state(kael_naked=True)
     $kael_naked = True
     show kael at center_group with dissolve
     $kael.set_state(with_dissolve, base="naked")
@@ -961,6 +960,15 @@ label oralactivity:
 
 label kaellatestop:
     play music music_lullaby fadein 2
+    if kael_naked == True:
+        $ kael_cuddles_sprite.set_state(kael_naked=True)
+    else:
+        $ kael_cuddles_sprite.set_state(kael_naked=False)
+    #
+    if kael_claire_naked == True:
+        $ kael_cuddles_sprite.set_state(claire_naked=True)
+    else:
+        $ kael_cuddles_sprite.set_state(claire_naked=False)
     $ kael_cuddles_sprite.set_state(claire_face=1, kael_face=1)
 #    $kael_cuddle_clface="1"
 #    $kael_cuddle_kface="1"
@@ -1208,6 +1216,16 @@ label kaelstoppingnow:
         jump kaelearlystop
         
 label kaelearlystop:
+    if kael_naked == True:
+        $ kael_cuddles_sprite.set_state(kael_naked=True)
+    else:
+        $ kael_cuddles_sprite.set_state(kael_naked=False)
+    #
+    if kael_claire_naked == True:
+        $ kael_cuddles_sprite.set_state(claire_naked=True)
+    else:
+        $ kael_cuddles_sprite.set_state(claire_naked=False)
+    $ kael_cuddles_sprite.set_state(claire_face=2, kael_face=2)
     scene kael_cuddles with dissolve
     play music music_lullaby fadein 2
     "I curl up on my side, and Kael hugs me from behind, moulding his body against mine." 
@@ -1222,6 +1240,16 @@ label kaelmiddlestop:
     $kael.set_state(with_dissolve, eyes="happy", mouth="smile", eyebrows="default", emotion_base="default", emotion="default")
     stop music fadeout 2
     ka "I... also got nourished by you. Thank you."
+    if kael_naked == True:
+        $ kael_cuddles_sprite.set_state(kael_naked=True)
+    else:
+        $ kael_cuddles_sprite.set_state(kael_naked=False)
+    #
+    if kael_claire_naked == True:
+        $ kael_cuddles_sprite.set_state(claire_naked=True)
+    else:
+        $ kael_cuddles_sprite.set_state(claire_naked=False)
+    $ kael_cuddles_sprite.set_state(claire_face=2, kael_face=2)
     scene kael_cuddles with dissolve
     play music music_lullaby fadein 2
     "He gives me a reassuring kiss on the forehead. I roll over, and Kael hugs me from behind, moulding his body against mine." 
@@ -1231,6 +1259,15 @@ label kaelmiddlestop:
     jump kael_epilogue
     
 label kaellatestop:
+    if kael_naked == True:
+        $ kael_cuddles_sprite.set_state(kael_naked=True)
+    else:
+        $ kael_cuddles_sprite.set_state(kael_naked=False)
+    #
+    if kael_claire_naked == True:
+        $ kael_cuddles_sprite.set_state(claire_naked=True)
+    else:
+        $ kael_cuddles_sprite.set_state(claire_naked=False)
     $ kael_cuddles_sprite.set_state(kael_face=1, claire_face=1)
 #    $kael_cuddle_kface = "1"
 #    $kael_cuddle_clface = "1"

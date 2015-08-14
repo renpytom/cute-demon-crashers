@@ -100,7 +100,7 @@ label start:
 
     #TESTING TUTORIAL SCREEN
     if not persistent.played_once:
-        "It looks like it is your first time playing {b}Cute Demon Crashers!{/b} \nWould you like to see some tips on how to play?"
+        "It looks like it is your first time playing {b}Cute Demon Crashers!{/b} \nWould you like to see some tips on how to play? (Click or Enter to continue)"
         menu:
             "Take me to the tutorial!":
                 call screen tutorial
