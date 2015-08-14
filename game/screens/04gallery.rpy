@@ -16,7 +16,7 @@ transform orias_sprite_pos:
 
 init python:
     gallery_folder = None
-    gallery_all_unlocked = True
+    gallery_all_unlocked = False
     gallery = Gallery(
         TutorialFolder(
             "tutorial",
@@ -54,6 +54,7 @@ init python:
                 SpriteImageSet(
                     "akki_foreplay",
                     akki_foreplay,
+                    #1
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
@@ -64,6 +65,7 @@ init python:
                         "akki_face": "none",
                         "claire_face": "none"
                         },
+                        #2
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
@@ -71,219 +73,284 @@ init python:
                         "akki_arm": "down",
                         "claire_arm": "down",
                         "heads": "apart",
-                        "akki_face": "happy",
-                        "claire_face": "happy"
+                        "akki_face": "D:",
+                        "claire_face": "smile"
                         },
+                        #3
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
                         "claire_top": "on",
-                        "akki_arm ": "breast",
+                        "akki_arm": "breast",
                         "claire_arm": "down",
-                        "heads ": "kiss",
+                        "heads": "kiss",
                         "akki_face": "none",
                         "claire_face": "none"
                         },
+                        #4
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
                         "claire_top": "on",
-                        "akki_arm ": "breast",
+                        "akki_arm": "breast",
                         "claire_arm": "chest",
-                        "heads ": "kiss",
+                        "heads": "kiss",
                         "akki_face": "none",
                         "claire_face": "none"
                         },
+                        #5
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
                         "claire_top": "on",
-                        "akki_arm ": "finger",
+                        "akki_arm": "finger",
                         "claire_arm": "down",
-                        " heads ": "apart",
+                        "heads": "apart",
                         "akki_face": "happy",
-                        "claire_face": "O"
+                        "claire_face": "pleasure"
                         },
+                        #6
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
                         "claire_top": "on",
-                        "akki_arm ": "finger",
+                        "akki_arm": "down",
                         "claire_arm": "crotch",
-                        " heads ": "kiss",
-                        "akki_face": "none",
-                        "claire_face": "none"
+                        "heads": "apart",
+                        "akki_face": "pleasure",
+                        "claire_face": "smile"
                         },
+                        #7
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
                         "claire_top": "on",
-                        "akki_arm ": "finger",
+                        "akki_arm": "finger",
                         "claire_arm": "crotch",
-                        " heads ": "apart",
-                        "akki_face": "happy",
-                        "claire_face": "O"
+                        "heads": "apart",
+                        "akki_face": "pleasure",
+                        "claire_face": "pleasure"
                         },
+                        #8
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "off",
                         "claire_top": "on",
-                        "akki_arm ": "down",
+                        "akki_arm": "down",
                         "claire_arm": "down",
-                        " heads ": "apart",
+                        "heads": "apart",
                         "akki_face": "happy",
                         "claire_face": "happy"
                         },
+                        #9
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "off",
                         "claire_top": "on",
-                        "akki_arm ": "finger",
+                        "akki_arm": "finger",
                         "claire_arm": "down",
-                        " heads ": "kiss",
+                        "heads": "kiss",
                         "akki_face": "none",
                         "claire_face": "none"
                         },
+                    #10
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "off",
                         "claire_top": "on",
-                        "akki_arm ": "finger",
-                        "claire_arm": "crotch",
-                        " heads ": "kiss",
-                        "akki_face": "none",
-                        "claire_face": "none"
-                        },
-                    {
-                        "akki_bottom": "on",
-                        "claire_bottom": "off",
-                        "claire_top": "on",
-                        "akki_arm ": "finger",
-                        "claire_arm": "crotch",
-                        " heads ": "apart",
+                        "akki_arm": "finger",
+                        "claire_arm": "down",
+                        "heads": "apart",
                         "akki_face": "happy",
                         "claire_face": "O"
                         },
+                        #11
+                    {
+                        "akki_bottom": "off",
+                        "claire_bottom": "off",
+                        "claire_top": "on",
+                        "akki_arm": "down",
+                        "claire_arm": "chest",
+                        "heads": "apart",
+                        "akki_face": "nervous",
+                        "claire_face": "surprised"
+                        },
+                        #12
+                    {
+                        "akki_bottom": "off",
+                        "claire_bottom": "off",
+                        "claire_top": "on",
+                        "akki_arm": "down",
+                        "claire_arm": "handjob",
+                        "heads": "apart",
+                        "akki_face": "pleasure",
+                        "claire_face": "surprised"
+                        },
+                        #13
+                    {
+                        "akki_bottom": "off",
+                        "claire_bottom": "off",
+                        "claire_top": "on",
+                        "akki_arm": "finger",
+                        "claire_arm": "handjob",
+                        "heads": "apart",
+                        "akki_face": "pleasure",
+                        "claire_face": "pleasure"
+                        },
+                        #14
+                    {
+                        "akki_bottom": "off",
+                        "claire_bottom": "off",
+                        "claire_top": "on",
+                        "akki_arm": "finger",
+                        "claire_arm": "down",
+                        "heads": "apart",
+                        "akki_face": "happy",
+                        "claire_face": "O"
+                        },
+                        #15
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
                         "akki_arm": "down",
                         "claire_top": "bra",
                         "claire_arm": "down",
-                        "heads ": "apart",
+                        "heads": "apart",
                         "akki_face": "happy",
                         "claire_face": "happy"
                         },
+                        #16
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
                         "claire_top": "off",
-                        "akki_arm ": "breast",
+                        "akki_arm": "down",
                         "claire_arm": "down",
-                        "heads ": "apart",
+                        "heads": "apart",
                         "akki_face": "happy",
-                        "claire_face": "happy"
+                        "claire_face": "smile"
                         },
+                        #17
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
                         "claire_top": "off",
-                        "akki_arm ": "breast",
+                        "akki_arm": "breast",
                         "claire_arm": "down",
-                        " heads ": "kiss",
+                        "heads": "kiss",
                         "akki_face": "none",
                         "claire_face": "none"
                         },
+                        #18
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
                         "claire_top": "off",
-                        "akki_arm ": "breast",
+                        "akki_arm": "breast",
                         "claire_arm": "chest",
-                        " heads ": "kiss",
+                        "heads": "kiss",
                         "akki_face": "none",
                         "claire_face": "none"
                         },
+                        #19
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "on",
                         "claire_top": "off",
-                        "akki_arm ": "finger",
-                        "claire_arm": "crotch",
-                        " heads ": "kiss",
-                        "akki_face": "none",
-                        "claire_face": "none"
+                        "akki_arm": "finger",
+                        "claire_arm": "down",
+                        "heads": "apart",
+                        "akki_face": "happy",
+                        "claire_face": "pleasure"
                         },
+                        #20
+                    {
+                        "akki_bottom": "on",
+                        "claire_bottom": "on",
+                        "claire_top": "off",
+                        "akki_arm": "down",
+                        "claire_arm": "crotch",
+                        "heads": "apart",
+                        "akki_face": "pleasure",
+                        "claire_face": "smile"
+                        },
+                        #21
+                    {
+                        "akki_bottom": "on",
+                        "claire_bottom": "on",
+                        "claire_top": "off",
+                        "akki_arm": "finger",
+                        "claire_arm": "crotch",
+                        "heads": "apart",
+                        "akki_face": "pleasure",
+                        "claire_face": "pleasure"
+                        },
+                        #22
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "off",
                         "claire_top": "off",
-                        "akki_arm ": "down",
+                        "akki_arm": "down",
                         "claire_arm": "down",
-                        " heads ": "apart",
+                        "heads": "apart",
                         "akki_face": "happy",
                         "claire_face": "happy"
                         },
+                        #23
                     {
                         "akki_bottom": "on",
                         "claire_bottom": "off",
                         "claire_top": "off",
-                        "akki_arm ": "finger",
+                        "akki_arm": "finger",
                         "claire_arm": "down",
-                        " heads ": "kiss",
+                        "heads": "kiss",
                         "akki_face": "none",
                         "claire_face": "none"
                         },
-                    {
-                        "akki_bottom": "on",
-                        "claire_bottom": "off",
-                        "claire_top": "off",
-                        "akki_arm ": "finger",
-                        "claire_arm": "crotch",
-                        " heads ": "kiss",
-                        "akki_face": "none",
-                        "claire_face": "none"
-                        },
-                    {
-                        "akki_bottom": "on",
-                        "claire_bottom": "off",
-                        "claire_top": "off",
-                        "akki_arm ": "finger",
-                        "claire_arm": "crotch",
-                        " heads ": "apart",
-                        "akki_face": "happy",
-                        "claire_face": "O"
-                        },
+                        #24
                     {
                         "akki_bottom": "off",
                         "claire_bottom": "off",
                         "claire_top": "off",
-                        "akki_arm ": "down",
-                        "claire_arm": "down",
-                        " heads ": "apart",
-                        "akki_face": "happy",
-                        "claire_face": "happy"
+                        "akki_arm": "down",
+                        "claire_arm": "chest",
+                        "heads": "apart",
+                        "akki_face": "nervous",
+                        "claire_face": "surprised"
                         },
+                        #25
                     {
                         "akki_bottom": "off",
                         "claire_bottom": "off",
                         "claire_top": "off",
-                        "akki_arm ": "finger",
+                        "akki_arm": "down",
                         "claire_arm": "handjob",
-                        " heads ": "kiss",
-                        "akki_face": "none",
-                        "claire_face": "none"
+                        "heads": "apart",
+                        "akki_face": "pleasure",
+                        "claire_face": "surprised"
                         },
+                        #26
                     {
                         "akki_bottom": "off",
                         "claire_bottom": "off",
                         "claire_top": "off",
-                        "akki_arm ": "finger",
+                        "akki_arm": "finger",
+                        "claire_arm": "handjob",
+                        "heads": "apart",
+                        "akki_face": "pleasure",
+                        "claire_face": "pleasure"
+                        },
+                        #27
+                    {
+                        "akki_bottom": "off",
+                        "claire_bottom": "off",
+                        "claire_top": "off",
+                        "akki_arm": "finger",
                         "claire_arm": "down",
-                        " heads ": "apart",
+                        "heads": "apart",
                         "akki_face": "happy",
                         "claire_face": "O"
-                        }
+                        }  
                 ),
                 thumb="assets/ui/gallery-akki-4-%s.png"),
             ImageBundle(
@@ -294,9 +361,8 @@ init python:
                     { "claire": 2, "akki": 2 },
                     { "claire": 2, "akki": 3 },
                     { "claire": 2, "akki": 4 },
-                    { "claire": 4, "akki": 1 },
-                    { "claire": 3, "akki": 5 },
-                    { "claire": 1, "akki": 6 }
+                    { "claire": 1, "akki": 5 },
+                    { "claire": 3, "akki": 5 }
                     ),
                 thumb="assets/ui/gallery-akki-5-%s.png"),
             ImageBundle(
@@ -356,7 +422,7 @@ init python:
                     {
                         "panties":  "on",
                         "claire_arm":  "fold",
-                        "mirari_arm": "fold",
+                        "mirari_arm": "breast",
                         "mirari_face": "tender",
                         "claire_face": "oh"
                         },
@@ -365,26 +431,26 @@ init python:
                         "claire_arm":  "fold",
                         "mirari_arm": "breast",
                         "mirari_face": "happy",
-                        "claire_face": "smile"
-                        },
-                    {
-                        "panties":  "off",
-                        "claire_arm":  "fold",
-                        "mirari_arm": "touch",
-                        "mirari_face": "happy",
-                        "claire_face": "pleasure"
+                        "claire_face": "oh"
                         },
                     {
                         "panties":  "off",
                         "claire_arm":  "fold",
                         "mirari_arm": "touch",
                         "mirari_face": "tender",
+                        "claire_face": "pleasure"
+                        },
+                    {
+                        "panties":  "off",
+                        "claire_arm":  "fold",
+                        "mirari_arm": "touch",
+                        "mirari_face": "happy",
                         "claire_face": "O"
                         },
                     {
                         "panties":  "on",
                         "claire_arm":  "breast",
-                        "mirari_arm ": "breast",
+                        "mirari_arm": "breast",
                         "mirari_face ": "happy",
                         "claire_face": "smile"
                         },
@@ -397,10 +463,24 @@ init python:
                         },
                     {
                         "panties":  "off",
+                        "claire_arm":  "breast",
+                        "mirari_arm": "touch",
+                        "mirari_face": "tender",
+                        "claire_face": "smile"
+                        },
+                    {
+                        "panties":  "off",
                         "claire_arm":  "touch",
                         "mirari_arm": "touch",
                         "mirari_face": "pleasure",
                         "claire_face": "pleasure"
+                        },
+                    {
+                        "panties":  "off",
+                        "claire_arm":  "touch",
+                        "mirari_arm": "touch",
+                        "mirari_face": "happy",
+                        "claire_face": "O"
                         },
                     {
                         "panties":  "off",
@@ -471,7 +551,7 @@ init python:
                     kael_warmup_sprite,
                     kael_warmup_initial,
                     { "kael": 2, "claire": 2 },
-                    { "kael": 3, "claire": 3 }
+                    { "kael": 3, "claire": 2 }
                     ),
                 thumb="assets/ui/gallery-kael-7-%s.png"),
             ImageBundle(
@@ -545,7 +625,6 @@ init python:
                 SpriteImageSet(
                     "orias_bed",
                     orias_bed_sprite,
-                    orias_bed_initial,
                     {
                         "naked":False,
                         "panties":"on",
@@ -575,8 +654,16 @@ init python:
                         "panties":"on",
                         "tiedup":True,
                         "blindfold":False,
-                        "claire_face":"shiver",
-                        "orias_face":"laugh"
+                        "claire_face":"happy",
+                        "orias_face":"smile"
+                        },
+                    {
+                        "naked":False,
+                        "panties":"on",
+                        "tiedup":True,
+                        "blindfold":True,
+                        "claire_face":"content",
+                        "orias_face":"smile"
                         },
                     {
                         "naked":False,
@@ -585,14 +672,6 @@ init python:
                         "blindfold":True,
                         "claire_face":"laugh",
                         "orias_face":"laugh"
-                        },
-                    {
-                        "naked":False,
-                        "panties":"on",
-                        "tiedup":True,
-                        "blindfold":True,
-                        "claire_face":"pleasure",
-                        "orias_face":"smile"
                         },
                     {
                         "naked":False,
@@ -606,13 +685,12 @@ init python:
                 thumb="assets/ui/gallery-orias-3-%s.png"),
             ImageBundle(
                 RenpyImage("orias_play cold"),
-                RenpyImage("orias_play nipple"),
+                RenpyImage("orias_play lick"),
                 RenpyImage("orias_play nipple_ice"),
                 RenpyImage("orias_play nipple_suck"),
                 thumb="assets/ui/gallery-orias-4-%s.png"),
             ImageBundle(
                 RenpyImage("orias_play hot"),
-                RenpyImage("orias_play wax_pour"),
                 RenpyImage("orias_play wax_rub"),
                 RenpyImage("orias_play wax_scratch"),
                 thumb="assets/ui/gallery-orias-5-%s.png"),
@@ -628,14 +706,19 @@ init python:
                 RenpyImage("orias_play kiss_blind"),
                 thumb="assets/ui/gallery-orias-7-%s.png"),
             ImageBundle(
+                RenpyImage("orias_finish fingers"),
                 RenpyImage("orias_finish oral"),
-                RenpyImage("orias_finish finger"),
                 thumb="assets/ui/gallery-orias-8-%s.png"),
             ImageBundle(
                 SpriteImageSet(
                     "orias_cuddles",
                     orias_cuddles_sprite,
-                    orias_cuddles_initial,
+                    {
+                        "orias_naked": False,
+                        "claire_naked": False,
+                        "claire_face": 3,
+                        "orias_face": 1
+                    },
                     {
                         "orias_naked": False,
                         "claire_naked": True,
