@@ -80,8 +80,8 @@ init -1:
         anchor (.5,.5)
         xalign 1.0
         yalign 0.0
-        yoffset -10
-        xoffset 10
+        yoffset 5
+        xoffset -5
 
     transform slot_screenshot:
         xoffset 29
