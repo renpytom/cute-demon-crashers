@@ -378,6 +378,7 @@ label mirari_sex:
     if not _in_replay:
         $ persistent.mirari_claire_name = claire_name
         $ persistent.mirari_scenes = mirari_scenes
+        $ persistent.mirari_sex_stop = None
     
     stop music fadeout 2
     scene black with dissolve

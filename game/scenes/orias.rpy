@@ -395,6 +395,7 @@ label orias_sex:
     if not _in_replay:
         $ persistent.orias_claire_name = claire_name
         $ persistent.orias_scenes = orias_scenes
+        $ persistent.orias_sex_stop = None
     
     stop music fadeout 2
     scene black with dissolve

@@ -338,6 +338,7 @@ label kael_sex:
     if not _in_replay:
         $ persistent.kael_claire_name = claire_name
         $ persistent.kael_scenes = kael_scenes
+        $ persistent.kael_sex_stop = None
     
     stop music fadeout 2
     scene black with dissolve

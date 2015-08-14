@@ -55,6 +55,7 @@ label akki_hangout1:
     voice "a_w18"
     ak "Wow, you're good. Also, do you know why Mirari summoned us here in the first place? She practically teleported us here with nary an explanation besides 'there's someone we can help!'" 
     $ claire.set_state(with_dissolve ,eyes="tender side", eyebrows="inwards", emotion="default", emotion_base="default", mouth="oh")
+    $akki.set_state(with_dissolve, emotion="default", eyes="default", eyebrows="up", mouth="low")    
     cl "How thoughtful... I guess I was being mopey over spring break - usually that's a time where people go on vacations or hang out with friends." 
     $ claire.set_state(with_dissolve ,eyes="down", eyebrows="inwards", emotion="lll", mouth="wavy")
     cl "However, most of my friends are busy, and a lot of them are dating or in a relationship."
@@ -431,6 +432,7 @@ label akki_sex:
     if not _in_replay:
         $ persistent.akki_claire_name = claire_name
         $ persistent.akki_scenes = akki_scenes
+        $ persistent.akki_sex_stop = None
 
     scene black with dissolve
     scene bg bedroom_night with dissolve
@@ -505,6 +507,7 @@ label akki_sex:
             ak "I'd like that."
             play music music_lullaby fadein 1
             $akki_cuddle_sprite.set_state(base="clothed")
+            $ akki_cuddle_sprite.set_state(with_dissolve, akki=3, claire=3)
             scene akkicuddle with dissolve
             "He crawls over to me, and we both curl up on the bed. Once we're comfortable, he hugs me close, one hand stroking my hair."
             "I can feel his chest rise and fall, and his warm breath on my forehead. Soothed, I allow myself to drift into a restful sleep." 
@@ -714,7 +717,8 @@ label akki_sex:
     $ akki_sex_choices.thighs = True
 #    $ thighs = "True"
     "My stomach plunges and I feel something coil in my belly, desire swelling up in me."
-    $ akki_foreplay.set_state(with_dissolve, claire_face="smile", akki_face="happy", heads="apart")
+    $ akki_foreplay.set_state(claire_face="smile", akki_face="happy")
+    $ akki_foreplay.set_state(with_dissolve, heads="apart")
 #    $ ac_heads = "apart"
 #    $ cl_face = "smile"
 #    $ ak_face = "happy"
@@ -796,7 +800,8 @@ label akki_sex:
             menu:
                 "Touch him in return.":
                     $ akki_sex_choices.mutual_touching = True
-                    $ akki_foreplay.set_state(with_dissolve, heads="apart", claire_face="smile", akki_face="happy")
+                    $ akki_foreplay.set_state(claire_face="smile", akki_face="happy")
+                    $ akki_foreplay.set_state(with_dissolve, heads="apart")
 #                    $ ac_heads = "apart"
 #                    $ cl_face = "smile"
 #                    $ ak_face = "happy"
@@ -873,7 +878,8 @@ label akki_sex:
                 $ akki_foreplay.set_state(with_dissolve, claire_arm="down")
 #                $cl_arm = "down"
                 "My hands drop, unable to focus anymore."
-            $ akki_foreplay.set_state(with_dissolve, heads="apart", akki_face="happy", claire_face="pleasure")
+            $ akki_foreplay.set_state(akki_face="happy", claire_face="pleasure")
+            $ akki_foreplay.set_state(with_dissolve, heads="apart")
 #            $ac_heads = "apart"
 #            $ak_face = "happy"
 #            $cl_face = "pleasure"
@@ -900,9 +906,10 @@ label akki_sex:
 #            $cl_face = "happy"
             cla "Of course you did! I, hahaha..."
             show screen sex_stop("akki_stop_now")
-            "Feeling giddy, I press my lips against him. My thighs feel sore and I'm fighting off exhaustion and yet I want to show him how amazing he is."
             $ akki_foreplay.set_state(claire_face="none", akki_face="none")
             $ akki_foreplay.set_state(with_dissolve, heads="kiss")
+            "Feeling giddy, I press my lips against him. My thighs feel sore and I'm fighting off exhaustion and yet I want to show him how amazing he is."
+            
 #            $ ac_heads = "kiss"
 #            $ cl_face = None
 #            $ ak_face = None
@@ -1025,6 +1032,7 @@ label akki_sex:
             $ akki_missionary_sprite.set_state(with_dissolve, akki=1, claire=1)
 #            $lay_aface = "1"
 #            $lay_cface = "1"
+            voice "a_s13"
             ak "Should I keep going?"
             cla "Yes, I'm fine now."
             $ akki_missionary_sprite.set_state(with_dissolve, akki=2, claire=2)
@@ -1078,7 +1086,7 @@ label akki_sex:
             cla "I-it's okay! Don't force yourself. I'm really happy with where we are."
             $ akki_missionary_sprite.set_state(with_dissolve, akki=6)
 #            $lay_aface = "6"
-            voice "a_sex46" 
+            voice "a_sex47" 
             ak "Really?"
             cla "Yes, honest. This has been a great experience, Akki."
             $ akki_missionary_sprite.set_state(with_dissolve, claire=1)
@@ -1187,7 +1195,7 @@ label akki_early_stop:
     python:
         akki_cuddle_sprite.set_state(
             base="naked" if akki_sex_choices.missionary else "clothed",
-            claire=1, akki=1
+            claire=3, akki=3
             )    
     scene akkicuddle with dissolve
     "We both curl up on the bed. Once we're comfortable, he hugs me close, one hand stroking my hair."
@@ -1459,6 +1467,7 @@ label akki_epilogue_long:
     cl "..."
     "I sigh as I walk home from university." 
     "It's been a week after my spring break, and I still miss Akki. It almost feels like a dream..."
+    voice "a_w13"
     "???" "[claire_name]!"
     $claire.set_state(eyes="default", emotion="default", eyebrows="default", mouth="uh", emotion_base="default")
     cl "Huh?"
@@ -1466,6 +1475,7 @@ label akki_epilogue_long:
     cl "Wha— Akki!?"
     $akki.set_state(emotion="flowers", eyes="happy", mouth="grin", emotion_base="small blush")
     show akki at center_alone2 with dissolve
+    voice "a_s10"
     ak "There you are!"
     $akki.set_state(emotion="default", eyes="happy", mouth="happy", emotion_base="small blush", eyebrows="default")
     show akki at bounce_up_alone2
@@ -1475,11 +1485,13 @@ label akki_epilogue_long:
     $claire.set_state(eyes="happy", emotion="flowers", eyebrows="default", mouth="happy", emotion_base="default")
     cl "It's you! And look at you, all cleverly disguised."
     $akki.set_state(emotion="note", eyes="happy", mouth="grin", emotion_base="small blush")
+    voice "a_s05"
     ak "What do you think? It took me a while to master the spell."
     $akki.set_state(emotion="default", eyes="happy", mouth="smile", emotion_base="small blush")
     show akki at sway
     "He turns around once, then tugs on his shirt."
     $akki.set_state(emotion="default", eyes="fun front", mouth="low", emotion_base="default", eyebrows ="default")
+    voice "a_s08"
     ak "Human clothing is so restrictive though." 
     $claire.set_state(eyes="happy", emotion="default", eyebrows="default", mouth="happy", emotion_base="default")
     $akki.set_state(emotion="default", eyes="default", mouth="tiny", emotion_base="small blush", eyebrows ="default")
@@ -1487,7 +1499,7 @@ label akki_epilogue_long:
     $claire.set_state(eyes="down", emotion="default", eyebrows="default", mouth="smile", emotion_base="small blush")
     cl "I've missed you so much."
     $akki.set_state(emotion="default", eyes="tender side", mouth="oh", emotion_base="large blush", eyebrows ="inwards")
-    voice "a_epi01"
+    voice "a_s13"
     ak "I've missed you too, [claire_name]."
     $claire.set_state(eyes="semi open", emotion="default", eyebrows="inwards", mouth="low", emotion_base="default")
     $akki.set_state(emotion="default", eyes="tender side", mouth="low", emotion_base="small blush", eyebrows ="inwards")
@@ -1509,6 +1521,7 @@ label akki_epilogue_long:
     $claire.set_state(eyes="default", emotion="default", eyebrows="up", mouth="oh", emotion_base="default")
     cl "Huh?"
     $akki.set_state(emotion="default", eyes="tender side", mouth="wavy", emotion_base="small blush", eyebrows ="tender")
+    voice "a_s13"
     ak "Um... I remember you mentioning that you wouldn't mind a fling... I'm not sure what it means, but if I can spend time with you..." 
     $claire.set_state(eyes="tender", emotion="default", eyebrows="default", mouth="smile", emotion_base="small blush")
     cl "Depends, how long you would like to see me? For a little while or a longer while?"
@@ -1522,12 +1535,13 @@ label akki_epilogue_long:
     $claire.set_state(eyes="happy", emotion="note", eyebrows="default", mouth="grin", emotion_base="default")
     cl "I think this calls for a celebration. What would you like to do?"
     $akki.set_state(emotion="heart", eyes="starry", mouth="drool", emotion_base="default", eyebrows ="tender")
+    voice "a_s05"
     ak "I'd like to have that pizza again from—"
     $claire.set_state(eyes="shock", emotion="shock", eyebrows="frown", mouth="fun ah2", emotion_base="no nose")
     $akki.set_state(emotion="bars", eyes="dots", mouth="low", emotion_base="default", eyebrows ="up")
     cl "NO!"
     $akki.set_state(emotion="default", eyes="cry", mouth="ehh", emotion_base="default", eyebrows ="inwards")
-    voice "a_epi05"
+    voice "a_s02"
     ak "No?"
     $claire.set_state(eyes="happy", emotion="panic", eyebrows="inwards", mouth="ehh", emotion_base="small blush")
     cl "Ah, there's a pizza place by my campus. Let's celebrate there instead." 
@@ -1538,6 +1552,7 @@ label akki_epilogue_long:
     $claire.set_state(eyes="default", emotion="default", eyebrows="default", mouth="oh", emotion_base="default")
     cl "You seem a little different today."
     $akki.set_state(emotion="default", eyes="tender side", mouth="oh", emotion_base="small blush", eyebrows ="tender")
+    voice "a_s13"
     ak "You've noticed? Um... after that night..."
     $akki.set_state(emotion="default", eyes="tender", mouth="smile", emotion_base="small blush", eyebrows ="tender")
     voice "a_epi07"
