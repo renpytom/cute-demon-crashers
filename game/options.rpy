@@ -76,6 +76,13 @@ init -1:
         yoffset -25
         xoffset 15
 
+    transform complete_star_transform:
+        anchor (.5,.5)
+        xalign 1.0
+        yalign 0.0
+        yoffset -10
+        xoffset 10
+
     transform slot_screenshot:
         xoffset 29
         yoffset 37
@@ -237,7 +244,7 @@ init -1:
         ypadding 0
         
     style gallery_folders_frame_completed is gallery_folders_frame:
-        foreground At("assets/ui/button-hearts.png", button_hearts_transform)
+        foreground At("assets/ui/complete_star.png", complete_star_transform)
 
     style gallery_images_button is slot_picker_button
 
