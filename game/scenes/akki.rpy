@@ -419,7 +419,6 @@ label akki_hangout3:
     
 
 label akki_sex:
-    $akki_cuddle_sprite.set_state(with_dissolve, akki=3, claire=3)
     $ in_sex = True
     $renpy.choice_for_skipping()
     $akki.set_state(**Emotion.normal())
