@@ -937,7 +937,7 @@ screen image_folder(bundles, character=None):
                 $ prev_image = get_prev(character, gallery_charidx)
                 $ next_image = get_next(character, gallery_charidx)
 
-                if prev_image is not None:
+                showif prev_image is not None:
                     imagebutton:
                         auto "assets/ui/gallery-outfitselect-left-%s.png"
                         action SetVariable("gallery_charidx", prev_image)
@@ -946,7 +946,7 @@ screen image_folder(bundles, character=None):
 
                 text "{0} / {1}".format(gallery_charidx + 1, len(character))
 
-                if next_image is not None:
+                showif next_image is not None:
                     imagebutton:
                         auto "assets/ui/gallery-outfitselect-right-%s.png"
                         action SetVariable("gallery_charidx", next_image)
