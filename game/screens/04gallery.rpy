@@ -625,6 +625,8 @@ init python:
                 SpriteImageSet(
                     "orias_bed",
                     orias_bed_sprite,
+                    #nothing
+                    #1
                     {
                         "naked":False,
                         "panties":"on",
@@ -633,6 +635,7 @@ init python:
                         "claire_face":"happy",
                         "orias_face":"smile"
                         },
+                       #2 
                     {
                         "naked":False,
                         "panties":"on",
@@ -641,38 +644,93 @@ init python:
                         "claire_face":"content",
                         "orias_face":"smile"
                         },
+                        #3
                     {
                         "naked":False,
                         "panties":"on",
                         "tiedup":False,
-                        "blindfold":True,
-                        "claire_face":"content",
-                        "orias_face":"smile"
-                        },
-                    {
-                        "naked":False,
-                        "panties":"on",
-                        "tiedup":True,
                         "blindfold":False,
-                        "claire_face":"happy",
-                        "orias_face":"smile"
-                        },
-                    {
-                        "naked":False,
-                        "panties":"on",
-                        "tiedup":True,
-                        "blindfold":True,
-                        "claire_face":"content",
-                        "orias_face":"smile"
-                        },
-                    {
-                        "naked":False,
-                        "panties":"on",
-                        "tiedup":False,
-                        "blindfold":True,
-                        "claire_face":"laugh",
+                        "claire_face":"laughing",
                         "orias_face":"laugh"
                         },
+                    #blindfold
+                    #4
+                    {
+                        "naked":False,
+                        "panties":"on",
+                        "tiedup":False,
+                        "blindfold":True,
+                        "claire_face":"content",
+                        "orias_face":"smile"
+                        },
+                        #5
+                    {
+                        "naked":False,
+                        "panties":"on",
+                        "tiedup":False,
+                        "blindfold":True,
+                        "claire_face":"laughing",
+                        "orias_face":"laugh"
+                        },
+
+                    #tiedup
+                    #6
+                    {
+                        "naked":False,
+                        "panties":"on",
+                        "tiedup":True,
+                        "blindfold":False,
+                        "claire_face":"happy",
+                        "orias_face":"smile"
+                        },
+                        #7
+                    {
+                        "naked":False,
+                        "panties":"on",
+                        "tiedup":True,
+                        "blindfold":False,
+                        "claire_face":"laughing",
+                        "orias_face":"laugh"
+                        },
+                    #both
+                    #8
+                    {
+                        "naked":False,
+                        "panties":"on",
+                        "tiedup":True,
+                        "blindfold":True,
+                        "claire_face":"content",
+                        "orias_face":"smile"
+                        },  
+                    #O Orias clothed 
+                    #9
+                    {
+                        "naked":False,
+                        "panties":"off",
+                        "tiedup":False,
+                        "blindfold":False,
+                        "claire_face":"O",
+                        "orias_face":"smile"
+                        },
+                        #10
+                    {
+                        "naked":False,
+                        "panties":"off",
+                        "tiedup":True,
+                        "blindfold":False,
+                        "claire_face":"O",
+                        "orias_face":"smile"
+                        },
+                        #11
+                    {
+                        "naked":False,
+                        "panties":"off",
+                        "tiedup":False,
+                        "blindfold":True,
+                        "claire_face":"O",
+                        "orias_face":"smile"
+                        },
+                        #12
                     {
                         "naked":False,
                         "panties":"off",
@@ -680,7 +738,45 @@ init python:
                         "blindfold":True,
                         "claire_face":"O",
                         "orias_face":"smile"
-                        }
+                        },
+                    #O Orias Naked
+                    #13
+                    {
+                        "naked":True,
+                        "panties":"off",
+                        "tiedup":False,
+                        "blindfold":False,
+                        "claire_face":"O",
+                        "orias_face":"smile2"
+                        },
+                        #14
+                    {
+                        "naked":True,
+                        "panties":"off",
+                        "tiedup":True,
+                        "blindfold":False,
+                        "claire_face":"O",
+                        "orias_face":"smile"
+                        },
+                        #15
+                    {
+                        "naked":True,
+                        "panties":"off",
+                        "tiedup":False,
+                        "blindfold":True,
+                        "claire_face":"O",
+                        "orias_face":"smile"
+                        },
+                        #16
+                    {
+                        "naked":True,
+                        "panties":"off",
+                        "tiedup":True,
+                        "blindfold":True,
+                        "claire_face":"O",
+                        "orias_face":"smile"
+                        },
+
                     ),                
                 thumb="assets/ui/gallery-orias-3-%s.png"),
             ImageBundle(
