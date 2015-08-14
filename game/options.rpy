@@ -230,6 +230,15 @@ init -1:
         box_wrap True
         xpadding 30
 
+    style gallery_folders_frame:
+        background None
+        foreground None
+        xpadding 0
+        ypadding 0
+        
+    style gallery_folders_frame_completed is gallery_folders_frame:
+        foreground At("assets/ui/button-hearts.png", button_hearts_transform)
+
     style gallery_images_button is slot_picker_button
 
     style gallery_images_frame is slot_picker_screenshot

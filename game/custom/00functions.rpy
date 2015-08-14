@@ -176,6 +176,17 @@ init -100 python:
     # Returns the first item of the list.
     def first(xs):
         return xs[0]
+
+
+    #### function: every(f, xs)
+    # @type: (a -> bool), list(a) -> bool
+    #
+    # True if every item passes the predicate.
+    def every(f, xs):
+        for x in xs:
+            if not f(x):
+                return False
+        return True
     
 
     #### function: merge(a, b)

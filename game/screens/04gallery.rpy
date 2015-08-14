@@ -845,9 +845,13 @@ screen gallery():
             style_group "gallery_folders"
 
             for folder in gallery.folders:
-                imagebutton:
-                    auto folder.thumb
-                    action [folder.select(), SetVariable("gallery_folder", folder.name)]
+                frame:
+                    if folder.is_completed():
+                        style "gallery_folders_frame_completed"
+                    
+                    imagebutton:
+                        auto folder.thumb
+                        action [folder.select(), SetVariable("gallery_folder", folder.name)]
 
     # Character folders can't be shown on top of the other screens
     # because we need the character's sprite to show behind the

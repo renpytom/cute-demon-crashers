@@ -169,7 +169,14 @@ init -100 python:
         # True if at least one of the images are unlocked.
         def is_unlocked(self):
             return gallery_all_unlocked or len(self.get_unlocked()) > 0
-            
+
+        ##### method: is_completed(self)
+        # @type: () -> bool
+        #
+        # True if all images are unlocked.
+        def is_completed(self):
+            return gallery_all_unlocked or len(self.get_unlocked()) == self.get_total()
+        
         ##### method: get_unlocked(self)
         # @type: () -> [GalleryItem]
         #
@@ -209,6 +216,11 @@ init -100 python:
         def get_unlocked(self):
             return filter(lambda x: x.is_unlocked(), self.images)
 
+        ##### method: is_completed(self)
+        # @type: () -> bool
+        def is_completed(self):
+            return every(lambda x: x.is_unlocked(), self.images)
+        
         ##### method: get_total(self)
         # @type: () -> int
         def get_total(self):
@@ -240,7 +252,10 @@ init -100 python:
         ##### method: is_unlocked(self)
         # @type: () -> bool
         def is_unlocked(self):
-            return self.predicate()
+            return gallery_all_unlocked or self.predicate()
+
+        def is_completed(self):
+            return self.is_unlocked()
 
         ##### method: show(self)
         # @type: () -> () -> unit
@@ -263,6 +278,9 @@ init -100 python:
         def select(self):
             return lambda: None
 
+        def is_completed(self):
+            return False
+
 
     #### class: TutorialFolder(object)
     #
@@ -282,6 +300,9 @@ init -100 python:
 
         def select(self):
             return lambda: None
+
+        def is_completed(self):
+            return every(lambda x: x.is_completed(), self.bundles)
 
     #### class: CharacterFolder(ImageFolder)
     #
