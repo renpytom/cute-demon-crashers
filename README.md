@@ -28,9 +28,6 @@ distribution or compile it yourself from the source code.
 
 ## Running the game
 
-> **NOTE**  
-> It's not possible to run the game from the source right now because the new assets are not available. Once the full game is released, the instructions below should be what you need for running the game.
-
 Only the source code is provided in this repository, so if you want to play
 around with it and run the game with your changes, you'll need to:
 
