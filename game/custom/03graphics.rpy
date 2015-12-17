@@ -248,7 +248,7 @@ init -100 python:
 
             # Also, in order to avoid showing the wrong transition to
             # people, we get rid of it in new interactions.
-            if not self.reset:
+            if not renpy.is_start_interact() and not self.reset:
                 self.transition = None
                 self.redraw()
 
